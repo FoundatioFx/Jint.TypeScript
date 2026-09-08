@@ -38,7 +38,7 @@ Types are erased without type checking or runtime validation. Use your editor or
 
 Enums, namespaces, constructor parameter properties, JSX/TSX, and decorators are not supported. Some type syntax, including conditional and `infer` types, is also unsupported. Strings passed to Jint's ordinary execution APIs, `eval`, or `Function` must still be JavaScript.
 
-See the [usage and syntax reference](docs/usage.md) for modules, configuration, supported forms, and limitations, or the [performance measurements](docs/performance.md) for benchmark results.
+See the [Acornima comparison](docs/acornima-comparison.md), [usage and syntax reference](docs/usage.md), and [performance measurements](docs/performance.md).
 
 ## License
 
