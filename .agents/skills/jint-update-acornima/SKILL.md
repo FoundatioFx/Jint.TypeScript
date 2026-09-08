@@ -5,7 +5,7 @@ description: "Update Jint.TypeScript's vendored Acornima parser to latest upstre
 
 # Update Acornima for Jint.TypeScript
 
-Locate the Jint.TypeScript repository from the current directory or nearby checkout. On this workstation the default is `/home/ejsmith/Projects/Foundatio/Jint.TypeScript`. Confirm `src/Jint.TypeScript/Jint.TypeScript.csproj`, `eng/upstream.mjs` and the official Acornima repository pin in `eng/upstream.json` before changing files.
+Use the Jint.TypeScript repository containing this skill. If invoked from a personal installation, locate the intended checkout from the current directory or task context. Confirm `src/Jint.TypeScript/Jint.TypeScript.csproj`, `eng/upstream.mjs` and the official Acornima repository pin in `eng/upstream.json` before changing files. All workflow paths below are relative to that repository root.
 
 Read **`docs/upstream-updates.md` in that repository** for the exact commands, validation sequence and recovery procedure. Use the repository's maintained scripts, not a replacement importer. Read `docs/maintenance.md` when resolving grammar or AST integration changes. Read `docs/upstream-customization-audit.md` before reconciling existing customizations; it records why each change exists and which alternatives were rejected.
 

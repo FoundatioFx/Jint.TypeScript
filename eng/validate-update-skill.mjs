@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join, resolve } from 'node:path';
 const root = fileURLToPath(new URL('..', import.meta.url));
-const directory = process.argv[2] ? resolve(process.argv[2]) : join(root, 'skills/jint-update-acornima');
+const directory = process.argv[2] ? resolve(process.argv[2]) : join(root, '.agents/skills/jint-update-acornima');
 const skill = readFileSync(join(directory, 'SKILL.md'), 'utf8');
 const frontmatter = skill.match(/^---\nname: ([a-z0-9-]+)\ndescription: ("[^\n]+")\n---\n/u);
 assert.ok(frontmatter, 'Expected a name and quoted YAML description');

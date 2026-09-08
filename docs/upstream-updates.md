@@ -2,7 +2,9 @@
 
 The [customization audit](upstream-customization-audit.md) evaluates all 77 previous handwritten hunks and the mechanical adaptations, including alternatives and regression evidence.
 
-Invoke **`$jint-update-acornima`** to have the agent run this workflow. The versioned skill lives in `skills/jint-update-acornima`; install it into your personal skills directory with `node eng/install-update-skill.mjs`. The workflow needs Git, Node 22+ and the .NET SDK selected by `global.json`. Product execution still uses only .NET.
+Open Codex in this repository and invoke **`$jint-update-acornima`** to run this workflow. The versioned skill lives in [`.agents/skills/jint-update-acornima`](../.agents/skills/jint-update-acornima/SKILL.md), a [Codex repository discovery location](https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills). No installation is needed when working in this checkout. Restart Codex if the skill does not appear. The root [AGENTS.md](../AGENTS.md) also points agents that read repository instructions to the skill and this workflow.
+
+For optional use from outside the repository, `node eng/install-update-skill.mjs` copies the skill into `~/.agents/skills`; an explicit destination directory is also supported. Prefer the repository copy when working here, since a personal copy can become stale or appear as a duplicate. The workflow needs Git, Node 22+ and the .NET SDK selected by `global.json`. Product execution still uses only .NET.
 
 ## What belongs where
 

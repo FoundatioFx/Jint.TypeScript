@@ -3,8 +3,8 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { filesUnder } from './parser-files.mjs';
-const source = fileURLToPath(new URL('../skills/jint-update-acornima', import.meta.url));
-const skills = resolve(process.argv[2] ?? join(process.env.CODEX_HOME ?? join(homedir(), '.codex'), 'skills'));
+const source = fileURLToPath(new URL('../.agents/skills/jint-update-acornima', import.meta.url));
+const skills = resolve(process.argv[2] ?? join(homedir(), '.agents', 'skills'));
 const destination = join(skills, 'jint-update-acornima');
 try {
     if (process.argv.length > 3) throw new Error('Usage: node eng/install-update-skill.mjs [SKILLS_DIRECTORY]');
