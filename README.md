@@ -1,6 +1,6 @@
 # Jint.TypeScript
 
-Run TypeScript scripts in .NET with Jint. The parser is written in C# and requires no Node.js runtime. It erases type syntax while preserving original source locations for errors.
+Run TypeScript scripts in .NET with Jint. The C# parser is based on [Acornima](https://github.com/adams85/acornima) and requires no Node.js runtime. It erases type syntax while preserving original source locations for errors.
 
 **Experimental:** supports a growing subset of TypeScript on .NET 8 and .NET 10, using Jint 5 preview packages.
 
