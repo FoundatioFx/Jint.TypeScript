@@ -1,0 +1,1307 @@
+{
+  "checkedOn": "2026-09-07",
+  "experimentCommit": "332be7ffc222f0f8d30004e23afde578cf8fdaa8",
+  "currentPackage": "0.1.0-preview.1",
+  "originalTests": {
+    "experiment": {
+      "passed": 57,
+      "failed": 0
+    },
+    "current": {
+      "passed": 57,
+      "failed": 0
+    },
+    "groups": {
+      "ThrowsCatchableExceptionOnTooDeepRecursion_TypeAnnotations": {
+        "Passed": 1
+      },
+      "SimpleTypeAnnotations_AreSkippedCorrectly": {
+        "Passed": 5
+      },
+      "IntersectionTypes_AreSkippedCorrectly": {
+        "Passed": 2
+      },
+      "RegularExpressions_WithColonsAndBraces_ParseCorrectly": {
+        "Passed": 2
+      },
+      "JavaScriptObjectLiterals_RemainUnchanged": {
+        "Passed": 3
+      },
+      "IndexSignatures_AreSkippedCorrectly": {
+        "Passed": 3
+      },
+      "TemplateStringsWithTypeAnnotations_ParseCorrectly": {
+        "Passed": 3
+      },
+      "ArrayTypes_AreSkippedCorrectly": {
+        "Passed": 3
+      },
+      "NonNullAssertions_AreSkippedCorrectly": {
+        "Passed": 3
+      },
+      "MalformedTypeAnnotations_DoNotCrashParser": {
+        "Passed": 4
+      },
+      "InlineObjectTypes_AreSkippedCorrectly": {
+        "Passed": 3
+      },
+      "FunctionWithMultipleComplexParameters_ParseCorrectly": {
+        "Passed": 1
+      },
+      "TypeAnnotations_DoNotAffectASTStructure": {
+        "Passed": 3
+      },
+      "UnionTypes_AreSkippedCorrectly": {
+        "Passed": 3
+      },
+      "TemplateLiteralTypes_AreSkippedCorrectly": {
+        "Passed": 2
+      },
+      "OptionalTypes_AreSkippedCorrectly": {
+        "Passed": 2
+      },
+      "EmptyInput_ParsesSuccessfully": {
+        "Passed": 1
+      },
+      "VariableDeclarationsWithoutInitializers_ParseCorrectly": {
+        "Passed": 2
+      },
+      "TypeAssertions_AreSkippedCorrectly": {
+        "Passed": 3
+      },
+      "StandardJavaScript_ParsesWithoutTypeScript": {
+        "Passed": 1
+      },
+      "FunctionWithObjectTypes_AreSkippedCorrectly": {
+        "Passed": 2
+      },
+      "NestedObjectTypes_AreSkippedCorrectly": {
+        "Passed": 2
+      },
+      "HandlesLargeTypeAnnotations_WithoutPerformanceIssues": {
+        "Passed": 1
+      },
+      "ComplexTypeScriptCode_ParsesSuccessfully": {
+        "Passed": 1
+      },
+      "VeryComplexNestedTypes_ParseCorrectly": {
+        "Passed": 1
+      }
+    }
+  },
+  "probes": [
+    {
+      "name": "inline-object",
+      "source": "const user: { name: string } = { name: 'Alice' }; user.name;",
+      "experiment": {
+        "name": "inline-object",
+        "source": "const user: { name: string } = { name: 'Alice' }; user.name;",
+        "output": "const user={name:'Alice'};user.name",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 49,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 50,
+            "End": 60,
+            "line": 1,
+            "column": 50
+          }
+        ],
+        "runtimeResult": "Alice"
+      },
+      "current": {
+        "name": "inline-object",
+        "source": "const user: { name: string } = { name: 'Alice' }; user.name;",
+        "output": "const user={name:'Alice'};user.name",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 49,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 50,
+            "End": 60,
+            "line": 1,
+            "column": 50
+          }
+        ],
+        "nativeJintResult": "Alice",
+        "nativeJintError": "",
+        "runtimeResult": "Alice"
+      }
+    },
+    {
+      "name": "function-type",
+      "source": "function run(cb: (x: number) => number) { return cb(41); } run(x => x + 1);",
+      "experiment": {
+        "name": "function-type",
+        "source": "function run(cb: (x: number) => number) { return cb(41); } run(x => x + 1);",
+        "output": "function run(cb){return cb(41)}run(x=>x+1)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 58,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 59,
+            "End": 75,
+            "line": 1,
+            "column": 59
+          }
+        ],
+        "runtimeResult": "42"
+      },
+      "current": {
+        "name": "function-type",
+        "source": "function run(cb: (x: number) => number) { return cb(41); } run(x => x + 1);",
+        "output": "function run(cb){return cb(41)}run(x=>x+1)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 58,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 59,
+            "End": 75,
+            "line": 1,
+            "column": 59
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "assertion",
+      "source": "const value = 'ok'; const result = value as string; result;",
+      "experiment": {
+        "name": "assertion",
+        "source": "const value = 'ok'; const result = value as string; result;",
+        "output": "const value='ok';const result=value;result",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 19,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 20,
+            "End": 51,
+            "line": 1,
+            "column": 20
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 52,
+            "End": 59,
+            "line": 1,
+            "column": 52
+          }
+        ],
+        "runtimeResult": "ok"
+      },
+      "current": {
+        "name": "assertion",
+        "source": "const value = 'ok'; const result = value as string; result;",
+        "output": "const value='ok';const result=value;result",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 19,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 20,
+            "End": 51,
+            "line": 1,
+            "column": 20
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 52,
+            "End": 59,
+            "line": 1,
+            "column": 52
+          }
+        ],
+        "nativeJintResult": "ok",
+        "nativeJintError": "",
+        "runtimeResult": "ok"
+      }
+    },
+    {
+      "name": "assertion-precedence",
+      "source": "const value = 2; const result = value as number + 1; result;",
+      "experiment": {
+        "name": "assertion-precedence",
+        "source": "const value = 2; const result = value as number + 1; result;",
+        "output": "const value=2;const result=value;result",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 16,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 17,
+            "End": 52,
+            "line": 1,
+            "column": 17
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 53,
+            "End": 60,
+            "line": 1,
+            "column": 53
+          }
+        ],
+        "runtimeResult": "2"
+      },
+      "current": {
+        "name": "assertion-precedence",
+        "source": "const value = 2; const result = value as number + 1; result;",
+        "output": "const value=2;const result=value+1;result",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 16,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 17,
+            "End": 52,
+            "line": 1,
+            "column": 17
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 53,
+            "End": 60,
+            "line": 1,
+            "column": 53
+          }
+        ],
+        "nativeJintResult": "3",
+        "nativeJintError": "",
+        "runtimeResult": "3"
+      }
+    },
+    {
+      "name": "non-null",
+      "source": "const obj = { value: 42 }; obj!.value;",
+      "experiment": {
+        "name": "non-null",
+        "source": "const obj = { value: 42 }; obj!.value;",
+        "output": "const obj={value:42};obj.value",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 26,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 27,
+            "End": 38,
+            "line": 1,
+            "column": 27
+          }
+        ],
+        "runtimeResult": "42"
+      },
+      "current": {
+        "name": "non-null",
+        "source": "const obj = { value: 42 }; obj!.value;",
+        "output": "const obj={value:42};obj.value",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 26,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 27,
+            "End": 38,
+            "line": 1,
+            "column": 27
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "intersection",
+      "source": "const value: A & B = 42; value;",
+      "experiment": {
+        "name": "intersection",
+        "source": "const value: A & B = 42; value;",
+        "output": "const value=42;value",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 24,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 25,
+            "End": 31,
+            "line": 1,
+            "column": 25
+          }
+        ],
+        "runtimeResult": "42"
+      },
+      "current": {
+        "name": "intersection",
+        "source": "const value: A & B = 42; value;",
+        "output": "const value=42;value",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 24,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 25,
+            "End": 31,
+            "line": 1,
+            "column": 25
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "generic-function",
+      "source": "function identity<T>(x: T): T { return x; } identity(42);",
+      "experiment": {
+        "name": "generic-function",
+        "source": "function identity<T>(x: T): T { return x; } identity(42);",
+        "output": "function identity(x){return x}identity(42)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 43,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 44,
+            "End": 57,
+            "line": 1,
+            "column": 44
+          }
+        ],
+        "runtimeResult": "42"
+      },
+      "current": {
+        "name": "generic-function",
+        "source": "function identity<T>(x: T): T { return x; } identity(42);",
+        "output": "function identity(x){return x}identity(42)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 43,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 44,
+            "End": 57,
+            "line": 1,
+            "column": 44
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "generic-call",
+      "source": "function f(x) { return x + 1; } const number = 10; f<number>(41);",
+      "experiment": {
+        "name": "generic-call",
+        "source": "function f(x) { return x + 1; } const number = 10; f<number>(41);",
+        "output": "function f(x){return x+1}const number=10;f<number>41",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 31,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 32,
+            "End": 50,
+            "line": 1,
+            "column": 32
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 51,
+            "End": 65,
+            "line": 1,
+            "column": 51
+          }
+        ],
+        "runtimeResult": "false"
+      },
+      "current": {
+        "name": "generic-call",
+        "source": "function f(x) { return x + 1; } const number = 10; f<number>(41);",
+        "output": "function f(x){return x+1}const number=10;f(41)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 31,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 32,
+            "End": 50,
+            "line": 1,
+            "column": 32
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 51,
+            "End": 65,
+            "line": 1,
+            "column": 51
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      },
+      "reference": {
+        "compiler": "TypeScript 7.0.2",
+        "javascript": "\"use strict\";\nfunction f(x) { return x + 1; }\nconst number = 10;\nf(41);\n",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "generic-arrow",
+      "source": "const f = <T>(x: T): T => x; f(42);",
+      "experiment": {
+        "name": "generic-arrow",
+        "source": "const f = <T>(x: T): T => x; f(42);",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token '<' (parity.ts:1:11)"
+      },
+      "current": {
+        "name": "generic-arrow",
+        "source": "const f = <T>(x: T): T => x; f(42);",
+        "output": "const f=x=>x;f(42)",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 28,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 29,
+            "End": 35,
+            "line": 1,
+            "column": 29
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "generic-class",
+      "source": "class Box<T> { constructor(value: T) { this.value = value; } } new Box(42).value;",
+      "experiment": {
+        "name": "generic-class",
+        "source": "class Box<T> { constructor(value: T) { this.value = value; } } new Box(42).value;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token '<' (parity.ts:1:10)"
+      },
+      "current": {
+        "name": "generic-class",
+        "source": "class Box<T> { constructor(value: T) { this.value = value; } } new Box(42).value;",
+        "output": "class Box{constructor(value){this.value=value}}new Box(42).value",
+        "locations": [
+          {
+            "kind": "ClassDeclaration",
+            "Start": 0,
+            "End": 62,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 63,
+            "End": 81,
+            "line": 1,
+            "column": 63
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "class-field",
+      "source": "class Box { value: number = 42; } new Box().value;",
+      "experiment": {
+        "name": "class-field",
+        "source": "class Box { value: number = 42; } new Box().value;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token ':' (parity.ts:1:18)"
+      },
+      "current": {
+        "name": "class-field",
+        "source": "class Box { value: number = 42; } new Box().value;",
+        "output": "class Box{value=42;}(new Box).value",
+        "locations": [
+          {
+            "kind": "ClassDeclaration",
+            "Start": 0,
+            "End": 33,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 34,
+            "End": 50,
+            "line": 1,
+            "column": 34
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "typed-arrow",
+      "source": "const f = (x: number): number => x + 1; f(41);",
+      "experiment": {
+        "name": "typed-arrow",
+        "source": "const f = (x: number): number => x + 1; f(41);",
+        "output": "const f=x;f(41)",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 39,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 40,
+            "End": 46,
+            "line": 1,
+            "column": 40
+          }
+        ],
+        "runtimeError": "ReferenceError: x is not defined"
+      },
+      "current": {
+        "name": "typed-arrow",
+        "source": "const f = (x: number): number => x + 1; f(41);",
+        "output": "const f=x=>x+1;f(41)",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 39,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 40,
+            "End": 46,
+            "line": 1,
+            "column": 40
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "typed-async-arrow",
+      "source": "const f = async (x: number): Promise<number> => x + 1;",
+      "experiment": {
+        "name": "typed-async-arrow",
+        "source": "const f = async (x: number): Promise<number> => x + 1;",
+        "output": "const f=async(x)",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 54,
+            "line": 1,
+            "column": 0
+          }
+        ],
+        "runtimeError": "ReferenceError: async is not defined"
+      },
+      "current": {
+        "name": "typed-async-arrow",
+        "source": "const f = async (x: number): Promise<number> => x + 1;",
+        "output": "const f=async x=>x+1",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 54,
+            "line": 1,
+            "column": 0
+          }
+        ],
+        "nativeJintResult": "undefined",
+        "nativeJintError": "",
+        "runtimeResult": "undefined"
+      }
+    },
+    {
+      "name": "typed-rest-parameter",
+      "source": "function f(...values: number[]): number { return values[0]; } f(42);",
+      "experiment": {
+        "name": "typed-rest-parameter",
+        "source": "function f(...values: number[]): number { return values[0]; } f(42);",
+        "output": "function f(...values){return values[0]}f(42)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 61,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 62,
+            "End": 68,
+            "line": 1,
+            "column": 62
+          }
+        ],
+        "runtimeResult": "42"
+      },
+      "current": {
+        "name": "typed-rest-parameter",
+        "source": "function f(...values: number[]): number { return values[0]; } f(42);",
+        "output": "function f(...values){return values[0]}f(42)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 61,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 62,
+            "End": 68,
+            "line": 1,
+            "column": 62
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "optional-parameter",
+      "source": "function f(x?: number) { return x; } f(42);",
+      "experiment": {
+        "name": "optional-parameter",
+        "source": "function f(x?: number) { return x; } f(42);",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token '?' (parity.ts:1:13)"
+      },
+      "current": {
+        "name": "optional-parameter",
+        "source": "function f(x?: number) { return x; } f(42);",
+        "output": "function f(x){return x}f(42)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 36,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 37,
+            "End": 43,
+            "line": 1,
+            "column": 37
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "interface",
+      "source": "interface User { name: string } const value = 42; value;",
+      "experiment": {
+        "name": "interface",
+        "source": "interface User { name: string } const value = 42; value;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected identifier 'User' (parity.ts:1:11)"
+      },
+      "current": {
+        "name": "interface",
+        "source": "interface User { name: string } const value = 42; value;",
+        "output": "const value=42;value",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 32,
+            "End": 49,
+            "line": 1,
+            "column": 32
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 50,
+            "End": 56,
+            "line": 1,
+            "column": 50
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "type-alias",
+      "source": "type Id = number; const value: Id = 42; value;",
+      "experiment": {
+        "name": "type-alias",
+        "source": "type Id = number; const value: Id = 42; value;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected identifier 'Id' (parity.ts:1:6)"
+      },
+      "current": {
+        "name": "type-alias",
+        "source": "type Id = number; const value: Id = 42; value;",
+        "output": "const value=42;value",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 18,
+            "End": 39,
+            "line": 1,
+            "column": 18
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 40,
+            "End": 46,
+            "line": 1,
+            "column": 40
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "type-import",
+      "source": "import type { User } from 'types'; export const x = 42;",
+      "experiment": {
+        "name": "type-import",
+        "source": "import type { User } from 'types'; export const x = 42;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token '{' (parity.ts:1:13)"
+      },
+      "current": {
+        "name": "type-import",
+        "source": "import type { User } from 'types'; export const x = 42;",
+        "output": "export const x=42",
+        "locations": [
+          {
+            "kind": "ExportNamedDeclaration",
+            "Start": 35,
+            "End": 55,
+            "line": 1,
+            "column": 35
+          }
+        ],
+        "nativeJintResult": "",
+        "nativeJintError": ""
+      }
+    },
+    {
+      "name": "satisfies",
+      "source": "const value = { id: 42 } satisfies Result; value.id;",
+      "experiment": {
+        "name": "satisfies",
+        "source": "const value = { id: 42 } satisfies Result; value.id;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected identifier 'satisfies' (parity.ts:1:26)"
+      },
+      "current": {
+        "name": "satisfies",
+        "source": "const value = { id: 42 } satisfies Result; value.id;",
+        "output": "const value={id:42};value.id",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 42,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 43,
+            "End": 52,
+            "line": 1,
+            "column": 43
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "enum",
+      "source": "enum Value { A = 42 } Value.A;",
+      "experiment": {
+        "name": "enum",
+        "source": "enum Value { A = 42 } Value.A;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected reserved word (parity.ts:1:1)"
+      },
+      "current": {
+        "name": "enum",
+        "source": "enum Value { A = 42 } Value.A;",
+        "error": "TypeScriptParseException",
+        "message": "Unexpected reserved word (parity.ts:1:1)"
+      }
+    },
+    {
+      "name": "namespace",
+      "source": "namespace Value { export const A = 42; } Value.A;",
+      "experiment": {
+        "name": "namespace",
+        "source": "namespace Value { export const A = 42; } Value.A;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected identifier 'Value' (parity.ts:1:11)"
+      },
+      "current": {
+        "name": "namespace",
+        "source": "namespace Value { export const A = 42; } Value.A;",
+        "error": "TypeScriptParseException",
+        "message": "Unexpected identifier 'Value' (parity.ts:1:11)"
+      }
+    },
+    {
+      "name": "parameter-property",
+      "source": "class Box { constructor(public value: number) {} } new Box(42).value;",
+      "experiment": {
+        "name": "parameter-property",
+        "source": "class Box { constructor(public value: number) {} } new Box(42).value;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected strict mode reserved word (parity.ts:1:25)"
+      },
+      "current": {
+        "name": "parameter-property",
+        "source": "class Box { constructor(public value: number) {} } new Box(42).value;",
+        "error": "TypeScriptParseException",
+        "message": "Unexpected strict mode reserved word (parity.ts:1:25)"
+      }
+    },
+    {
+      "name": "logical-not",
+      "source": "function f(value) { return !value; } f(false);",
+      "experiment": {
+        "name": "logical-not",
+        "source": "function f(value) { return !value; } f(false);",
+        "output": "function f(value){return value}f(false)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 36,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 37,
+            "End": 46,
+            "line": 1,
+            "column": 37
+          }
+        ],
+        "runtimeResult": "false"
+      },
+      "current": {
+        "name": "logical-not",
+        "source": "function f(value) { return !value; } f(false);",
+        "output": "function f(value){return!value}f(false)",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 36,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 37,
+            "End": 46,
+            "line": 1,
+            "column": 37
+          }
+        ],
+        "nativeJintResult": "true",
+        "nativeJintError": "",
+        "runtimeResult": "true"
+      }
+    },
+    {
+      "name": "comparison",
+      "source": "const a = 1, b = 2; const result = a < b; result;",
+      "experiment": {
+        "name": "comparison",
+        "source": "const a = 1, b = 2; const result = a < b; result;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected identifier 'a' (parity.ts:1:38)"
+      },
+      "current": {
+        "name": "comparison",
+        "source": "const a = 1, b = 2; const result = a < b; result;",
+        "output": "const a=1,b=2;const result=a<b;result",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 19,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "VariableDeclaration",
+            "Start": 20,
+            "End": 41,
+            "line": 1,
+            "column": 20
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 42,
+            "End": 49,
+            "line": 1,
+            "column": 42
+          }
+        ],
+        "nativeJintResult": "true",
+        "nativeJintError": "",
+        "runtimeResult": "true"
+      }
+    },
+    {
+      "name": "conditional",
+      "source": "const result = true ? 1 : 2; result;",
+      "experiment": {
+        "name": "conditional",
+        "source": "const result = true ? 1 : 2; result;",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token ';' (parity.ts:1:25)"
+      },
+      "current": {
+        "name": "conditional",
+        "source": "const result = true ? 1 : 2; result;",
+        "output": "const result=true?1:2;result",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 28,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 29,
+            "End": 36,
+            "line": 1,
+            "column": 29
+          }
+        ],
+        "nativeJintResult": "1",
+        "nativeJintError": "",
+        "runtimeResult": "1"
+      }
+    },
+    {
+      "name": "block-local",
+      "source": "function f() { const x: number = 42; return x; } f();",
+      "experiment": {
+        "name": "block-local",
+        "source": "function f() { const x: number = 42; return x; } f();",
+        "error": "SyntaxErrorException",
+        "message": "Missing initializer in const declaration (parity.ts:1:23)"
+      },
+      "current": {
+        "name": "block-local",
+        "source": "function f() { const x: number = 42; return x; } f();",
+        "output": "function f(){const x=42;return x}f()",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 48,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 49,
+            "End": 53,
+            "line": 1,
+            "column": 49
+          }
+        ],
+        "nativeJintResult": "42",
+        "nativeJintError": "",
+        "runtimeResult": "42"
+      }
+    },
+    {
+      "name": "function-body",
+      "source": "function work() { return 42; } function f(): void { work(); } f();",
+      "experiment": {
+        "name": "function-body",
+        "source": "function work() { return 42; } function f(): void { work(); } f();",
+        "error": "SyntaxErrorException",
+        "message": "Unexpected token ';' (parity.ts:1:44)"
+      },
+      "current": {
+        "name": "function-body",
+        "source": "function work() { return 42; } function f(): void { work(); } f();",
+        "output": "function work(){return 42}function f(){work()}f()",
+        "locations": [
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 0,
+            "End": 30,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "FunctionDeclaration",
+            "Start": 31,
+            "End": 61,
+            "line": 1,
+            "column": 31
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 62,
+            "End": 66,
+            "line": 1,
+            "column": 62
+          }
+        ],
+        "nativeJintResult": "undefined",
+        "nativeJintError": "",
+        "runtimeResult": "undefined"
+      }
+    },
+    {
+      "name": "import-alias",
+      "source": "import { foo as bar } from 'values'; export const value = bar;",
+      "experiment": {
+        "name": "import-alias",
+        "source": "import { foo as bar } from 'values'; export const value = bar;",
+        "output": "import{foo}from'values';export const value=bar",
+        "locations": [
+          {
+            "kind": "ImportDeclaration",
+            "Start": 0,
+            "End": 36,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExportNamedDeclaration",
+            "Start": 37,
+            "End": 62,
+            "line": 1,
+            "column": 37
+          }
+        ]
+      },
+      "current": {
+        "name": "import-alias",
+        "source": "import { foo as bar } from 'values'; export const value = bar;",
+        "output": "import{foo as bar}from'values';export const value=bar",
+        "locations": [
+          {
+            "kind": "ImportDeclaration",
+            "Start": 0,
+            "End": 36,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExportNamedDeclaration",
+            "Start": 37,
+            "End": 62,
+            "line": 1,
+            "column": 37
+          }
+        ],
+        "nativeJintResult": "",
+        "nativeJintError": ""
+      }
+    },
+    {
+      "name": "multiline-generic-location",
+      "source": "const x:\n Array<\n number> = [];\nthrow new Error('boom');",
+      "experiment": {
+        "name": "multiline-generic-location",
+        "source": "const x:\n Array<\n number> = [];\nthrow new Error('boom');",
+        "error": "SyntaxErrorException",
+        "message": "Missing initializer in const declaration (parity.ts:1:8)"
+      },
+      "current": {
+        "name": "multiline-generic-location",
+        "source": "const x:\n Array<\n number> = [];\nthrow new Error('boom');",
+        "output": "const x=[];throw new Error('boom')",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 31,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ThrowStatement",
+            "Start": 32,
+            "End": 56,
+            "line": 4,
+            "column": 0
+          }
+        ],
+        "nativeJintResult": "",
+        "nativeJintError": "JavaScriptException: boom",
+        "runtimeError": "Error: boom"
+      }
+    },
+    {
+      "name": "malformed-type",
+      "source": "const x: string number = 1; x;",
+      "experiment": {
+        "name": "malformed-type",
+        "source": "const x: string number = 1; x;",
+        "output": "const x=1;x",
+        "locations": [
+          {
+            "kind": "VariableDeclaration",
+            "Start": 0,
+            "End": 27,
+            "line": 1,
+            "column": 0
+          },
+          {
+            "kind": "ExpressionStatement",
+            "Start": 28,
+            "End": 30,
+            "line": 1,
+            "column": 28
+          }
+        ],
+        "runtimeResult": "1"
+      },
+      "current": {
+        "name": "malformed-type",
+        "source": "const x: string number = 1; x;",
+        "error": "TypeScriptParseException",
+        "message": "Missing initializer in const declaration (parity.ts:1:16)"
+      }
+    }
+  ],
+  "hardeningCheckedOn": "2026-09-07",
+  "hardeningNote": "Historical initial-hardening milestone: 31 original tests passed and 26 were unsupported; ambiguous generic calls were then rejected. See originalTests.current and probes.current for the refreshed results.",
+  "currentJint": "5.0.0-preview-2007",
+  "currentCheckedOn": "2026-09-08"
+}

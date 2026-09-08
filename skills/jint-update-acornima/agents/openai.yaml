@@ -1,0 +1,4 @@
+interface:
+  display_name: "Update Jint Acornima"
+  short_description: "Merge upstream Acornima and verify Jint TypeScript"
+  default_prompt: "Use $jint-update-acornima to update Jint.TypeScript to the latest upstream Acornima and validate the result."

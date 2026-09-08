@@ -1,0 +1,2654 @@
+[
+  {
+    "name": "ES2016/exponent/invalid_bitnot_exp.js",
+    "source": "~x ** y\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_delete_exp.js",
+    "source": "delete x ** y\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_minus_exp.js",
+    "source": "-x ** y\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_not_exp.js",
+    "source": "!x ** y\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_param_arrowfunc_exp.js",
+    "source": "a =\u003E {} ** b\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_paramless_arrowfunc_exp.js",
+    "source": "() =\u003E {} ** 2\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_plus_exp.js",
+    "source": "\u002Bx ** y\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_typeof_exp.js",
+    "source": "typeof x ** y\n"
+  },
+  {
+    "name": "ES2016/exponent/invalid_void_exp.js",
+    "source": "void x ** y\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-arrow-expression-array-destructuring.js",
+    "source": "([]) =\u003E { \u0022use strict\u0022 }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-arrow-expression-default-value.js",
+    "source": "(a=1) =\u003E { \u0022use strict\u0022 }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-arrow-expression-object-destructuring.js",
+    "source": "({a}) =\u003E { \u0022use strict\u0022 }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-arrow-expression-rest.js",
+    "source": "(...x) =\u003E { \u0022use strict\u0022 }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-declaration-array-destructuring.js",
+    "source": "function f([]){ \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-declaration-default-value.js",
+    "source": "function f(a = 1){ \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-declaration-object-destructuring.js",
+    "source": "function f({x, y}) { \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-declaration-rest.js",
+    "source": "function f(...x) { \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-expression-array-destructuring.js",
+    "source": "(function([]){ \u0022use strict\u0022; })\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-expression-default-value.js",
+    "source": "(function(a = 1){ \u0022use strict\u0022; })\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-expression-object-destructuring.js",
+    "source": "(function({x, y}) { \u0022use strict\u0022; })\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-function-expression-rest.js",
+    "source": "(function(...x) { \u0022use strict\u0022; })\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-generator-array-destructuring.js",
+    "source": "function *g([]){ \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-generator-default-value.js",
+    "source": "function *g(a = 1){ \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-generator-object-destructuring.js",
+    "source": "function *g({x, y}) { \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-generator-rest.js",
+    "source": "function *g(...x) { \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-method-array-destructuring.js",
+    "source": "class X { f([]) { \u0022use strict\u0022 } }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-method-default-value.js",
+    "source": "class X { f(a=1) { \u0022use strict\u0022 } }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-method-object-destructuring.js",
+    "source": "class X { f({a}) { \u0022use strict\u0022 } }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-method-rest.js",
+    "source": "class X { f(...a) { \u0022use strict\u0022 } }\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-setter-array-destructuring.js",
+    "source": "({ set f([a]) { \u0022use strict\u0022 } })\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-setter-default-value.js",
+    "source": "({ set f(a = 1) { \u0022use strict\u0022 } })\n"
+  },
+  {
+    "name": "ES2016/strict-directive/invalid-strict-setter-object-destructuring.js",
+    "source": "({ set f({a}) { \u0022use strict\u0022 } })\n"
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/invalid-dup-param.js",
+    "source": "([a,[b],...b])=\u003E0;\n"
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/invalid-elision-after-rest.js",
+    "source": "([a,...b,])=\u003E0;\n"
+  },
+  {
+    "name": "ES6/arrow-function/arrow-rest-forgetting-comma.js",
+    "source": "(a ...b) =\u003E 0\n"
+  },
+  {
+    "name": "ES6/arrow-function/arrow-with-multiple-rest.js",
+    "source": "(...a, ...b) =\u003E 0\n"
+  },
+  {
+    "name": "ES6/arrow-function/invalid-duplicated-names-rest-parameter.js",
+    "source": "(a,...[a]) =\u003E 0;\n"
+  },
+  {
+    "name": "ES6/arrow-function/invalid-duplicated-params.js",
+    "source": "(x, x) =\u003E y;\n"
+  },
+  {
+    "name": "ES6/arrow-function/invalid-line-terminator-arrow.js",
+    "source": "()\n=\u003E 42\n"
+  },
+  {
+    "name": "ES6/arrow-function/invalid-param-strict-mode.js",
+    "source": "eval =\u003E {\u0022use strict\u0022};\n"
+  },
+  {
+    "name": "ES6/arrow-function/non-arrow-param-followed-by-arrow.js",
+    "source": "((a)) =\u003E 0\n"
+  },
+  {
+    "name": "ES6/arrow-function/non-arrow-param-followed-by-rest.js",
+    "source": "((a),...b) =\u003E 0;\n"
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/invalid-member-expr.js",
+    "source": "({a:b[0]})=\u003E0\n"
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/invalid-method-in-pattern.js",
+    "source": "({get a(){}}) =\u003E 0;\n"
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/invalid-nested-param.js",
+    "source": "([[[[[[[[[[[[[[[[[[[[{a:b[0]}]]]]]]]]]]]]]]]]]]]])=\u003E0;\n"
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/invalid-pattern-without-parenthesis.js",
+    "source": "({}=\u003E0)\n"
+  },
+  {
+    "name": "ES6/arrow-function/param-with-rest-without-arrow.js",
+    "source": "(b, ...a) \u002B 1\n"
+  },
+  {
+    "name": "ES6/arrow-function/rest-without-arrow.js",
+    "source": "(...a) \u002B 1\n"
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/dupe-param.js",
+    "source": "\u0022use strict\u0022;\nfunction a([a,a]){ }\nfunction a([a,...a]){ }\nfunction a([{a},...a]){ }"
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/invalid-for-let-let.js",
+    "source": "for (let [x = let];;) {}\n"
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/invalid-strict-for-let-let.js",
+    "source": "\u0022use strict\u0022; for (let [x = let];;) {}\n"
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/patterned-catch-dupe.js",
+    "source": "try {} catch ([a,a]) {}\n"
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/rest.elision.js",
+    "source": "let [...a,] = 0\n"
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/with-default-catch-param-fail.js",
+    "source": "try { } catch ([a] = []) { }\n"
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/invalid-for-let-let.js",
+    "source": "for (let {x: y = let};;) {}\n"
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/invalid-strict-for-let-let.js",
+    "source": "\u0022use strict\u0022; for (let {x: y = let};;) {}\n"
+  },
+  {
+    "name": "ES6/class/invalid-labelled-class-declaration.js",
+    "source": "a: class B {}\n"
+  },
+  {
+    "name": "ES6/class/invalid-setter-method-rest.js",
+    "source": "class X { set f(...y) {} }\n"
+  },
+  {
+    "name": "ES6/class/migrated_0026.js",
+    "source": "class A {a(eval){}}"
+  },
+  {
+    "name": "ES6/destructuring-assignment/invalid-cover-grammar.js",
+    "source": "[[[[[[[[[[[[[[[[[[[[{a=b}]]]]]]]]]]]]]]]]]]]]\n"
+  },
+  {
+    "name": "ES6/destructuring-assignment/invalid-group-assignment.js",
+    "source": "(a,b)=(c,d);\n"
+  },
+  {
+    "name": "ES6/destructuring-assignment/object-pattern/invalid-lhs-01.js",
+    "source": "({a:this}=0)\n"
+  },
+  {
+    "name": "ES6/destructuring-assignment/object-pattern/invalid-lhs-02.js",
+    "source": "({a: this} = 0);\n"
+  },
+  {
+    "name": "ES6/destructuring-assignment/object-pattern/invalid-pattern-with-method.js",
+    "source": "({get a(){}})=0\n"
+  },
+  {
+    "name": "ES6/export-declaration/export-default-invalid-sequence-expression.js",
+    "source": "export default window.x = { p: 1 }, window.x.p"
+  },
+  {
+    "name": "ES6/export-declaration/export-named-specifier.js",
+    "source": "export {foo};\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-batch-missing-from-clause.module.js",
+    "source": "export *\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-batch-token.module.js",
+    "source": "export * \u002B\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-default-equal.module.js",
+    "source": "export default = 42\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-default-token.module.js",
+    "source": "export {default} \u002B\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-default.module.js",
+    "source": "export default from \u0022foo\u0022\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-named-default.module.js",
+    "source": "export {default}\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-named-keyword-as-specifier.js",
+    "source": "export {try as bar};\n"
+  },
+  {
+    "name": "ES6/export-declaration/invalid-export-named-keyword-specifier.js",
+    "source": "export {try};\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-assign-for-of.js",
+    "source": "for (x=0 of y);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-const-init.js",
+    "source": "for (const x = 1 of y);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-decl-cls.js",
+    "source": "for (var x of []) class C {}\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-for-of-array-pattern.js",
+    "source": "for (var [p]=q of r);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-for-of-object-pattern.js",
+    "source": "for (var {x} = y of z);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-let-init.js",
+    "source": "for (let x = 1 of y);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-lhs-init.js",
+    "source": "for (this of that);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-strict-for-of-let.js",
+    "source": "\u0022use strict\u0022; for (x of let) {}\n"
+  },
+  {
+    "name": "ES6/for-of/invalid-var-init.js",
+    "source": "for (var x = 1 of y);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid_const_let.js",
+    "source": "for (const let of y);\n"
+  },
+  {
+    "name": "ES6/for-of/invalid_let_let.js",
+    "source": "for (let let of x);\n"
+  },
+  {
+    "name": "ES6/for-of/unexpected-number.js",
+    "source": "for (const of 42);\n"
+  },
+  {
+    "name": "ES6/generator/generator-method-with-computed-name.js",
+    "source": "(function*() {\n    { *[yield iter]() {} }\n})\n"
+  },
+  {
+    "name": "ES6/generator/generator-method-with-invalid-computed-name.js",
+    "source": "({ *[yield iter]() {} })\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-binding-element.js",
+    "source": "(function*() {\n    function(x = yield 3) {}\n})\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-binding-property-reserved.js",
+    "source": "(function*({yield}) {})\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-binding-property.js",
+    "source": "(function*() {\n    function({x: y = yield 3}) {}\n})\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-computed-property-name.js",
+    "source": "(function*() {\n    function({[yield 3]: y}) {}\n})\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-invalid-binding-element.js",
+    "source": "(function*() {\n    function*(x = yield 3) {}\n})\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-invalid-binding-property.js",
+    "source": "(function*() {\n    function*({x: y = yield 3}) {}\n})\n"
+  },
+  {
+    "name": "ES6/generator/generator-parameter-invalid-computed-property-name.js",
+    "source": "(function*() {\n    function*({[yield 3]: y}) {}\n})\n"
+  },
+  {
+    "name": "ES6/generator/incomplete-yield-delegate.js",
+    "source": "(function*() { yield* })\n"
+  },
+  {
+    "name": "ES6/generator/invalid-labelled-generator.js",
+    "source": "a: function *g() {}\n"
+  },
+  {
+    "name": "ES6/generator/malformed-generator-method-2.js",
+    "source": "class Foo { * }\n"
+  },
+  {
+    "name": "ES6/generator/malformed-generator-method.js",
+    "source": "({ * })\n"
+  },
+  {
+    "name": "ES6/identifier/invalid-hex-escape-sequence.js",
+    "source": "\u0022\\x{0}\u0022\n"
+  },
+  {
+    "name": "ES6/identifier/invalid_escaped_surrogate_pairs.js",
+    "source": "var \\uD83B\\uDE00\n"
+  },
+  {
+    "name": "ES6/identifier/invalid_id_smp.js",
+    "source": "var \uD83C\uDC12\n"
+  },
+  {
+    "name": "ES6/identifier/invalid_var_await.module.js",
+    "source": "export var await;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-boolean.module.js",
+    "source": "import { true } from \u0022logic\u0022\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-default-after-named-after-default.module.js",
+    "source": "import foo, {bar}, foo from \u0022foo\u0022;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-default-after-named.module.js",
+    "source": "import {bar}, foo from \u0022foo\u0022\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-default-missing-module-specifier.module.js",
+    "source": "import foo\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-default-module-specifier.module.js",
+    "source": "import foo from bar;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-default.module.js",
+    "source": "import default from \u0022foo\u0022\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-keyword.module.js",
+    "source": "import { for } from \u0022iteration\u0022\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-missing-comma.module.js",
+    "source": "import foo { bar } from \u0022bar\u0022;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-missing-module-specifier.module.js",
+    "source": "import { foo, bar }\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-module-specifier.module.js",
+    "source": "export {foo} from bar\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-named-after-named.module.js",
+    "source": "import {bar}, {foo} from \u0022foo\u0022;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-named-after-namespace.module.js",
+    "source": "import * as foo, {bar} from \u0022foo\u0022;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-named-as-missing-from.module.js",
+    "source": "import {default as foo}\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-namespace-after-named.module.js",
+    "source": "import {bar}, * as foo from \u0022foo\u0022;\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-namespace-missing-as.module.js",
+    "source": "import * from \u0022foo\u0022\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-null.module.js",
+    "source": "import { null } from \u0022null\u0022\n"
+  },
+  {
+    "name": "ES6/import-declaration/invalid-import-specifiers.module.js",
+    "source": "import foo, from \u0022bar\u0022;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_complex_binding_without_init.js",
+    "source": "let []\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_const_const.js",
+    "source": "const const;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_const_forin.js",
+    "source": "for (const x = 0 in y){}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_const_let.js",
+    "source": "const let\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_for_const_declarations.js",
+    "source": "for (const x = 1, y = 2, z = 3, let = 0;;;) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_for_const_let.js",
+    "source": "for (const let = 1;;;) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_for_let_declarations.js",
+    "source": "for (let x, y, z, let;;;) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_for_let_init.js",
+    "source": "for (let x, y, z, let = 1;;;) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_for_let_let.js",
+    "source": "for (let let;;;) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_for_let_pattern.js",
+    "source": "for (let [let];;;) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_forin_const_let.js",
+    "source": "for (const let in y);\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_forin_let_let.js",
+    "source": "for (let let in x);\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_let_declarations.js",
+    "source": "let x, y, z, let;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_let_for_in.js",
+    "source": "\u0027use strict\u0027; for (let in z) {}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_let_forin.js",
+    "source": "for (let x = 0 in y){}\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_let_init.js",
+    "source": "let x, y, z, let = 1;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_let_let.js",
+    "source": "let let;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_strict_const_const.js",
+    "source": "\u0022use strict\u0022; const const = 1;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_strict_const_let.js",
+    "source": "\u0022use strict\u0022; const let = 1;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_1.js",
+    "source": "let x,\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_2.js",
+    "source": "let x,;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_3.js",
+    "source": "let x, y, ;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_4.js",
+    "source": "let x,\ny = 3,\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_5.js",
+    "source": "const x = 0,\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_6.js",
+    "source": "const x = 0, y = 1,;\n"
+  },
+  {
+    "name": "ES6/lexical-declaration/invalid_trailing_comma_7.js",
+    "source": "const x = 0,\n      y = 1,\n\n"
+  },
+  {
+    "name": "ES6/meta-property/invalid-dots.js",
+    "source": "var x = function() { y = new..target; }\n"
+  },
+  {
+    "name": "ES6/meta-property/invalid-new-target.js",
+    "source": "var x = new.target;\n"
+  },
+  {
+    "name": "ES6/meta-property/unknown-property.js",
+    "source": "var f = function() { new.unknown_property; }\n"
+  },
+  {
+    "name": "ES6/object-initialiser/invalid-proto-getter-literal-identifier.js",
+    "source": "({ get __proto(){}, \u0022__proto__\u0022: null, __proto__: null, })\n"
+  },
+  {
+    "name": "ES6/object-initialiser/invalid-proto-identifier-literal.js",
+    "source": "({ __proto__: null, \u0022__proto__\u0022: null })\n"
+  },
+  {
+    "name": "ES6/object-initialiser/invalid-proto-identifiers.js",
+    "source": "({ __proto__: null, __proto__: null })\n"
+  },
+  {
+    "name": "ES6/object-initialiser/invalid-proto-literal-identifier.js",
+    "source": "({ \u0022__proto__\u0022: null, __proto__: null })\n"
+  },
+  {
+    "name": "ES6/object-initialiser/invalid-proto-literals.js",
+    "source": "({ \u0022__proto__\u0022: null, \u0027__proto__\u0027: null })\n"
+  },
+  {
+    "name": "ES6/object-initialiser/invalid-proto-setter-literal-identifier.js",
+    "source": "({ set __proto__(x){}, \u0022__proto__\u0022: null, __proto__: null, })\n"
+  },
+  {
+    "name": "ES6/program/module/invalid-delete.module.js",
+    "source": "import x from \u0022x\u0022;\ndelete x;\n"
+  },
+  {
+    "name": "ES6/program/module/invalid-export-if.module.js",
+    "source": "export if foo = 1;\n"
+  },
+  {
+    "name": "ES6/program/module/invalid-export-in-function.module.js",
+    "source": "function x() {\n\texport default friends;\n}\n\n"
+  },
+  {
+    "name": "ES6/program/module/invalid-import-in-function.module.js",
+    "source": "function x() {\n\timport foo from \u0022foo\u0022;\n}\n"
+  },
+  {
+    "name": "ES6/program/module/invalid-with.module.js",
+    "source": "import house from \u0022house\u0022;\n\nwith (house) {\n\tconsole.log(roof);\n}\n"
+  },
+  {
+    "name": "ES6/rest-parameter/invalid-setter-rest.js",
+    "source": "x = { set f(...y) {} }\n"
+  },
+  {
+    "name": "ES6/spread-element/invalid-call-dot-dot.js",
+    "source": "f(..g);\n"
+  },
+  {
+    "name": "ES6/spread-element/invalid-call-dots.js",
+    "source": "f(....g);\n"
+  },
+  {
+    "name": "ES6/spread-element/invalid-call-spreads.js",
+    "source": "f(... ... g);\n"
+  },
+  {
+    "name": "ES6/spread-element/invalid-new-dot-dot.js",
+    "source": "new f(..g);\n"
+  },
+  {
+    "name": "ES6/spread-element/invalid-new-dots.js",
+    "source": "new f(....g);\n"
+  },
+  {
+    "name": "ES6/spread-element/invalid-new-spreads.js",
+    "source": "new f(... ... g);\n"
+  },
+  {
+    "name": "ES6/super-property/invalid_super_access.js",
+    "source": "class A extends B {\n    constructor() {\n        (super)();\n    }\n}\n"
+  },
+  {
+    "name": "ES6/super-property/invalid_super_id.js",
+    "source": "class A {\n    foo() { new super \u002B 3 }\n}\n"
+  },
+  {
+    "name": "ES6/super-property/invalid_super_not_inside_function.js",
+    "source": "var x = super();\n"
+  },
+  {
+    "name": "ES6/template-literals/after-switch.js",
+    "source": "switch \u0060test\u0060"
+  },
+  {
+    "name": "ES6/template-literals/invalid-escape.js",
+    "source": "\u0060\\1\u0060;\n"
+  },
+  {
+    "name": "ES6/template-literals/invalid-hex-escape-sequence.js",
+    "source": "\u0060\\x{1}\u0060;\n"
+  },
+  {
+    "name": "ES6/template-literals/octal-literal.js",
+    "source": "\u0060\\00\u0060;"
+  },
+  {
+    "name": "ES6/template-literals/strict-octal-literal.js",
+    "source": "\u0027use strict\u0027; \u0060\\00\u0060;"
+  },
+  {
+    "name": "ES6/template-literals/unclosed-interpolation.js",
+    "source": "\u0060hello ${10;test\u0060"
+  },
+  {
+    "name": "ES6/template-literals/unclosed-nested.js",
+    "source": "\u0060hello ${10 \u0060test\u0060"
+  },
+  {
+    "name": "ES6/template-literals/unclosed.js",
+    "source": "\u0060test"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-binding-property.js",
+    "source": "var {x: y = yield 3} = z;\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-expression.js",
+    "source": "(function() { yield 3; })\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-arrow-default.js",
+    "source": "function* g() { (x = yield 42) =\u003E {} }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-arrow-default2.js",
+    "source": "function *g() { (x = yield) =\u003E {} }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-arrow-parameter.js",
+    "source": "function *g(){ (yield) =\u003E 42 }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-arrow-parameters.js",
+    "source": "function *g(){ (a, b, c, yield) =\u003E 42 }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-catch.js",
+    "source": "function *g() { try {} catch (yield) {} }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-declaration.js",
+    "source": "function *g() { function *yield(){} }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-default-parameter.js",
+    "source": "function *g(x = yield){}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-export-default.module.js",
+    "source": "export default function *yield() {}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-expression-name.js",
+    "source": "(function*yield(){})\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-expression-parameter.js",
+    "source": "(function *(yield){})\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-expression-rest.js",
+    "source": "(function *(x, ...yield){})\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-function-declaration.js",
+    "source": "function *g() { function yield() {} }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-lexical-declaration.js",
+    "source": "function *g() { let yield; }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-member-expression.js",
+    "source": "function *g() { return yield.x; }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-parameter.js",
+    "source": "function *g(yield){}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-rest.js",
+    "source": "function *g(a, b, c, ...yield){}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-strict-function-expression.js",
+    "source": "\u0022use strict\u0022; function *g(){ var y = function yield(){}; }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-strict-function-parameter.js",
+    "source": "\u0022use strict\u0022; function *g() { var z = function(yield) {} }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-generator-variable-declaration.js",
+    "source": "function *g() { var yield; }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-array-pattern.js",
+    "source": "\u0022use strict\u0022; ([yield] = x)\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-arrow-parameter-default.js",
+    "source": "\u0022use strict\u0022; (x = yield) =\u003E {}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-arrow-parameter-name.js",
+    "source": "\u0022use strict\u0022; (yield) =\u003E 42\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-binding-element.js",
+    "source": "\u0022use strict\u0022; var { x: yield } = foo;\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-catch-parameter.js",
+    "source": "\u0022use strict\u0022; try {} catch (yield) {}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-formal-parameter.js",
+    "source": "\u0022use strict\u0022; function f(yield) {}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-function-declaration.js",
+    "source": "function yield(){ \u0022use strict\u0022; }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-function-expression.js",
+    "source": "(function yield(){ \u0022use strict\u0022; })\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-identifier.js",
+    "source": "\u0022use strict\u0022; function f() { yield }\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-lexical-declaration.js",
+    "source": "\u0022use strict\u0022; let yield = 42;\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-rest-parameter.js",
+    "source": "\u0022use strict\u0022; function f(...yield) {}\n"
+  },
+  {
+    "name": "ES6/yield/invalid-yield-strict-variable-declaration.js",
+    "source": "\u0022use strict\u0022; var yield;\n"
+  },
+  {
+    "name": "declaration/function/invalid-strict-labelled-function-declaration.js",
+    "source": "\u0022use strict\u0022; a: function f(){}\n"
+  },
+  {
+    "name": "es2017/async/arrows/invalid-async-line-terminator1.js",
+    "source": "async\n(a) =\u003E await a\n"
+  },
+  {
+    "name": "es2017/async/arrows/invalid-async-line-terminator2.js",
+    "source": "async (a)\n=\u003E await a\n"
+  },
+  {
+    "name": "es2017/async/arrows/invalid-async-line-terminator3.js",
+    "source": "async\n() =\u003E 0\n"
+  },
+  {
+    "name": "es2017/async/arrows/invalid-async-line-terminator4.js",
+    "source": "async ()\n=\u003E 0\n"
+  },
+  {
+    "name": "es2017/async/arrows/invalid-async-line-terminator5.js",
+    "source": "async a\n=\u003E await a\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-async-function-declaration-duplicate-params.js",
+    "source": "async function *f(x = 1, x) {}\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-async-function-expression-duplicate-params.js",
+    "source": "f = async function (x = 1, x) {}\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-async-if-await.js",
+    "source": "if (x) async function f(a) { await a }\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-async-if.js",
+    "source": "if (x) async function f() {}\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-async-line-terminator-expression.js",
+    "source": "(async\nfunction f() {})\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-async-while.js",
+    "source": "async while (1) {}\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-export-async-function-expression.module.js",
+    "source": "export async function() {}\n"
+  },
+  {
+    "name": "es2017/async/functions/invalid-expression-body-contains-super-call.js",
+    "source": "// Copyright 2017 the V8 project authors. All rights reserved.\n// This code is governed by the BSD license found in the LICENSE file.\n\n/*---\nauthor: Caitlin Potter \u003Ccaitp@igalia.com\u003E\nesid: sec-async-generator-function-definitions-static-semantics-early-errors\ndescription: \u003E\n  It is a syntax error if AsyncGeneratorBody contains SuperCall is true.\nnegative:\n  phase: parse\n  type: SyntaxError\nfeatures: [async-iteration]\n---*/\n\n$DONOTEVALUATE();\n\n(async function*() { super(); });\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-declaration1.js",
+    "source": "async function f() { let await; }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-declaration2.js",
+    "source": "a = async function () { let await; }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-declaration3.js",
+    "source": "class X { async function f() { let await } }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-declaration4.js",
+    "source": "x = { async f() { let await } }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-function-name1.js",
+    "source": "async function f() { async function await() {} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-function-name2.js",
+    "source": "a = async function () { async function await() {} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-identifier1.js",
+    "source": "async function f() { g(await) }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-identifier2.js",
+    "source": "a = async function() { g(await) }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-method.js",
+    "source": "async f() { class X { async await(){} } }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-no-argument1.js",
+    "source": "async function f() { await }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-no-argument2.js",
+    "source": "a = async function() { await }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-object-expression1.js",
+    "source": "async function f() { return {g: await} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-object-expression2.js",
+    "source": "var f = async function() { return {g: await} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-outside-async.js",
+    "source": "function f(x) { await x }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter1.js",
+    "source": "async function f(await) {}\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter2.js",
+    "source": "a = async function(await) {}\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter3.js",
+    "source": "class X { async f(await) {} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter4.js",
+    "source": "class x { static async f(await) {} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter5.js",
+    "source": "x = { async f(await){} }\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter6.js",
+    "source": "async await =\u003E 42\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-parameter7.js",
+    "source": "async (await) =\u003E 42\n"
+  },
+  {
+    "name": "es2017/async/invalid-await/invalid-await-property.js",
+    "source": "async f() { x = { async await(){} } }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-class-constructor.js",
+    "source": "class X { async constructor(){} }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-function-declaration-duplicate-params.js",
+    "source": "o = { async *g(x = 1, x) { } }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-getter.js",
+    "source": "x = { async get g() {} }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-line-terminator-property.js",
+    "source": "x = { async\nf(){} }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-method.js",
+    "source": "x = { async f: function() {} }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-setter.js",
+    "source": "x = {async set s(i) {} }\n"
+  },
+  {
+    "name": "es2017/async/methods/invalid-async-static.js",
+    "source": "class X { async static f() {} }\n"
+  },
+  {
+    "name": "es2017/async/regular-identifier/line-terminator-parenthesized-arrow.js",
+    "source": "async\n(x) =\u003E x\n"
+  },
+  {
+    "name": "es2017/for-statement/invalid-var-init-forin1.js",
+    "source": "\u0022use strict\u0022; for (var i=0 in j);\n"
+  },
+  {
+    "name": "es2017/for-statement/invalid-var-init-forin2.js",
+    "source": "for (var {x}=0 in y);\n"
+  },
+  {
+    "name": "es2017/for-statement/invalid-var-init-forin3.js",
+    "source": "\u0022use strict\u0022; for (var {x}=0 in y);\n"
+  },
+  {
+    "name": "es2017/for-statement/invalid-var-init-forin4.js",
+    "source": "for (var [p]=0 in q);\n"
+  },
+  {
+    "name": "es2017/for-statement/invalid-var-init-forin5.js",
+    "source": "\u0022use strict\u0022; for (var [p]=1 in q);\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-empty-arrow.js",
+    "source": "(,) =\u003E 0;\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-empty-call.js",
+    "source": "f(,);\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-empty-constructor.js",
+    "source": "class A { constructor(,) {} }\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-empty-method.js",
+    "source": "class A { f(,){} }\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-empty-parameters.js",
+    "source": "function f(,){}\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-rest.js",
+    "source": "function f(...a,) {}\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-sequence.js",
+    "source": "(x,y,);\n"
+  },
+  {
+    "name": "es2017/trailing-commas/invalid-trailing-comma-getter.js",
+    "source": "class A { get x(,) { return 42 } }\n"
+  },
+  {
+    "name": "es2018/dynamic-import/invalid-import-call-no-argument.js",
+    "source": "import().then(doThat);\n"
+  },
+  {
+    "name": "es2018/dynamic-import/invalid-new-import-call.js",
+    "source": "new import(x);\n"
+  },
+  {
+    "name": "es2018/dynamic-import/invalid-non-callee.js",
+    "source": "import.then(doLoad);\n"
+  },
+  {
+    "name": "es2018/for-await-of/invalid-for-await-of-not-async-context.js",
+    "source": "function f() { for await (p of q); }\n"
+  },
+  {
+    "name": "es2018/rest-property/invalid-default-rest-property.js",
+    "source": "let { ...x = y } = z;"
+  },
+  {
+    "name": "es2018/rest-property/invalid-property-after-rest.js",
+    "source": "let { a, ...b, c } = x;"
+  },
+  {
+    "name": "es2018/template-literal-revision/not-escape-8.js",
+    "source": "\u0060\\8\u0060"
+  },
+  {
+    "name": "es2018/template-literal-revision/not-escape-9.js",
+    "source": "\u0060\\9\u0060"
+  },
+  {
+    "name": "es2018/template-literal-revision/not-escape-hex.js",
+    "source": "\u0060\\xTT\u0060"
+  },
+  {
+    "name": "es2018/template-literal-revision/not-escape-unicode-code-point.js",
+    "source": "\u0060\\u{nicode}\u0060"
+  },
+  {
+    "name": "es2018/template-literal-revision/not-escape-unicode.js",
+    "source": "\u0060\\unicode\u0060"
+  },
+  {
+    "name": "es2018/template-literal-revision/span-not-escape-unicode.js",
+    "source": "\u0060${a}\\unicode\u0060"
+  },
+  {
+    "name": "es2020/nullish-coalescing/invalid-nullish-coalescing-chain-and-head.js",
+    "source": "1 \u0026\u0026 2 ?? 3"
+  },
+  {
+    "name": "es2020/nullish-coalescing/invalid-nullish-coalescing-chain-and-tail.js",
+    "source": "1 ?? 2 \u0026\u0026 3"
+  },
+  {
+    "name": "es2020/nullish-coalescing/invalid-nullish-coalescing-chain-or-tail.js",
+    "source": "1 ?? 2 || 3"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-as-assignment-target.js",
+    "source": "a?.b = 1"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-indirect-template-string.js",
+    "source": "a?.b\u0060c\u0060"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-new-callee-with-args.js",
+    "source": "new a?.b()"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-new-callee-without-args.js",
+    "source": "new a?.b"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-new-construction.js",
+    "source": "new a?.()"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-new-indirect-template-string.js",
+    "source": "new a?.b\u0060c\u0060"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-new-leading-paren.js",
+    "source": "new  (a?.b)?.c"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-new-template-string.js",
+    "source": "new a?.\u0060b\u0060"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-super-call.js",
+    "source": "class B extends A {\n    constructor() { super?.(); }\n}"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-super-member-access.js",
+    "source": "class B extends A {\n    get prop() { return super?.a; }\n}"
+  },
+  {
+    "name": "es2020/optional-chaining/invalid-optional-chaining-template-string.js",
+    "source": "a?.\u0060b\u0060"
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-call.js",
+    "source": "a?.().b.c\na.b?.().c\nnew a?.().b.c\nnew a.b?.().c"
+  },
+  {
+    "name": "es2025/import-attributes/invalid-syntax-export-without-attributes-identifier.js",
+    "source": "export { x } from \u0022foo\u0022 with;"
+  },
+  {
+    "name": "es2025/import-attributes/invalid-syntax-import-without-attributes-identifier.js",
+    "source": "import \u0022x\u0022 with;"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-boundnames-contains-duplicate-entries.module.js",
+    "source": "async function test() { await using x = resource1, x = resource2; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-boundnames-contains-let.module.js",
+    "source": "async function test() { await using let = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-followed-by-escape.module.js",
+    "source": "async () =\u003E { await using\\u0061 b = c }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-in-single-statement-for.module.js",
+    "source": "async function f() { for (;false;) await using x = null; }\n"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-missing-initializer.module.js",
+    "source": "async function test() { await using x; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-rest-element.module.js",
+    "source": "async function test() { await using [first, ...rest] = arr; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-strict-mode-reserved-arguments.module.js",
+    "source": "\u0027use strict\u0027; async function test() { await using arguments = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-strict-mode-reserved-eval.module.js",
+    "source": "\u0027use strict\u0027; async function test() { await using eval = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-with-lineterminator-2.js",
+    "source": "async function test() { await\nusing x = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/basic-missing-initializer-2.module.js",
+    "source": "{ using x = 5, y; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/basic-missing-initializer.module.js",
+    "source": "{ using x; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/complex-object-destructuring-with-renaming.module.js",
+    "source": "{ using {x: y, z} = obj; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/destructuring-with-computed-prop-name.module.js",
+    "source": "{ using {[key]: value} = obj; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/destructuring-with-default-values.module.js",
+    "source": "{ using {x = 5} = obj; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/duplicate-variable-names.module.js",
+    "source": "{ using x = resource1, x = resource2; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/export-await-using-declaration.module.js",
+    "source": "export await using x = resource;"
+  },
+  {
+    "name": "es2026/explicit-resource-management/export-using-declaration.module.js",
+    "source": "export using x = resource;"
+  },
+  {
+    "name": "es2026/explicit-resource-management/for-in-loop-with-using.module.js",
+    "source": "for (using x in obj) {}"
+  },
+  {
+    "name": "es2026/explicit-resource-management/let-in-await-using-2.module.js",
+    "source": "async function test() { await using x = resource1, let = resource2; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/let-in-await-using.module.js",
+    "source": "async function test() { await using let = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/let-using.module.js",
+    "source": "let using x = resource;"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-boundnames-contains-duplicate-entries.module.js",
+    "source": "let await using x = resource;"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-boundnames-contains-let.module.js",
+    "source": "{ using let = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-context-sensitive-await.module.js",
+    "source": "async function test() { using await = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-context-sensitive-yield.module.js",
+    "source": "function* gen() { using yield = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-declaration-inside-expression.module.js",
+    "source": "(using x = resource)"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-bare-case-statement-2.module.js",
+    "source": "switch (x) { case 1: break; default: using y = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-bare-case-statement.module.js",
+    "source": "switch (x) { case 1: using y = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-for-in-with-initializer.module.js",
+    "source": "for (using x = resource in obj) {}"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-for-of-with-initializer.module.js",
+    "source": "for (using x = resource of arr) {}"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-single-statement-for.module.js",
+    "source": "for (;;) using x = null;\n"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-single-statement-if.module.js",
+    "source": "if (true) using x = null;\n"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-single-statement-while.module.js",
+    "source": "while (true) using x = null;\n"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-strict-mode-reserved-arguments.module.js",
+    "source": "\u0027use strict\u0027; { using arguments = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-strict-mode-reserved-eval.module.js",
+    "source": "\u0027use strict\u0027; { using eval = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-strict-mode-reserved-super.module.js",
+    "source": "{ using super = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-strict-mode-reserved-this.module.js",
+    "source": "{ using this = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-invalid-identifier-chars.module.js",
+    "source": "{ using \\u0030x = resource; }"
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-object-destructuring.module.js",
+    "source": "{ using {x} = obj; }"
+  },
+  {
+    "name": "experimental/decorators/accessor-properties.js",
+    "source": "class aa {\n  static accessor a = true;\n  accessor b = true;\n  accessor #c = true;\n}\n"
+  },
+  {
+    "name": "experimental/decorators/class-decorator-assignment.js",
+    "source": "var Foo = @foo class Foo {}"
+  },
+  {
+    "name": "experimental/decorators/class-decorator-call-expr.js",
+    "source": "@foo(\u0027bar\u0027)\nclass Foo {}\n"
+  },
+  {
+    "name": "experimental/decorators/class-decorator-getter.js",
+    "source": "class Foo { @foo get bar() {} }"
+  },
+  {
+    "name": "experimental/decorators/class-decorator-same-line.js",
+    "source": "@foo class Foo {}"
+  },
+  {
+    "name": "experimental/decorators/class-decorator-setter.js",
+    "source": "class Foo { @foo set bar(f) {} }"
+  },
+  {
+    "name": "experimental/decorators/class-decorator.js",
+    "source": "@abc\nclass Foo {\n\n}\n"
+  },
+  {
+    "name": "experimental/decorators/class-decorators-multiple.js",
+    "source": "class Foo { @foo @bar bar() {} }"
+  },
+  {
+    "name": "experimental/decorators/computed-member-expression.js",
+    "source": "class Foo {\n  @(bar[bizz])\n  abc() {\n\n  }\n}\n"
+  },
+  {
+    "name": "experimental/decorators/export-default-class-declaration.js",
+    "source": "export default @abc class Foo { }"
+  },
+  {
+    "name": "experimental/decorators/invalid-decorator-member-expression-call.js",
+    "source": "@d().p class X { }\n"
+  },
+  {
+    "name": "experimental/decorators/invalid-decorator-member-expression-computed.js",
+    "source": "@d[p] class X { }\n"
+  },
+  {
+    "name": "experimental/decorators/invalid-decorator-member-expression-optional-chain.js",
+    "source": "@d?.p class X { }"
+  },
+  {
+    "name": "experimental/decorators/invalid-decorator-member-expression-template.js",
+    "source": "@d.p\u0060\u0060 class X { }\n"
+  },
+  {
+    "name": "experimental/decorators/invalid-decorator-object-pattern.js",
+    "source": "var { @foo foo } = foo;\n"
+  },
+  {
+    "name": "experimental/decorators/invalid-no-semi.js",
+    "source": "class A {\n  @a;\n  m(){}\n}\n"
+  },
+  {
+    "name": "experimental/decorators/labeled-class-declaration.js",
+    "source": "label: @abc class Foo { }"
+  },
+  {
+    "name": "experimental/decorators/method-decorator.js",
+    "source": "class Foo { @foo bar() {} }"
+  },
+  {
+    "name": "experimental/decorators/method-generator-decorator.js",
+    "source": "class Foo {\n  @deco\n  *generatorMethod() {}\n}\n"
+  },
+  {
+    "name": "experimental/decorators/nested-decorators.js",
+    "source": "@(@abc class Bar { }) class Foo { }"
+  },
+  {
+    "name": "experimental/decorators/parenthesized.js",
+    "source": "@(foo().bar)\n@(foo()).bar\nclass Foo {\n  @(member[expression]) method() {}\n\n  @(foo \u002B bar) method2() {}\n\n  @(this.foo)(bar) method3() {}\n\n  @(member?.expression) method4() { }\n}\n"
+  },
+  {
+    "name": "experimental/decorators/static-method.js",
+    "source": "class Foo {\n  @dec\n  static bar() {}\n}\n"
+  },
+  {
+    "name": "expression/primary/keyword/invalid-escaped-if.js",
+    "source": "\\u0069\\u{66} (1) {}\n"
+  },
+  {
+    "name": "expression/primary/keyword/invalid-escaped-null.js",
+    "source": "nul\\u{6c}\n"
+  },
+  {
+    "name": "expression/primary/keyword/invalid-escaped-true.js",
+    "source": "\\u0074rue\n"
+  },
+  {
+    "name": "expression/primary/literal/numeric/invalid_hex.js",
+    "source": "0xFG\n"
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/u-flag-invalid-range-4-hex.js",
+    "source": "var x = /[\\u0063-b]/u;\n"
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/u-flag-invalid-range-var-hex.js",
+    "source": "var x = /[\\u{63}-b]/u;\n"
+  },
+  {
+    "name": "expression/primary/literal/string/invalid_escaped_hex.js",
+    "source": "\u0027\\u00FG\u0027\n"
+  },
+  {
+    "name": "expression/primary/literal/string/invalid_hex.js",
+    "source": "\u0027\\xFG\u0027\n"
+  },
+  {
+    "name": "expression/primary/object/invalid-getter.js",
+    "source": "x = { get y(z) {} }\n"
+  },
+  {
+    "name": "expression/primary/object/invalid-setter1.js",
+    "source": "x = { set y() {} }\n"
+  },
+  {
+    "name": "expression/primary/object/invalid-setter2.js",
+    "source": "x = { set y(a, b) {} }\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-00.js",
+    "source": "\u0022\\x\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-01.js",
+    "source": "\u0022\\x0\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-02.js",
+    "source": "\u0022\\xx\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-03.js",
+    "source": "\u0022\\u\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-04.js",
+    "source": "\u0022\\u0\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-05.js",
+    "source": "\u0022\\ux\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-06.js",
+    "source": "\u0022\\u00\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/GH-1106-07.js",
+    "source": "\u0022\\u000\u0022;\n"
+  },
+  {
+    "name": "invalid-syntax/migrated_0000.js",
+    "source": "{"
+  },
+  {
+    "name": "invalid-syntax/migrated_0001.js",
+    "source": "}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0002.js",
+    "source": "3ea"
+  },
+  {
+    "name": "invalid-syntax/migrated_0003.js",
+    "source": "3in []"
+  },
+  {
+    "name": "invalid-syntax/migrated_0004.js",
+    "source": "3e"
+  },
+  {
+    "name": "invalid-syntax/migrated_0005.js",
+    "source": "3e\u002B"
+  },
+  {
+    "name": "invalid-syntax/migrated_0006.js",
+    "source": "3e-"
+  },
+  {
+    "name": "invalid-syntax/migrated_0007.js",
+    "source": "3x"
+  },
+  {
+    "name": "invalid-syntax/migrated_0008.js",
+    "source": "3x0"
+  },
+  {
+    "name": "invalid-syntax/migrated_0009.js",
+    "source": "0x"
+  },
+  {
+    "name": "invalid-syntax/migrated_0010.js",
+    "source": "01a"
+  },
+  {
+    "name": "invalid-syntax/migrated_0011.js",
+    "source": "0o1a"
+  },
+  {
+    "name": "invalid-syntax/migrated_0012.js",
+    "source": "0o"
+  },
+  {
+    "name": "invalid-syntax/migrated_0013.js",
+    "source": "0O"
+  },
+  {
+    "name": "invalid-syntax/migrated_0014.js",
+    "source": "0o9"
+  },
+  {
+    "name": "invalid-syntax/migrated_0015.js",
+    "source": "0o18"
+  },
+  {
+    "name": "invalid-syntax/migrated_0016.js",
+    "source": "0O1a"
+  },
+  {
+    "name": "invalid-syntax/migrated_0017.js",
+    "source": "0b"
+  },
+  {
+    "name": "invalid-syntax/migrated_0018.js",
+    "source": "0b1a"
+  },
+  {
+    "name": "invalid-syntax/migrated_0019.js",
+    "source": "0b9"
+  },
+  {
+    "name": "invalid-syntax/migrated_0020.js",
+    "source": "0b18"
+  },
+  {
+    "name": "invalid-syntax/migrated_0021.js",
+    "source": "0b12"
+  },
+  {
+    "name": "invalid-syntax/migrated_0022.js",
+    "source": "0B"
+  },
+  {
+    "name": "invalid-syntax/migrated_0023.js",
+    "source": "0B1a"
+  },
+  {
+    "name": "invalid-syntax/migrated_0024.js",
+    "source": "0B9"
+  },
+  {
+    "name": "invalid-syntax/migrated_0025.js",
+    "source": "0B18"
+  },
+  {
+    "name": "invalid-syntax/migrated_0026.js",
+    "source": "0B12"
+  },
+  {
+    "name": "invalid-syntax/migrated_0027.js",
+    "source": "0O9"
+  },
+  {
+    "name": "invalid-syntax/migrated_0028.js",
+    "source": "0O18"
+  },
+  {
+    "name": "invalid-syntax/migrated_0029.js",
+    "source": "3in[]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0030.js",
+    "source": "0x3in[]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0031.js",
+    "source": "\u0022Hello\nWorld\u0022"
+  },
+  {
+    "name": "invalid-syntax/migrated_0032.js",
+    "source": "x\\"
+  },
+  {
+    "name": "invalid-syntax/migrated_0035.js",
+    "source": "var x = /(s/g"
+  },
+  {
+    "name": "invalid-syntax/migrated_0038.js",
+    "source": "/"
+  },
+  {
+    "name": "invalid-syntax/migrated_0039.js",
+    "source": "/test"
+  },
+  {
+    "name": "invalid-syntax/migrated_0040.js",
+    "source": "/test\n/"
+  },
+  {
+    "name": "invalid-syntax/migrated_0045.js",
+    "source": "3 = 4"
+  },
+  {
+    "name": "invalid-syntax/migrated_0047.js",
+    "source": "(1 \u002B 1) = 10"
+  },
+  {
+    "name": "invalid-syntax/migrated_0052.js",
+    "source": "1\u002B\u002B"
+  },
+  {
+    "name": "invalid-syntax/migrated_0053.js",
+    "source": "1--"
+  },
+  {
+    "name": "invalid-syntax/migrated_0054.js",
+    "source": "\u002B\u002B1"
+  },
+  {
+    "name": "invalid-syntax/migrated_0055.js",
+    "source": "--1"
+  },
+  {
+    "name": "invalid-syntax/migrated_0056.js",
+    "source": "for((1 \u002B 1) in list) process(x);"
+  },
+  {
+    "name": "invalid-syntax/migrated_0057.js",
+    "source": "["
+  },
+  {
+    "name": "invalid-syntax/migrated_0058.js",
+    "source": "[,"
+  },
+  {
+    "name": "invalid-syntax/migrated_0059.js",
+    "source": "1 \u002B {"
+  },
+  {
+    "name": "invalid-syntax/migrated_0060.js",
+    "source": "1 \u002B { t:t "
+  },
+  {
+    "name": "invalid-syntax/migrated_0061.js",
+    "source": "1 \u002B { t:t,"
+  },
+  {
+    "name": "invalid-syntax/migrated_0062.js",
+    "source": "var x = /\n/"
+  },
+  {
+    "name": "invalid-syntax/migrated_0063.js",
+    "source": "var x = \u0022\n"
+  },
+  {
+    "name": "invalid-syntax/migrated_0064.js",
+    "source": "var if = 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0065.js",
+    "source": "i #= 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0066.js",
+    "source": "i \u002B 2 = 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0067.js",
+    "source": "\u002Bi = 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0068.js",
+    "source": "1 \u002B ("
+  },
+  {
+    "name": "invalid-syntax/migrated_0069.js",
+    "source": "\n\n\n{"
+  },
+  {
+    "name": "invalid-syntax/migrated_0070.js",
+    "source": "\n/* Some multiline\ncomment */\n)"
+  },
+  {
+    "name": "invalid-syntax/migrated_0071.js",
+    "source": "{ set 1 }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0072.js",
+    "source": "{ get 2 }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0073.js",
+    "source": "({ set: s(if) { } })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0074.js",
+    "source": "({ set s(.) { } })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0076.js",
+    "source": "({ set: s() { } })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0077.js",
+    "source": "({ set: s(a, b) { } })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0078.js",
+    "source": "({ get: g(d) { } })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0080.js",
+    "source": "({[a,b]:0})"
+  },
+  {
+    "name": "invalid-syntax/migrated_0081.js",
+    "source": "({get[a,b]:0})"
+  },
+  {
+    "name": "invalid-syntax/migrated_0082.js",
+    "source": "({(a):0})"
+  },
+  {
+    "name": "invalid-syntax/migrated_0083.js",
+    "source": "({get{a}:0})"
+  },
+  {
+    "name": "invalid-syntax/migrated_0084.js",
+    "source": "({get "
+  },
+  {
+    "name": "invalid-syntax/migrated_0085.js",
+    "source": "((a)) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0086.js",
+    "source": "(a, (b)) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0087.js",
+    "source": "\u0022use strict\u0022; (eval = 10) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0088.js",
+    "source": "\u0022use strict\u0022; eval =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0089.js",
+    "source": "\u0022use strict\u0022; arguments =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0090.js",
+    "source": "\u0022use strict\u0022; (eval, a) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0091.js",
+    "source": "\u0022use strict\u0022; (arguments, a) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0092.js",
+    "source": "(a, a) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0093.js",
+    "source": "\u0022use strict\u0022; (a, a) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0094.js",
+    "source": "\u0022use strict\u0022; (a) =\u003E 00"
+  },
+  {
+    "name": "invalid-syntax/migrated_0095.js",
+    "source": "() \u003C= 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0096.js",
+    "source": "() ? 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0097.js",
+    "source": "() \u002B 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0098.js",
+    "source": "(10) =\u003E 00"
+  },
+  {
+    "name": "invalid-syntax/migrated_0099.js",
+    "source": "(10, 20) =\u003E 00"
+  },
+  {
+    "name": "invalid-syntax/migrated_0100.js",
+    "source": "\u0022use strict\u0022; (eval) =\u003E 42"
+  },
+  {
+    "name": "invalid-syntax/migrated_0101.js",
+    "source": "(eval) =\u003E { \u0022use strict\u0022; 42 }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0102.js",
+    "source": "p = { q/ }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0103.js",
+    "source": "p = { \u0022q\u0022/ }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0104.js",
+    "source": "function t(if) { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0105.js",
+    "source": "function t(true) { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0106.js",
+    "source": "function t(false) { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0107.js",
+    "source": "function t(null) { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0108.js",
+    "source": "function null() { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0109.js",
+    "source": "function true() { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0110.js",
+    "source": "function false() { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0111.js",
+    "source": "function if() { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0112.js",
+    "source": "a b;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0113.js",
+    "source": "if.a;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0114.js",
+    "source": "a if;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0115.js",
+    "source": "a enum;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0116.js",
+    "source": "break\n"
+  },
+  {
+    "name": "invalid-syntax/migrated_0117.js",
+    "source": "break 1;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0118.js",
+    "source": "continue\n"
+  },
+  {
+    "name": "invalid-syntax/migrated_0119.js",
+    "source": "continue 2;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0120.js",
+    "source": "throw"
+  },
+  {
+    "name": "invalid-syntax/migrated_0121.js",
+    "source": "throw;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0122.js",
+    "source": "throw\n"
+  },
+  {
+    "name": "invalid-syntax/migrated_0123.js",
+    "source": "for (var i, i2 in {});"
+  },
+  {
+    "name": "invalid-syntax/migrated_0124.js",
+    "source": "for ((i in {}));"
+  },
+  {
+    "name": "invalid-syntax/migrated_0125.js",
+    "source": "for (i \u002B 1 in {});"
+  },
+  {
+    "name": "invalid-syntax/migrated_0126.js",
+    "source": "for (\u002Bi in {});"
+  },
+  {
+    "name": "invalid-syntax/migrated_0127.js",
+    "source": "if(false)"
+  },
+  {
+    "name": "invalid-syntax/migrated_0128.js",
+    "source": "if(false) doThis(); else"
+  },
+  {
+    "name": "invalid-syntax/migrated_0129.js",
+    "source": "do"
+  },
+  {
+    "name": "invalid-syntax/migrated_0130.js",
+    "source": "while(false)"
+  },
+  {
+    "name": "invalid-syntax/migrated_0131.js",
+    "source": "for(;;)"
+  },
+  {
+    "name": "invalid-syntax/migrated_0132.js",
+    "source": "with(x)"
+  },
+  {
+    "name": "invalid-syntax/migrated_0133.js",
+    "source": "try { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0134.js",
+    "source": "try {} catch (42) {} "
+  },
+  {
+    "name": "invalid-syntax/migrated_0135.js",
+    "source": "try {} catch (answer()) {} "
+  },
+  {
+    "name": "invalid-syntax/migrated_0136.js",
+    "source": "try {} catch (-x) {} "
+  },
+  {
+    "name": "invalid-syntax/migrated_0138.js",
+    "source": "const x = 12, y;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0139.js",
+    "source": "const x, y = 12;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0140.js",
+    "source": "const x;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0141.js",
+    "source": "if(true) let a = 1;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0142.js",
+    "source": "if(true) const a = 1;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0143.js",
+    "source": "switch (c) { default: default: }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0144.js",
+    "source": "new X().\u0022s\u0022"
+  },
+  {
+    "name": "invalid-syntax/migrated_0145.js",
+    "source": "/*"
+  },
+  {
+    "name": "invalid-syntax/migrated_0146.js",
+    "source": "/*\n\n\n"
+  },
+  {
+    "name": "invalid-syntax/migrated_0147.js",
+    "source": "/**"
+  },
+  {
+    "name": "invalid-syntax/migrated_0148.js",
+    "source": "/*\n\n*"
+  },
+  {
+    "name": "invalid-syntax/migrated_0149.js",
+    "source": "/*hello"
+  },
+  {
+    "name": "invalid-syntax/migrated_0150.js",
+    "source": "/*hello  *"
+  },
+  {
+    "name": "invalid-syntax/migrated_0151.js",
+    "source": "\n]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0152.js",
+    "source": "\r]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0153.js",
+    "source": "\n]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0154.js",
+    "source": "\n\r]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0155.js",
+    "source": "//\n]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0156.js",
+    "source": "//\n\r]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0157.js",
+    "source": "/a\\\n/"
+  },
+  {
+    "name": "invalid-syntax/migrated_0158.js",
+    "source": "//\r \n]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0159.js",
+    "source": "/*\n*/]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0160.js",
+    "source": "/*\n\r*/]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0161.js",
+    "source": "/*\r \n*/]"
+  },
+  {
+    "name": "invalid-syntax/migrated_0162.js",
+    "source": "\\\\"
+  },
+  {
+    "name": "invalid-syntax/migrated_0164.js",
+    "source": "\\x"
+  },
+  {
+    "name": "invalid-syntax/migrated_0168.js",
+    "source": "\u0022\\"
+  },
+  {
+    "name": "invalid-syntax/migrated_0170.js",
+    "source": "try { } catch() {}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0171.js",
+    "source": "return"
+  },
+  {
+    "name": "invalid-syntax/migrated_0172.js",
+    "source": "break"
+  },
+  {
+    "name": "invalid-syntax/migrated_0173.js",
+    "source": "continue"
+  },
+  {
+    "name": "invalid-syntax/migrated_0174.js",
+    "source": "switch (x) { default: continue; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0175.js",
+    "source": "do { x } *"
+  },
+  {
+    "name": "invalid-syntax/migrated_0176.js",
+    "source": "while (true) { break x; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0177.js",
+    "source": "while (true) { continue x; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0178.js",
+    "source": "x: while (true) { (function () { break x; }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0179.js",
+    "source": "x: while (true) { (function () { continue x; }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0180.js",
+    "source": "x: while (true) { (function () { break; }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0181.js",
+    "source": "x: while (true) { (function () { continue; }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0182.js",
+    "source": "x: while (true) { x: while (true) { } }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0183.js",
+    "source": "(function () { \u0027use strict\u0027; delete i; }())"
+  },
+  {
+    "name": "invalid-syntax/migrated_0184.js",
+    "source": "(function () { \u0027use strict\u0027; with (i); }())"
+  },
+  {
+    "name": "invalid-syntax/migrated_0185.js",
+    "source": "function hello() {\u0027use strict\u0027; var eval = 10; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0186.js",
+    "source": "function hello() {\u0027use strict\u0027; var arguments = 10; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0187.js",
+    "source": "function hello() {\u0027use strict\u0027; try { } catch (eval) { } }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0188.js",
+    "source": "function hello() {\u0027use strict\u0027; try { } catch (arguments) { } }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0189.js",
+    "source": "function hello() {\u0027use strict\u0027; eval = 10; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0190.js",
+    "source": "function hello() {\u0027use strict\u0027; arguments = 10; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0191.js",
+    "source": "function hello() {\u0027use strict\u0027; \u002B\u002Beval; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0192.js",
+    "source": "function hello() {\u0027use strict\u0027; --eval; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0193.js",
+    "source": "function hello() {\u0027use strict\u0027; \u002B\u002Barguments; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0194.js",
+    "source": "function hello() {\u0027use strict\u0027; --arguments; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0195.js",
+    "source": "function hello() {\u0027use strict\u0027; eval\u002B\u002B; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0196.js",
+    "source": "function hello() {\u0027use strict\u0027; eval--; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0197.js",
+    "source": "function hello() {\u0027use strict\u0027; arguments\u002B\u002B; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0198.js",
+    "source": "function hello() {\u0027use strict\u0027; arguments--; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0199.js",
+    "source": "function hello() {\u0027use strict\u0027; function eval() { } }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0200.js",
+    "source": "function hello() {\u0027use strict\u0027; function arguments() { } }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0201.js",
+    "source": "function eval() {\u0027use strict\u0027; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0202.js",
+    "source": "function arguments() {\u0027use strict\u0027; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0203.js",
+    "source": "function hello() {\u0027use strict\u0027; (function eval() { }()) }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0204.js",
+    "source": "function hello() {\u0027use strict\u0027; (function arguments() { }()) }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0205.js",
+    "source": "(function eval() {\u0027use strict\u0027; })()"
+  },
+  {
+    "name": "invalid-syntax/migrated_0206.js",
+    "source": "(function arguments() {\u0027use strict\u0027; })()"
+  },
+  {
+    "name": "invalid-syntax/migrated_0207.js",
+    "source": "function hello() {\u0027use strict\u0027; ({ s: function eval() { } }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0208.js",
+    "source": "(function package() {\u0027use strict\u0027; })()"
+  },
+  {
+    "name": "invalid-syntax/migrated_0209.js",
+    "source": "function hello() {\u0027use strict\u0027; ({ i: 10, set s(eval) { } }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0210.js",
+    "source": "function hello() {\u0027use strict\u0027; ({ set s(eval) { } }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0211.js",
+    "source": "function hello() {\u0027use strict\u0027; ({ s: function s(eval) { } }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0212.js",
+    "source": "function hello(eval) {\u0027use strict\u0027;}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0213.js",
+    "source": "function hello(arguments) {\u0027use strict\u0027;}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0214.js",
+    "source": "function hello() { \u0027use strict\u0027; function inner(eval) {} }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0215.js",
+    "source": "function hello() { \u0027use strict\u0027; function inner(arguments) {} }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0216.js",
+    "source": " \u0022\\1\u0022; \u0027use strict\u0027;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0217.js",
+    "source": "function hello() { \u0027use strict\u0027; \u0022\\1\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0218.js",
+    "source": "function hello() { \u0027use strict\u0027; 021; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0219.js",
+    "source": "function hello() { \u0027use strict\u0027; ({ \u0022\\1\u0022: 42 }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0220.js",
+    "source": "function hello() { \u0027use strict\u0027; ({ 021: 42 }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0221.js",
+    "source": "function hello() { \u0022octal directive\\1\u0022; \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0222.js",
+    "source": "function hello() { \u0022octal directive\\1\u0022; \u0022octal directive\\2\u0022; \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0223.js",
+    "source": "function hello() { \u0022use strict\u0022; function inner() { \u0022octal directive\\1\u0022; } }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0224.js",
+    "source": "function hello() { \u0022use strict\u0022; var implements; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0225.js",
+    "source": "function hello() { \u0022use strict\u0022; var interface; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0226.js",
+    "source": "function hello() { \u0022use strict\u0022; var package; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0227.js",
+    "source": "function hello() { \u0022use strict\u0022; var private; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0228.js",
+    "source": "function hello() { \u0022use strict\u0022; var protected; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0229.js",
+    "source": "function hello() { \u0022use strict\u0022; var public; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0230.js",
+    "source": "function hello() { \u0022use strict\u0022; var static; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0231.js",
+    "source": "function hello() { \u0022use strict\u0022; var yield; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0232.js",
+    "source": "function hello() { \u0022use strict\u0022; var let; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0233.js",
+    "source": "function hello(static) { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0234.js",
+    "source": "function static() { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0235.js",
+    "source": "function eval(a) { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0236.js",
+    "source": "function arguments(a) { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0239.js",
+    "source": "\u0022use strict\u0022; function static() { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0240.js",
+    "source": "function a(t, t) { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0241.js",
+    "source": "function a(eval) { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0242.js",
+    "source": "function a(package) { \u0022use strict\u0022; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0243.js",
+    "source": "function a() { \u0022use strict\u0022; function b(t, t) { }; }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0244.js",
+    "source": "(function a(t, t) { \u0022use strict\u0022; })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0245.js",
+    "source": "function a() { \u0022use strict\u0022; (function b(t, t) { }); }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0246.js",
+    "source": "(function a(eval) { \u0022use strict\u0022; })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0247.js",
+    "source": "(function a(package) { \u0022use strict\u0022; })"
+  },
+  {
+    "name": "invalid-syntax/migrated_0248.js",
+    "source": "__proto__: __proto__: 42;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0249.js",
+    "source": "\u0022use strict\u0022; function t(__proto__, __proto__) { }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0250.js",
+    "source": "x = { __proto__: 42, __proto__: 43 }"
+  },
+  {
+    "name": "invalid-syntax/migrated_0252.js",
+    "source": "var"
+  },
+  {
+    "name": "invalid-syntax/migrated_0254.js",
+    "source": "const"
+  },
+  {
+    "name": "invalid-syntax/migrated_0255.js",
+    "source": "{ ;  ;  "
+  },
+  {
+    "name": "invalid-syntax/migrated_0256.js",
+    "source": "function t() { ;  ;  "
+  },
+  {
+    "name": "invalid-syntax/migrated_0257.js",
+    "source": "\u0027use strict\u0027; a package"
+  },
+  {
+    "name": "invalid-syntax/migrated_0258.js",
+    "source": "function f(a, ...b, c){}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0260.js",
+    "source": "function x(...a = 1){}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0261.js",
+    "source": "class"
+  },
+  {
+    "name": "invalid-syntax/migrated_0262.js",
+    "source": "class "
+  },
+  {
+    "name": "invalid-syntax/migrated_0263.js",
+    "source": "class;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0264.js",
+    "source": "class A extends a \u002B b {}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0265.js",
+    "source": "class A"
+  },
+  {
+    "name": "invalid-syntax/migrated_0266.js",
+    "source": "class A {"
+  },
+  {
+    "name": "invalid-syntax/migrated_0267.js",
+    "source": "class A;"
+  },
+  {
+    "name": "invalid-syntax/migrated_0268.js",
+    "source": "class A {a:0}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0269.js",
+    "source": "class A {a(){},b(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0270.js",
+    "source": "class A {static prototype(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0271.js",
+    "source": "class A {static \u0022prototype\u0022(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0272.js",
+    "source": "class A {get constructor(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0273.js",
+    "source": "class A {set constructor(m){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0274.js",
+    "source": "class A {constructor(){} \u0022constructor\u0022(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0275.js",
+    "source": "class A {a static(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0276.js",
+    "source": "class A {static static static(){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0277.js",
+    "source": "class A {a(enum){}}"
+  },
+  {
+    "name": "invalid-syntax/migrated_0278.js",
+    "source": "class A {static [static](){};}"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_implements.js",
+    "source": "function hello() { \u0022use strict\u0022; implements = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_interface.js",
+    "source": "function hello() { \u0022use strict\u0022; interface = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_let.js",
+    "source": "function hello() { \u0022use strict\u0022; let = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_package.js",
+    "source": "function hello() { \u0022use strict\u0022; package = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_private.js",
+    "source": "function hello() { \u0022use strict\u0022; private = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_protected.js",
+    "source": "function hello() { \u0022use strict\u0022; protected = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_public.js",
+    "source": "function hello() { \u0022use strict\u0022; public = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_static.js",
+    "source": "function hello() { \u0022use strict\u0022; static = 1; }\n"
+  },
+  {
+    "name": "invalid-syntax/strict_assignment_yield.js",
+    "source": "function hello() { \u0022use strict\u0022; yield = 1; }\n"
+  },
+  {
+    "name": "statement/if/invalid-function-declaration1.js",
+    "source": "\u0022use strict\u0022; if (true) function f(){}\n"
+  },
+  {
+    "name": "statement/if/invalid-function-declaration2.js",
+    "source": "\u0022use strict\u0022; if (true) function f(){} else {}\n"
+  },
+  {
+    "name": "statement/if/invalid-function-declaration3.js",
+    "source": "\u0022use strict\u0022; if (true) {} else function f(){}\n"
+  },
+  {
+    "name": "statement/if/invalid-function-declaration4.js",
+    "source": "\u0022use strict\u0022; if (true) function f(){} else function g(){}\n"
+  },
+  {
+    "name": "statement/iteration/invalid-assign-for-in.js",
+    "source": "for (x=0 in y);\n"
+  },
+  {
+    "name": "statement/iteration/invalid-strict-for-in-let.js",
+    "source": "\u0022use strict\u0022; for (x in let) {}\n"
+  },
+  {
+    "name": "statement/iteration/invalid-unterminated-do-while.js",
+    "source": "do {} while (true\n"
+  },
+  {
+    "name": "statement/variable/complex-pattern-requires-init.js",
+    "source": "var []\n"
+  },
+  {
+    "name": "statement/variable/invalid_trailing_comma_1.js",
+    "source": "var x,\n"
+  },
+  {
+    "name": "statement/variable/invalid_trailing_comma_2.js",
+    "source": "var x,;\n"
+  },
+  {
+    "name": "statement/variable/invalid_trailing_comma_3.js",
+    "source": "var x, ;\n"
+  },
+  {
+    "name": "statement/variable/invalid_trailing_comma_4.js",
+    "source": "var x, y,\n"
+  },
+  {
+    "name": "statement/variable/invalid_trailing_comma_5.js",
+    "source": "var x,\n  y,;\n"
+  },
+  {
+    "name": "statement/variable/invalid_trailing_comma_6.js",
+    "source": "var answer = 42,\n"
+  },
+  {
+    "name": "statement/while/invalid-decl-async-fun.js",
+    "source": "while (false) async function f() {}\n"
+  },
+  {
+    "name": "statement/with/invalid-unterminated-with.js",
+    "source": "with (x\n"
+  },
+  {
+    "name": "tokenize/invalid_number.js",
+    "source": "1e\n"
+  },
+  {
+    "name": "tokenize/migrated_0003.js",
+    "source": "(false) /42/"
+  },
+  {
+    "name": "tokenize/migrated_0005.js",
+    "source": "function(){} /42"
+  },
+  {
+    "name": "tokenize/migrated_0006.js",
+    "source": "{} /42"
+  },
+  {
+    "name": "tokenize/migrated_0011.js",
+    "source": "foo[/42]"
+  },
+  {
+    "name": "tokenize/migrated_0014.js",
+    "source": "/42"
+  },
+  {
+    "name": "tokenize/migrated_0015.js",
+    "source": "foo[/42"
+  },
+  {
+    "name": "tokenize/single_slash.js",
+    "source": "/\n"
+  }
+]

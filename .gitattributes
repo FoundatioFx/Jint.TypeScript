@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+# Keep the reproducible snapshot available in Git, but collapse it in reviews.
+eng/upstream/acornima/** linguist-vendored
+src/Jint.TypeScript/Parsing/*.Matchers.g.cs linguist-generated

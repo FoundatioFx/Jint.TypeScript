@@ -1,0 +1,1028 @@
+{
+  "date": "2026-09-08",
+  "sourceCommit": "b4508e06c520493d798064dc172ad472e44968ce",
+  "beforePatch": "audits/customization-audit-before.patch",
+  "beforePatchSha256": "c3dab97fe40dc63b984a3a9b9b8a535fa649f2f221bd0d9a9f5d26c793407cd7",
+  "hunks": [
+    {
+      "id": 1,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -207,7 +207,7 @@ internal partial class Parser",
+      "upstreamLine": 207,
+      "decision": "A01"
+    },
+    {
+      "id": 2,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -306,6 +306,9 @@ internal partial class Parser",
+      "upstreamLine": 306,
+      "decision": "A02"
+    },
+    {
+      "id": 3,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -350,8 +353,14 @@ internal partial class Parser",
+      "upstreamLine": 350,
+      "decision": "A03"
+    },
+    {
+      "id": 4,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -701,6 +710,11 @@ internal partial class Parser",
+      "upstreamLine": 701,
+      "decision": "A04"
+    },
+    {
+      "id": 5,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -743,6 +757,12 @@ internal partial class Parser",
+      "upstreamLine": 743,
+      "decision": "A05"
+    },
+    {
+      "id": 6,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -788,7 +808,7 @@ internal partial class Parser",
+      "upstreamLine": 788,
+      "decision": "A05"
+    },
+    {
+      "id": 7,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -806,6 +826,8 @@ internal partial class Parser",
+      "upstreamLine": 806,
+      "decision": "A05"
+    },
+    {
+      "id": 8,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -898,7 +920,7 @@ internal partial class Parser",
+      "upstreamLine": 898,
+      "decision": "A06"
+    },
+    {
+      "id": 9,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -922,14 +944,14 @@ internal partial class Parser",
+      "upstreamLine": 922,
+      "decision": "A06"
+    },
+    {
+      "id": 10,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -957,7 +979,7 @@ internal partial class Parser",
+      "upstreamLine": 957,
+      "decision": "A06"
+    },
+    {
+      "id": 11,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -968,34 +990,37 @@ internal partial class Parser",
+      "upstreamLine": 968,
+      "decision": "A07"
+    },
+    {
+      "id": 12,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1241,11 +1266,11 @@ internal partial class Parser",
+      "upstreamLine": 1241,
+      "decision": "A01"
+    },
+    {
+      "id": 13,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1262,6 +1287,7 @@ internal partial class Parser",
+      "upstreamLine": 1262,
+      "decision": "A01"
+    },
+    {
+      "id": 14,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1308,7 +1334,7 @@ internal partial class Parser",
+      "upstreamLine": 1308,
+      "decision": "A08"
+    },
+    {
+      "id": 15,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1317,7 +1343,7 @@ internal partial class Parser",
+      "upstreamLine": 1317,
+      "decision": "A08"
+    },
+    {
+      "id": 16,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1325,6 +1351,7 @@ internal partial class Parser",
+      "upstreamLine": 1325,
+      "decision": "A08"
+    },
+    {
+      "id": 17,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1335,6 +1362,8 @@ internal partial class Parser",
+      "upstreamLine": 1335,
+      "decision": "A08"
+    },
+    {
+      "id": 18,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1452,7 +1481,7 @@ internal partial class Parser",
+      "upstreamLine": 1452,
+      "decision": "A09"
+    },
+    {
+      "id": 19,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1663,7 +1692,8 @@ internal partial class Parser",
+      "upstreamLine": 1663,
+      "decision": "A10"
+    },
+    {
+      "id": 20,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1709,7 +1739,7 @@ internal partial class Parser",
+      "upstreamLine": 1709,
+      "decision": "A10"
+    },
+    {
+      "id": 21,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1720,7 +1750,7 @@ internal partial class Parser",
+      "upstreamLine": 1720,
+      "decision": "A10"
+    },
+    {
+      "id": 22,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1822,7 +1852,7 @@ internal partial class Parser",
+      "upstreamLine": 1822,
+      "decision": "A10"
+    },
+    {
+      "id": 23,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1839,10 +1869,19 @@ internal partial class Parser",
+      "upstreamLine": 1839,
+      "decision": "A10"
+    },
+    {
+      "id": 24,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -1966,12 +2005,13 @@ internal partial class Parser",
+      "upstreamLine": 1966,
+      "decision": "A08"
+    },
+    {
+      "id": 25,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -2013,9 +2053,13 @@ internal partial class Parser",
+      "upstreamLine": 2013,
+      "decision": "A08"
+    },
+    {
+      "id": 26,
+      "file": "Parser.Expression.cs",
+      "header": "@@ -2243,10 +2287,11 @@ internal partial class Parser",
+      "upstreamLine": 2243,
+      "decision": "A11"
+    },
+    {
+      "id": 27,
+      "file": "Parser.Helpers.cs",
+      "header": "@@ -14,6 +14,7 @@ internal partial class Parser",
+      "upstreamLine": 14,
+      "decision": "A12"
+    },
+    {
+      "id": 28,
+      "file": "Parser.Helpers.cs",
+      "header": "@@ -30,8 +31,7 @@ internal partial class Parser",
+      "upstreamLine": 30,
+      "decision": "A13"
+    },
+    {
+      "id": 29,
+      "file": "Parser.Helpers.cs",
+      "header": "@@ -41,16 +41,14 @@ internal partial class Parser",
+      "upstreamLine": 41,
+      "decision": "A13"
+    },
+    {
+      "id": 30,
+      "file": "Parser.Helpers.cs",
+      "header": "@@ -59,11 +57,12 @@ internal partial class Parser",
+      "upstreamLine": 59,
+      "decision": "A14"
+    },
+    {
+      "id": 31,
+      "file": "Parser.LVal.cs",
+      "header": "@@ -32,6 +32,7 @@ internal partial class Parser",
+      "upstreamLine": 32,
+      "decision": "A15"
+    },
+    {
+      "id": 32,
+      "file": "Parser.LVal.cs",
+      "header": "@@ -311,12 +312,18 @@ internal partial class Parser",
+      "upstreamLine": 311,
+      "decision": "A16"
+    },
+    {
+      "id": 33,
+      "file": "Parser.LVal.cs",
+      "header": "@@ -341,6 +348,7 @@ internal partial class Parser",
+      "upstreamLine": 341,
+      "decision": "A17"
+    },
+    {
+      "id": 34,
+      "file": "Parser.LVal.cs",
+      "header": "@@ -366,7 +374,9 @@ internal partial class Parser",
+      "upstreamLine": 366,
+      "decision": "A17"
+    },
+    {
+      "id": 35,
+      "file": "Parser.LVal.cs",
+      "header": "@@ -464,6 +474,7 @@ internal partial class Parser",
+      "upstreamLine": 464,
+      "decision": "A15"
+    },
+    {
+      "id": 36,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -25,11 +25,12 @@ internal partial class Parser",
+      "upstreamLine": 25,
+      "decision": "A18"
+    },
+    {
+      "id": 37,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -41,6 +42,7 @@ internal partial class Parser",
+      "upstreamLine": 41,
+      "decision": "A19"
+    },
+    {
+      "id": 38,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -208,7 +210,7 @@ internal partial class Parser",
+      "upstreamLine": 208,
+      "decision": "A20"
+    },
+    {
+      "id": 39,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -743,7 +745,7 @@ internal partial class Parser",
+      "upstreamLine": 743,
+      "decision": "A20"
+    },
+    {
+      "id": 40,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -751,7 +753,7 @@ internal partial class Parser",
+      "upstreamLine": 751,
+      "decision": "A20"
+    },
+    {
+      "id": 41,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -854,7 +856,9 @@ internal partial class Parser",
+      "upstreamLine": 854,
+      "decision": "A18"
+    },
+    {
+      "id": 42,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1100,8 +1104,9 @@ internal partial class Parser",
+      "upstreamLine": 1100,
+      "decision": "A18"
+    },
+    {
+      "id": 43,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1177,7 +1182,7 @@ internal partial class Parser",
+      "upstreamLine": 1177,
+      "decision": "A21"
+    },
+    {
+      "id": 44,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1224,7 +1229,7 @@ internal partial class Parser",
+      "upstreamLine": 1224,
+      "decision": "A21"
+    },
+    {
+      "id": 45,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1235,14 +1240,15 @@ internal partial class Parser",
+      "upstreamLine": 1235,
+      "decision": "A22"
+    },
+    {
+      "id": 46,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1269,15 +1275,6 @@ internal partial class Parser",
+      "upstreamLine": 1269,
+      "decision": "A23"
+    },
+    {
+      "id": 47,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1297,12 +1294,29 @@ internal partial class Parser",
+      "upstreamLine": 1297,
+      "decision": "A23"
+    },
+    {
+      "id": 48,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1313,8 +1327,9 @@ internal partial class Parser",
+      "upstreamLine": 1313,
+      "decision": "A24"
+    },
+    {
+      "id": 49,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1331,12 +1346,14 @@ internal partial class Parser",
+      "upstreamLine": 1331,
+      "decision": "A25"
+    },
+    {
+      "id": 50,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1355,6 +1372,7 @@ internal partial class Parser",
+      "upstreamLine": 1355,
+      "decision": "A25"
+    },
+    {
+      "id": 51,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1393,7 +1411,7 @@ internal partial class Parser",
+      "upstreamLine": 1393,
+      "decision": "A25"
+    },
+    {
+      "id": 52,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1406,6 +1424,7 @@ internal partial class Parser",
+      "upstreamLine": 1406,
+      "decision": "A26"
+    },
+    {
+      "id": 53,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1413,6 +1432,7 @@ internal partial class Parser",
+      "upstreamLine": 1413,
+      "decision": "A26"
+    },
+    {
+      "id": 54,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1427,8 +1447,11 @@ internal partial class Parser",
+      "upstreamLine": 1427,
+      "decision": "A26"
+    },
+    {
+      "id": 55,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1485,7 +1508,7 @@ internal partial class Parser",
+      "upstreamLine": 1485,
+      "decision": "A27"
+    },
+    {
+      "id": 56,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1502,9 +1525,22 @@ internal partial class Parser",
+      "upstreamLine": 1502,
+      "decision": "A28"
+    },
+    {
+      "id": 57,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1513,6 +1549,16 @@ internal partial class Parser",
+      "upstreamLine": 1513,
+      "decision": "A28"
+    },
+    {
+      "id": 58,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1548,7 +1594,7 @@ internal partial class Parser",
+      "upstreamLine": 1548,
+      "decision": "A29"
+    },
+    {
+      "id": 59,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1590,7 +1636,10 @@ internal partial class Parser",
+      "upstreamLine": 1590,
+      "decision": "A29"
+    },
+    {
+      "id": 60,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1677,8 +1726,9 @@ internal partial class Parser",
+      "upstreamLine": 1677,
+      "decision": "A18"
+    },
+    {
+      "id": 61,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1716,7 +1766,11 @@ internal partial class Parser",
+      "upstreamLine": 1716,
+      "decision": "A30"
+    },
+    {
+      "id": 62,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1821,10 +1875,11 @@ internal partial class Parser",
+      "upstreamLine": 1821,
+      "decision": "A31"
+    },
+    {
+      "id": 63,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1842,7 +1897,7 @@ internal partial class Parser",
+      "upstreamLine": 1842,
+      "decision": "A31"
+    },
+    {
+      "id": 64,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1855,7 +1910,8 @@ internal partial class Parser",
+      "upstreamLine": 1855,
+      "decision": "A31"
+    },
+    {
+      "id": 65,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1892,6 +1948,7 @@ internal partial class Parser",
+      "upstreamLine": 1892,
+      "decision": "A31"
+    },
+    {
+      "id": 66,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1924,13 +1981,13 @@ internal partial class Parser",
+      "upstreamLine": 1924,
+      "decision": "A31"
+    },
+    {
+      "id": 67,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -1961,6 +2018,8 @@ internal partial class Parser",
+      "upstreamLine": 1961,
+      "decision": "A31"
+    },
+    {
+      "id": 68,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -2125,7 +2184,12 @@ internal partial class Parser",
+      "upstreamLine": 2125,
+      "decision": "A32"
+    },
+    {
+      "id": 69,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -2328,7 +2392,12 @@ internal partial class Parser",
+      "upstreamLine": 2328,
+      "decision": "A32"
+    },
+    {
+      "id": 70,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -2352,7 +2421,7 @@ internal partial class Parser",
+      "upstreamLine": 2352,
+      "decision": "A33"
+    },
+    {
+      "id": 71,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -2366,8 +2435,20 @@ internal partial class Parser",
+      "upstreamLine": 2366,
+      "decision": "A33"
+    },
+    {
+      "id": 72,
+      "file": "Parser.Statement.cs",
+      "header": "@@ -2506,9 +2587,9 @@ internal partial class Parser",
+      "upstreamLine": 2506,
+      "decision": "A07"
+    },
+    {
+      "id": 73,
+      "file": "Tokenizer.State.cs",
+      "header": "@@ -80,7 +80,7 @@ internal partial class Tokenizer",
+      "upstreamLine": 80,
+      "decision": "A34"
+    },
+    {
+      "id": 74,
+      "file": "Tokenizer.State.cs",
+      "header": "@@ -124,7 +124,7 @@ internal partial class Tokenizer",
+      "upstreamLine": 124,
+      "decision": "A34"
+    },
+    {
+      "id": 75,
+      "file": "Tokenizer.cs",
+      "header": "@@ -647,6 +647,8 @@ internal sealed partial class Tokenizer : ITokenizer",
+      "upstreamLine": 647,
+      "decision": "A35"
+    },
+    {
+      "id": 76,
+      "file": "Tokenizer.cs",
+      "header": "@@ -1300,7 +1302,7 @@ internal sealed partial class Tokenizer : ITokenizer",
+      "upstreamLine": 1300,
+      "decision": "A09"
+    },
+    {
+      "id": 77,
+      "file": "Tokenizer.cs",
+      "header": "@@ -1378,7 +1380,7 @@ internal sealed partial class Tokenizer : ITokenizer",
+      "upstreamLine": 1378,
+      "decision": "A09"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "A01",
+      "hunks": [
+        1,
+        12,
+        13
+      ],
+      "area": "Generic arrow start and location",
+      "decision": "Keep",
+      "necessity": "Generic arrows start at <, not at the parameter parenthesis; expression context must still prohibit a generic arrow after new.",
+      "alternative": "Treating the generic head as ordinary parentheses loses start ranges and accepts invalid new expressions. A parser-wide pending marker would add mutable nesting state.",
+      "evidence": "GenericsTests.cs, ArrowTests.cs"
+    },
+    {
+      "id": "A02",
+      "hunks": [
+        2
+      ],
+      "area": "Optional parameter versus conditional expression",
+      "decision": "Keep",
+      "necessity": "The ? in x?: T and x?) must remain for arrow binding grammar, while ordinary conditionals retain upstream parsing.",
+      "alternative": "A tokenizer-only ? rewrite cannot distinguish bindings from runtime conditionals. Speculatively reparsing all parentheses adds work.",
+      "evidence": "ArrowTests.cs, TypeScriptReferenceTests.cs"
+    },
+    {
+      "id": "A03",
+      "hunks": [
+        3
+      ],
+      "area": "Assertion precedence",
+      "decision": "Keep",
+      "necessity": "as/satisfies must interleave with native binary precedence and exponentiation; the owned assertion helper already contains the custom behavior.",
+      "alternative": "A post-parse visitor cannot recover consumed type tokens. Keeping the old while condition via duplicated assertion probes reduces visual difference but repeats hot-loop checks.",
+      "evidence": "ParityTests.cs, HardeningTests.cs"
+    },
+    {
+      "id": "A04",
+      "hunks": [
+        4
+      ],
+      "area": "Postfix non-null in subscript chains",
+      "decision": "Keep",
+      "necessity": "Erasing ! must preserve optional-chain continuity and prevent an asserted async name being reinterpreted as an arrow.",
+      "alternative": "Wrapping nodes adds allocations and changes the official AST; processing after the subscript loop closes the optional chain too early.",
+      "evidence": "ParityTests.cs, GenericsTests.cs"
+    },
+    {
+      "id": "A05",
+      "hunks": [
+        5,
+        6,
+        7
+      ],
+      "area": "Generic calls and async generic arrows",
+      "decision": "Keep",
+      "necessity": "Cheap guards select an owned helper; async call arguments can instead be typed parameters, and constraints/defaults require an arrow.",
+      "alternative": "A second complete parse or pre-stripped source would increase cost and risk comparison/shift ambiguity. The existing helper is already isolated.",
+      "evidence": "GenericsTests.cs, HardeningTests.cs"
+    },
+    {
+      "id": "A06",
+      "hunks": [
+        8,
+        9,
+        10
+      ],
+      "area": "Function nullability and single-node lists",
+      "decision": "Keep nullability; automate factory calls",
+      "necessity": "Expressions require real function bodies, so non-null assertions document a validated path. Public node-list factories are required by official AST visibility.",
+      "alternative": "Replacing nullable declaration results with dummy function nodes changes semantics. The two list constructor substitutions are now a mechanical normalizer rule, not handwritten grammar edits; their public copying cost remains.",
+      "evidence": "CompilerTests.cs, SignatureTests.cs, eng/tests/normalizer.test.mjs"
+    },
+    {
+      "id": "A07",
+      "hunks": [
+        11,
+        72
+      ],
+      "area": "Literal and import-attribute construction",
+      "decision": "Simplify",
+      "necessity": "Official node locations are init-only. Set leaf locations from the current token before Next, restore upstream literal construction order, and reuse the raw regex text already read.",
+      "alternative": "Moving all leaf creation after Next was unnecessary. A generic post-construction setter is unavailable; copying nodes would allocate another AST. Moving the entire upstream literal switch to a partial would obscure future fixes. The generic-arrow case in hunk 11 now delegates to its owned helper. Raw regex text retains the previous substring policy: additional benchmarks showed that interning distinct raw patterns increased allocations.",
+      "evidence": "UpstreamIsolationTests.cs, JavaScriptCompatibilityTests.cs, CompilerTests.cs"
+    },
+    {
+      "id": "A08",
+      "hunks": [
+        14,
+        15,
+        16,
+        17,
+        24,
+        25
+      ],
+      "area": "Typed arrow parameters and return types",
+      "decision": "Keep",
+      "necessity": "Annotations surround runtime bindings/defaults/rest parameters; typed heads require an arrow. Async call/arrow ambiguity uses explicit context.",
+      "alternative": "Pre-erasing tokens loses the distinction between a typed parameter and a legal expression. Global context fields would need nested restoration; explicit parameters keep that contract local.",
+      "evidence": "ArrowTests.cs, SignatureTests.cs, TypeScriptReferenceTests.cs"
+    },
+    {
+      "id": "A09",
+      "hunks": [
+        18,
+        76,
+        77
+      ],
+      "area": "Template factory qualification",
+      "decision": "Remove",
+      "necessity": "Qualified and aliased TemplateValue factories refer to the same official type.",
+      "alternative": "Use the normalized upstream spelling exactly. These differences supplied no runtime behavior and created avoidable merge work.",
+      "evidence": "JavaScriptCompatibilityTests.cs, ParityTests.cs"
+    },
+    {
+      "id": "A10",
+      "hunks": [
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "area": "Object/class method grammar and bodyless signatures",
+      "decision": "Keep",
+      "necessity": "Generic method starts, setter restrictions, explicit this and overload permission depend on the containing method kind. Bodyless methods return no runtime node and restore parser state.",
+      "alternative": "A single mutable method-mode field would make nested methods fragile. Emitting empty methods or parsing a head twice costs allocations or changes runtime members. Moving the whole upstream method to a partial hides upstream changes.",
+      "evidence": "GenericsTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A11",
+      "hunks": [
+        26
+      ],
+      "area": "Decorated-class rewrite",
+      "decision": "Remove",
+      "necessity": "The public compiler masks decorators off in both source modes. The special rewrite was for a feature outside the supported contract.",
+      "alternative": "Restore upstream code and retain explicit script/module rejection tests. If decorators are enabled later, their AST location/finalization semantics must be reviewed before claiming support.",
+      "evidence": "UpstreamIsolationTests.cs, CompilerTests.cs"
+    },
+    {
+      "id": "A12",
+      "hunks": [
+        27
+      ],
+      "area": "Token budget and cancellation",
+      "decision": "Keep",
+      "necessity": "Every parser token, including lookahead, must count against bounded work and periodically observe cancellation.",
+      "alternative": "Tokenizer callbacks introduce a delegate path and different initial/EOF accounting. Duplicating Next into an owned file would hide future tokenizer-context changes for one hook.",
+      "evidence": "LimitTests.cs, HardeningTests.cs"
+    },
+    {
+      "id": "A13",
+      "hunks": [
+        28,
+        29
+      ],
+      "area": "Public AST finalization and node budget",
+      "decision": "Keep",
+      "necessity": "The official AST exposes init-only Range/Location, so constructors initialize those values and finalizers count nodes/call the original callback.",
+      "alternative": "Reflection/private setters violate the public-AST boundary. Factories using closures or a second node pass add allocation/work. Keep the upstream finalizer bodies visible instead of copying them into a partial.",
+      "evidence": "JavaScriptCompatibilityTests.cs, LimitTests.cs, UpstreamIsolationTests.cs"
+    },
+    {
+      "id": "A14",
+      "hunks": [
+        30
+      ],
+      "area": "Syntax depth and nullable recursion results",
+      "decision": "Keep",
+      "necessity": "Explicit syntax depth prevents unsafe recursion; nullable recursion results allow erased declarations while still decrementing depth.",
+      "alternative": "The native stack guard alone cannot enforce configured depth or the same public exception contract. A sentinel node adds allocations and complicates directive/binding rules.",
+      "evidence": "LimitTests.cs, isolated stress runner"
+    },
+    {
+      "id": "A15",
+      "hunks": [
+        31,
+        35
+      ],
+      "area": "Asserted bindings and instantiated assignment targets",
+      "decision": "Keep",
+      "necessity": "Erasure removes syntax needed to reject illegal binding/assignment targets. Lazy sets retain that information until the native target checks run.",
+      "alternative": "Decorating or wrapping official nodes changes AST shape. Rewalking source at each target risks repeated work. Hooks at the native validation points are the narrow integration.",
+      "evidence": "ParityTests.cs, GenericsTests.cs"
+    },
+    {
+      "id": "A16",
+      "hunks": [
+        32
+      ],
+      "area": "Explicit this parameter",
+      "decision": "Keep",
+      "necessity": "Only allowed receiver positions consume this plus its required annotation without adding a runtime parameter.",
+      "alternative": "Treating this as an identifier changes runtime arity/bindings. The small guarded block sits at the list boundary; another always-called helper adds indirection for little reduction.",
+      "evidence": "SignatureTests.cs"
+    },
+    {
+      "id": "A17",
+      "hunks": [
+        33,
+        34
+      ],
+      "area": "Binding annotations before defaults",
+      "decision": "Keep",
+      "necessity": "Rest/ordinary parameter annotations must be consumed between the native binding atom and default expression, with context-specific optional rules.",
+      "alternative": "Parsing the default first already fails on the colon. Moving all binding-list code into a partial would duplicate upstream binding grammar.",
+      "evidence": "CompilerTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A18",
+      "hunks": [
+        36,
+        41,
+        42,
+        60
+      ],
+      "area": "Erasure in statement lists",
+      "decision": "Keep",
+      "necessity": "Program, switch, block and static-block lists skip type-only declarations and nullable signatures while maintaining their original terminators and scope handling.",
+      "alternative": "Erasing in the tokenizer or required single-statement parser accepts declarations in invalid contexts. A shared full statement-list implementation duplicates differing upstream scope/terminator logic.",
+      "evidence": "ErasureTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A19",
+      "hunks": [
+        37
+      ],
+      "area": "Wholly erased module marker",
+      "decision": "Keep",
+      "necessity": "An empty export preserves module identity when a supplied Module AST is serialized back to JavaScript.",
+      "alternative": "SourceType.Module alone suffices for some Jint calls but loses module syntax on serialization, which is part of the existing tested AST contract.",
+      "evidence": "ErasureTests.cs, TypeScriptReferenceTests.cs"
+    },
+    {
+      "id": "A20",
+      "hunks": [
+        38,
+        39,
+        40
+      ],
+      "area": "Required statement versus nullable list item",
+      "decision": "Keep",
+      "necessity": "The renamed upstream implementation returns nullable declarations; an owned required-statement wrapper rejects erasure where a statement must exist.",
+      "alternative": "Restoring the original method name with nullable return would require changing more required-statement call sites. Returning null! through non-null contracts or fake EmptyStatement nodes obscures correctness.",
+      "evidence": "SignatureTests.cs, ErasureTests.cs"
+    },
+    {
+      "id": "A21",
+      "hunks": [
+        43,
+        44
+      ],
+      "area": "Deferred variable declaration construction",
+      "decision": "Keep",
+      "necessity": "A small value-type parts record delays the single VariableDeclaration allocation until trailing punctuation is consumed and its final range is known.",
+      "alternative": "Constructing early then copying doubles nodes. A closure factory allocates; storing pending declarations in parser fields breaks nested parsing. Two explicit type/construction hooks remain the small option.",
+      "evidence": "JavaScriptCompatibilityTests.cs, CompilerTests.cs"
+    },
+    {
+      "id": "A22",
+      "hunks": [
+        45
+      ],
+      "area": "Variable annotations and function return contract",
+      "decision": "Keep",
+      "necessity": "Variable types are erased before binding validation. The adjacent function signature must admit erased overload/ambient declarations and ambient context.",
+      "alternative": "Post-parse erasure cannot parse the colon; erasure sentinels or global ambient state broaden changes or make recursion fragile.",
+      "evidence": "CompilerTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A23",
+      "hunks": [
+        46,
+        47
+      ],
+      "area": "Function binding registration and signature exit",
+      "decision": "Keep",
+      "necessity": "Register a runtime declaration only after finding an implementation; overloads/ambient signatures must not reserve a runtime binding. Signature exits validate parameters and restore scope/yield/await state.",
+      "alternative": "Looking ahead over every function head parses it twice; undoing a registration requires rolling back several scope/export tables. This is an intentional semantic integration point, not a cosmetic change. Error ordering on multiply-invalid input can differ from upstream.",
+      "evidence": "SignatureTests.cs, JavaScriptCompatibilityTests.cs"
+    },
+    {
+      "id": "A24",
+      "hunks": [
+        48
+      ],
+      "area": "Function type parameters and receiver permission",
+      "decision": "Keep",
+      "necessity": "Type parameters precede the ordinary parameter list; named functions permit an erased this receiver.",
+      "alternative": "The native parameter parser cannot consume < or this as ordinary runtime bindings. Small entry hooks avoid cloning the parameter parser.",
+      "evidence": "GenericsTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A25",
+      "hunks": [
+        49,
+        50,
+        51
+      ],
+      "area": "Typed class headers and erased members",
+      "decision": "Keep",
+      "necessity": "Consume class type parameters/implements clauses and omit overload members without losing native class scope/private-name checks.",
+      "alternative": "Creating then deleting runtime class members wastes nodes and can execute/bind members incorrectly. Keeping the native class loop exposes future class fixes.",
+      "evidence": "GenericsTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A26",
+      "hunks": [
+        52,
+        53,
+        54
+      ],
+      "area": "Class modifier position and order",
+      "decision": "Keep",
+      "necessity": "Accessibility/readonly/override interact with upstream static parsing and contextual member names; modifiers on static blocks and invalid order must reject.",
+      "alternative": "A prefix token stripper cannot know whether static/readonly is a name or modifier. The modifier loop is already owned; these short hooks need the native parser context.",
+      "evidence": "GenericsTests.cs, TypeScriptReferenceTests.cs"
+    },
+    {
+      "id": "A27",
+      "hunks": [
+        55
+      ],
+      "area": "Class comment indentation",
+      "decision": "Remove",
+      "necessity": "The indentation difference changes no behavior.",
+      "alternative": "Restore normalized upstream formatting to eliminate an unnecessary hunk.",
+      "evidence": "Byte comparison"
+    },
+    {
+      "id": "A28",
+      "hunks": [
+        56,
+        57
+      ],
+      "area": "Optional/override/private and definite class members",
+      "decision": "Extract",
+      "necessity": "Validation rules remain necessary, but the longer TypeScript-only blocks belong in the owned class partial. Ordinary members skip the extra validation call; the field annotation helper is inlined.",
+      "alternative": "Copying the entire class-member parser hides upstream grammar. Removing the checks would accept unsupported or malformed syntax. Keep guarded entry calls in upstream.",
+      "evidence": "GenericsTests.cs, TypeScriptReferenceTests.cs"
+    },
+    {
+      "id": "A29",
+      "hunks": [
+        58,
+        59
+      ],
+      "area": "Method overload return and class context",
+      "decision": "Keep",
+      "necessity": "Bodyless class methods/constructors return no member; constructors/accessors reject type parameters and receive their correct receiver/optional/overload permissions.",
+      "alternative": "A shared permissive parser followed by AST pruning validates too late and creates unwanted nodes. Explicit context arguments preserve nested parsing.",
+      "evidence": "SignatureTests.cs, GenericsTests.cs"
+    },
+    {
+      "id": "A30",
+      "hunks": [
+        61
+      ],
+      "area": "Generic heritage boundary",
+      "decision": "Keep",
+      "necessity": "The class body/implements boundary makes trailing heritage type arguments unambiguous.",
+      "alternative": "Reinterpreting ordinary expression comparisons globally would misparse JavaScript. This short boundary-specific hook is smaller than cloning the superclass parser.",
+      "evidence": "GenericsTests.cs"
+    },
+    {
+      "id": "A31",
+      "hunks": [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "area": "Export erasure and binding accounting",
+      "decision": "Keep",
+      "necessity": "Export wrappers can disappear with declarations; erased inline exports may require a source, and default-export registration waits for a runtime implementation.",
+      "alternative": "Keeping empty wrappers can introduce runtime exports or duplicate-export errors. A postpass cannot undo native export checks already performed. Nullability and guarded registration are intentional.",
+      "evidence": "ErasureTests.cs, SignatureTests.cs"
+    },
+    {
+      "id": "A32",
+      "hunks": [
+        68,
+        69
+      ],
+      "area": "Inline type import/export specifiers",
+      "decision": "Extract",
+      "necessity": "A shared owned helper consumes only recognized inline type specifiers; original native nodes.Add calls remain intact for runtime specifiers and side effects.",
+      "alternative": "Duplicated inline blocks added avoidable handwritten surface. Erasing the entire declaration would drop side effects of an empty runtime import/export.",
+      "evidence": "ErasureTests.cs, TypeScriptReferenceTests.cs"
+    },
+    {
+      "id": "A33",
+      "hunks": [
+        70,
+        71
+      ],
+      "area": "Directive prologue through erased declarations",
+      "decision": "Keep",
+      "necessity": "Erased types/signatures must not terminate an emitted directive prologue. Runtime declarations do terminate it, so one may be parsed and added before leaving the prologue.",
+      "alternative": "Post-hoc deletion leaves strict-mode parsing/early errors wrong. Fabricated empty statements also terminate directives. A pre-scan of every declaration would add a second parse.",
+      "evidence": "SignatureTests.cs, ErasureTests.cs"
+    },
+    {
+      "id": "A34",
+      "hunks": [
+        73,
+        74
+      ],
+      "area": "Preserving lookahead strings across reset",
+      "decision": "Replace; restore upstream file",
+      "necessity": "The performance requirement is real, but changing ResetInternal was unnecessary. An owned wrapper detaches the StringPool, calls untouched ResetInternal, then restores it in finally.",
+      "alternative": "Saving the struct without detaching is incorrect because Clear mutates shared arrays. Clearing normally re-allocates long identifiers for every probe; copying reset logic would hide future reset fixes.",
+      "evidence": "UpstreamIsolationTests.cs, HardeningTests.cs, benchmarks"
+    },
+    {
+      "id": "A35",
+      "hunks": [
+        75
+      ],
+      "area": "Type-mode angle token splitting",
+      "decision": "Keep",
+      "necessity": "Nested type closers must split >>, >>> and >= while the ordinary JavaScript shift/comparison path remains unchanged.",
+      "alternative": "Re-tokenizing/rewriting all angle operators outside the lexer complicates token locations and multiplies work. One guarded line at the existing lexer boundary is the narrow integration.",
+      "evidence": "GenericsTests.cs, HardeningTests.cs, ParityTests.cs"
+    }
+  ],
+  "result": {
+    "schema": 1,
+    "upstreamFiles": 74,
+    "customizedUpstreamFiles": [
+      {
+        "file": "Parser.Expression.cs",
+        "status": "modified"
+      },
+      {
+        "file": "Parser.Helpers.cs",
+        "status": "modified"
+      },
+      {
+        "file": "Parser.LVal.cs",
+        "status": "modified"
+      },
+      {
+        "file": "Parser.Statement.cs",
+        "status": "modified"
+      },
+      {
+        "file": "Tokenizer.cs",
+        "status": "modified"
+      }
+    ],
+    "ownedFiles": [
+      "Parser.PublicAst.cs",
+      "Parser.TypeScript.Ambient.cs",
+      "Parser.TypeScript.Assertions.cs",
+      "Parser.TypeScript.Classes.cs",
+      "Parser.TypeScript.Declarations.cs",
+      "Parser.TypeScript.Generics.cs",
+      "Parser.TypeScript.Signatures.cs",
+      "Parser.TypeScript.Types.cs",
+      "Parser.TypeScript.cs",
+      "Tokenizer.TypeScript.cs"
+    ],
+    "addedLines": 185,
+    "removedLines": 77,
+    "patchLines": 842,
+    "patchSha256": "8c8b2fafd0625bd52b72e2f53e4cf4b3b4e1fb6578687bf1f82605a54629f6c5",
+    "unitTestsPerRuntime": 18903,
+    "runtimes": [
+      ".NET 8.0.30",
+      ".NET 10.0.11"
+    ],
+    "stressCasesPerRuntime": 38,
+    "maintenanceTests": 31,
+    "originalExperimentTests": 57,
+    "benchmarkCombinations": 102,
+    "allocationChanges": 0
+  }
+}

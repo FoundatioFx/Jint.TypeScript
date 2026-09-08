@@ -1,0 +1,21 @@
+---
+name: jint-update-acornima
+description: "Update Jint.TypeScript's vendored Acornima parser to latest upstream or a selected revision. Use for upstream parser synchronization, staged merge conflicts, customization inventory, or rebuilding the normalized baseline."
+---
+
+# Update Acornima for Jint.TypeScript
+
+Locate the Jint.TypeScript repository from the current directory or nearby checkout. On this workstation the default is `/home/ejsmith/Projects/Foundatio/Jint.TypeScript`. Confirm `src/Jint.TypeScript/Jint.TypeScript.csproj`, `eng/upstream.mjs` and the official Acornima repository pin in `eng/upstream.json` before changing files.
+
+Read **`docs/upstream-updates.md` in that repository** for the exact commands, validation sequence and recovery procedure. Use the repository's maintained scripts, not a replacement importer. Read `docs/maintenance.md` when resolving grammar or AST integration changes. Read `docs/upstream-customization-audit.md` before reconciling existing customizations; it records why each change exists and which alternatives were rejected.
+
+1. Inspect current work and run `node eng/upstream.mjs status`. If intentional parser edits made the patch stale, review them and run `refresh`. Preserve untracked files and the project index; an unborn branch is supported.
+2. Run `prepare --work-dir <new-stage>` to fetch the current official HEAD and freeze an exact commit. Use `--ref` only for a requested revision. Review the report, normalized upstream diff, raw upstream commits/API changes and staged merge. Exit code 2 means conflicts; resolve them in `<stage>/merge` and mark those paths resolved using its own Git index.
+3. Evaluate every changed handwritten hunk and every changed normalization rule: retain only the behavior required by supported syntax, source locations, resource limits or the public AST boundary. Automated adaptation still counts as modified upstream code. Prefer a small owned wrapper over changing native behavior when it preserves performance and nested state; do not move whole upstream methods merely to shrink the diff. Update the audit when the tradeoff changes. Keep TypeScript logic and public-AST helpers in the owned-file manifest. Keep small hooks in upstream methods so upstream fixes remain visible. Never transplant the entire old parser file to dismiss a conflict. Preserve constructor/initializer evaluation order and original source locations.
+4. After reviewing the concrete candidate, run `apply --work-dir <stage>` and complete the documented .NET 8/.NET 10 tests, isolated stress runners, package build and origin reconstruction check. The user's update request authorizes this local apply; do not add a separate confirmation gate. If nothing changed upstream, report that fact after verifying the no-op result.
+5. Verify compatibility with the published official Acornima AST and the selected Jint package. Change package pins/locks only when needed and review those changes separately. An unpublished required AST API is a real compatibility blocker, not permission to switch to reflection or a local replacement AST assembly. Add regression coverage for upstream changes touching our hooks. Refresh fixture expectations only after reviewing semantic changes.
+6. Benchmark after other heavy jobs finish, comparing like-for-like runtime/dependencies and all allocation results. Report the exact old/new source commits, package changes, manual resolutions, test/stress results and meaningful performance differences. Keep the stage/backup through validation.
+
+Normalizers are provenance-checked. If they need changes, first use the documented pinned-revision `--allow-normalizer-change` workflow; do not hand-edit snapshot hashes. If apply/rollback refuses because local work changed, preserve that work and restage or recover deliberately. Do not bypass the stale-work check. Read the recovery section before using backups after a process interruption.
+
+Use Node, PowerShell or C# for any additional scripts. Keep runtime parsing native C# and ASTs from the official Acornima assembly. This workflow updates local sources; publishing packages or pushing changes is a separate request.

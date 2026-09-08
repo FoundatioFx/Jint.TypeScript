@@ -1,0 +1,4757 @@
+[
+  {
+    "name": "ES2016/exponent/exp_assign.js",
+    "source": "x **= y;\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_bitnot.js",
+    "source": "x ** ~y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_delete.js",
+    "source": "x ** delete y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_minus.js",
+    "source": "x ** -y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_minusminus.js",
+    "source": "x ** --y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_not.js",
+    "source": "x ** !y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_operator.js",
+    "source": "x ** y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_plus.js",
+    "source": "x ** \u002By\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_plusplus.js",
+    "source": "x ** \u002B\u002By\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_precedence.js",
+    "source": "x * y ** -z\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_typeof.js",
+    "source": "x ** typeof y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/exp_void.js",
+    "source": "x ** void y\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/parenthesized_param_arrowfunc_exp.js",
+    "source": "(a =\u003E {}) ** b\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/parenthesized_paramless_arrowfunc_exp.js",
+    "source": "(() =\u003E {}) ** 2\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/exponent/update_exp.js",
+    "source": "(\u002B\u002Bx ** y) - (--p ** q)\n",
+    "module": false
+  },
+  {
+    "name": "ES2016/identifier/gujarati_zha.js",
+    "source": "\u0AF9\n\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/array-binding-pattern-01.js",
+    "source": "([a]) =\u003E [0];\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/array-binding-pattern-02.js",
+    "source": "([a,b])=\u003E0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/array-binding-pattern-03.js",
+    "source": "([a,...b])=\u003E0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/array-binding-pattern-empty.js",
+    "source": "([])=\u003E0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/array-binding-pattern/elision.js",
+    "source": "([,,])=\u003E0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/arrow-with-multiple-arg-and-rest.js",
+    "source": "(a,b,...c) =\u003E 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/arrow-with-only-rest.js",
+    "source": "(...a) =\u003E 0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/concise-body-in.js",
+    "source": "for (() =\u003E { x in y };;);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0000.js",
+    "source": "() =\u003E \u0022test\u0022",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0001.js",
+    "source": "e =\u003E \u0022test\u0022",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0002.js",
+    "source": "(e) =\u003E \u0022test\u0022",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0003.js",
+    "source": "(a, b) =\u003E \u0022test\u0022",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0004.js",
+    "source": "e =\u003E { 42; }",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0005.js",
+    "source": "e =\u003E ({ property: 42 })",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0006.js",
+    "source": "e =\u003E { label: 42 }",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0007.js",
+    "source": "(a, b) =\u003E { 42; }",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0008.js",
+    "source": "(x=1) =\u003E x * x",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0009.js",
+    "source": "eval =\u003E 42",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0010.js",
+    "source": "arguments =\u003E 42",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0011.js",
+    "source": "(a) =\u003E 00",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0012.js",
+    "source": "(eval, a) =\u003E 42",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0013.js",
+    "source": "(eval = 10) =\u003E 42",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0014.js",
+    "source": "(eval, a = 10) =\u003E 42",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0015.js",
+    "source": "(x =\u003E x)",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0016.js",
+    "source": "x =\u003E y =\u003E 42",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0017.js",
+    "source": "(x) =\u003E ((y, z) =\u003E (x, y, z))",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0018.js",
+    "source": "foo(() =\u003E {})",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0019.js",
+    "source": "foo((x, y) =\u003E {})",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/migrated_0020.js",
+    "source": "(sun) =\u003E earth",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/nested-cover-grammar.js",
+    "source": "([[[[[[[[[[[[[[[[[[[[{a=b}]]]]]]]]]]]]]]]]]]]])=\u003E0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/object-binding-pattern-01.js",
+    "source": "({a,b=b,a:c,[a]:[d]})=\u003E0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/arrow-function/object-binding-pattern/object-binding-pattern-empty.js",
+    "source": "({})=\u003E0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binary-integer-literal/migrated_0000.js",
+    "source": "0b0",
+    "module": false
+  },
+  {
+    "name": "ES6/binary-integer-literal/migrated_0001.js",
+    "source": "0b1",
+    "module": false
+  },
+  {
+    "name": "ES6/binary-integer-literal/migrated_0002.js",
+    "source": "0b10",
+    "module": false
+  },
+  {
+    "name": "ES6/binary-integer-literal/migrated_0003.js",
+    "source": "0B0",
+    "module": false
+  },
+  {
+    "name": "ES6/binary-integer-literal/migrated_0004.js",
+    "source": "0B1",
+    "module": false
+  },
+  {
+    "name": "ES6/binary-integer-literal/migrated_0005.js",
+    "source": "0B10",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/elision.js",
+    "source": "let [a,] = 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/empty-pattern-catch-param.js",
+    "source": "try { } catch ([]) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/empty-pattern-fn.js",
+    "source": "function a([]) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/empty-pattern-lexical.js",
+    "source": "let [] = [];\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/empty-pattern-var.js",
+    "source": "var [] = 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/hole.js",
+    "source": "let [a,,b]=0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/nested-pattern.js",
+    "source": "let [[]]=0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/patterned-catch.js",
+    "source": "try {} catch ([a,b, {c, d:e=0, [f]:g=0, h=i}]) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/rest-element-array-pattern.js",
+    "source": "let [...[x]] = y\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/rest-element-object-pattern.js",
+    "source": "var [...{x}] = y\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/rest.js",
+    "source": "let [...a] = 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/tailing-hold.js",
+    "source": "let [a,,]=0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/var-for-in.js",
+    "source": "for (var [x, y] in z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/var_let_array.js",
+    "source": "var [let] = answer;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/with-default-catch-param.js",
+    "source": "try { } catch ([a = 0]) { }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/with-default-fn.js",
+    "source": "function a([a=0]) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/array-pattern/with-object-pattern.js",
+    "source": "let [{a}] = 0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/elision.js",
+    "source": "let {a,} = 0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/empty-catch-param.js",
+    "source": "try { } catch ({}) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/empty-fn.js",
+    "source": "function a({}) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/empty-for-lex.js",
+    "source": "for (let {} in 0);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/empty-lexical.js",
+    "source": "let {} = 0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/empty-var.js",
+    "source": "var {} = 0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/nested.js",
+    "source": "let {a:{}} = 0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/properties.js",
+    "source": "let {a,b=0,c:d,e:f=0,[g]:[h]}=0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/binding-pattern/object-pattern/var-for-in.js",
+    "source": "for (var {x, y} in z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0000.js",
+    "source": "class A {}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0001.js",
+    "source": "class A extends 0 {}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0002.js",
+    "source": "class A {;}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0003.js",
+    "source": "class A {;;}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0004.js",
+    "source": "class A {a(){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0005.js",
+    "source": "class A {a(){}b(){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0006.js",
+    "source": "class A {a(){};b(){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0007.js",
+    "source": "class A {a(){};b(){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0008.js",
+    "source": "class A {;a(){};b(){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0009.js",
+    "source": "class A {static(){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0010.js",
+    "source": "class A {get a(){} set b(c){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0011.js",
+    "source": "class A {static a(){} static get a(){} static set a(b){} }",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0012.js",
+    "source": "class A {static a(){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0013.js",
+    "source": "class A {static [a](){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0014.js",
+    "source": "class A {static[a](){}; static[b](){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0015.js",
+    "source": "class A {static static(){};}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0016.js",
+    "source": "var x = class A extends 0{}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0017.js",
+    "source": "class A {prototype(){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0018.js",
+    "source": "class A {constructor(){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0019.js",
+    "source": "class A {\u0022constructor\u0022(){} [\u0022constructor\u0022](){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0020.js",
+    "source": "class A {static constructor(){} static constructor(){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0021.js",
+    "source": "class A {static [\u0022prototype\u0022](){}}",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0022.js",
+    "source": "(class {})",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0023.js",
+    "source": "(class A {})",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0024.js",
+    "source": "(class extends 0{})",
+    "module": false
+  },
+  {
+    "name": "ES6/class/migrated_0025.js",
+    "source": "(class A extends 0{})",
+    "module": false
+  },
+  {
+    "name": "ES6/default-parameter-value/migrated_0000.js",
+    "source": "x = function(y = 1) {}",
+    "module": false
+  },
+  {
+    "name": "ES6/default-parameter-value/migrated_0001.js",
+    "source": "function f(a = 1) {}",
+    "module": false
+  },
+  {
+    "name": "ES6/default-parameter-value/migrated_0002.js",
+    "source": "x = { f: function(a=1) {} }",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/array-pattern/dup-assignment.js",
+    "source": "[a,a,,...a]=0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/array-pattern/elision.js",
+    "source": "[,,]=0\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/array-pattern/member-expr-in-rest.js",
+    "source": "[...a[0]] = 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/array-pattern/nested-assignment.js",
+    "source": "[a,b=0,[c,...a[0]]={}]=0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/array-pattern/nested-cover-grammar.js",
+    "source": "[{a=b}=0]\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/array-pattern/simple-assignment.js",
+    "source": "[a] = 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/object-pattern/empty-object-pattern-assignment.js",
+    "source": "({} = 0);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/object-pattern/nested-cover-grammar.js",
+    "source": "[[[[[[[[[[[[[[[[[[[[{a=b[0]}]]]]]]]]]]]]]]]]]]]]=0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/destructuring-assignment/object-pattern/object-pattern-assignment.js",
+    "source": "({\n    a,\n    a:a,\n    a:a=a,\n    [a]:{a},\n    a:some_call()[a],\n    a:this.a\n} = 0);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/export-declaration/export-const-number.js",
+    "source": "export const foo = 1;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-array-expression.js",
+    "source": "export default [\n].map((e, i) =\u003E ({\n    ...e,\n    index: i,\n}))",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-array.js",
+    "source": "export default [];\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-assignment.module.js",
+    "source": "export default a = 0;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-class.js",
+    "source": "export default class {}\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-expression.js",
+    "source": "export default (1 \u002B 2);\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-function.js",
+    "source": "export default function () {}\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-named-class.js",
+    "source": "export default class foo {}\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-named-function.js",
+    "source": "export default function foo() {}\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-number.js",
+    "source": "export default 42;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-object-expression.js",
+    "source": "export default {\n  x: 1\n}.propertyIsEnumerable(\u0022x\u0022)",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-object.js",
+    "source": "export default { foo: 1 };\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-sequence-expression.js",
+    "source": "export default (window.x = { p: 1 }, window.x.p)",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-default-value.js",
+    "source": "export default foo;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-batch.js",
+    "source": "export * from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-default.js",
+    "source": "export {default} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-named-as-default.js",
+    "source": "export {foo as default} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-named-as-specifier.js",
+    "source": "export {foo as bar} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-named-as-specifiers.js",
+    "source": "export {foo as default, bar} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-specifier.js",
+    "source": "export {foo} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-from-specifiers.js",
+    "source": "export {foo, bar} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-function-declaration.js",
+    "source": "export function foo () {} false\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-function.js",
+    "source": "export function foo () {}\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-let-number.js",
+    "source": "export let foo = 1;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-named-as-default.js",
+    "source": "const foo = \u0027foo\u0027;\nexport {foo as default};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-named-as-specifier.js",
+    "source": "const foo = \u0027foo\u0027;\nexport {foo as bar};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-named-as-specifiers.js",
+    "source": "const foo = \u0027foo\u0027, bar = \u0027bar\u0027;\nexport {foo as default, bar};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-named-empty.js",
+    "source": "export {};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-named-specifiers-comma.js",
+    "source": "const foo = \u0027foo\u0027, bar = \u0027bar\u0027;\nexport {foo, bar,};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-named-specifiers.js",
+    "source": "const foo = \u0027foo\u0027, bar = \u0027bar\u0027;\nexport {foo, bar};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-var-anonymous-function.js",
+    "source": "export var foo = function () {};\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-var-number.js",
+    "source": "export var foo = 1;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/export-declaration/export-var.js",
+    "source": "export var bar;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/for-of/for-of-array-pattern-let.js",
+    "source": "for (let [p, q] of r);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-array-pattern-var.js",
+    "source": "for (var [p, q] of r);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-array-pattern.js",
+    "source": "for ([p, q] of r);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-let.js",
+    "source": "for (x of let) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-object-pattern-const.js",
+    "source": "for (const {x, y} of z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-object-pattern-var.js",
+    "source": "for (var {x, y} of z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-object-pattern.js",
+    "source": "for ({x, y} of z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-with-const.js",
+    "source": "for (const y of list);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-with-let.js",
+    "source": "for (let z of list);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of-with-var.js",
+    "source": "for (var x of list);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/for-of.js",
+    "source": "for (p of q);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/for-of/let-of-of.js",
+    "source": "for (let of of xyz);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-declaration-with-params.js",
+    "source": "function *foo(x, y, z) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-declaration-with-yield-delegate.js",
+    "source": "function *foo() { yield* 3; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-declaration-with-yield.js",
+    "source": "function *foo() { yield 3; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-declaration.js",
+    "source": "function *foo() {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-expression-rest-param.js",
+    "source": "(function*(...x) {})\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-expression-with-params.js",
+    "source": "(function*(x, y, z) {})\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-expression-with-yield-delegate.js",
+    "source": "(function*(x, y, z) { yield* x; })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-expression-with-yield.js",
+    "source": "(function*() { yield 3; })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-expression.js",
+    "source": "(function*() {})\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-method-with-params.js",
+    "source": "({ *foo(x, y, z) {} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-method-with-yield-delegate.js",
+    "source": "({ *foo() { yield* 3; } })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-method-with-yield-expression.js",
+    "source": "({ *foo() { yield 3; } })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-method-with-yield-line-terminator.js",
+    "source": "({ *foo() { \n  yield\n  3\n} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-method-with-yield.js",
+    "source": "({ *foo() { yield; } })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/generator-method.js",
+    "source": "({ *foo() {} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/static-generator-method-with-computed-name.js",
+    "source": "class Foo { static *[foo]() {} }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/generator/static-generator-method.js",
+    "source": "class Foo { static *foo() {} }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/dakuten_handakuten.js",
+    "source": "\u309B\u002B \u309C\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_all.js",
+    "source": "var \\u{41}\\u{42}\\u{43};\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_math_alef.js",
+    "source": "var \\u{1EE00}\n\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_math_dal_part.js",
+    "source": "var _\\u{1EE03}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_math_kaf_lam.js",
+    "source": "var \\u{1EE0A}\\u{1EE0B}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_math_zain_start.js",
+    "source": "var \\u{1EE06}_$\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_part.js",
+    "source": "var A\\u{42}C;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/escaped_start.js",
+    "source": "var \\u{41}BC;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/estimated.js",
+    "source": "let \u212E\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/ethiopic_digits.js",
+    "source": "var _\u1369\u136A\u136B\u136C\u136D\u136E\u136F\u1370\u1371\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/expression_await.module.js",
+    "source": "export var answer = await \u002B 1;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/identifier/invalid-module_await.js",
+    "source": "await = 0;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/invalid_function_await.module.js",
+    "source": "function await() {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/invalid_lone_surrogate.source.js",
+    "source": "var source = \u0027\\uD800!\u0027;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/math_alef.js",
+    "source": "var \uD83B\uDE00\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/math_dal_part.js",
+    "source": "var _\uD83B\uDE03\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/math_kaf_lam.js",
+    "source": "var \uD83B\uDE0A\uD83B\uDE0B\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/math_zain_start.js",
+    "source": "var \uD83B\uDE06_$\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/valid_await.js",
+    "source": "var await; (await);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/weierstrass.js",
+    "source": "var \u2118;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/identifier/weierstrass_weierstrass.js",
+    "source": "var \u2118\\u2118\n",
+    "module": false
+  },
+  {
+    "name": "ES6/import-declaration/import-default-and-named-specifiers.js",
+    "source": "import foo, {bar} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-default-and-namespace-specifiers.js",
+    "source": "import foo, * as bar from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-default-as.js",
+    "source": "import {default as foo} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-default.js",
+    "source": "import foo from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-jquery.js",
+    "source": "import $ from \u0022jquery\u0022\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-module.js",
+    "source": "import \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-named-as-specifier.js",
+    "source": "import {bar as baz} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-named-as-specifiers.js",
+    "source": "import {bar as baz, xyz} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-named-empty.js",
+    "source": "import {} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-named-specifier.js",
+    "source": "import {bar} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-named-specifiers-comma.js",
+    "source": "import {bar, baz,} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-named-specifiers.js",
+    "source": "import {bar, baz} from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-namespace-specifier.js",
+    "source": "import * as foo from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/import-declaration/import-null-as-nil.js",
+    "source": "import { null as nil } from \u0022bar\u0022\n",
+    "module": true
+  },
+  {
+    "name": "ES6/lexical-declaration/for_let_in.js",
+    "source": "for (let in x) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/lexical-declaration/let_assign.js",
+    "source": "let = 42;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/lexical-declaration/let_identifier.js",
+    "source": "let;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/lexical-declaration/let_member.js",
+    "source": "let.let = foo\n",
+    "module": false
+  },
+  {
+    "name": "ES6/lexical-declaration/migrated_0000.js",
+    "source": "switch (answer) { case 42: let t = 42; break; }",
+    "module": false
+  },
+  {
+    "name": "ES6/lexical-declaration/module_let.module.js",
+    "source": "let x\n",
+    "module": false
+  },
+  {
+    "name": "ES6/meta-property/assign-new-target.js",
+    "source": "function f() {\n    let x = new.target;\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/meta-property/new-new-target.js",
+    "source": "function f() {\n    new new.target;\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/meta-property/new-target-declaration.js",
+    "source": "function f() {\n    new.target;\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/meta-property/new-target-expression.js",
+    "source": "var f = function() { new.target; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/meta-property/new-target-invoke.js",
+    "source": "function f() {\n    new.target();\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/meta-property/new-target-precedence.js",
+    "source": "function f() {\n    new new.target()();\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/method-definition/migrated_0000.js",
+    "source": "x = { method() { } }",
+    "module": false
+  },
+  {
+    "name": "ES6/method-definition/migrated_0001.js",
+    "source": "x = { method(test) { } }",
+    "module": false
+  },
+  {
+    "name": "ES6/method-definition/migrated_0002.js",
+    "source": "x = { \u0027method\u0027() { } }",
+    "module": false
+  },
+  {
+    "name": "ES6/method-definition/migrated_0003.js",
+    "source": "x = { get() { } }",
+    "module": false
+  },
+  {
+    "name": "ES6/method-definition/migrated_0004.js",
+    "source": "x = { set() { } }",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-identifier-getter-setter.js",
+    "source": "({ __proto__: null, get __proto__(){}, set __proto__(x){} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-identifier-getter.js",
+    "source": "({ __proto__: null, get __proto__(){} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-identifier-method.js",
+    "source": "({ __proto__: null, __proto__(){}, })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-identifier-setter.js",
+    "source": "({ __proto__: null, set __proto__(x){} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-identifier-shorthand.js",
+    "source": "({ __proto__: null, __proto__ })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-literal-getter-setter.js",
+    "source": "({ \u0022__proto__\u0022: null, get __proto__(){}, set __proto__(x){} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-literal-getter.js",
+    "source": "({ \u0022__proto__\u0022: null, get __proto__(){} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-literal-method.js",
+    "source": "({ \u0022__proto__\u0022: null, __proto__(){}, })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-literal-setter.js",
+    "source": "({ \u0022__proto__\u0022: null, set __proto__(x){} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-literal-shorthand.js",
+    "source": "({ \u0022__proto__\u0022: null, __proto__ })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-shorthand-assignments.js",
+    "source": "({__proto__ = 0, __proto__ = 0} = {})\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-shorthand-identifier.js",
+    "source": "({ __proto__, __proto__: null })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-shorthand-literal.js",
+    "source": "({ __proto__, \u0022__proto__\u0022: null })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-initialiser/proto-shorthands.js",
+    "source": "({ __proto__, __proto__ })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/object-literal-property-value-shorthand/migrated_0000.js",
+    "source": "x = { y, z }",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0000.js",
+    "source": "00",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0001.js",
+    "source": "0o0",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0002.js",
+    "source": "function test() {\u0027use strict\u0027; 0o0; }",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0003.js",
+    "source": "0o2",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0004.js",
+    "source": "0o12",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0005.js",
+    "source": "0O0",
+    "module": false
+  },
+  {
+    "name": "ES6/octal-integer-literal/migrated_0006.js",
+    "source": "function test() {\u0027use strict\u0027; 0O0; }",
+    "module": false
+  },
+  {
+    "name": "ES6/program/script/invalid-export-declaration.js",
+    "source": "export default function () {}\n",
+    "module": true
+  },
+  {
+    "name": "ES6/program/script/invalid-import-declaration.js",
+    "source": "import foo from \u0022foo\u0022;\n",
+    "module": true
+  },
+  {
+    "name": "ES6/rest-parameter/arrow-rest-parameter-array.js",
+    "source": "(a, ...[b]) =\u003E c\n",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/arrow-rest-parameter-object.js",
+    "source": "(a, ...{b}) =\u003E c\n",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/function-declaration.js",
+    "source": "function f(a, ...b) {}",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/function-expression.js",
+    "source": "f = function(a, ...b) {}",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/object-method.js",
+    "source": "o = { f: function(a, ...b) {} }",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/object-shorthand-method.js",
+    "source": "x = { method(...test) { } }",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/rest-parameter-array.js",
+    "source": "function f(...[a]) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/rest-parameter/rest-parameter-object.js",
+    "source": "function f(...{a}) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/call-multi-spread.js",
+    "source": "f(...x, ...y, ...z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/call-spread-default.js",
+    "source": "f(g, ...h = i);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/call-spread-first.js",
+    "source": "f(...x, y, z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/call-spread-number.js",
+    "source": "f(....5);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/call-spread.js",
+    "source": "f(...g);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/new-multi-spread.js",
+    "source": "new f(...x, ...y, ...z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/new-spread-default.js",
+    "source": "new f(g, ...h = i);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/new-spread-first.js",
+    "source": "new f(...x, y, z);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/new-spread-number.js",
+    "source": "new f(....5);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/spread-element/new-spread.js",
+    "source": "new f(...g);\n",
+    "module": false
+  },
+  {
+    "name": "ES6/super-property/arrow_super.js",
+    "source": "class A extends B {\n    constructor() {\n        () =\u003E super()\n    }\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/super-property/constructor_super.js",
+    "source": "class A extends B {\n    constructor() {\n        super();\n    }\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/super-property/new_super.js",
+    "source": "class A extends B {\n    foo() {\n        new super.bar()\n    }\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/super-property/super_computed.js",
+    "source": "class A extends B {\n    X() {\n        return super[1]\n    }\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/super-property/super_member.js",
+    "source": "class A extends B {\n    X() {\n        return super.y\n    }\n}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/dollar-sign.js",
+    "source": "\u0060$\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/escape-sequences.source.js",
+    "source": "var source = \u0027\u0060\\\\n\\\\r\\\\b\\\\v\\\\t\\\\f\\\\\\n\\\\\\r\\n\u0060\u0027;",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/line-terminators.source.js",
+    "source": "var source = \u0027\u0060\\n\\r\\n\u0060\u0027;",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/literal-escape-sequences.source.js",
+    "source": "var source = \u0027\u0060\\\\u{000042}\\\\u0042\\\\x42\\\\A\\\\0\u0060\u0027;",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/nested-function-with-object-pattern.js",
+    "source": "\u0060${function() { let {x} = y; }}\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/new-expression.js",
+    "source": "new raw\u006042\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/tagged-interpolation.js",
+    "source": "raw\u0060hello ${name}\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/tagged-nested-with-object-literal.js",
+    "source": "raw\u0060token ${\u0060nested ${\u0060deeply\u0060 \u002B {}} blah\u0060}\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/tagged.js",
+    "source": "raw\u006042\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/template-literals/untagged.js",
+    "source": "\u006042\u0060",
+    "module": false
+  },
+  {
+    "name": "ES6/unicode-code-point-escape-sequence/migrated_0000.source.js",
+    "source": "var source = \u0027\u0022\\\\u{714E}\\\\u{8336}\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "ES6/unicode-code-point-escape-sequence/migrated_0001.source.js",
+    "source": "var source = \u0027\u0022\\\\u{20BB7}\\\\u{91CE}\\\\u{5BB6}\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "ES6/unicode-code-point-escape-sequence/migrated_0002.source.js",
+    "source": "var source = \u0027\u0022\\\\u{00000000034}\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/invalid-yield-object-methods.js",
+    "source": "function *a(){({b(){yield}})}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/invalid-yield-object-property-getter.js",
+    "source": "function *a(){({get b(){yield}})}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/invalid-yield-object-property-setter.js",
+    "source": "function *a(){({set b(c){yield}})}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/ternary-yield.js",
+    "source": "function* g(){ x ? yield : y }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-array.js",
+    "source": "function *g() { yield [x] }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-bitnot.js",
+    "source": "function *g() { yield ~x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-class.js",
+    "source": "function *g() { yield class x {} }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-delete.js",
+    "source": "function *g() { yield delete x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-function.js",
+    "source": "function *g() { yield function(){} }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-group.js",
+    "source": "function *g() { yield (x) }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-let.js",
+    "source": "function *g() { yield let }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-minus.js",
+    "source": "function *g() { yield -x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-minusminus.js",
+    "source": "function *g() { yield --x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-new.js",
+    "source": "function *g() { yield new X() }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-not.js",
+    "source": "function *g() { yield !x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-object.js",
+    "source": "function *g() { yield {x} }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-plus.js",
+    "source": "function *g() { yield \u002Bx }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-plusplus.js",
+    "source": "function *g() { yield \u002B\u002Bx }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-regexp1.js",
+    "source": "function *g() { yield /x/i }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-regexp2.js",
+    "source": "function *g() { yield /=x/i }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-super.js",
+    "source": "class A { *b() { yield super.c(); } }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-this.js",
+    "source": "function *g() { yield this }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-typeof.js",
+    "source": "function *g() { yield typeof x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arg-void.js",
+    "source": "function *g() { yield void x }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-array-pattern.js",
+    "source": "([yield] = x)\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arrow-concise-body.js",
+    "source": "(x) =\u003E x * yield;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arrow-function-body.js",
+    "source": "(z) =\u003E { yield \u002B z };\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arrow-parameter-default.js",
+    "source": "(x = yield) =\u003E {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-arrow-parameter-name.js",
+    "source": "(yield) =\u003E 42;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-binding-element.js",
+    "source": "var { x: yield } = foo;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-binding-property.js",
+    "source": "var { yield: x } = foo;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-call-expression-property.js",
+    "source": "function *g() { obj.yield(); }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-catch-parameter.js",
+    "source": "try {} catch (yield) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-expression-precedence.js",
+    "source": "function *g() { yield a=b, yield* c=d, e }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-function-declaration-formal-parameter.js",
+    "source": "function f(yield) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-function-declaration.js",
+    "source": "function yield(){}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-function-expression-parameter.js",
+    "source": "(function(yield) {})\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-function-expression.js",
+    "source": "(function yield(){})\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-arrow-concise-body.js",
+    "source": "function *g() { (x) =\u003E x * yield; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-arrow-function-body.js",
+    "source": "function *g() { (z) =\u003E { yield \u002B z }; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-declaration.js",
+    "source": "function *yield(){}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-function-expression.js",
+    "source": "function *g(){ var y = function yield(){}; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-function-parameter.js",
+    "source": "function *g() { var z = function(yield) {} }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-method.js",
+    "source": "({ *yield() {} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-generator-parameter-object-pattern.js",
+    "source": "function *g({yield: y}){}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-lexical-declaration.js",
+    "source": "let yield = 42;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-member-expression-property.js",
+    "source": "function *g() { yield obj.yield; }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-method.js",
+    "source": "({ yield() {} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-parameter-object-pattern.js",
+    "source": "function f({yield: y}){}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-rest-parameter.js",
+    "source": "function f(...yield) {}\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-strict-binding-property.js",
+    "source": "\u0022use strict\u0022; var { yield: x } = foo;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-strict-method.js",
+    "source": "\u0022use strict\u0022; ({ yield() {} })\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-super-property.js",
+    "source": "class A extends B { X() { super.yield } }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-variable-declaration.js",
+    "source": "var yield;\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-yield-expression-delegate.js",
+    "source": "function *g() { yield *yield }\n",
+    "module": false
+  },
+  {
+    "name": "ES6/yield/yield-yield-expression.js",
+    "source": "function *g() { yield yield }\n",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0000.js",
+    "source": "{ x\n\u002B\u002By }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0001.js",
+    "source": "{ x\n--y }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0002.js",
+    "source": "var x /* comment */;",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0003.js",
+    "source": "{ var x = 14, y = 3\nz; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0004.js",
+    "source": "while (true) { continue\nthere; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0005.js",
+    "source": "while (true) { continue // Comment\nthere; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0006.js",
+    "source": "while (true) { continue /* Multiline\nComment */there; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0007.js",
+    "source": "while (true) { break\nthere; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0008.js",
+    "source": "while (true) { break // Comment\nthere; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0009.js",
+    "source": "while (true) { break /* Multiline\nComment */there; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0010.js",
+    "source": "(function(){ return\nx; })",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0011.js",
+    "source": "(function(){ return // Comment\nx; })",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0012.js",
+    "source": "(function(){ return/* Multiline\nComment */x; })",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0013.js",
+    "source": "{ throw error\nerror; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0014.js",
+    "source": "{ throw error// Comment\nerror; }",
+    "module": false
+  },
+  {
+    "name": "automatic-semicolon-insertion/migrated_0015.js",
+    "source": "{ throw error/* Multiline\nComment */error; }",
+    "module": false
+  },
+  {
+    "name": "declaration/const/migrated_0000.js",
+    "source": "const x = 42",
+    "module": false
+  },
+  {
+    "name": "declaration/const/migrated_0001.js",
+    "source": "{ const x = 42 }",
+    "module": false
+  },
+  {
+    "name": "declaration/const/migrated_0002.js",
+    "source": "{ const x = 14, y = 3, z = 1977 }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0000.js",
+    "source": "function hello() { sayHi(); }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0001.js",
+    "source": "function eval() { }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0002.js",
+    "source": "function arguments() { }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0003.js",
+    "source": "function test(t, t) { }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0004.js",
+    "source": "(function test(t, t) { })",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0005.js",
+    "source": "function eval() { function inner() { \u0022use strict\u0022 } }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0006.js",
+    "source": "function hello(a) { sayHi(); }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0007.js",
+    "source": "function hello(a, b) { sayHi(); }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0008.js",
+    "source": "var hi = function() { sayHi() };",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0009.js",
+    "source": "var hi = function eval() { };",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0010.js",
+    "source": "var hi = function arguments() { };",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0011.js",
+    "source": "var hello = function hi() { sayHi() };",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0012.js",
+    "source": "(function(){})",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0013.js",
+    "source": "function universe(__proto__) { }",
+    "module": false
+  },
+  {
+    "name": "declaration/function/migrated_0014.js",
+    "source": "function test() { \u0022use strict\u0022 \u002B 42; }",
+    "module": false
+  },
+  {
+    "name": "declaration/let/migrated_0000.js",
+    "source": "let x",
+    "module": false
+  },
+  {
+    "name": "declaration/let/migrated_0001.js",
+    "source": "{ let x }",
+    "module": false
+  },
+  {
+    "name": "declaration/let/migrated_0002.js",
+    "source": "{ let x = 42 }",
+    "module": false
+  },
+  {
+    "name": "declaration/let/migrated_0003.js",
+    "source": "{ let x = 14, y = 3, z = 1977 }",
+    "module": false
+  },
+  {
+    "name": "directive-prolog/migrated_0000.js",
+    "source": "(function () { \u0027use\\x20strict\u0027; with (i); }())",
+    "module": false
+  },
+  {
+    "name": "directive-prolog/migrated_0001.js",
+    "source": "(function () { \u0027use\\nstrict\u0027; with (i); }())",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/assigned-async-arrow.js",
+    "source": "id = async x =\u003E x, square = async (y) =\u003E { y * y }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-as-last-parameter.js",
+    "source": "f(a, async b =\u003E await b)\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-as-parameter.js",
+    "source": "f(a, async (b, c) =\u003E await [b, c], d)\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-multi-args-await.js",
+    "source": "async (a, b) =\u003E { await a }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-multi-args-concise-await.js",
+    "source": "async (a, b) =\u003E await a\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-multi-args-concise.js",
+    "source": "async (x, y) =\u003E y\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-multi-args.js",
+    "source": "async (x, y) =\u003E { x * y }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-no-arg.js",
+    "source": "async () =\u003E 42\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-object-pattern-parameter.js",
+    "source": "async ({x: y = z}) =\u003E x\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-one-arg-await.js",
+    "source": "async a =\u003E { await a }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-one-arg-concise-await.js",
+    "source": "async a =\u003E await a\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-one-arg-concise.js",
+    "source": "async y =\u003E y\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-one-arg.js",
+    "source": "async x =\u003E { x * x }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-parenthesized-await.js",
+    "source": "async (a) =\u003E { await a }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-parenthesized-concise-await.js",
+    "source": "async (a) =\u003E await a\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-parenthesized-concise.js",
+    "source": "async (y) =\u003E y\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-parenthesized-yield.js",
+    "source": "async (yield) =\u003E 1;\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-parenthesized.js",
+    "source": "async (x) =\u003E { x * x }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-pattern-parameter.js",
+    "source": "async ({x = y}) =\u003E z\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-rest.js",
+    "source": "async (x, ...y) =\u003E x\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-trailing-comma.js",
+    "source": "async (x,y,) =\u003E x\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/async-arrow-yield.js",
+    "source": "async yield =\u003E 0;\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/arrows/export-async-arrow.module.js",
+    "source": "export const square = async x =\u003E x * x\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/arrows/export-default-async-arrow.module.js",
+    "source": "export default async x =\u003E x * x\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/functions/argument-async-function-expression.js",
+    "source": "f(async function(x) { await x })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-declaration-await.js",
+    "source": "async function f(a) { await a }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-declaration.js",
+    "source": "async function f() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-expression-as-parameter.js",
+    "source": "f(b, async function(b) { await b }, c)\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-expression-await.js",
+    "source": "x = async function(a) { await a }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-expression-named-await.js",
+    "source": "x = async function f(a) { await a }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-expression-named.js",
+    "source": "a = async function f() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-function-expression.js",
+    "source": "a = async function() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-generator-declaration.js",
+    "source": "async function *f() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/async-generator-expression.js",
+    "source": "x = async function *f() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/functions/export-async-function-declaration-await.module.js",
+    "source": "export async function f(a) { await a }\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/functions/export-async-function-declaration.module.js",
+    "source": "export async function f() {}\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/functions/export-default-async-function-declaration.module.js",
+    "source": "export default async function() {}\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/functions/export-default-async-named-function-declaration-await.module.js",
+    "source": "export default async function f(a) { await a }\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/functions/export-default-async-named-function-declaration.module.js",
+    "source": "export default async function f() {}\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/functions/inner-function-async.js",
+    "source": "(function(x) { async function inner() { await x } })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-class-generator.js",
+    "source": "class X { async *g() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-generator.js",
+    "source": "x = { async *g() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-line-terminator-method.js",
+    "source": "class X { async\nf(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-line-terminator-static-method.js",
+    "source": "class X { static async\nf(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-method-await.js",
+    "source": "({ async f(a) { await a } })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-method-computed.js",
+    "source": "({ async [\u0022xyz\u0022]() {} })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-method-literal.js",
+    "source": "({ async \u0022xyz\u0022() {} })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-method-number.js",
+    "source": "({ async 3() {} })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/async-method.js",
+    "source": "({ async f() {} })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-get.js",
+    "source": "class X { async get(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-method-await.js",
+    "source": "class X { async f(a) { await a } }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-method-computed.js",
+    "source": "class X { async [\u0022f\u0022](){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-method-literal.js",
+    "source": "class X { async \u0022f\u0022(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-method-number.js",
+    "source": "class X { async 3(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-method.js",
+    "source": "class X { async f(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-async-set.js",
+    "source": "class X { async set(v){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-static-async-get.js",
+    "source": "class X { static async get() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-static-async-method-await.js",
+    "source": "class X { static async f(a) { await a } }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-static-async-method.js",
+    "source": "class X { static async f(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/class-static-async-set.js",
+    "source": "class X { static async set(v){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/methods/static-async-class-generator.js",
+    "source": "class X { static async *g(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/argument-async-call.js",
+    "source": "f(x, async(y, z))\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/async-arrow-parameter1.js",
+    "source": "async =\u003E 42;\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/async-arrow-parameter2.js",
+    "source": "const answer = async =\u003E 42;\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/await-function-name.js",
+    "source": "async function await() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/await-method-name.js",
+    "source": "class X { async await(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/await-static-name.js",
+    "source": "class X { static async await(){} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/call-async-await.js",
+    "source": "a = async(await);\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/call-async.js",
+    "source": "x = async(y);\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/export-identifier-async.module.js",
+    "source": "export var async = 4\n",
+    "module": true
+  },
+  {
+    "name": "es2017/async/regular-identifier/expr-async.js",
+    "source": "a = async\nfunction f(){}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/generator-name-async.js",
+    "source": "class A { *async() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/identifier-async.js",
+    "source": "var async; async = 3;\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/label-async.js",
+    "source": "async: function f() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/line-terminator-arrow.js",
+    "source": "async\nx =\u003E x\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/line-terminator-async.js",
+    "source": "async\nfunction f() {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/method-name-async.js",
+    "source": "class X { async() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/property-async.js",
+    "source": "x = { async: false }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/proto-identifier-shorthand-with-async.js",
+    "source": "({ async, __proto__ })\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/static-generator-name-async.js",
+    "source": "class X { static *async() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/async/regular-identifier/static-name-async.js",
+    "source": "class X { static async() {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-arrow-multi.js",
+    "source": "(x,y,z,) =\u003E 0\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-arrow-single.js",
+    "source": "(x,) =\u003E 0\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-arrow.js",
+    "source": "let f = (x,y,) =\u003E x;\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-call.js",
+    "source": "f(x,);\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-constructor.js",
+    "source": "class X { constructor(a,) {} }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-export-function.js",
+    "source": "export function f(a,b,){}\n",
+    "module": true
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-function-declaration.js",
+    "source": "function f(a,b,){}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-function-expression.js",
+    "source": "const f = function(a, b,) {}\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-method.js",
+    "source": "class P { f(a,b,) { } }\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-new.js",
+    "source": "new f(x,);\n",
+    "module": false
+  },
+  {
+    "name": "es2017/trailing-commas/trailing-comma-spread.js",
+    "source": "f(...a,);\n",
+    "module": false
+  },
+  {
+    "name": "es2018/dynamic-import/await-import.js",
+    "source": "async function f(x) { await import(x) }\n",
+    "module": false
+  },
+  {
+    "name": "es2018/dynamic-import/coexist-import-call-import-declaration.module.js",
+    "source": "import $ from \u0022a\u0022;\nimport(\u0022b\u0022).then(c);\n",
+    "module": true
+  },
+  {
+    "name": "es2018/dynamic-import/import-call-in-statement.js",
+    "source": "var x = import (\u0027url\u0027) ;\n",
+    "module": false
+  },
+  {
+    "name": "es2018/dynamic-import/import-call-string.js",
+    "source": "import(\u0027lib.js\u0027).then(doThis);\n",
+    "module": false
+  },
+  {
+    "name": "es2018/dynamic-import/import-call-template.js",
+    "source": "import(\u0060lib/${fname}.js\u0060).then(doSomething);\n",
+    "module": false
+  },
+  {
+    "name": "es2018/dynamic-import/import-call-var.js",
+    "source": "const m = \u0027library.js\u0027;\nimport(m).then(() =\u003E {});\n",
+    "module": false
+  },
+  {
+    "name": "es2018/dynamic-import/loader-using-import.js",
+    "source": "function load(f) { return import(\u0027lib/\u0027 \u002B f) }\n",
+    "module": false
+  },
+  {
+    "name": "es2018/for-await-of/for-await-of.js",
+    "source": "async function f() { for await (p of q); }\n",
+    "module": false
+  },
+  {
+    "name": "es2018/rest-property/destructuring-mirror.js",
+    "source": "({x, ...y} = {x, ...y})",
+    "module": false
+  },
+  {
+    "name": "es2018/rest-property/function-extension.js",
+    "source": "function f({ x, y, ...z }) {}",
+    "module": false
+  },
+  {
+    "name": "es2018/rest-property/rest-property-object-pattern-arrow.js",
+    "source": "({x, ...y}) =\u003E {}\n",
+    "module": false
+  },
+  {
+    "name": "es2018/rest-property/shallow-clone.js",
+    "source": "let { ...x } = y;",
+    "module": false
+  },
+  {
+    "name": "es2018/rest-property/simple-rest-properties.js",
+    "source": "let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/default-properties.js",
+    "source": "let aa = { x: 1, y: 2, ...a };",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/multiple-merges.js",
+    "source": "let xyab = { x: 1, ...a, y: 2, ...b, ...a };",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/object-initializer-getter.js",
+    "source": "let x = { ...y, get z() {} };",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/object-merging.js",
+    "source": "let xy = { ...x, ...y };",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/properties-overriding.js",
+    "source": "x = { ...y, z: 1};",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/shallow-clone.js",
+    "source": "x = { ...y }",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/spread-getter.js",
+    "source": "x = { ...y, ...{ get z() {} } };",
+    "module": false
+  },
+  {
+    "name": "es2018/spread-property/spread-null-undefined.js",
+    "source": "x = { ...undefined, ...null };",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/not-escape-oct.js",
+    "source": "\u0060\\0YY\u0060",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/tagged-not-escape-8.js",
+    "source": "a\u0060\\8\u0060",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/tagged-not-escape-9.js",
+    "source": "a\u0060\\9\u0060",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/tagged-not-escape-hex.js",
+    "source": "a\u0060\\xTT\u0060",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/tagged-not-escape-oct.js",
+    "source": "a\u0060\\0YY\u0060",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/tagged-not-escape-unicode-code-point.js",
+    "source": "a\u0060\\u{nicode}\u0060",
+    "module": false
+  },
+  {
+    "name": "es2018/template-literal-revision/tagged-not-escape-unicode.js",
+    "source": "a\u0060\\unicode\u0060",
+    "module": false
+  },
+  {
+    "name": "es2019/optional-catch-binding/optional-catch-binding.js",
+    "source": "try {} catch {}\n",
+    "module": false
+  },
+  {
+    "name": "es2020/export-ns-from/goal.module.js",
+    "source": "export * as someIdentifier from \u0022someModule\u0022",
+    "module": true
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-call-grouping.js",
+    "source": "a?.(b).c;\n(a?.(b)).c;\na?.(b)(c);\n(a?.(b))(c);\na?.(b)[c];\n(a?.(b))[c];\n",
+    "module": false
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-computed-property-grouping.js",
+    "source": "a[b][c];\n(a[b])[c];\na?.[b][c];\n(a?.[b])[c];\n",
+    "module": false
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-computed-property.js",
+    "source": "a?.[\u0027b\u0027].c\na.b?.[\u0027c\u0027]\nnew (a?.[\u0027b\u0027].c)\nnew (a?.[\u0027b\u0027]).c\nnew (a.b?.[\u0027c\u0027])\n",
+    "module": false
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-new-grouping.js",
+    "source": "new (a?.b)\nnew (a?.b)(x)\nnew (a?.b)(x)\u0060\u0060;\nnew (a?.b)()\u0060\u0060;\n(new (a?.b))\u0060\u0060;\nnew (a?.b)\u0060\u0060;\n",
+    "module": false
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-static-property-grouping.js",
+    "source": "a.b.c;\n(a.b).c;\na?.b.c;\n(a?.b).c;\n",
+    "module": false
+  },
+  {
+    "name": "es2020/optional-chaining/optional-chaining-static-property.js",
+    "source": "a?.b.c\na.b?.c\nnew (a?.b.c)\nnew (a?.b).c\nnew (a.b?.c)\n",
+    "module": false
+  },
+  {
+    "name": "es2021/nullish-coalescing-assignment.js",
+    "source": "foo ??= true",
+    "module": false
+  },
+  {
+    "name": "es2022/private-class-fields/static-class-members.js",
+    "source": "class X {\n  static #privateField = \u0027super\u0027;\n  static #getPrivateField() {\n    return X.#privateField;\n  }\n}\n",
+    "module": false
+  },
+  {
+    "name": "es2025/import-attributes/valid-syntax-export-with-attributes.js",
+    "source": "export { foo } from \u0022foo.json\u0022 with { type: \u0022json\u0022 };",
+    "module": true
+  },
+  {
+    "name": "es2025/import-attributes/valid-syntax-import-with-attributes.js",
+    "source": "import foo from \u0022foo.json\u0022 with { type: \u0022json\u0022 };\n",
+    "module": true
+  },
+  {
+    "name": "es2025/import-attributes/valid-syntax-import-with-no-type-attribute.js",
+    "source": "import foo from \u0022foo.json\u0022 with { lazy: \u0022true\u0022 };",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/asyncdisposablestack-usage.module.js",
+    "source": "async function test() { await using stack = new AsyncDisposableStack(); }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-as-identifier-es16.js",
+    "source": "await.using;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-as-identifier-es17.js",
+    "source": "await.using;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-as-keyword.module.js",
+    "source": "async function test() { await usingX; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-declaration.module.js",
+    "source": "async function test() { await using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-followed-by-bracket.js",
+    "source": "async function f() {\n  await using[x];\n}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-followed-by-in.js",
+    "source": "async function f() {\n  await using in foo;\n}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-followed-by-instanceof.js",
+    "source": "async function f() {\n  await using instanceof foo;\n}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-in-for-of-loop.module.js",
+    "source": "async function test() { for (await using x of resources) {} }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-member-access.module.js",
+    "source": "await.using;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-with-escaped-identifier.module.js",
+    "source": "async function test() { await using \\u03B1 = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-with-lineterminator.module.js",
+    "source": "async function test() { await using\nx = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/await-using-with-multiple-declarations.module.js",
+    "source": "async function test() { await using a = resource1, b = resource2; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/basic-using-declaration.module.js",
+    "source": "{ using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/comments-between-await-and-using.module.js",
+    "source": "async function test() { await /* comment */ using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/disposablestack-usage.module.js",
+    "source": "{ using stack = new DisposableStack(); }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/for-loop-with-using.module.js",
+    "source": "for (using x = resource; i \u003C 10; i\u002B\u002B) {}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/for-of-loop-with-using.module.js",
+    "source": "for (using x of resources) {}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/multiple-line-terminators.module.js",
+    "source": "using\n\n\nx = resource;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/multiple-variable-declarations.module.js",
+    "source": "{ using a = resource1, b = resource2; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-await-using-in-for-of.js",
+    "source": "for (await using a of x) {}",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-await-using-in-nested-block.js",
+    "source": "{await using a = x}",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-await-using-with-lineterminator.module.js",
+    "source": "await using\nx = resource;",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-await-using.js",
+    "source": "await using x = resource;",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-await-using.module.js",
+    "source": "await using x = resource;",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-using-declaration.module.js",
+    "source": "using x = resource;",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-using-es16.module.js",
+    "source": "{ using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/top-level-using.js",
+    "source": "using x = resource;",
+    "module": true
+  },
+  {
+    "name": "es2026/explicit-resource-management/unicode-in-using-identifier.module.js",
+    "source": "{ using \\u{61} = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-assignment-es16.js",
+    "source": "using = 5;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-assignment-es17.module.js",
+    "source": "using = 5;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-for-of-es16.js",
+    "source": "for (using of x) {}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-for-of-es17.module.js",
+    "source": "for (using of y) {}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-logical-expr-es16.js",
+    "source": "using \u0026\u0026 doSomething();",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-logical-expr-es17.module.js",
+    "source": "using \u0026\u0026 doSomething();",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-method-call-es16.js",
+    "source": "using.dispose();",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-identifier-method-call-es17.module.js",
+    "source": "using.dispose();",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-as-keyword.module.js",
+    "source": "for (using ofa of x) {}",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-async-generator-function.module.js",
+    "source": "async function* asyncGenerator() { await using x = resource; yield x; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-catch-clause.module.js",
+    "source": "try {} catch (e) { using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-class-static-block.module.js",
+    "source": "class C { static { using x = resource; } }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-finally-clause.module.js",
+    "source": "try {} finally { using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-function.module.js",
+    "source": "function test() { using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-generator-function.module.js",
+    "source": "function* generator() { using x = resource; yield x; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-if-statement.module.js",
+    "source": "if (condition) { using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-labeled-statement.module.js",
+    "source": "label: { using x = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-switch-case.module.js",
+    "source": "switch (x) { case 1: { using y = resource; } }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-try-catch-finally.module.js",
+    "source": "try { using x = resource; } catch (e) { }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-in-while-statement.module.js",
+    "source": "while (condition) { using x = resource; break; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-arguments-identifier.js",
+    "source": "{ using arguments = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-array-syntax.module.js",
+    "source": "{ using [a, b] = arr; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-bigint-literal.module.js",
+    "source": "{ using x = 123n; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-call-expression.module.js",
+    "source": "{ using x = createResource(); }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-complex-member-expr.module.js",
+    "source": "{ using x = obj.resource.handle; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-computed-property-access.module.js",
+    "source": "{ using x = obj[key]; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-escaped-identifier.module.js",
+    "source": "{ using \\u0078 = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-eval-identifier.js",
+    "source": "{ using eval = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-latin1-supplement-chars.module.js",
+    "source": "{ using caf\u00E9 = resource; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-lineterminator.module.js",
+    "source": "using\nx = resource;",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-logical-or-expr.module.js",
+    "source": "{ using x = resource || fallback; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-null-initializer.module.js",
+    "source": "{ using x = null; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-symbol-dispose.module.js",
+    "source": "{ using resource = { [Symbol.dispose]() {} }; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-ternary-expr.module.js",
+    "source": "{ using x = condition ? resource1 : resource2; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-with-undefined-initializer.module.js",
+    "source": "{ using x = undefined; }",
+    "module": false
+  },
+  {
+    "name": "es2026/explicit-resource-management/using-without-semicolon.module.js",
+    "source": "{ using x = resource\n}",
+    "module": false
+  },
+  {
+    "name": "esprima-dotnet/object-member.js",
+    "source": "var a = { [Symbol.iterator]: undefined }",
+    "module": false
+  },
+  {
+    "name": "experimental/decorators/accessor-as-property-name.js",
+    "source": "class aa {\n  static accessor = true;\n  accessor = true;\n  #accessor = true;\n}\nclass bb {\n  static accessor() { };\n  accessor() { }\n  #accessor() { };\n}\nclass cc {\n  static async accessor() { };\n  async accessor() { }\n  async #accessor() { };\n}\n",
+    "module": false
+  },
+  {
+    "name": "expression/additive/migrated_0000.js",
+    "source": "x \u002B y",
+    "module": false
+  },
+  {
+    "name": "expression/additive/migrated_0001.js",
+    "source": "x - y",
+    "module": false
+  },
+  {
+    "name": "expression/additive/migrated_0002.js",
+    "source": "\u0022use strict\u0022 \u002B 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0000.js",
+    "source": "x = 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0001.js",
+    "source": "eval = 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0002.js",
+    "source": "arguments = 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0003.js",
+    "source": "x *= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0004.js",
+    "source": "x /= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0005.js",
+    "source": "x %= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0006.js",
+    "source": "x \u002B= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0007.js",
+    "source": "x -= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0008.js",
+    "source": "x \u003C\u003C= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0009.js",
+    "source": "x \u003E\u003E= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0010.js",
+    "source": "x \u003E\u003E\u003E= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0011.js",
+    "source": "x \u0026= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0012.js",
+    "source": "x ^= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0013.js",
+    "source": "x |= 42",
+    "module": false
+  },
+  {
+    "name": "expression/assignment/migrated_0046.js",
+    "source": "func() = 4",
+    "module": false
+  },
+  {
+    "name": "expression/binary-bitwise/migrated_0000.js",
+    "source": "x \u0026 y",
+    "module": false
+  },
+  {
+    "name": "expression/binary-bitwise/migrated_0001.js",
+    "source": "x ^ y",
+    "module": false
+  },
+  {
+    "name": "expression/binary-bitwise/migrated_0002.js",
+    "source": "x | y",
+    "module": false
+  },
+  {
+    "name": "expression/binary-logical/migrated_0000.js",
+    "source": "x || y",
+    "module": false
+  },
+  {
+    "name": "expression/binary-logical/migrated_0001.js",
+    "source": "x \u0026\u0026 y",
+    "module": false
+  },
+  {
+    "name": "expression/binary-logical/migrated_0002.js",
+    "source": "x || y || z",
+    "module": false
+  },
+  {
+    "name": "expression/binary-logical/migrated_0003.js",
+    "source": "x \u0026\u0026 y \u0026\u0026 z",
+    "module": false
+  },
+  {
+    "name": "expression/binary-logical/migrated_0004.js",
+    "source": "x || y \u0026\u0026 z",
+    "module": false
+  },
+  {
+    "name": "expression/binary-logical/migrated_0005.js",
+    "source": "x || y ^ z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0000.js",
+    "source": "x \u002B y \u002B z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0001.js",
+    "source": "x - y \u002B z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0002.js",
+    "source": "x \u002B y - z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0003.js",
+    "source": "x - y - z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0004.js",
+    "source": "x \u002B y * z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0005.js",
+    "source": "x \u002B y / z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0006.js",
+    "source": "x - y % z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0007.js",
+    "source": "x * y * z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0008.js",
+    "source": "x * y / z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0009.js",
+    "source": "x * y % z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0010.js",
+    "source": "x % y * z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0011.js",
+    "source": "x \u003C\u003C y \u003C\u003C z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0012.js",
+    "source": "x | y | z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0013.js",
+    "source": "x \u0026 y \u0026 z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0014.js",
+    "source": "x ^ y ^ z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0015.js",
+    "source": "x \u0026 y | z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0016.js",
+    "source": "x | y ^ z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/migrated_0017.js",
+    "source": "x | y \u0026 z",
+    "module": false
+  },
+  {
+    "name": "expression/binary/multiline_string.js",
+    "source": "\u0027\\\n\u0027 \u002B bar\n",
+    "module": false
+  },
+  {
+    "name": "expression/binary/multiline_string_literal.js",
+    "source": "var str = \u0027test \\\r\nd\u0027\u002B\u0027test \\\r\ntest\u0027\u002B\u0027f\u0027;\r\n",
+    "module": false
+  },
+  {
+    "name": "expression/bitwise-shift/migrated_0000.js",
+    "source": "x \u003C\u003C y",
+    "module": false
+  },
+  {
+    "name": "expression/bitwise-shift/migrated_0001.js",
+    "source": "x \u003E\u003E y",
+    "module": false
+  },
+  {
+    "name": "expression/bitwise-shift/migrated_0002.js",
+    "source": "x \u003E\u003E\u003E y",
+    "module": false
+  },
+  {
+    "name": "expression/complex/migrated_0000.js",
+    "source": "a || b \u0026\u0026 c | d ^ e \u0026 f == g \u003C h \u003E\u003E\u003E i \u002B j * k",
+    "module": false
+  },
+  {
+    "name": "expression/complex/migrated_0001.js",
+    "source": "a \u002B (b \u003C (c * d)) \u002B e",
+    "module": false
+  },
+  {
+    "name": "expression/conditional/migrated_0000.js",
+    "source": "y ? 1 : 2",
+    "module": false
+  },
+  {
+    "name": "expression/conditional/migrated_0001.js",
+    "source": "x \u0026\u0026 y ? 1 : 2",
+    "module": false
+  },
+  {
+    "name": "expression/conditional/migrated_0002.js",
+    "source": "x = (0) ? 1 : 2",
+    "module": false
+  },
+  {
+    "name": "expression/equality/migrated_0000.js",
+    "source": "x == y",
+    "module": false
+  },
+  {
+    "name": "expression/equality/migrated_0001.js",
+    "source": "x != y",
+    "module": false
+  },
+  {
+    "name": "expression/equality/migrated_0002.js",
+    "source": "x === y",
+    "module": false
+  },
+  {
+    "name": "expression/equality/migrated_0003.js",
+    "source": "x !== y",
+    "module": false
+  },
+  {
+    "name": "expression/grouping/migrated_0000.js",
+    "source": "(1) \u002B (2  ) \u002B 3",
+    "module": false
+  },
+  {
+    "name": "expression/grouping/migrated_0001.js",
+    "source": "4 \u002B 5 \u003C\u003C (6)",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/let_object_computed.js",
+    "source": "(let[foo]=bar)\n",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0000.js",
+    "source": "new Button",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0001.js",
+    "source": "new Button()",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0002.js",
+    "source": "new new foo",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0003.js",
+    "source": "new new foo()",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0004.js",
+    "source": "new foo().bar()",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0005.js",
+    "source": "new foo[bar]",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0006.js",
+    "source": "new foo.bar()",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0007.js",
+    "source": "( new foo).bar()",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0008.js",
+    "source": "foo(bar, baz)",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0009.js",
+    "source": "(    foo  )()",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0010.js",
+    "source": "universe.milkyway",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0011.js",
+    "source": "universe.milkyway.solarsystem",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0012.js",
+    "source": "universe.milkyway.solarsystem.Earth",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0013.js",
+    "source": "universe[galaxyName, otherUselessName]",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0014.js",
+    "source": "universe[galaxyName]",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0015.js",
+    "source": "universe[42].galaxies",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0016.js",
+    "source": "universe(42).galaxies",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0017.js",
+    "source": "universe(42).galaxies(14, 3, 77).milkyway",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0018.js",
+    "source": "earth.asia.Indonesia.prepareForElection(2014)",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0019.js",
+    "source": "universe.if",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0020.js",
+    "source": "universe.true",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0021.js",
+    "source": "universe.false",
+    "module": false
+  },
+  {
+    "name": "expression/left-hand-side/migrated_0022.js",
+    "source": "universe.null",
+    "module": false
+  },
+  {
+    "name": "expression/multiplicative/migrated_0000.js",
+    "source": "x * y",
+    "module": false
+  },
+  {
+    "name": "expression/multiplicative/migrated_0001.js",
+    "source": "x / y",
+    "module": false
+  },
+  {
+    "name": "expression/multiplicative/migrated_0002.js",
+    "source": "x % y",
+    "module": false
+  },
+  {
+    "name": "expression/postfix/migrated_0000.js",
+    "source": "x\u002B\u002B",
+    "module": false
+  },
+  {
+    "name": "expression/postfix/migrated_0001.js",
+    "source": "x--",
+    "module": false
+  },
+  {
+    "name": "expression/postfix/migrated_0002.js",
+    "source": "eval\u002B\u002B",
+    "module": false
+  },
+  {
+    "name": "expression/postfix/migrated_0003.js",
+    "source": "eval--",
+    "module": false
+  },
+  {
+    "name": "expression/postfix/migrated_0004.js",
+    "source": "arguments\u002B\u002B",
+    "module": false
+  },
+  {
+    "name": "expression/postfix/migrated_0005.js",
+    "source": "arguments--",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0000.js",
+    "source": "x = []",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0001.js",
+    "source": "x = [ ]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0002.js",
+    "source": "x = [ 42 ]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0003.js",
+    "source": "x = [ 42, ]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0004.js",
+    "source": "x = [ ,, 42 ]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0005.js",
+    "source": "x = [ 1, 2, 3, ]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0006.js",
+    "source": "x = [ 1, 2,, 3, ]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0007.js",
+    "source": "\u65E5\u672C\u8A9E = []",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0008.source.js",
+    "source": "var source = \u0027T\\u203F = []\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0009.source.js",
+    "source": "var source = \u0027T\\u200C = []\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0010.source.js",
+    "source": "var source = \u0027T\\u200D = []\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0011.source.js",
+    "source": "var source = \u0027\\u2163\\u2161 = []\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/array/migrated_0012.source.js",
+    "source": "var source = \u0027\\u2163\\u2161\\u200A=\\u2009[]\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0000.js",
+    "source": "0",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0001.js",
+    "source": "42",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0002.js",
+    "source": "3",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0003.js",
+    "source": "5",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0004.js",
+    "source": ".14",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0005.js",
+    "source": "3.14159",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0006.js",
+    "source": "6.02214179e\u002B23",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0007.js",
+    "source": "1.492417830e-10",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0008.js",
+    "source": "0x0",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0009.js",
+    "source": "0x0;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0010.js",
+    "source": "0e\u002B100 ",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0011.js",
+    "source": "0e\u002B100",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0012.js",
+    "source": "0xabc",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0013.js",
+    "source": "0xdef",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0014.js",
+    "source": "0X1A",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0015.js",
+    "source": "0x10",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0016.js",
+    "source": "0x100",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0017.js",
+    "source": "0X04",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0018.js",
+    "source": "02",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0019.js",
+    "source": "012",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0020.js",
+    "source": "0012",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0021.js",
+    "source": "08",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0022.js",
+    "source": "0008",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0023.js",
+    "source": "09",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/numeric/migrated_0024.js",
+    "source": "09.5",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0000.js",
+    "source": "/p/;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0001.js",
+    "source": "[/q/]",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0002.js",
+    "source": "var x = /[a-z]/i",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0003.js",
+    "source": "var x = /[a-z]/y",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0004.js",
+    "source": "var x = /[a-z]/u",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0005.source.js",
+    "source": "var source = \u0027var x = /[\\\\u{0000000000000061}-\\\\u{7A}]/u\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0006.source.js",
+    "source": "var source = \u0027var x = /\\\\u{110000}/u\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0007.js",
+    "source": "var x = /[x-z]/i",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0008.js",
+    "source": "var x = /[a-c]/i",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0009.js",
+    "source": "var x = /[P QR]/i",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0010.js",
+    "source": "var x = /[\\]/]/",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0011.js",
+    "source": "var x = /foo\\/bar/",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0012.js",
+    "source": "var x = /=([^=\\s])\u002B/g",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/migrated_0013.js",
+    "source": "var x = /42/g.test",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/u-flag-surrogate-pair.js",
+    "source": "var x = /[\\uD834\\uDF06-\\uD834\\uDF08a-z]/u\n",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/regular-expression/u-flag-valid-range.js",
+    "source": "var x = /[\\u{61}-b][\\u0061-b][a-\\u{62}][a-\\u0062]\\u{1ffff}/u;\n",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0000.js",
+    "source": "\u0022Hello\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0001.js",
+    "source": "\u0022\\n\\r\\t\\v\\b\\f\\\\\\\u0027\\\u0022\\0\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0002.source.js",
+    "source": "var source = \u0027\u0022\\\\u0061\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0003.js",
+    "source": "\u0022\\x61\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0006.js",
+    "source": "\u0022Hello\\nworld\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0007.js",
+    "source": "\u0022Hello\\\nworld\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0008.js",
+    "source": "\u0022Hello\\02World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0009.js",
+    "source": "\u0022Hello\\012World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0010.js",
+    "source": "\u0022Hello\\122World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0011.js",
+    "source": "\u0022Hello\\0122World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0012.js",
+    "source": "\u0022Hello\\312World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0013.js",
+    "source": "\u0022Hello\\412World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0015.js",
+    "source": "\u0022Hello\\712World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0016.js",
+    "source": "\u0022Hello\\0World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0017.js",
+    "source": "\u0022Hello\\\r\nworld\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/literal/string/migrated_0018.js",
+    "source": "\u0022Hello\\1World\u0022",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0000.js",
+    "source": "x = {}",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0001.js",
+    "source": "x = { }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0002.js",
+    "source": "x = { answer: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0003.js",
+    "source": "x = { if: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0004.js",
+    "source": "x = { true: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0005.js",
+    "source": "x = { false: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0006.js",
+    "source": "x = { null: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0007.js",
+    "source": "x = { \u0022answer\u0022: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0008.js",
+    "source": "x = { x: 1, x: 2 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0009.js",
+    "source": "x = { get width() { return m_width } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0010.js",
+    "source": "x = { get undef() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0011.js",
+    "source": "x = { get if() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0012.js",
+    "source": "x = { get true() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0013.js",
+    "source": "x = { get false() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0014.js",
+    "source": "x = { get null() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0015.js",
+    "source": "x = { get \u0022undef\u0022() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0016.js",
+    "source": "x = { get 10() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0017.js",
+    "source": "x = { set width(w) { m_width = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0018.js",
+    "source": "x = { set if(w) { m_if = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0019.js",
+    "source": "x = { set true(w) { m_true = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0020.js",
+    "source": "x = { set false(w) { m_false = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0021.js",
+    "source": "x = { set null(w) { m_null = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0022.js",
+    "source": "x = { set \u0022null\u0022(w) { m_null = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0023.js",
+    "source": "x = { set 10(w) { m_null = w } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0024.js",
+    "source": "x = { get: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0025.js",
+    "source": "x = { set: 43 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0026.js",
+    "source": "x = { __proto__: 2 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0027.js",
+    "source": "x = {\u0022__proto__\u0022: 2 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0028.js",
+    "source": "x = { get width() { return m_width }, set width(width) { m_width = width; } }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0029.js",
+    "source": "({ get i() { }, i: 42 })",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0030.js",
+    "source": "\u0022use strict\u0022;x={y:1,y:1}",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0031.js",
+    "source": "\u0022use strict\u0022; var x = { get i() {}, get i() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0032.js",
+    "source": "\u0022use strict\u0022; var x = { i: 42, get i() {} }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0033.js",
+    "source": "\u0022use strict\u0022; var x = { set i(x) {}, i: 42 }",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0034.js",
+    "source": "({[a](){}})",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0035.js",
+    "source": "({[a]:()=\u003E{}})",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0036.js",
+    "source": "({[\u0022__proto__\u0022]:0, [\u0022__proto__\u0022]:0})",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0037.js",
+    "source": "({\u0022[\u0022: 42})",
+    "module": false
+  },
+  {
+    "name": "expression/primary/object/migrated_0038.js",
+    "source": "({set x(a=0){}})",
+    "module": false
+  },
+  {
+    "name": "expression/primary/other/migrated_0000.js",
+    "source": "this\n",
+    "module": false
+  },
+  {
+    "name": "expression/primary/other/migrated_0001.js",
+    "source": "null\n",
+    "module": false
+  },
+  {
+    "name": "expression/primary/other/migrated_0002.js",
+    "source": "\n    42\n\n",
+    "module": false
+  },
+  {
+    "name": "expression/primary/other/migrated_0003.js",
+    "source": "(1 \u002B 2 ) * 3",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0000.js",
+    "source": "x \u003C y",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0001.js",
+    "source": "x \u003E y",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0002.js",
+    "source": "x \u003C= y",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0003.js",
+    "source": "x \u003E= y",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0004.js",
+    "source": "x in y",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0005.js",
+    "source": "x instanceof y",
+    "module": false
+  },
+  {
+    "name": "expression/relational/migrated_0006.js",
+    "source": "x \u003C y \u003C z",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0000.js",
+    "source": "\u002B\u002Bx",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0001.js",
+    "source": "--x",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0002.js",
+    "source": "\u002B\u002Beval",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0003.js",
+    "source": "--eval",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0004.js",
+    "source": "\u002B\u002Barguments",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0005.js",
+    "source": "--arguments",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0006.js",
+    "source": "\u002Bx",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0007.js",
+    "source": "-x",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0008.js",
+    "source": "~x",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0009.js",
+    "source": "!x",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0010.js",
+    "source": "void x",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0011.js",
+    "source": "delete x",
+    "module": false
+  },
+  {
+    "name": "expression/unary/migrated_0012.js",
+    "source": "typeof x",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0033.source.js",
+    "source": "var source = \u0027x\\\\u005c\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0034.source.js",
+    "source": "var source = \u0027x\\\\u002a\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0036.source.js",
+    "source": "var source = \u0027a\\\\u\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0037.source.js",
+    "source": "var source = \u0027\\\\ua\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0041.source.js",
+    "source": "var source = \u0027var x = /[a-z]/\\\\ux\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0042.source.js",
+    "source": "var source = \u0027var x = /[a-z\\n]/\\\\ux\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0043.source.js",
+    "source": "var source = \u0027var x = /[a-z]/\\\\\\\\ux\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0044.source.js",
+    "source": "var source = \u0027var x = /[P QR]/\\\\\\\\u0067\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0048.source.js",
+    "source": "var source = \u0027\u0022\\\\u{110000}\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0049.source.js",
+    "source": "var source = \u0027\u0022\\\\u{}\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0050.source.js",
+    "source": "var source = \u0027\u0022\\\\u{FFFF\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0051.source.js",
+    "source": "var source = \u0027\u0022\\\\u{FFZ}\u0022\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0137.source.js",
+    "source": "var source = \u0027\\u203F = 10\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0163.source.js",
+    "source": "var source = \u0027\\\\u005c\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0165.source.js",
+    "source": "var source = \u0027\\\\u0000\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0166.source.js",
+    "source": "var source = \u0027\\u200C = []\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0167.source.js",
+    "source": "var source = \u0027\\u200D = []\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/migrated_0169.source.js",
+    "source": "var source = \u0027\u0022\\\\u\u0027;",
+    "module": false
+  },
+  {
+    "name": "invalid-syntax/unary_left_side.js",
+    "source": "(\u002B2)**4;",
+    "module": false
+  },
+  {
+    "name": "statement/block/migrated_0000.js",
+    "source": "{ foo }",
+    "module": false
+  },
+  {
+    "name": "statement/block/migrated_0001.js",
+    "source": "{ doThis(); doThat(); }",
+    "module": false
+  },
+  {
+    "name": "statement/block/migrated_0002.js",
+    "source": "{}",
+    "module": false
+  },
+  {
+    "name": "statement/break/migrated_0000.js",
+    "source": "while (true) { break }",
+    "module": false
+  },
+  {
+    "name": "statement/break/migrated_0001.js",
+    "source": "done: while (true) { break done }",
+    "module": false
+  },
+  {
+    "name": "statement/break/migrated_0002.js",
+    "source": "done: while (true) { break done; }",
+    "module": false
+  },
+  {
+    "name": "statement/break/migrated_0003.js",
+    "source": "__proto__: while (true) { break __proto__; }",
+    "module": false
+  },
+  {
+    "name": "statement/break/semicolon_newline.js",
+    "source": "while (true) {\n    if (x) break\n    ;\n    else y;\n}\n",
+    "module": false
+  },
+  {
+    "name": "statement/continue/migrated_0000.js",
+    "source": "while (true) { continue; }",
+    "module": false
+  },
+  {
+    "name": "statement/continue/migrated_0001.js",
+    "source": "while (true) { continue }",
+    "module": false
+  },
+  {
+    "name": "statement/continue/migrated_0002.js",
+    "source": "done: while (true) { continue done }",
+    "module": false
+  },
+  {
+    "name": "statement/continue/migrated_0003.js",
+    "source": "done: while (true) { continue done; }",
+    "module": false
+  },
+  {
+    "name": "statement/continue/migrated_0004.js",
+    "source": "__proto__: while (true) { continue __proto__; }",
+    "module": false
+  },
+  {
+    "name": "statement/debugger/migrated_0000.js",
+    "source": "debugger;",
+    "module": false
+  },
+  {
+    "name": "statement/empty/migrated_0000.js",
+    "source": ";",
+    "module": false
+  },
+  {
+    "name": "statement/expression/migrated_0000.js",
+    "source": "x",
+    "module": false
+  },
+  {
+    "name": "statement/expression/migrated_0001.js",
+    "source": "x, y",
+    "module": false
+  },
+  {
+    "name": "statement/expression/migrated_0002.source.js",
+    "source": "var source = \u0027\\\\u0061\u0027;",
+    "module": false
+  },
+  {
+    "name": "statement/expression/migrated_0003.source.js",
+    "source": "var source = \u0027a\\\\u0061\u0027;",
+    "module": false
+  },
+  {
+    "name": "statement/expression/migrated_0004.source.js",
+    "source": "var source = \u0027\\\\u0061a\u0027;",
+    "module": false
+  },
+  {
+    "name": "statement/expression/migrated_0005.source.js",
+    "source": "var source = \u0027\\\\u0061a \u0027;",
+    "module": false
+  },
+  {
+    "name": "statement/if/else-declaration-following-classic-for.js",
+    "source": "if (true)\n    for (1;;)\n        1;\nelse\n    for (x of y)\n        2;\n",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0000.js",
+    "source": "if (morning) goodMorning()",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0001.js",
+    "source": "if (morning) (function(){})",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0002.js",
+    "source": "if (morning) var x = 0;",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0003.js",
+    "source": "if (morning) function a(){}",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0004.js",
+    "source": "if (morning) goodMorning(); else goodDay()",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0005.js",
+    "source": "if (true) that()\n; else;",
+    "module": false
+  },
+  {
+    "name": "statement/if/migrated_0006.js",
+    "source": "if (true) that(); else;",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/const_forin.js",
+    "source": "for (const x in list) process(x);\n",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/for-in-let.js",
+    "source": "for (x in let) {}\n",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/for-let-let.js",
+    "source": "for (let x = let;;) {}\n",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/for-statement-with-in-decl-init.js",
+    "source": "for (var x = (\u0027p\u0027 in \u0027q\u0027 in {}); ;) { }\n",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/for-statement-with-in-expr-init.js",
+    "source": "for ((\u0027p\u0027 in \u0027q\u0027 in {}); ;) { }\n",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/for-statement-with-seq.js",
+    "source": "for(a,b,c;;);\n",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0000.js",
+    "source": "do keep(); while (true)",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0001.js",
+    "source": "do keep(); while (true);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0002.js",
+    "source": "do { x\u002B\u002B; y--; } while (x \u003C 10)",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0003.js",
+    "source": "{ do { } while (false) false }",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0004.js",
+    "source": "do that();while (true)",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0005.js",
+    "source": "do that()\n;while (true)",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0006.js",
+    "source": "while (true) doSomething()",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0007.js",
+    "source": "while (x \u003C 10) { x\u002B\u002B; y--; }",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0008.js",
+    "source": "for(;;);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0009.js",
+    "source": "for(;;){}",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0010.js",
+    "source": "for(x = 0;;);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0011.js",
+    "source": "for(var x = 0;;);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0012.js",
+    "source": "for(let x = 0;;);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0013.js",
+    "source": "for(var x = 0, y = 1;;);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0014.js",
+    "source": "for(x = 0; x \u003C 42;);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0015.js",
+    "source": "for(x = 0; x \u003C 42; x\u002B\u002B);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0016.js",
+    "source": "for(x = 0; x \u003C 42; x\u002B\u002B) process(x);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0017.js",
+    "source": "for(x in list) process(x);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0018.js",
+    "source": "for (var x in list) process(x);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0019.js",
+    "source": "for (var x = 42 in list) process(x);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0020.js",
+    "source": "for (let x in list) process(x);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0021.js",
+    "source": "for (var x = y = z in q);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0022.js",
+    "source": "for (var a = b = c = (d in e) in z);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0023.js",
+    "source": "for (var i = function() { return 10 in [] } in list) process(x);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0024.js",
+    "source": "for (a[b in c] in d);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0025.js",
+    "source": "for (a(b in c)[0] in d);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/migrated_0026.js",
+    "source": "for (a.in in a);",
+    "module": false
+  },
+  {
+    "name": "statement/iteration/pattern-in-for-in.js",
+    "source": "for([a,b[a],{c,d=e,[f]:[g,h().a,(0).k,...i[0]]}] in 0);\n",
+    "module": false
+  },
+  {
+    "name": "statement/labelled/function-declaration.js",
+    "source": "a: function b() {}\n",
+    "module": false
+  },
+  {
+    "name": "statement/labelled/migrated_0000.js",
+    "source": "start: for (;;) break start",
+    "module": false
+  },
+  {
+    "name": "statement/labelled/migrated_0001.js",
+    "source": "start: while (true) break start",
+    "module": false
+  },
+  {
+    "name": "statement/labelled/migrated_0002.js",
+    "source": "__proto__: test",
+    "module": false
+  },
+  {
+    "name": "statement/return/migrated_0000.js",
+    "source": "(function(){ return })",
+    "module": false
+  },
+  {
+    "name": "statement/return/migrated_0001.js",
+    "source": "(function(){ return; })",
+    "module": false
+  },
+  {
+    "name": "statement/return/migrated_0002.js",
+    "source": "(function(){ return x; })",
+    "module": false
+  },
+  {
+    "name": "statement/return/migrated_0003.js",
+    "source": "(function(){ return x * y })",
+    "module": false
+  },
+  {
+    "name": "statement/return/multiline_string.js",
+    "source": "function a() {\n  return \u0027hello \\\n  \tworld\u0027;\n}\n",
+    "module": false
+  },
+  {
+    "name": "statement/return/multiline_template.js",
+    "source": "function a() {\n  return \u0060\n  \ttest\n  \u0060;\n}\n",
+    "module": false
+  },
+  {
+    "name": "statement/switch/migrated_0000.js",
+    "source": "switch (x) {}",
+    "module": false
+  },
+  {
+    "name": "statement/switch/migrated_0001.js",
+    "source": "switch (answer) { case 42: hi(); break; }",
+    "module": false
+  },
+  {
+    "name": "statement/switch/migrated_0002.js",
+    "source": "switch (answer) { case 42: hi(); break; default: break }",
+    "module": false
+  },
+  {
+    "name": "statement/throw/migrated_0000.js",
+    "source": "throw x;",
+    "module": false
+  },
+  {
+    "name": "statement/throw/migrated_0001.js",
+    "source": "throw x * y",
+    "module": false
+  },
+  {
+    "name": "statement/throw/migrated_0002.js",
+    "source": "throw { message: \u0022Error\u0022 }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0000.js",
+    "source": "try { } catch (e) { }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0001.js",
+    "source": "try { } catch (eval) { }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0002.js",
+    "source": "try { } catch (arguments) { }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0003.js",
+    "source": "try { } catch (e) { say(e) }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0004.js",
+    "source": "try { } finally { cleanup(stuff) }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0005.js",
+    "source": "try { doThat(); } catch (e) { say(e) }",
+    "module": false
+  },
+  {
+    "name": "statement/try/migrated_0006.js",
+    "source": "try { doThat(); } catch (e) { say(e) } finally { cleanup(stuff) }",
+    "module": false
+  },
+  {
+    "name": "statement/try/strict_simple_catch.js",
+    "source": "\u0022use strict\u0022;\ntry {} catch (evil) {}\n",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0000.js",
+    "source": "var x",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0001.js",
+    "source": "var x, y;",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0002.js",
+    "source": "var x = 42",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0003.js",
+    "source": "var eval = 42, arguments = 42",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0004.js",
+    "source": "var x = 14, y = 3, z = 1977",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0005.js",
+    "source": "var implements, interface, package",
+    "module": false
+  },
+  {
+    "name": "statement/variable/migrated_0006.js",
+    "source": "var private, protected, public, static",
+    "module": false
+  },
+  {
+    "name": "statement/variable/var_let.js",
+    "source": "var let;\n",
+    "module": false
+  },
+  {
+    "name": "statement/with/migrated_0000.js",
+    "source": "with (x) foo = bar",
+    "module": false
+  },
+  {
+    "name": "statement/with/migrated_0001.js",
+    "source": "with (x) foo = bar;",
+    "module": false
+  },
+  {
+    "name": "statement/with/migrated_0002.js",
+    "source": "with (x) { foo = bar }",
+    "module": false
+  },
+  {
+    "name": "tokenize/after_if.js",
+    "source": "if(x){} /y/.test(z)",
+    "module": false
+  },
+  {
+    "name": "tokenize/empty.js",
+    "source": "",
+    "module": false
+  },
+  {
+    "name": "tokenize/leading_comment.js",
+    "source": "/* hello world */  /42/\n",
+    "module": false
+  },
+  {
+    "name": "tokenize/line_comment.js",
+    "source": "var answer = 42  // the Ultimate\n",
+    "module": false
+  },
+  {
+    "name": "tokenize/line_terminators.js",
+    "source": "\n\n\n\n",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0000.js",
+    "source": "tokenize(/42/)",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0001.js",
+    "source": "if (false) { /42/ }",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0002.js",
+    "source": "with (false) /42/",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0004.js",
+    "source": "function f(){} /42/",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0007.js",
+    "source": "[function(){} /42]",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0008.js",
+    "source": ";function f(){} /42/",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0009.js",
+    "source": "void /42/",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0010.js",
+    "source": "/42/",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0012.js",
+    "source": "[a] / b",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0013.js",
+    "source": "",
+    "module": false
+  },
+  {
+    "name": "tokenize/migrated_0016.js",
+    "source": "this / 100;",
+    "module": false
+  },
+  {
+    "name": "tokenize/trailing_comment.js",
+    "source": "/42/ /* answer */\n",
+    "module": false
+  },
+  {
+    "name": "whitespace/migrated_0000.source.js",
+    "source": "var source = \u0027new\\x20\\x09\\x0B\\x0C\\xA0\\u1680\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200A\\u202F\\u205F\\u3000\\uFEFFa\u0027;\n",
+    "module": false
+  },
+  {
+    "name": "whitespace/migrated_0001.source.js",
+    "source": "var source = \u0027{0\\x0A1\\x0D2\\u20283\\u20294}\u0027;",
+    "module": false
+  }
+]

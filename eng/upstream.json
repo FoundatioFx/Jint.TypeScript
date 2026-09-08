@@ -1,0 +1,26 @@
+{
+  "reviewedOn": "2026-09-08",
+  "acornima": {
+    "repository": "https://github.com/adams85/acornima",
+    "commit": "b4508e06c520493d798064dc172ad472e44968ce",
+    "package": "1.8.0",
+    "generatedSources": "Acornima.SourceGenerators.StringMatcherGenerator: Parser, Tokenizer, TokenType"
+  },
+  "acornTypescript": {
+    "repository": "https://github.com/TyrealHu/acorn-typescript",
+    "commit": "8956dc50370c7ee2ea97a3c903611079192b28d5",
+    "package": "1.4.13",
+    "usage": "Selected type, declaration, assertion, mapped-type, generic expression and class grammar ideas and four arrow regression fixtures; not a complete port"
+  },
+  "jint": {
+    "repository": "https://github.com/sebastienros/jint",
+    "reviewedHead": "3037bc4c97f99bd9859fb74e5f7d00ccd24d48d6",
+    "package": "5.0.0-preview-2007",
+    "feed": "https://f.feedz.io/sebastienros/jint/nuget/index.json",
+    "packageCommit": "63b86ec8fa4a79731770f54bd57cba44f362eba9"
+  },
+  "references": {
+    "typescript": "7.0.2",
+    "babelParser": "8.0.4"
+  }
+}

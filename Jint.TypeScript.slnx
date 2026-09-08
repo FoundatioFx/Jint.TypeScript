@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/"><Project Path="src/Jint.TypeScript/Jint.TypeScript.csproj" /></Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Jint.TypeScript.Tests/Jint.TypeScript.Tests.csproj" />
+    <Project Path="tests/Jint.TypeScript.Stress/Jint.TypeScript.Stress.csproj" />
+  </Folder>
+  <Folder Name="/benchmarks/"><Project Path="benchmarks/Jint.TypeScript.Benchmarks/Jint.TypeScript.Benchmarks.csproj" /></Folder>
+</Solution>

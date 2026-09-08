@@ -1,0 +1,7 @@
+{
+  "name": "jint-typescript-reference-checks",
+  "private": true,
+  "type": "module",
+  "scripts": { "generate": "node generate.mjs" },
+  "devDependencies": { "@babel/parser": "8.0.4", "typescript": "7.0.2" }
+}

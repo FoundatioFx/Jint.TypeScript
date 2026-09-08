@@ -1,0 +1,12 @@
+[
+  "Parser.PublicAst.cs",
+  "Parser.TypeScript.Ambient.cs",
+  "Parser.TypeScript.Assertions.cs",
+  "Parser.TypeScript.Classes.cs",
+  "Parser.TypeScript.Declarations.cs",
+  "Parser.TypeScript.Generics.cs",
+  "Parser.TypeScript.Signatures.cs",
+  "Parser.TypeScript.Types.cs",
+  "Parser.TypeScript.cs",
+  "Tokenizer.TypeScript.cs"
+]

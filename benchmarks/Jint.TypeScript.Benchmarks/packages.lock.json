@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "Acornima": {
+        "type": "Transitive",
+        "resolved": "1.8.0",
+        "contentHash": "ZtcK7lu5LZZH5qDWfeUdBn/WXChWQjGdpB9sSFOJPyqnODGSMS1wqBoONP7GXzQRPHKoV8byWZT4EeBPI69ODQ=="
+      },
+      "Jint": {
+        "type": "Transitive",
+        "resolved": "5.0.0-preview-2007",
+        "contentHash": "yz6eCJ2ahnMZR3rli6WrqR8QUSWH/x4geRGEt/nH+4fhiVC0Vv4uz2+HBoMqqBZ9QpfbF+iH0w5Otck+5qLryA==",
+        "dependencies": {
+          "Acornima": "1.8.0"
+        }
+      },
+      "jint.typescript": {
+        "type": "Project",
+        "dependencies": {
+          "Acornima": "[1.8.0, )",
+          "Jint": "[5.0.0-preview-2007, )"
+        }
+      }
+    }
+  }
+}

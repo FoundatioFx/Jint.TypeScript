@@ -1,0 +1,827 @@
+{
+  "utc": "2026-09-08T16:32:31.7963279+00:00",
+  "runtime": ".NET 10.0.11",
+  "jint": "5.0.0-preview-2007\u002B63b86ec8fa4a79731770f54bd57cba44f362eba9",
+  "acornima": "1.8.0\u002Bb4508e06c520493d798064dc172ad472e44968ce",
+  "os": "Ubuntu 26.04.1 LTS",
+  "architecture": "X64",
+  "processorCount": 24,
+  "results": [
+    {
+      "operation": "Official JS parse",
+      "units": 1,
+      "characters": 64,
+      "iterations": 5000,
+      "medianMicroseconds": 1.606,
+      "allocatedBytes": 3352
+    },
+    {
+      "operation": "Owned JS parse",
+      "units": 1,
+      "characters": 64,
+      "iterations": 5000,
+      "medianMicroseconds": 2.24,
+      "allocatedBytes": 3728
+    },
+    {
+      "operation": "Owned TS parse",
+      "units": 1,
+      "characters": 96,
+      "iterations": 5000,
+      "medianMicroseconds": 2.593,
+      "allocatedBytes": 3768
+    },
+    {
+      "operation": "Official JS prepare",
+      "units": 1,
+      "characters": 64,
+      "iterations": 5000,
+      "medianMicroseconds": 3.398,
+      "allocatedBytes": 6208
+    },
+    {
+      "operation": "Owned TS prepare",
+      "units": 1,
+      "characters": 96,
+      "iterations": 5000,
+      "medianMicroseconds": 4.637,
+      "allocatedBytes": 6424
+    },
+    {
+      "operation": "Official JS parse",
+      "units": 100,
+      "characters": 6589,
+      "iterations": 50,
+      "medianMicroseconds": 133.82,
+      "allocatedBytes": 219552
+    },
+    {
+      "operation": "Owned JS parse",
+      "units": 100,
+      "characters": 6589,
+      "iterations": 50,
+      "medianMicroseconds": 188.524,
+      "allocatedBytes": 241312
+    },
+    {
+      "operation": "Owned TS parse",
+      "units": 100,
+      "characters": 9789,
+      "iterations": 50,
+      "medianMicroseconds": 228.422,
+      "allocatedBytes": 241352
+    },
+    {
+      "operation": "Official JS prepare",
+      "units": 100,
+      "characters": 6589,
+      "iterations": 50,
+      "medianMicroseconds": 291.038,
+      "allocatedBytes": 387096
+    },
+    {
+      "operation": "Owned TS prepare",
+      "units": 100,
+      "characters": 9789,
+      "iterations": 50,
+      "medianMicroseconds": 409.492,
+      "allocatedBytes": 408696
+    },
+    {
+      "operation": "Official JS parse",
+      "units": 1000,
+      "characters": 66889,
+      "iterations": 10,
+      "medianMicroseconds": 1461.36,
+      "allocatedBytes": 2141648
+    },
+    {
+      "operation": "Owned JS parse",
+      "units": 1000,
+      "characters": 66889,
+      "iterations": 10,
+      "medianMicroseconds": 1945.8,
+      "allocatedBytes": 2357808
+    },
+    {
+      "operation": "Owned TS parse",
+      "units": 1000,
+      "characters": 98889,
+      "iterations": 10,
+      "medianMicroseconds": 2338.22,
+      "allocatedBytes": 2357848
+    },
+    {
+      "operation": "Official JS prepare",
+      "units": 1000,
+      "characters": 66889,
+      "iterations": 10,
+      "medianMicroseconds": 3109.38,
+      "allocatedBytes": 3805224
+    },
+    {
+      "operation": "Owned TS prepare",
+      "units": 1000,
+      "characters": 98889,
+      "iterations": 10,
+      "medianMicroseconds": 4273.32,
+      "allocatedBytes": 4021224
+    },
+    {
+      "operation": "Official JS arrows",
+      "units": 100,
+      "characters": 2589,
+      "iterations": 100,
+      "medianMicroseconds": 76.709,
+      "allocatedBytes": 118696
+    },
+    {
+      "operation": "Owned TS arrows",
+      "units": 100,
+      "characters": 4189,
+      "iterations": 100,
+      "medianMicroseconds": 126.491,
+      "allocatedBytes": 138896
+    },
+    {
+      "operation": "Official JS comparisons/arrows",
+      "units": 100,
+      "characters": 3589,
+      "iterations": 20,
+      "medianMicroseconds": 103.275,
+      "allocatedBytes": 149096
+    },
+    {
+      "operation": "Owned TS return-only arrows",
+      "units": 100,
+      "characters": 4389,
+      "iterations": 20,
+      "medianMicroseconds": 208.28,
+      "allocatedBytes": 170344
+    },
+    {
+      "operation": "Official JS comparisons/arrows",
+      "units": 1000,
+      "characters": 36889,
+      "iterations": 20,
+      "medianMicroseconds": 1817.67,
+      "allocatedBytes": 1437592
+    },
+    {
+      "operation": "Owned TS return-only arrows",
+      "units": 1000,
+      "characters": 44889,
+      "iterations": 20,
+      "medianMicroseconds": 2903.59,
+      "allocatedBytes": 1638840
+    },
+    {
+      "operation": "Owned TS erased union",
+      "units": 100,
+      "characters": 410,
+      "iterations": 20,
+      "medianMicroseconds": 6.725,
+      "allocatedBytes": 1872
+    },
+    {
+      "operation": "Official JS comparison chain",
+      "units": 100,
+      "characters": 398,
+      "iterations": 20,
+      "medianMicroseconds": 8.075,
+      "allocatedBytes": 17024
+    },
+    {
+      "operation": "Owned JS comparison chain",
+      "units": 100,
+      "characters": 398,
+      "iterations": 20,
+      "medianMicroseconds": 16.285,
+      "allocatedBytes": 20120
+    },
+    {
+      "operation": "Owned TS late type rejection",
+      "units": 100,
+      "characters": 412,
+      "iterations": 20,
+      "medianMicroseconds": 10.335,
+      "allocatedBytes": 2512
+    },
+    {
+      "operation": "Owned TS erased union",
+      "units": 1000,
+      "characters": 4010,
+      "iterations": 20,
+      "medianMicroseconds": 58.815,
+      "allocatedBytes": 1872
+    },
+    {
+      "operation": "Official JS comparison chain",
+      "units": 1000,
+      "characters": 3998,
+      "iterations": 20,
+      "medianMicroseconds": 77.635,
+      "allocatedBytes": 161024
+    },
+    {
+      "operation": "Owned JS comparison chain",
+      "units": 1000,
+      "characters": 3998,
+      "iterations": 20,
+      "medianMicroseconds": 156.57,
+      "allocatedBytes": 178528
+    },
+    {
+      "operation": "Owned TS late type rejection",
+      "units": 1000,
+      "characters": 4012,
+      "iterations": 20,
+      "medianMicroseconds": 63.52,
+      "allocatedBytes": 2512
+    },
+    {
+      "operation": "Owned TS erased union",
+      "units": 10000,
+      "characters": 40010,
+      "iterations": 20,
+      "medianMicroseconds": 581.525,
+      "allocatedBytes": 1872
+    },
+    {
+      "operation": "Official JS comparison chain",
+      "units": 10000,
+      "characters": 39998,
+      "iterations": 20,
+      "medianMicroseconds": 816.91,
+      "allocatedBytes": 1601024
+    },
+    {
+      "operation": "Owned JS comparison chain",
+      "units": 10000,
+      "characters": 39998,
+      "iterations": 20,
+      "medianMicroseconds": 1653.56,
+      "allocatedBytes": 1864384
+    },
+    {
+      "operation": "Owned TS late type rejection",
+      "units": 10000,
+      "characters": 40012,
+      "iterations": 20,
+      "medianMicroseconds": 590.305,
+      "allocatedBytes": 2512
+    },
+    {
+      "operation": "Official JS regex",
+      "units": 100,
+      "characters": 2389,
+      "iterations": 20,
+      "medianMicroseconds": 59.595,
+      "allocatedBytes": 66912
+    },
+    {
+      "operation": "Owned JS regex",
+      "units": 100,
+      "characters": 2389,
+      "iterations": 20,
+      "medianMicroseconds": 88.99,
+      "allocatedBytes": 88552
+    },
+    {
+      "operation": "Official JS unique regex",
+      "units": 100,
+      "characters": 2579,
+      "iterations": 20,
+      "medianMicroseconds": 64.055,
+      "allocatedBytes": 86264
+    },
+    {
+      "operation": "Owned JS unique regex",
+      "units": 100,
+      "characters": 2579,
+      "iterations": 20,
+      "medianMicroseconds": 91.13,
+      "allocatedBytes": 96784
+    },
+    {
+      "operation": "Official JS regex",
+      "units": 1000,
+      "characters": 24889,
+      "iterations": 20,
+      "medianMicroseconds": 1288.48,
+      "allocatedBytes": 613808
+    },
+    {
+      "operation": "Owned JS regex",
+      "units": 1000,
+      "characters": 24889,
+      "iterations": 20,
+      "medianMicroseconds": 1573.585,
+      "allocatedBytes": 822648
+    },
+    {
+      "operation": "Official JS unique regex",
+      "units": 1000,
+      "characters": 27779,
+      "iterations": 20,
+      "medianMicroseconds": 1374.785,
+      "allocatedBytes": 860952
+    },
+    {
+      "operation": "Owned JS unique regex",
+      "units": 1000,
+      "characters": 27779,
+      "iterations": 20,
+      "medianMicroseconds": 1690.05,
+      "allocatedBytes": 957048
+    },
+    {
+      "operation": "Owned TS erased interface",
+      "units": 100,
+      "characters": 2418,
+      "iterations": 20,
+      "medianMicroseconds": 28.94,
+      "allocatedBytes": 2304
+    },
+    {
+      "operation": "Owned TS erased tuple",
+      "units": 100,
+      "characters": 715,
+      "iterations": 20,
+      "medianMicroseconds": 15.29,
+      "allocatedBytes": 2248
+    },
+    {
+      "operation": "Owned TS erased signatures",
+      "units": 100,
+      "characters": 2220,
+      "iterations": 20,
+      "medianMicroseconds": 29.115,
+      "allocatedBytes": 2224
+    },
+    {
+      "operation": "Owned TS erased interface",
+      "units": 1000,
+      "characters": 24018,
+      "iterations": 20,
+      "medianMicroseconds": 291.39,
+      "allocatedBytes": 2304
+    },
+    {
+      "operation": "Owned TS erased tuple",
+      "units": 1000,
+      "characters": 7015,
+      "iterations": 20,
+      "medianMicroseconds": 146.125,
+      "allocatedBytes": 2248
+    },
+    {
+      "operation": "Owned TS erased signatures",
+      "units": 1000,
+      "characters": 22020,
+      "iterations": 20,
+      "medianMicroseconds": 284.385,
+      "allocatedBytes": 2224
+    },
+    {
+      "operation": "Owned TS erased interface",
+      "units": 10000,
+      "characters": 240018,
+      "iterations": 20,
+      "medianMicroseconds": 2816.975,
+      "allocatedBytes": 2304
+    },
+    {
+      "operation": "Owned TS erased tuple",
+      "units": 10000,
+      "characters": 70015,
+      "iterations": 20,
+      "medianMicroseconds": 1453.45,
+      "allocatedBytes": 2248
+    },
+    {
+      "operation": "Owned TS erased signatures",
+      "units": 10000,
+      "characters": 220020,
+      "iterations": 20,
+      "medianMicroseconds": 2839.035,
+      "allocatedBytes": 2224
+    },
+    {
+      "operation": "Owned TS richer script",
+      "units": 1,
+      "characters": 179,
+      "iterations": 5000,
+      "medianMicroseconds": 3.63,
+      "allocatedBytes": 5544
+    },
+    {
+      "operation": "Owned TS richer script",
+      "units": 100,
+      "characters": 10664,
+      "iterations": 50,
+      "medianMicroseconds": 221.816,
+      "allocatedBytes": 257776
+    },
+    {
+      "operation": "Owned TS richer script",
+      "units": 1000,
+      "characters": 106964,
+      "iterations": 10,
+      "medianMicroseconds": 2346.7,
+      "allocatedBytes": 2511072
+    },
+    {
+      "operation": "Official JS predicate equivalent",
+      "units": 1,
+      "characters": 29,
+      "iterations": 5000,
+      "medianMicroseconds": 0.635,
+      "allocatedBytes": 1936
+    },
+    {
+      "operation": "Owned TS this/predicate implementations",
+      "units": 1,
+      "characters": 77,
+      "iterations": 5000,
+      "medianMicroseconds": 1.726,
+      "allocatedBytes": 3456
+    },
+    {
+      "operation": "Owned TS overload implementations",
+      "units": 1,
+      "characters": 141,
+      "iterations": 5000,
+      "medianMicroseconds": 2.771,
+      "allocatedBytes": 3896
+    },
+    {
+      "operation": "Official JS predicate equivalent",
+      "units": 100,
+      "characters": 3089,
+      "iterations": 50,
+      "medianMicroseconds": 42.714,
+      "allocatedBytes": 83496
+    },
+    {
+      "operation": "Owned TS this/predicate implementations",
+      "units": 100,
+      "characters": 7889,
+      "iterations": 50,
+      "medianMicroseconds": 129.932,
+      "allocatedBytes": 98312
+    },
+    {
+      "operation": "Owned TS overload implementations",
+      "units": 100,
+      "characters": 14379,
+      "iterations": 50,
+      "medianMicroseconds": 231.714,
+      "allocatedBytes": 142312
+    },
+    {
+      "operation": "Official JS predicate equivalent",
+      "units": 1000,
+      "characters": 31889,
+      "iterations": 10,
+      "medianMicroseconds": 420.54,
+      "allocatedBytes": 781592
+    },
+    {
+      "operation": "Owned TS this/predicate implementations",
+      "units": 1000,
+      "characters": 79889,
+      "iterations": 10,
+      "medianMicroseconds": 1321.68,
+      "allocatedBytes": 918808
+    },
+    {
+      "operation": "Owned TS overload implementations",
+      "units": 1000,
+      "characters": 145779,
+      "iterations": 10,
+      "medianMicroseconds": 2302.17,
+      "allocatedBytes": 1358808
+    },
+    {
+      "operation": "Owned TS ambient declarations",
+      "units": 100,
+      "characters": 4600,
+      "iterations": 20,
+      "medianMicroseconds": 44.135,
+      "allocatedBytes": 2192
+    },
+    {
+      "operation": "Owned TS erased overloads",
+      "units": 100,
+      "characters": 5900,
+      "iterations": 20,
+      "medianMicroseconds": 88.075,
+      "allocatedBytes": 46496
+    },
+    {
+      "operation": "Owned TS type query union",
+      "units": 100,
+      "characters": 1907,
+      "iterations": 20,
+      "medianMicroseconds": 13.86,
+      "allocatedBytes": 2104
+    },
+    {
+      "operation": "Owned TS ambient declarations",
+      "units": 1000,
+      "characters": 46000,
+      "iterations": 20,
+      "medianMicroseconds": 437.27,
+      "allocatedBytes": 2192
+    },
+    {
+      "operation": "Owned TS erased overloads",
+      "units": 1000,
+      "characters": 59000,
+      "iterations": 20,
+      "medianMicroseconds": 888.765,
+      "allocatedBytes": 442496
+    },
+    {
+      "operation": "Owned TS type query union",
+      "units": 1000,
+      "characters": 19007,
+      "iterations": 20,
+      "medianMicroseconds": 136.675,
+      "allocatedBytes": 2104
+    },
+    {
+      "operation": "Owned TS ambient declarations",
+      "units": 10000,
+      "characters": 460000,
+      "iterations": 20,
+      "medianMicroseconds": 4413.935,
+      "allocatedBytes": 2192
+    },
+    {
+      "operation": "Owned TS erased overloads",
+      "units": 10000,
+      "characters": 590000,
+      "iterations": 20,
+      "medianMicroseconds": 8821.805,
+      "allocatedBytes": 4402496
+    },
+    {
+      "operation": "Owned TS type query union",
+      "units": 10000,
+      "characters": 190007,
+      "iterations": 20,
+      "medianMicroseconds": 1349.95,
+      "allocatedBytes": 2104
+    },
+    {
+      "operation": "Owned TS assertion chain",
+      "units": 100,
+      "characters": 1003,
+      "iterations": 20,
+      "medianMicroseconds": 9.585,
+      "allocatedBytes": 1744
+    },
+    {
+      "operation": "Owned TS non-null chain",
+      "units": 100,
+      "characters": 103,
+      "iterations": 20,
+      "medianMicroseconds": 4.19,
+      "allocatedBytes": 1704
+    },
+    {
+      "operation": "Owned TS template type",
+      "units": 100,
+      "characters": 1412,
+      "iterations": 20,
+      "medianMicroseconds": 12.375,
+      "allocatedBytes": 2144
+    },
+    {
+      "operation": "Owned TS mapped key union",
+      "units": 100,
+      "characters": 426,
+      "iterations": 20,
+      "medianMicroseconds": 6.9,
+      "allocatedBytes": 2136
+    },
+    {
+      "operation": "Owned TS assertion chain",
+      "units": 1000,
+      "characters": 10003,
+      "iterations": 20,
+      "medianMicroseconds": 89.39,
+      "allocatedBytes": 1744
+    },
+    {
+      "operation": "Owned TS non-null chain",
+      "units": 1000,
+      "characters": 1003,
+      "iterations": 20,
+      "medianMicroseconds": 35.245,
+      "allocatedBytes": 1704
+    },
+    {
+      "operation": "Owned TS template type",
+      "units": 1000,
+      "characters": 14012,
+      "iterations": 20,
+      "medianMicroseconds": 116.895,
+      "allocatedBytes": 2144
+    },
+    {
+      "operation": "Owned TS mapped key union",
+      "units": 1000,
+      "characters": 4026,
+      "iterations": 20,
+      "medianMicroseconds": 91.62,
+      "allocatedBytes": 2136
+    },
+    {
+      "operation": "Owned TS assertion chain",
+      "units": 10000,
+      "characters": 100003,
+      "iterations": 20,
+      "medianMicroseconds": 882.75,
+      "allocatedBytes": 1744
+    },
+    {
+      "operation": "Owned TS non-null chain",
+      "units": 10000,
+      "characters": 10003,
+      "iterations": 20,
+      "medianMicroseconds": 344.625,
+      "allocatedBytes": 1704
+    },
+    {
+      "operation": "Owned TS template type",
+      "units": 10000,
+      "characters": 140012,
+      "iterations": 20,
+      "medianMicroseconds": 1155.52,
+      "allocatedBytes": 2144
+    },
+    {
+      "operation": "Owned TS mapped key union",
+      "units": 10000,
+      "characters": 40026,
+      "iterations": 20,
+      "medianMicroseconds": 577.805,
+      "allocatedBytes": 2136
+    },
+    {
+      "operation": "Owned TS generic/assert script",
+      "units": 1,
+      "characters": 95,
+      "iterations": 5000,
+      "medianMicroseconds": 2.01,
+      "allocatedBytes": 2800
+    },
+    {
+      "operation": "Owned TS generic/assert script",
+      "units": 100,
+      "characters": 9689,
+      "iterations": 50,
+      "medianMicroseconds": 173.972,
+      "allocatedBytes": 145376
+    },
+    {
+      "operation": "Owned TS generic/assert script",
+      "units": 1000,
+      "characters": 97889,
+      "iterations": 10,
+      "medianMicroseconds": 1744.3,
+      "allocatedBytes": 1392008
+    },
+    {
+      "operation": "Official JS generic-call equivalent",
+      "units": 1,
+      "characters": 23,
+      "iterations": 5000,
+      "medianMicroseconds": 0.911,
+      "allocatedBytes": 2480
+    },
+    {
+      "operation": "Owned TS generic calls",
+      "units": 1,
+      "characters": 42,
+      "iterations": 5000,
+      "medianMicroseconds": 2.17,
+      "allocatedBytes": 3968
+    },
+    {
+      "operation": "Official JS class equivalent",
+      "units": 1,
+      "characters": 39,
+      "iterations": 3000,
+      "medianMicroseconds": 1.145,
+      "allocatedBytes": 2928
+    },
+    {
+      "operation": "Owned TS generic classes",
+      "units": 1,
+      "characters": 70,
+      "iterations": 3000,
+      "medianMicroseconds": 2.49,
+      "allocatedBytes": 4288
+    },
+    {
+      "operation": "Official JS generic-call equivalent",
+      "units": 100,
+      "characters": 617,
+      "iterations": 50,
+      "medianMicroseconds": 22.898,
+      "allocatedBytes": 44824
+    },
+    {
+      "operation": "Owned TS generic calls",
+      "units": 100,
+      "characters": 1428,
+      "iterations": 50,
+      "medianMicroseconds": 65.272,
+      "allocatedBytes": 53440
+    },
+    {
+      "operation": "Official JS class equivalent",
+      "units": 100,
+      "characters": 4089,
+      "iterations": 30,
+      "medianMicroseconds": 100.867,
+      "allocatedBytes": 167648
+    },
+    {
+      "operation": "Owned TS generic classes",
+      "units": 100,
+      "characters": 7189,
+      "iterations": 30,
+      "medianMicroseconds": 212.807,
+      "allocatedBytes": 189600
+    },
+    {
+      "operation": "Official JS generic-call equivalent",
+      "units": 1000,
+      "characters": 6017,
+      "iterations": 20,
+      "medianMicroseconds": 236.865,
+      "allocatedBytes": 419968
+    },
+    {
+      "operation": "Owned TS generic calls",
+      "units": 1000,
+      "characters": 14028,
+      "iterations": 20,
+      "medianMicroseconds": 653.315,
+      "allocatedBytes": 493384
+    },
+    {
+      "operation": "Official JS class equivalent",
+      "units": 1000,
+      "characters": 41889,
+      "iterations": 10,
+      "medianMicroseconds": 1779.89,
+      "allocatedBytes": 1621744
+    },
+    {
+      "operation": "Owned TS generic classes",
+      "units": 1000,
+      "characters": 72889,
+      "iterations": 10,
+      "medianMicroseconds": 2920.79,
+      "allocatedBytes": 1830896
+    },
+    {
+      "operation": "Owned TS wide type arguments",
+      "units": 100,
+      "characters": 207,
+      "iterations": 20,
+      "medianMicroseconds": 11.725,
+      "allocatedBytes": 2640
+    },
+    {
+      "operation": "Owned TS wide type arguments",
+      "units": 1000,
+      "characters": 2007,
+      "iterations": 20,
+      "medianMicroseconds": 107.175,
+      "allocatedBytes": 2640
+    },
+    {
+      "operation": "Owned TS wide type arguments",
+      "units": 10000,
+      "characters": 20007,
+      "iterations": 20,
+      "medianMicroseconds": 1060.03,
+      "allocatedBytes": 2640
+    },
+    {
+      "operation": "Cached TS execute (new Engine)",
+      "units": 1,
+      "characters": 0,
+      "iterations": 1000,
+      "medianMicroseconds": 7.189,
+      "allocatedBytes": 12504
+    }
+  ]
+}

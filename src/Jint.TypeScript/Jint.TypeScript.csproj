@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Version>0.1.0-preview.1</Version>
+    <Description>A C# TypeScript syntax eraser for Jint with original source locations.</Description>
+    <PackageLicenseExpression>Apache-2.0 AND BSD-3-Clause AND MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Jint" Version="5.0.0-preview-2007" />
+    <PackageReference Include="Acornima" Version="1.8.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Parsing/Properties/*.resx">
+      <LogicalName>Jint.TypeScript.Parsing.Properties.%(Filename).resources</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <None Include="../../LICENSE.txt" Pack="true" PackagePath="/" />
+    <None Include="../../THIRD-PARTY-NOTICES.txt" Pack="true" PackagePath="/" />
+  </ItemGroup>
+</Project>

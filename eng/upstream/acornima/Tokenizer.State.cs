@@ -1,0 +1,226 @@
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+using System.Text;
+using Jint.TypeScript.Parsing.Helpers;
+
+namespace Jint.TypeScript.Parsing;
+
+using static ExceptionHelper;
+
+// https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/state.js
+
+internal partial class Tokenizer
+{
+    internal string _input;
+    internal int _startPosition, _endPosition;
+    private SourceType _sourceType;
+    internal string? _sourceFile;
+
+    // Used to signal to callers of `ReadWord1` whether the word
+    // contained any escape sequences. This is needed because words with
+    // escape sequences must not be interpreted as keywords.
+    internal bool _containsEscape;
+
+    // Used to signal to the parser whether a token contains a legacy octal construct, that is, a syntactic form
+    // which the specification allows in non-strict mode only, and if so, at what position and of what kind.
+    // This information is needed for reporting such constructs retroactively, that is, in the case when strict
+    // mode is turned on only after the token has been read (see also `Parser.ParseDirectivePrologue`).
+    // These fields are only ever recorded into, never cleared when a token containing no such construct is read,
+    // so they must always be accessed via `GetCurrentTokenLegacyOctal`, which tells a record which belongs to
+    // the current token apart from the leftovers of an earlier one.
+    private int _legacyOctalPosition;
+    private LegacyOctalKind _legacyOctalKind;
+
+    // The current position of the tokenizer in the input.
+    internal int _position;
+    internal int _lineStart;
+    internal int _currentLine;
+
+    // Properties of the current token:
+    // Its type
+    internal TokenType _type;
+    // For tokens that include more information than their type, the value
+    internal TokenValue _value;
+    // Its start and end offset
+    internal int _start, _end;
+    // And, if locations are used, the {line, column} object
+    // corresponding to those offsets
+    internal Position _startLocation, _endLocation;
+
+    // Position information for the previous token
+    internal Position _lastTokenStartLocation, _lastTokenEndLocation;
+    internal int _lastTokenStart, _lastTokenEnd;
+
+    // The context stack is used to superficially track syntactic
+    // context to predict whether a regular expression is allowed in a
+    // given position.
+    internal ArrayList<TokenContext> _contextStack;
+    internal bool _expressionAllowed;
+
+    internal bool _inModule;
+    internal bool _strict;
+
+    private bool _requireValidEscapeSequenceInTemplate;
+    private bool _inTemplateElement;
+
+    private StringBuilder? _sb;
+
+    internal StringPool _stringPool;
+
+    internal CodePointRange.Cache? _codePointRangeCache;
+
+    public void Reset(string input, SourceType sourceType = SourceType.Script, string? sourceFile = null)
+        => Reset(input, start: 0, sourceType, sourceFile);
+
+    public void Reset(string input, int start, SourceType sourceType = SourceType.Script, string? sourceFile = null)
+        => Reset(input ?? ThrowArgumentNullException<string>(nameof(input)), start, input.Length - start, sourceType, sourceFile);
+
+    public void Reset(string input, int start, int length, SourceType sourceType = SourceType.Script, string? sourceFile = null)
+        => ResetInternal(input, start, length, sourceType, sourceFile);
+
+    internal void ResetInternal(string input, int start, int length, SourceType sourceType, string? sourceFile)
+    {
+        _input = input ?? throw new ArgumentNullException(nameof(input));
+        _startPosition = (uint)start <= (uint)input.Length
+            ? start
+            : throw new ArgumentOutOfRangeException(nameof(start), start, null);
+        _endPosition = (uint)length <= (uint)(input.Length - start)
+            ? _startPosition + length
+            : throw new ArgumentOutOfRangeException(nameof(length), length, null);
+        _sourceType = sourceType;
+        _sourceFile = sourceFile;
+
+        _containsEscape = false;
+        _legacyOctalPosition = -1;
+
+        // Set up token state
+
+        if (start == 0)
+        {
+            _position = _lineStart = 0;
+            _currentLine = 1;
+        }
+        else
+        {
+            _position = start;
+            _currentLine = GetLineInfo(_input, start, out _lineStart).Line;
+        }
+
+        _type = TokenType.EOF;
+        _value = TokenValue.EOF;
+        _start = _end = _position;
+        _startLocation = _endLocation = CurrentPosition;
+
+        _lastTokenEndLocation = _lastTokenStartLocation = default;
+        _lastTokenStart = _lastTokenEnd = _position;
+
+        _contextStack.Clear();
+        _contextStack.Push(TokenContext.BracketsInStatement);
+
+        _expressionAllowed = _trackRegExpContext;
+
+        _inModule = _strict = sourceType == SourceType.Module;
+
+        _sb = _sb is not null ? _sb.Clear() : new StringBuilder();
+        _stringPool.Clear();
+
+        _options._errorHandler.Reset();
+    }
+
+    internal void ReleaseLargeBuffersForRegExpParser()
+    {
+        (_sb ?? throw new InvalidOperationException()).Clear();
+        if (_sb.Capacity > 1024)
+        {
+            _sb.Capacity = 1024;
+        }
+
+        // Clearing the string pool instead of dropping it makes its backing arrays reusable across parse operations,
+        // which eliminates the repeated regrowing of the pool. The cap keeps the retained memory bounded (at most
+        // ~192 KB on 64-bit with the current entry layout).
+        if (_stringPool.Capacity > 8192)
+        {
+            _stringPool = default;
+        }
+        else
+        {
+            _stringPool.Clear();
+        }
+
+        _regExpParser?.ReleaseReferencesAndLargeBuffers();
+    }
+
+    private void ReleaseLargeBuffers()
+    {
+        _contextStack.Clear();
+        _contextStack.Push(TokenContext.BracketsInStatement);
+        if (_contextStack.Capacity > 64)
+        {
+            _contextStack.Capacity = 64;
+        }
+
+        ReleaseLargeBuffersForRegExpParser();
+    }
+
+    internal void ReleaseReferencesAndLargeBuffers()
+    {
+        _input = null!;
+        _sourceFile = null!;
+
+        // Avoid cleaning up twice at the end of parsing,
+        // as the tokenizer already cleans up on reaching EOF (see NextToken).
+        if (_type != TokenType.EOF)
+        {
+            ReleaseLargeBuffers();
+        }
+    }
+
+    private Position CurrentPosition { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => Position.From(_currentLine, _position - _lineStart); }
+
+    internal TokenContext CurrentContext { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => _contextStack.Peek(); }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal int GetCurrentLegacyOctal(out LegacyOctalKind kind)
+    {
+        // As positions never decrease within a single tokenization, a recorded position which precedes the start
+        // of the current token can only be the leftover of an earlier token.
+        if (_legacyOctalPosition >= _start)
+        {
+            kind = _legacyOctalKind;
+            return _legacyOctalPosition;
+        }
+
+        kind = LegacyOctalKind.None;
+        return -1;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private void RecordLegacyOctal(int position, LegacyOctalKind kind)
+    {
+        Debug.Assert(position >= _start, "Position must be within the token currently being read.");
+
+        if (_legacyOctalPosition < _start)
+        {
+            _legacyOctalPosition = position;
+            _legacyOctalKind = kind;
+        }
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal void AcquireStringBuilder([NotNull] out StringBuilder? sb)
+    {
+        Debug.Assert(_sb is not null, $"String builder is already in use.");
+        sb = _sb!.Clear();
+        _sb = null;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    internal void ReleaseStringBuilder(ref StringBuilder? sb)
+    {
+        Debug.Assert(_sb is null, $"String builder is not in use currently.");
+        _sb = sb;
+        sb = null;
+    }
+}

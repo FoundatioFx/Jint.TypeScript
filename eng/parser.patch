@@ -1,0 +1,842 @@
+diff --git a/Parser.Expression.cs b/Parser.Expression.cs
+index 099f7cd..d0dcdb2 100644
+--- a/Parser.Expression.cs
++++ b/Parser.Expression.cs
+@@ -207,7 +207,7 @@ internal partial class Parser
+ 
+         var startMarker = StartNode();
+ 
+-        if (_tokenizer._type == TokenType.ParenLeft || _tokenizer._type == TokenType.Name)
++        if (_tokenizer._type == TokenType.ParenLeft || _tokenizer._type == TokenType.Name || IsTypeOperator("<"))
+         {
+             _potentialArrowAt = _tokenizer._start;
+         }
+@@ -306,6 +306,9 @@ internal partial class Parser
+ 
+         if (_tokenizer._type == TokenType.Question && !(expr.Type == NodeType.ArrowFunctionExpression && expr.Range.Start == startMarker.Index))
+         {
++            // `x?: T` and `x?)` cannot be JS conditionals. Leave the marker
++            // for the enclosing arrow-parameter parser; other contexts reject it.
++            if (expr is Identifier && IsOptionalParameterQuestion()) return expr;
+             Next();
+ 
+             var consequent = ParseMaybeAssign(ref NullRef<DestructuringErrors>());
+@@ -350,8 +353,14 @@ internal partial class Parser
+ 
+         int prec;
+         // NOTE: TokenType.Precedence defaults to -1 for non-binary operator tokens.
+-        while ((prec = _tokenizer._type.Precedence) > minPrec && ((context & ExpressionContext.ForInit) == 0 || _tokenizer._type != TokenType.In))
++        while (true)
+         {
++            if (IsAssertionOperator(minPrec))
++            {
++                left = ParseAssertionWithExponentiation(leftStartMarker, left, context);
++                continue;
++            }
++            if ((prec = _tokenizer._type.Precedence) <= minPrec || ((context & ExpressionContext.ForInit) != 0 && _tokenizer._type == TokenType.In)) break;
+             Operator op;
+             bool coalesce;
+             var logical = _tokenizer._type == TokenType.LogicalOr || _tokenizer._type == TokenType.LogicalAnd;
+@@ -701,6 +710,11 @@ internal partial class Parser
+ 
+         for (; ; )
+         {
++            if (TryParseNonNull(baseExpr))
++            {
++                maybeAsyncArrow = false;
++                continue;
++            }
+             var element = ParseSubscript(startMarker, baseExpr, noCalls, maybeAsyncArrow, ref optionalChainPos, ref hasCall, context);
+ 
+             if (ReferenceEquals(element, baseExpr) || element.Type == NodeType.ArrowFunctionExpression)
+@@ -743,6 +757,12 @@ internal partial class Parser
+             }
+         }
+ 
++        var requireGenericArrow = false;
++        if (IsExpressionTypeArgumentStart() && (optional || HasExpressionTypeArguments()))
++        {
++            requireGenericArrow = ParseGenericSubscript(baseExpr, noCalls, ref maybeAsyncArrow, ref optional, ref optionalChainPos);
++        }
++
+         var computed = Eat(TokenType.BracketLeft);
+         if (computed
+             || (optional && _tokenizer._type != TokenType.ParenLeft && _tokenizer._type != TokenType.BackQuote)
+@@ -788,7 +808,7 @@ internal partial class Parser
+ 
+             NodeList<Expression> exprList = ParseExprList(close: TokenType.ParenRight,
+                 allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowEmptyItem: false,
+-                ref destructuringErrors)!;
++                ref destructuringErrors, allowTypeAnnotations: maybeAsyncArrow && !optional)!;
+ 
+             if (maybeAsyncArrow && !optional && !CanInsertSemicolon() && Eat(TokenType.Arrow))
+             {
+@@ -806,6 +826,8 @@ internal partial class Parser
+                 return ParseArrowExpression(startMarker, exprList.AsNodes()!, isAsync: true, context);
+             }
+ 
++            if (requireGenericArrow) TypeScriptError("ExpectedArrow", "Type parameter constraints and defaults require an arrow function");
++
+             CheckExpressionErrors(ref destructuringErrors, andThrow: true);
+ 
+             if (oldYieldPos != 0)
+@@ -898,7 +920,7 @@ internal partial class Parser
+ 
+                     case Keyword.Function:
+                         Next();
+-                        return (FunctionExpression)ParseFunction(startMarker, FunctionOrClassFlags.None);
++                        return (FunctionExpression)ParseFunction(startMarker, FunctionOrClassFlags.None)!;
+ 
+                     case Keyword.Class:
+                         Next();
+@@ -922,7 +944,7 @@ internal partial class Parser
+                 if (_tokenizerOptions._ecmaVersion >= EcmaVersion.ES8 && !containsEsc && id.Name == "async" && !CanInsertSemicolon() && Eat(TokenType.Function))
+                 {
+                     _tokenizer.OverrideContext(TokenContext.FunctionInExpression);
+-                    return (FunctionExpression)ParseFunction(startMarker, FunctionOrClassFlags.None, isAsync: true, context & ~ExpressionContext.ForNew);
++                    return (FunctionExpression)ParseFunction(startMarker, FunctionOrClassFlags.None, isAsync: true, context & ~ExpressionContext.ForNew)!;
+                 }
+ 
+                 if (canBeArrow && !CanInsertSemicolon())
+@@ -969,8 +991,8 @@ internal partial class Parser
+                     ? Tokenizer.DeduplicateString(_tokenizer._input.SliceBetween(_tokenizer._start, _tokenizer._end), ref _tokenizer._stringPool)
+                     : _tokenizer._type.Label;
+                 Literal literal = _tokenizer._type.Kind == TokenKind.NullLiteral
+-                    ? new NullLiteral(raw)
+-                    : new BooleanLiteral(_tokenizer._type.Value, raw);
++                    ? new NullLiteral(raw) { Range = TokenNodeRange(startMarker), Location = TokenNodeLocation(startMarker) }
++                    : new BooleanLiteral((bool)_tokenizer._type.Value!, raw) { Range = TokenNodeRange(startMarker), Location = TokenNodeLocation(startMarker) };
+                 Next();
+                 return FinishNode(startMarker, literal);
+ 
+@@ -978,25 +1000,24 @@ internal partial class Parser
+             case TokenKind.NumericLiteral:
+             case TokenKind.BigIntLiteral:
+             case TokenKind.RegExpLiteral:
+-                raw = Tokenizer.DeduplicateString(_tokenizer._input.SliceBetween(_tokenizer._start, _tokenizer._end), ref _tokenizer._stringPool, Tokenizer.NonIdentifierDeduplicationThreshold);
++                // Raw regex text is used once; interning distinct patterns grows the pool needlessly.
++                raw = _tokenizer._type.Kind == TokenKind.RegExpLiteral
++                    ? _tokenizer._input.Substring(_tokenizer._start, _tokenizer._end - _tokenizer._start)
++                    : Tokenizer.DeduplicateString(_tokenizer._input.SliceBetween(_tokenizer._start, _tokenizer._end), ref _tokenizer._stringPool, Tokenizer.NonIdentifierDeduplicationThreshold);
+                 literal = _tokenizer._type.Kind switch
+                 {
+-                    TokenKind.StringLiteral => new StringLiteral((string)_tokenizer._value.Value!, raw),
+-                    TokenKind.NumericLiteral => new NumericLiteral(_tokenizer._value.NumericValue, raw),
+-                    TokenKind.BigIntLiteral => new BigIntLiteral(_tokenizer._value.BigIntValue, raw),
+-                    _ => CreateRegExpLiteral(_tokenizer._value, raw)
++                    TokenKind.StringLiteral => new StringLiteral((string)_tokenizer._value.Value!, raw) { Range = TokenNodeRange(startMarker), Location = TokenNodeLocation(startMarker) },
++                    TokenKind.NumericLiteral => new NumericLiteral(_tokenizer._value.NumericValue, raw) { Range = TokenNodeRange(startMarker), Location = TokenNodeLocation(startMarker) },
++                    TokenKind.BigIntLiteral => new BigIntLiteral(_tokenizer._value.BigIntValue, raw) { Range = TokenNodeRange(startMarker), Location = TokenNodeLocation(startMarker) },
++                    _ => ParsePublicRegExp(raw)
+                 };
+ 
+-                [MethodImpl(MethodImplOptions.AggressiveInlining)]
+-                static RegExpLiteral CreateRegExpLiteral(in TokenValue value, string raw)
+-                {
+-                    var tuple = (Tuple<RegExpValue, RegExpParseResult>)value.Value!;
+-                    return new RegExpLiteral(tuple.Item1, tuple.Item2, raw);
+-                }
+-
+                 Next();
+                 return FinishNode(startMarker, literal);
+ 
++            case TokenKind.Punctuator when IsTypeOperator("<"):
++                return ParseGenericArrow(startMarker, context);
++
+             case TokenKind.Punctuator when _tokenizer._type == TokenType.ParenLeft:
+                 canBeArrow = _potentialArrowAt == _tokenizer._start;
+                 expr = ParseParenAndDistinguishExpression(canBeArrow, context & ~ExpressionContext.ForNew);
+@@ -1241,11 +1262,11 @@ internal partial class Parser
+     }
+ 
+     [MethodImpl((MethodImplOptions)512  /* AggressiveOptimization */)]
+-    private Expression ParseParenAndDistinguishExpression(bool canBeArrow, ExpressionContext context)
++    private Expression ParseParenAndDistinguishExpression(bool canBeArrow, ExpressionContext context, Marker? genericStart = null)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseParenAndDistinguishExpression = function`
+ 
+-        var startMarker = StartNode();
++        var startMarker = genericStart ?? StartNode();
+         Expression val;
+ 
+         if (_tokenizerOptions._ecmaVersion >= EcmaVersion.ES6)
+@@ -1262,6 +1283,7 @@ internal partial class Parser
+             _yieldPosition = _awaitPosition = 0;
+ 
+             var spreadStart = -1;
++            var typedParameters = genericStart.HasValue;
+ 
+             var first = true;
+             var allowTrailingComma = _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8;
+@@ -1308,7 +1330,7 @@ internal partial class Parser
+                     // We deviate a bit from the original acornjs implementation here to
+                     // make the parsing of non-async and async arrow functions consistent.
+                     // (The comma after rest element case is checked by CheckPatternErrors below.)
+-                    parameters.Add(ParseSpread(ref destructuringErrors));
++                    parameters.Add(ParseArrowParameterAnnotation(ParseSpread(ref destructuringErrors), ref typedParameters));
+                     if (_tokenizer._type == TokenType.Comma && destructuringErrors.GetTrailingComma() < 0)
+                     {
+                         // As opposed to the original acornjs implementation, we report the position of the rest element.
+@@ -1317,7 +1339,7 @@ internal partial class Parser
+                 }
+                 else
+                 {
+-                    parameters.Add(ParseMaybeAssign(ref destructuringErrors, ExpressionContext.Default));
++                    parameters.Add(ParseArrowParameterAnnotation(ParseMaybeAssign(ref destructuringErrors, ExpressionContext.Default), ref typedParameters));
+                 }
+             }
+ 
+@@ -1325,6 +1347,7 @@ internal partial class Parser
+ 
+             Expect(TokenType.ParenRight);
+ 
++            if (canBeArrow) typedParameters |= TryParseArrowReturnType(typedParameters);
+             if (canBeArrow && !CanInsertSemicolon() && Eat(TokenType.Arrow))
+             {
+                 CheckPatternErrors(ref destructuringErrors, isAssign: false);
+@@ -1335,6 +1358,8 @@ internal partial class Parser
+                 return ParseArrowExpression(startMarker, ParserNodeList.From(ref parameters), isAsync: false, context);
+             }
+ 
++            if (typedParameters) TypeScriptError("ExpectedArrow", "Typed parameters require an arrow function");
++
+             // We deviate a bit from the original acornjs implementation here to make trailing comma errors recoverable.
+             if (parameters.Count == 0)
+             {
+@@ -1663,7 +1688,8 @@ internal partial class Parser
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseGetterSetter = function`
+ 
+         key = ParsePropertyName(out computed);
+-        var value = ParseMethod(isGenerator: false);
++        if (IsTypeOperator("<")) TypeScriptError("InvalidAccessorTypeParameters", "An accessor cannot have type parameters");
++        var value = ParseMethod(isGenerator: false, isSetter: kind == PropertyKind.Set, allowThisParameter: false)!;
+ 
+         if (kind == PropertyKind.Get)
+         {
+@@ -1709,7 +1735,7 @@ internal partial class Parser
+             kind = PropertyKind.Init;
+             method = shorthand = false;
+         }
+-        else if (_tokenizerOptions._ecmaVersion >= EcmaVersion.ES6 && _tokenizer._type == TokenType.ParenLeft)
++        else if (_tokenizerOptions._ecmaVersion >= EcmaVersion.ES6 && (_tokenizer._type == TokenType.ParenLeft || IsTypeOperator("<")))
+         {
+             if (isPattern)
+             {
+@@ -1720,7 +1746,7 @@ internal partial class Parser
+             kind = PropertyKind.Init;
+             method = true;
+             shorthand = false;
+-            value = ParseMethod(isGenerator, isAsync);
++            value = ParseMethod(isGenerator, isAsync)!;
+         }
+         else if (!isPattern && !containsEsc && !computed
+             && _tokenizerOptions._ecmaVersion >= EcmaVersion.ES5 && key is Identifier { Name: "get" or "set" } identifier
+@@ -1822,7 +1848,7 @@ internal partial class Parser
+     }
+ 
+     // Parse object or class method.
+-    private FunctionExpression ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super)
++    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseMethod = function`
+ 
+@@ -1839,10 +1865,19 @@ internal partial class Parser
+ 
+         EnterScope(FunctionFlags(isAsync, isGenerator) | superFlags);
+ 
++        ParseRuntimeTypeParameters();
+         Expect(TokenType.ParenLeft);
+ 
+-        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8)!;
++        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowOptionalParameters: !isSetter, allowThisParameter: allowThisParameter)!;
+         CheckYieldAwaitInDefaultParams();
++        ParseTypeAnnotation(returnType: true);
++        if (TryParseSignatureWithoutBody(parameters, allowOverload))
++        {
++            _yieldPosition = oldYieldPos;
++            _awaitPosition = oldAwaitPos;
++            _awaitIdentifierPosition = oldAwaitIdentPos;
++            return null;
++        }
+         var scope = ParseFunctionBody(id: null, parameters, isArrowFunction: false, isMethod: true, ExpressionContext.Default, out _, out var body);
+ 
+         _yieldPosition = oldYieldPos;
+@@ -1966,12 +2001,13 @@ internal partial class Parser
+     // `allowEmpty` can be turned on to allow subsequent commas with
+     // nothing in between them to be parsed as `null` (which is needed
+     // for array literals).
+-    private NodeList<Expression?> ParseExprList(TokenType close, bool allowTrailingComma, bool allowEmptyItem, ref DestructuringErrors destructuringErrors)
++    private NodeList<Expression?> ParseExprList(TokenType close, bool allowTrailingComma, bool allowEmptyItem, ref DestructuringErrors destructuringErrors, bool allowTypeAnnotations = false)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseExprList = function`
+ 
+         var elements = new ArrayList<Expression?>();
+         var first = true;
++        var typedParameters = false;
+         while (!Eat(close))
+         {
+             if (!first)
+@@ -2013,9 +2049,13 @@ internal partial class Parser
+                 element = ParseMaybeAssign(ref destructuringErrors, ExpressionContext.Default);
+             }
+ 
++            if (allowTypeAnnotations && element is not null) element = ParseArrowParameterAnnotation(element, ref typedParameters);
+             elements.Add(element);
+         }
+ 
++        if (allowTypeAnnotations) typedParameters |= TryParseArrowReturnType(typedParameters);
++        if (typedParameters && (_tokenizer._type != TokenType.Arrow || CanInsertSemicolon()))
++            TypeScriptError("ExpectedArrow", "Typed parameters require an arrow function");
+         return ParserNodeList.From(ref elements);
+     }
+ 
+diff --git a/Parser.Helpers.cs b/Parser.Helpers.cs
+index 5c411d3..949d47f 100644
+--- a/Parser.Helpers.cs
++++ b/Parser.Helpers.cs
+@@ -14,6 +14,7 @@ internal partial class Parser
+     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+     internal void Next(bool ignoreEscapeSequenceInKeyword = false, bool requireValidEscapeSequenceInTemplate = true)
+     {
++        CheckTokenBudget();
+         _tokenizer.Next(new TokenizerContext(_strict, ignoreEscapeSequenceInKeyword, requireValidEscapeSequenceInTemplate));
+     }
+ 
+@@ -30,8 +31,7 @@ internal partial class Parser
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/node.js > `function finishNodeAt`, `pp.finishNodeAt = function`
+ 
+-        node.Range = Range.From(startMarker.Index, endMarker.Index);
+-        node.Location = SourceLocation.From(startMarker.Position, endMarker.Position, _tokenizer._sourceFile);
++        CheckNodeBudget();
+         _options._onNode?.Invoke(node, new OnNodeContext(_tokenizer, scope, _scopeStack));
+         return node;
+     }
+@@ -41,16 +41,14 @@ internal partial class Parser
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/node.js > `pp.finishNode = function`
+ 
+-        node.Range = Range.From(startMarker.Index, _tokenizer._lastTokenEnd);
+-        node.Location = SourceLocation.From(startMarker.Position, _tokenizer._lastTokenEndLocation, _tokenizer._sourceFile);
++        CheckNodeBudget();
+         _options._onNode?.Invoke(node, new OnNodeContext(_tokenizer, scope, _scopeStack));
+         return node;
+     }
+ 
+     private T ReinterpretNode<T>(Node originalNode, T node) where T : Node
+     {
+-        node.Range = originalNode.Range;
+-        node.Location = originalNode.Location;
++        CheckNodeBudget();
+         _options._onNode?.Invoke(node, new OnNodeContext(_tokenizer, default, _scopeStack));
+         return node;
+     }
+@@ -59,11 +57,12 @@ internal partial class Parser
+     internal void EnterRecursion()
+     {
+         _recursionDepth++;
++        if (_recursionDepth > Limits.MaxSyntaxDepth) TypeScriptError("SyntaxDepthLimit", "Syntax nesting limit exceeded");
+         StackGuard.EnsureSufficientExecutionStack(_recursionDepth);
+     }
+ 
+     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+-    internal T ExitRecursion<T>(T node) where T : Node
++    internal T ExitRecursion<T>(T node) where T : Node?
+     {
+         _recursionDepth--;
+         return node;
+diff --git a/Parser.LVal.cs b/Parser.LVal.cs
+index 927972a..0a339dc 100644
+--- a/Parser.LVal.cs
++++ b/Parser.LVal.cs
+@@ -32,6 +32,7 @@ internal partial class Parser
+             NodeList<Node?> convertedNodes;
+ 
+         Reenter:
++            if (isBinding) CheckAssertedBinding(node);
+             switch (node.Type)
+             {
+                 case NodeType.Identifier:
+@@ -311,12 +312,18 @@ internal partial class Parser
+         return ExitRecursion(node);
+     }
+ 
+-    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma)
++    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma, bool allowOptionalParameters = true, bool allowThisParameter = false)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/lval.js > `pp.parseBindingList = function`
+ 
+         var elements = new ArrayList<Node?>();
+         var first = true;
++        if (allowThisParameter && _tokenizer._type == TokenType.This)
++        {
++            Next();
++            if (!ParseTypeAnnotation()) TypeScriptError("ExpectedThisType", "A 'this' parameter requires a type annotation");
++            first = false;
++        }
+         while (!Eat(close))
+         {
+             if (!first)
+@@ -341,6 +348,7 @@ internal partial class Parser
+             else if (_tokenizer._type == TokenType.Ellipsis)
+             {
+                 var rest = ParseRestBinding();
++                if (close == TokenType.ParenRight) ParseParameterAnnotation(rest, allowOptional: false);
+                 elements.Add(rest);
+                 if (_tokenizer._type == TokenType.Comma)
+                 {
+@@ -366,7 +374,9 @@ internal partial class Parser
+                 // this function is not called from elsewhere, so we inline it to keep the call stack shallow.
+                 // elements.Add(ParseAssignableListItem());
+                 var startMarker = StartNode();
+-                elements.Add(ParseMaybeDefault(startMarker));
++                var binding = ParseBindingAtom();
++                if (close == TokenType.ParenRight) ParseParameterAnnotation(binding, allowOptionalParameters);
++                elements.Add(ParseMaybeDefault(startMarker, binding));
+             }
+         }
+ 
+@@ -464,6 +474,7 @@ internal partial class Parser
+         Debug.Assert(!isBind || !allowCall);
+ 
+     Reenter:
++        CheckInstantiatedTarget(expr);
+         switch (expr.Type)
+         {
+             case NodeType.Identifier:
+diff --git a/Parser.Statement.cs b/Parser.Statement.cs
+index cdb7431..9ddc8b4 100644
+--- a/Parser.Statement.cs
++++ b/Parser.Statement.cs
+@@ -25,11 +25,12 @@ internal partial class Parser
+ 
+         Next();
+ 
+-        var body = ParseDirectivePrologue(allowStrictDirective: true);
++        var body = ParseDirectivePrologue(allowStrictDirective: true, topLevel: true);
+         while (_tokenizer._type != TokenType.EOF)
+         {
+-            var statement = ParseStatement(StatementContext.Default, topLevel: true);
+-            body.Add(statement);
++            if (TryParseErasedDeclaration(topLevel: true)) continue;
++            var statement = ParseStatementListItem(StatementContext.Default, topLevel: true);
++            if (statement is not null) body.Add(statement);
+         }
+ 
+         if (_inModule && _undefinedExports is { Count: > 0 } undefinedExports)
+@@ -41,6 +42,7 @@ internal partial class Parser
+             }
+         }
+ 
++        PreserveErasedModule(ref body);
+         return ParserNodeList.From(ref body);
+     }
+ 
+@@ -208,7 +210,7 @@ internal partial class Parser
+     // regular expression literal. This is to handle cases like
+     // `if (foo) /blah/.exec(foo)`, where looking at the previous token
+     // does not help.
+-    private Statement ParseStatement(StatementContext context, bool topLevel = false)
++    private Statement? ParseStatementListItem(StatementContext context, bool topLevel = false)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseStatement = function`
+ 
+@@ -743,7 +745,7 @@ internal partial class Parser
+         return null;
+     }
+ 
+-    private FunctionDeclaration ParseFunctionStatement(in Marker startMarker, bool isAsync, bool declarationPosition)
++    private FunctionDeclaration? ParseFunctionStatement(in Marker startMarker, bool isAsync, bool declarationPosition)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseFunctionStatement = function`
+ 
+@@ -751,7 +753,7 @@ internal partial class Parser
+         var flags = declarationPosition
+             ? FunctionOrClassFlags.Statement
+             : FunctionOrClassFlags.Statement | FunctionOrClassFlags.HangingStatement;
+-        return (FunctionDeclaration)ParseFunction(startMarker, flags, isAsync);
++        return (FunctionDeclaration?)ParseFunction(startMarker, flags, isAsync);
+     }
+ 
+     private ClassDeclaration ParseClassStatement(in Marker startMarker)
+@@ -854,7 +856,9 @@ internal partial class Parser
+             var consequent = new ArrayList<Statement>();
+             while (_tokenizer._type != TokenType.BraceRight && _tokenizer._type != TokenType.Case && _tokenizer._type != TokenType.Default)
+             {
+-                consequent.Add(ParseStatement(StatementContext.Default));
++                if (TryParseErasedDeclaration()) continue;
++                var statement = ParseStatementListItem(StatementContext.Default);
++                if (statement is not null) consequent.Add(statement);
+             }
+ 
+             var current = FinishNode(caseStartMarker, new SwitchCase(test, ParserNodeList.From(ref consequent)) { Range = NodeRange(caseStartMarker), Location = NodeLocation(caseStartMarker) });
+@@ -1100,8 +1104,9 @@ internal partial class Parser
+ 
+         while (_tokenizer._type != TokenType.BraceRight)
+         {
+-            var statement = ParseStatement(StatementContext.Default);
+-            body.Add(statement);
++            if (TryParseErasedDeclaration()) continue;
++            var statement = ParseStatementListItem(StatementContext.Default);
++            if (statement is not null) body.Add(statement);
+         }
+ 
+         // NOTE: Strict mode must be exited before the closing brace is consumed because consuming it also reads the token
+@@ -1177,7 +1182,7 @@ internal partial class Parser
+     }
+ 
+     // Parse a list of variable declarations.
+-    private VariableDeclaration ParseVar(VariableDeclarationKind kind, bool isFor)
++    private VariableDeclarationParts ParseVar(VariableDeclarationKind kind, bool isFor)
+     {
+         // https://github.com/acornjs/acorn/blob/8.15.0/acorn/src/statement.js > `pp.parseVar = function`
+ 
+@@ -1224,7 +1229,7 @@ internal partial class Parser
+         }
+         while (Eat(TokenType.Comma));
+ 
+-        return new VariableDeclaration(kind, ParserNodeList.From(ref declarations));
++        return new VariableDeclarationParts(kind, ParserNodeList.From(ref declarations));
+     }
+ 
+     private Node ParseVarId(VariableDeclarationKind kind)
+@@ -1235,14 +1240,15 @@ internal partial class Parser
+             ? ParseIdentifier()
+             : ParseBindingAtom();
+ 
++        ParseTypeAnnotation();
+         CheckLValPattern(id, kind == VariableDeclarationKind.Var ? BindingType.Var : BindingType.Lexical);
+         return id;
+     }
+ 
+     // Parse a function declaration or expression (depending on the
+     // `statement` parameter).
+-    private StatementOrExpression ParseFunction(in Marker startMarker, FunctionOrClassFlags flags, bool isAsync = false,
+-        ExpressionContext context = ExpressionContext.Default)
++    private StatementOrExpression? ParseFunction(in Marker startMarker, FunctionOrClassFlags flags, bool isAsync = false,
++        ExpressionContext context = ExpressionContext.Default, bool ambient = false)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseFunction = function`
+ 
+@@ -1269,15 +1275,6 @@ internal partial class Parser
+         if (isStatement && ((flags & FunctionOrClassFlags.NullableId) == 0 || _tokenizer._type == TokenType.Name))
+         {
+             id = ParseIdentifier();
+-            if ((flags & FunctionOrClassFlags.HangingStatement) == 0)
+-            {
+-                // If it is a regular function declaration in sloppy mode, then it is
+-                // subject to Annex B semantics (`BindingType.Function`). Otherwise, the binding
+-                // mode depends on properties of the current scope (see `TreatFunctionsAsVar`).
+-                CheckLValSimple(id, _strict || generator || isAsync
+-                    ? (TreatFunctionsAsVar ? BindingType.Var : BindingType.Lexical)
+-                    : BindingType.Function);
+-            }
+         }
+         else
+         {
+@@ -1297,12 +1294,29 @@ internal partial class Parser
+         }
+ 
+         var parameters = ParseFunctionParams();
++        ParseTypeAnnotation(returnType: true);
++        if (ambient && _tokenizer._type == TokenType.BraceLeft)
++            TypeScriptError("AmbientImplementation", "An ambient function cannot have an implementation");
++        if (TryParseSignatureWithoutBody(parameters, isStatement && (flags & FunctionOrClassFlags.HangingStatement) == 0))
++        {
++            if (id is not null) CheckLValSimple(id, BindingType.Outside);
++            _yieldPosition = oldYieldPos;
++            _awaitPosition = oldAwaitPos;
++            _awaitIdentifierPosition = oldAwaitIdentPos;
++            return null;
++        }
+         var scope = ParseFunctionBody(id, parameters, isArrowFunction: false, isMethod: false, context, out _, out var body);
+ 
+         _yieldPosition = oldYieldPos;
+         _awaitPosition = oldAwaitPos;
+         _awaitIdentifierPosition = oldAwaitIdentPos;
+ 
++        // Register only an implementation, in its enclosing scope. Overload and
++        // ambient signatures must not conflict with it or satisfy runtime exports.
++        if (isStatement && id is not null && (flags & FunctionOrClassFlags.HangingStatement) == 0)
++            CheckLValSimple(id, _strict || generator || isAsync
++                ? (TreatFunctionsAsVar ? BindingType.Var : BindingType.Lexical) : BindingType.Function);
++
+         return FinishNode<StatementOrExpression>(startMarker, isStatement
+             ? new FunctionDeclaration(id, parameters, (FunctionBody)body, generator, isAsync) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) }
+             : new FunctionExpression(id, parameters, (FunctionBody)body, generator, isAsync) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) },
+@@ -1313,8 +1327,9 @@ internal partial class Parser
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseFunctionParams = function`
+ 
++        ParseRuntimeTypeParameters();
+         Expect(TokenType.ParenLeft);
+-        var parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8);
++        var parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowThisParameter: true);
+         CheckYieldAwaitInDefaultParams();
+         return parameters!;
+     }
+@@ -1331,12 +1346,14 @@ internal partial class Parser
+         _strict = true;
+ 
+         var id = ParseClassId(flags);
++        ParseRuntimeTypeParameters();
+ 
+         // Original acornjs implementation doesn't create a scope for classes, however, as Jint.TypeScript.Parsing exposes scope information,
+         // it's necessary to create one so consumers can store and look up the class name, which is visible in the scope of the class.
+         EnterScope(ScopeFlags.None);
+ 
+         var superClass = ParseClassSuper();
++        ParseClassImplements();
+ 
+         var privateNameStatusIndex = EnterClassBody();
+         var classBodyStartMarker = StartNode();
+@@ -1355,6 +1372,7 @@ internal partial class Parser
+             }
+ 
+             var element = ParseClassElement(hasSuperClass);
++            if (element is null) continue;
+ 
+             body.Add(element);
+             if (element is MethodDefinition { Kind: PropertyKind.Constructor })
+@@ -1393,7 +1411,7 @@ internal partial class Parser
+             scope);
+     }
+ 
+-    private Node ParseClassElement(bool constructorAllowsSuper)
++    private Node? ParseClassElement(bool constructorAllowsSuper)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassElement = function`
+ 
+@@ -1406,6 +1424,7 @@ internal partial class Parser
+         string? keyName = null;
+         string keyword;
+         var kind = PropertyKind.Unknown;
++        var modifiers = ParseClassModifiers();
+ 
+         isStatic = EatContextual(keyword = "static");
+         if (isStatic)
+@@ -1413,6 +1432,7 @@ internal partial class Parser
+             // Parse static init block
+             if (_tokenizerOptions._ecmaVersion >= EcmaVersion.ES13 && Eat(TokenType.BraceLeft))
+             {
++                if (modifiers != 0) TypeScriptError("InvalidStaticBlockModifier", "A static block cannot have type modifiers");
+                 if (hasDecorators)
+                 {
+                     Raise(startMarker.Index, DecoratorAppliedToStaticBlock);
+@@ -1427,8 +1447,11 @@ internal partial class Parser
+                 keyName = keyword;
+                 goto ParseElementName;
+             }
++            if ((modifiers & (ClassModifierReadonly | 16)) != 0)
++                TypeScriptError("InvalidModifierOrder", "Static must precede readonly and override");
+         }
+ 
++        modifiers = ParseClassModifiers(modifiers, afterStatic: isStatic);
+         isAsync = _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8 && EatContextual(keyword = "async");
+         if (isAsync)
+         {
+@@ -1502,9 +1525,14 @@ internal partial class Parser
+             key = FinishNode(keyStartMarker, new Identifier(keyName) { Range = NodeRange(keyStartMarker), Location = NodeLocation(keyStartMarker) });
+         }
+ 
++        var optional = Eat(TokenType.Question);
++        if (optional || modifiers != 0) CheckTypeScriptClassMember(key, computed, kind, optional, modifiers, isStatic, constructorAllowsSuper);
++
+         // Parse element value
+-        if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES13 || _tokenizer._type == TokenType.ParenLeft || kind != PropertyKind.Unknown || isGenerator || isAsync)
++        if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES13 || _tokenizer._type == TokenType.ParenLeft || IsTypeOperator("<") || kind != PropertyKind.Unknown || isGenerator || isAsync)
+         {
++            if ((modifiers & ClassModifierReadonly) != 0)
++                TypeScriptError("InvalidReadonlyMethod", "A method cannot be readonly");
+             if (kind == PropertyKind.Unknown)
+             {
+                 kind = PropertyKind.Method;
+@@ -1513,6 +1541,7 @@ internal partial class Parser
+         }
+         else
+         {
++            ParseClassFieldAnnotation(optional);
+             return ParseClassField(startMarker, key, computed, isStatic, isAccessor, ref decorators);
+         }
+     }
+@@ -1548,7 +1577,7 @@ internal partial class Parser
+         }
+     }
+ 
+-    private MethodDefinition ParseClassMethod(in Marker startMarker, PropertyKind kind, Expression key,
++    private MethodDefinition? ParseClassMethod(in Marker startMarker, PropertyKind kind, Expression key,
+         bool computed, bool isStatic, bool isAsync, bool isGenerator, bool constructorAllowsSuper, ref ArrayList<Decorator> decorators)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassMethod = function`
+@@ -1590,7 +1619,10 @@ internal partial class Parser
+         }
+ 
+         // Parse value
+-        var value = ParseMethod(isGenerator, isAsync, superFlags);
++        if (kind != PropertyKind.Method && IsTypeOperator("<"))
++            TypeScriptError("InvalidMethodTypeParameters", "Constructors and accessors cannot have type parameters");
++        var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method, allowOverload: kind is PropertyKind.Method or PropertyKind.Constructor);
++        if (value is null) return null;
+ 
+         // Check value
+         if (kind == PropertyKind.Get)
+@@ -1677,8 +1709,9 @@ internal partial class Parser
+ 
+         while (!Eat(TokenType.BraceRight))
+         {
+-            var statement = ParseStatement(StatementContext.Default);
+-            body.Add(statement);
++            if (TryParseErasedDeclaration()) continue;
++            var statement = ParseStatementListItem(StatementContext.Default);
++            if (statement is not null) body.Add(statement);
+         }
+ 
+         var scope = ExitScope();
+@@ -1716,7 +1749,11 @@ internal partial class Parser
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassSuper = function`
+ 
+-        return Eat(TokenType.Extends) ? ParseExprSubscripts(ref NullRef<DestructuringErrors>()) : null;
++        if (!Eat(TokenType.Extends)) return null;
++        var superClass = ParseExprSubscripts(ref NullRef<DestructuringErrors>());
++        // A class body or implements clause is an unambiguous heritage boundary.
++        if (IsExpressionTypeArgumentStart()) ParseRuntimeTypeArguments();
++        return superClass;
+     }
+ 
+     private int EnterClassBody()
+@@ -1821,10 +1858,11 @@ internal partial class Parser
+ 
+     // Parses module export declaration.
+ 
+-    private ExportDeclaration ParseExport(in Marker startMarker, HashSet<string>? exports)
++    private ExportDeclaration? ParseExport(in Marker startMarker, HashSet<string>? exports)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseExport = function`
+ 
++        _erasedExportRequiresSource = false;
+         Next();
+ 
+         if (Eat(TokenType.Star))
+@@ -1842,7 +1880,7 @@ internal partial class Parser
+         return ParseExportDeclaration(startMarker, exports);
+     }
+ 
+-    private ExportNamedDeclaration ParseExportDeclaration(in Marker startMarker, HashSet<string>? exports)
++    private ExportNamedDeclaration? ParseExportDeclaration(in Marker startMarker, HashSet<string>? exports)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseExportDeclaration = function`
+ 
+@@ -1855,7 +1893,8 @@ internal partial class Parser
+         {
+             // export var|const|let|function|class ...
+ 
+-            declaration = (Declaration)ParseStatement(StatementContext.Default);
++            declaration = (Declaration?)ParseStatementListItem(StatementContext.Default);
++            if (declaration is null) { _erasedModuleSyntax = true; return null; }
+             if (declaration is FunctionDeclaration functionDeclaration)
+             {
+                 CheckExport(exports, functionDeclaration.Id!, functionDeclaration.Id!.Start);
+@@ -1892,6 +1931,7 @@ internal partial class Parser
+             }
+             else
+             {
++                CheckErasedExportSource();
+                 for (var i = 0; i < specifiers.Count; i++)
+                 {
+                     var spec = specifiers[i];
+@@ -1924,13 +1964,13 @@ internal partial class Parser
+         return FinishNode(startMarker, new ExportNamedDeclaration(declaration, specifiers, source, ParserNodeList.From(ref attributes)) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) });
+     }
+ 
+-    private ExportDefaultDeclaration ParseExportDefaultDeclaration(in Marker startMarker, HashSet<string>? exports)
++    private ExportDefaultDeclaration? ParseExportDefaultDeclaration(in Marker startMarker, HashSet<string>? exports)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseExportDefaultDeclaration = function`
+ 
+-        CheckExport(exports, "default", _tokenizer._lastTokenStart);
++        var exportPosition = _tokenizer._lastTokenStart;
+ 
+-        StatementOrExpression declaration;
++        StatementOrExpression? declaration;
+         Marker declarationStartMarker;
+         var isAsync = false;
+ 
+@@ -1961,6 +2001,8 @@ internal partial class Parser
+             Semicolon();
+         }
+ 
++        if (declaration is null) { _erasedModuleSyntax = true; return null; }
++        CheckExport(exports, "default", exportPosition);
+         return FinishNode(startMarker, new ExportDefaultDeclaration(declaration) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) });
+     }
+ 
+@@ -2125,6 +2167,7 @@ internal partial class Parser
+                 first = false;
+             }
+ 
++            if (TryParseInlineTypeSpecifier(import: false)) continue;
+             nodes.Add(ParseExportSpecifier(exports));
+         }
+ 
+@@ -2328,6 +2371,7 @@ internal partial class Parser
+                 first = false;
+             }
+ 
++            if (TryParseInlineTypeSpecifier(import: true)) continue;
+             nodes.Add(ParseImportSpecifier());
+         }
+ 
+@@ -2352,7 +2396,7 @@ internal partial class Parser
+         return ParseIdentifier(liberal: true);
+     }
+ 
+-    private ArrayList<Statement> ParseDirectivePrologue(bool allowStrictDirective)
++    private ArrayList<Statement> ParseDirectivePrologue(bool allowStrictDirective, bool topLevel = false)
+     {
+         if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES5)
+         {
+@@ -2366,8 +2410,20 @@ internal partial class Parser
+ 
+         var body = new ArrayList<Statement>();
+         var sawStrict = false;
+-        while (_tokenizer._type == TokenType.String)
++        while (true)
+         {
++            if (TryParseErasedDeclaration(topLevel)) continue;
++            if (_tokenizer._type != TokenType.String)
++            {
++                // Erased signatures do not terminate the emitted directive prologue.
++                if (_tokenizer._type == TokenType.Function || IsAsyncFunction() || (topLevel && _inModule && _tokenizer._type == TokenType.Export))
++                {
++                    var statement = ParseStatementListItem(StatementContext.Default, topLevel);
++                    if (statement is null) continue;
++                    body.Add(statement);
++                }
++                break;
++            }
+             if (firstRestrictedPos < 0)
+             {
+                 firstRestrictedPos = _tokenizer.GetCurrentLegacyOctal(out firstRestrictedKind);
+@@ -2506,7 +2562,7 @@ internal partial class Parser
+ 
+         var valueStartMarker = StartNode();
+         var raw = Tokenizer.DeduplicateString(_tokenizer._input.SliceBetween(_tokenizer._start, _tokenizer._end), ref _tokenizer._stringPool, Tokenizer.NonIdentifierDeduplicationThreshold);
+-        var value = new StringLiteral((string)_tokenizer._value.Value!, raw);
++        var value = new StringLiteral((string)_tokenizer._value.Value!, raw) { Range = TokenNodeRange(valueStartMarker), Location = TokenNodeLocation(valueStartMarker) };
+         Next();
+         value = FinishNode(valueStartMarker, value);
+ 
+diff --git a/Tokenizer.cs b/Tokenizer.cs
+index cf438d1..fa97551 100644
+--- a/Tokenizer.cs
++++ b/Tokenizer.cs
+@@ -647,6 +647,8 @@ internal sealed partial class Tokenizer : ITokenizer
+ 
+     private bool ReadToken_Lt_Gt(int ch)
+     {
++        // Type arguments split adjacent closers; JavaScript shifts keep the original lexer path.
++        if (InType) return FinishOp(TokenType.Relational, ch == '<' ? "<" : ">");
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/tokenize.js > `pp.readToken_lt_gt = function`
+ 
+         var nextCh = CharCodeAtPosition(1);
