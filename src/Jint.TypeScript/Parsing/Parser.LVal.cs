@@ -312,7 +312,7 @@ internal partial class Parser
         return ExitRecursion(node);
     }
 
-    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma, bool allowOptionalParameters = true, bool allowThisParameter = false)
+    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma, bool allowOptionalParameters = true, bool allowThisParameter = false, bool constructorParameters = false)
     {
         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/lval.js > `pp.parseBindingList = function`
 
@@ -374,7 +374,7 @@ internal partial class Parser
                 // this function is not called from elsewhere, so we inline it to keep the call stack shallow.
                 // elements.Add(ParseAssignableListItem());
                 var startMarker = StartNode();
-                var binding = ParseBindingAtom();
+                var binding = ParseTypeScriptBindingAtom(constructorParameters);
                 if (close == TokenType.ParenRight) ParseParameterAnnotation(binding, allowOptionalParameters);
                 elements.Add(ParseMaybeDefault(startMarker, binding));
             }

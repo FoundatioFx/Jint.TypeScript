@@ -1,5 +1,5 @@
 diff --git a/Parser.Expression.cs b/Parser.Expression.cs
-index 099f7cd..f319ab1 100644
+index 099f7cd..46cd958 100644
 --- a/Parser.Expression.cs
 +++ b/Parser.Expression.cs
 @@ -207,7 +207,7 @@ internal partial class Parser
@@ -236,7 +236,7 @@ index 099f7cd..f319ab1 100644
  
      // Parse object or class method.
 -    private FunctionExpression ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super)
-+    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false, PropertyKind? abstractKind = null)
++    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false, PropertyKind? abstractKind = null, bool isConstructor = false)
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseMethod = function`
  
@@ -248,7 +248,7 @@ index 099f7cd..f319ab1 100644
          Expect(TokenType.ParenLeft);
  
 -        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8)!;
-+        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowOptionalParameters: !isSetter, allowThisParameter: allowThisParameter)!;
++        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowOptionalParameters: !isSetter, allowThisParameter: allowThisParameter, constructorParameters: isConstructor)!;
          CheckYieldAwaitInDefaultParams();
 +        ParseTypeAnnotation(returnType: true);
 +        if (TryParseSignatureWithoutBody(parameters, allowOverload, abstractKind))
@@ -346,7 +346,7 @@ index 5c411d3..949d47f 100644
          _recursionDepth--;
          return node;
 diff --git a/Parser.LVal.cs b/Parser.LVal.cs
-index 927972a..0a339dc 100644
+index 927972a..d9151f8 100644
 --- a/Parser.LVal.cs
 +++ b/Parser.LVal.cs
 @@ -32,6 +32,7 @@ internal partial class Parser
@@ -362,7 +362,7 @@ index 927972a..0a339dc 100644
      }
  
 -    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma)
-+    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma, bool allowOptionalParameters = true, bool allowThisParameter = false)
++    private NodeList<Node?> ParseBindingList(TokenType close, bool allowEmptyElement, bool allowTrailingComma, bool allowOptionalParameters = true, bool allowThisParameter = false, bool constructorParameters = false)
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/lval.js > `pp.parseBindingList = function`
  
@@ -390,7 +390,7 @@ index 927972a..0a339dc 100644
                  // elements.Add(ParseAssignableListItem());
                  var startMarker = StartNode();
 -                elements.Add(ParseMaybeDefault(startMarker));
-+                var binding = ParseBindingAtom();
++                var binding = ParseTypeScriptBindingAtom(constructorParameters);
 +                if (close == TokenType.ParenRight) ParseParameterAnnotation(binding, allowOptionalParameters);
 +                elements.Add(ParseMaybeDefault(startMarker, binding));
              }
@@ -405,7 +405,7 @@ index 927972a..0a339dc 100644
          {
              case NodeType.Identifier:
 diff --git a/Parser.Statement.cs b/Parser.Statement.cs
-index cdb7431..e6e70df 100644
+index cdb7431..28ef88d 100644
 --- a/Parser.Statement.cs
 +++ b/Parser.Statement.cs
 @@ -25,11 +25,12 @@ internal partial class Parser
@@ -712,7 +712,7 @@ index cdb7431..e6e70df 100644
 +        if (kind != PropertyKind.Method && IsTypeOperator("<"))
 +            TypeScriptError("InvalidMethodTypeParameters", "Constructors and accessors cannot have type parameters");
 +        var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method,
-+            allowOverload: abstractSignature || kind is PropertyKind.Method or PropertyKind.Constructor, abstractKind: abstractSignature ? kind : null);
++            allowOverload: abstractSignature || kind is PropertyKind.Method or PropertyKind.Constructor, abstractKind: abstractSignature ? kind : null, isConstructor: kind == PropertyKind.Constructor);
 +        if (value is null) return null;
  
          // Check value

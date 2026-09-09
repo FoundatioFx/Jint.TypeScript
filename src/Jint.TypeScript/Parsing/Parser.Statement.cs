@@ -1630,7 +1630,7 @@ internal partial class Parser
         if (kind != PropertyKind.Method && IsTypeOperator("<"))
             TypeScriptError("InvalidMethodTypeParameters", "Constructors and accessors cannot have type parameters");
         var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method,
-            allowOverload: abstractSignature || kind is PropertyKind.Method or PropertyKind.Constructor, abstractKind: abstractSignature ? kind : null);
+            allowOverload: abstractSignature || kind is PropertyKind.Method or PropertyKind.Constructor, abstractKind: abstractSignature ? kind : null, isConstructor: kind == PropertyKind.Constructor);
         if (value is null) return null;
 
         // Check value

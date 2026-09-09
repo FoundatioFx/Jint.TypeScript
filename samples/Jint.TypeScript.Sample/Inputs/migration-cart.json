@@ -1,0 +1,7 @@
+{
+  "lines": [
+    { "sku": "COFFEE", "quantity": 2, "unitPriceCents": 2500 },
+    { "sku": "MUG", "quantity": 1, "unitPriceCents": 1500 }
+  ],
+  "discountPercent": 10
+}

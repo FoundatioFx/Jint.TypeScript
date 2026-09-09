@@ -19,6 +19,7 @@ internal sealed partial class Parser
     // Only statement lists call this: type declarations cannot be an if/loop body.
     private bool TryParseErasedDeclaration(bool topLevel = false)
     {
+        CheckUnsupportedDeclaration(topLevel);
         if (IsAmbientDeclarationStart())
         {
             ParseAmbientDeclaration();
@@ -148,6 +149,7 @@ internal sealed partial class Parser
         {
             probe.Next();
             probe.Next();
+            probe.CheckUnsupportedDeclaration();
             if (probe.Eat(TokenType.Default)) return probe.IsContextual("interface");
             return probe.IsContextual("type") || probe.IsContextual("interface") || probe.IsAmbientDeclarationStart();
         }

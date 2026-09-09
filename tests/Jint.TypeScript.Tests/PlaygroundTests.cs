@@ -20,6 +20,12 @@ public class PlaygroundTests
             Assert.True(result.Success, result.Diagnostic?.ToString());
             Assert.NotEmpty(result.Logs);
             if (example.Id == "pricing") Assert.Equal(10625, result.Result!.Value.GetProperty("totalCents").GetInt32());
+            if (example.Id == "migration")
+            {
+                Assert.Equal(6500, result.Result!.Value.GetProperty("subtotalCents").GetInt32());
+                Assert.Equal(650, result.Result.Value.GetProperty("discountCents").GetInt32());
+                Assert.Equal(5850, result.Result.Value.GetProperty("totalCents").GetInt32());
+            }
         }
     }
 
@@ -61,6 +67,21 @@ public class PlaygroundTests
         Assert.False(result.Success);
         Assert.Equal("helper.ts", result.Diagnostic!.File);
         Assert.Contains("helper.ts", result.Diagnostic.Stack);
+    }
+
+    [Fact]
+    public async Task Unsupported_enum_in_an_import_reports_actionable_original_diagnostics()
+    {
+        var request = Request("import { Status } from './status.ts'; export function run() { return Status.Ready; }");
+        request.Files["status.ts"] = "// 😀\r\nexport const enum Status { Ready }";
+        var result = await new PlaygroundRunner().RunAsync(request);
+        Assert.False(result.Success);
+        Assert.Equal("UnsupportedEnum", result.Diagnostic!.Code);
+        Assert.Equal("status.ts", result.Diagnostic.File);
+        Assert.Equal(2, result.Diagnostic.Line);
+        Assert.Equal(14, result.Diagnostic.Column);
+        Assert.Contains("'as const' and a union type", result.Diagnostic.Message);
+        Assert.DoesNotContain("status.ts", result.Diagnostic.Message);
     }
 
     [Fact]

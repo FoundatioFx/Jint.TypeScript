@@ -10,9 +10,12 @@ internal sealed partial class Parser
         {
             probe.Next();
             probe.Next();
-            return !probe.CanInsertSemicolon() && (probe._tokenizer._type == TokenType.Function
+            if (probe.CanInsertSemicolon()) return false;
+            var supported = probe._tokenizer._type == TokenType.Function
                 || probe._tokenizer._type == TokenType.Var || probe._tokenizer._type == TokenType.Const
-                || probe.IsContextual("let") || probe.IsContextual("type") || probe.IsContextual("interface"));
+                || probe.IsContextual("let") || probe.IsContextual("type") || probe.IsContextual("interface");
+            if (!supported) probe.CheckUnsupportedAmbientDeclaration();
+            return supported;
         }
         finally { _tokenCount = probe._tokenCount; }
     }
@@ -31,6 +34,7 @@ internal sealed partial class Parser
         var isConst = _tokenizer._type == TokenType.Const;
         var lexical = _tokenizer._type != TokenType.Var;
         Next(); // var, let or const
+        if (isConst && IsContextual("enum")) CheckUnsupportedDeclaration();
         do
         {
             ReadAmbientBinding(lexical);

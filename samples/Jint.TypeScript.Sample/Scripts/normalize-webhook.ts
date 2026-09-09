@@ -1,7 +1,15 @@
+// Enums aren't supported. Use an as const object for named values
+// and derive a union type for annotations: "normal" | "high".
+const Severity = {
+    Normal: "normal",
+    High: "high"
+} as const;
+type Severity = typeof Severity[keyof typeof Severity];
+
 interface NormalizedTicket {
     externalId: string;
     title: string;
-    severity: "normal" | "high";
+    severity: Severity;
     tags: Record<string, string>;
     receivedAt: string;
     requestId: string;
@@ -35,7 +43,7 @@ export function run(payload: unknown): NormalizedTicket {
     return {
         externalId: payload.id,
         title: data.subject.trim(),
-        severity: data.priority === "urgent" || data.priority === "high" ? "high" : "normal",
+        severity: data.priority === "urgent" || data.priority === "high" ? Severity.High : Severity.Normal,
         tags,
         receivedAt: host.ReceivedAt,
         requestId: host.RequestId

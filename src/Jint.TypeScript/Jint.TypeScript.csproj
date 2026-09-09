@@ -3,14 +3,26 @@
     <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Version>0.1.0-preview.1</Version>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerMinimumMajorMinor>0.1</MinVerMinimumMajorMinor>
+    <MinVerDefaultPreReleaseIdentifiers>preview.0</MinVerDefaultPreReleaseIdentifiers>
     <Description>A C# TypeScript syntax eraser for Jint with original source locations.</Description>
+    <Authors>FoundatioFx</Authors>
+    <PackageProjectUrl>https://github.com/FoundatioFx/Jint.TypeScript</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Jint;TypeScript;JavaScript;Scripting;Acornima</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>embedded</DebugType>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
     <PackageLicenseExpression>Apache-2.0 AND BSD-3-Clause AND MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Jint" Version="5.0.0-preview-2069" />
     <PackageReference Include="Acornima" Version="1.8.0" />
+    <PackageReference Include="MinVer" Version="7.0.0" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Parsing/Properties/*.resx">

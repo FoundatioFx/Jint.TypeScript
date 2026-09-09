@@ -31,7 +31,7 @@ try {
     const asset = html.match(/src="([^\"]+\.js)"/)[1];
     assert.equal((await fetch(new URL(asset, url))).status, 200);
     const examples = await (await fetch(`${url}/api/examples`)).json();
-    assert.equal(examples.length, 4);
+    assert.equal(examples.length, 5);
     for (const example of examples) {
         const response = await fetch(`${url}/api/run`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Playground': '1' },
             body: JSON.stringify({ files: example.files, entryFile: example.entryFile, input: example.input }) });
@@ -40,11 +40,12 @@ try {
         assert.equal(result.success, true, JSON.stringify(result));
         assert.ok(result.logs.length);
         if (example.id === 'pricing') assert.equal(result.result.totalCents, 10625);
+        if (example.id === 'migration') assert.deepEqual(result.result, { subtotalCents: 6500, discountCents: 650, totalCents: 5850 });
     }
     const blocked = await fetch(`${url}/api/run`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ files: {}, entryFile: 'main.ts', input: null }) });
     assert.equal(blocked.status, 400);
-    console.log(`Published playground passed: HTML, assets, four examples, host logs, request header (${directory}).`);
+    console.log(`Published playground passed: HTML, assets, five examples, host logs, request header (${directory}).`);
 } finally {
     clearTimeout(timer);
     if (child.exitCode === null && child.pid) {

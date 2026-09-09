@@ -52,6 +52,8 @@ dotnet pack src/Jint.TypeScript -c Release --no-restore -o artifacts/packages
 
 [Build CI](.github/workflows/build.yml) is the executable source of truth for required hosted checks, including fixture regeneration and upstream origin verification. Report a missing runtime/feed/tool as a validation limitation; do not silently substitute another runtime or change dependency pins to get a local check passing.
 
+[CI packages](docs/ci-packages.md) documents MinVer versioning, preview feeds and publishing gates. Use a full Git checkout when packing; do not hard-code the package version. Only successful `main` builds publish verified preview artifacts. Keep publishing dependent on every validation job and keep package-write permissions confined to that job. NuGet.org releases are not enabled.
+
 ## Parser ownership and upstream updates
 
 Read the [maintenance architecture](docs/maintenance.md) before changing parser integration. For an Acornima update or customization audit, use `$jint-update-acornima`, or read the [skill](.agents/skills/jint-update-acornima/SKILL.md) directly. Follow its linked [update workflow](docs/upstream-updates.md) for staging, conflicts, validation, and recovery.

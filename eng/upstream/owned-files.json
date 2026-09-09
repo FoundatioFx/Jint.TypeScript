@@ -4,6 +4,7 @@
   "Parser.TypeScript.Assertions.cs",
   "Parser.TypeScript.Classes.cs",
   "Parser.TypeScript.Declarations.cs",
+  "Parser.TypeScript.Diagnostics.cs",
   "Parser.TypeScript.Generics.cs",
   "Parser.TypeScript.Signatures.cs",
   "Parser.TypeScript.Types.cs",

@@ -20,9 +20,10 @@
             <button id="run" class="primary" disabled>▶ Run <kbd>Ctrl ↵</kbd></button>
         </section>
         <main class="workspace">
-            <section class="code-pane" aria-label="TypeScript files">
+            <section class="code-pane" aria-label="Script files">
                 <div class="file-bar"><div id="file-tabs" role="tablist" aria-label="Files"></div><button id="add-file" class="icon-button" aria-label="Add file" title="Add file">＋</button></div>
-                <div class="editor-tools"><span id="active-file"></span><span class="spacer"></span><button id="rename-file">Rename</button><button id="delete-file">Delete</button><button id="format-file">Format</button></div>
+                <div class="editor-tools"><span id="active-file"></span><span id="file-language"></span><span class="spacer"></span><button id="undo-conversion" hidden title="Undo the last conversion before making another edit">Undo conversion</button><button id="convert-file" hidden>Convert to TypeScript</button><button id="rename-file">Rename</button><button id="delete-file">Delete</button><button id="format-file">Format</button></div>
+                <div id="conversion-status" role="alert" hidden></div>
                 <div id="editor" aria-label="TypeScript editor"></div>
                 <footer class="editor-status"><span id="cursor">Ln 1, Col 1</span><span id="save-state">Saved locally</span><span class="spacer"></span><span id="language-status">Starting TypeScript…</span></footer>
             </section>
@@ -45,7 +46,7 @@
                 <div class="output-footer">TypeScript types are erased at execution.<br />Enums, parameter properties, JSX and decorators are unsupported.</div>
             </aside>
         </main>
-        <dialog id="file-dialog"><form id="file-form"><h2 id="file-dialog-title">Add a file</h2><label for="filename">Filename</label><input id="filename" placeholder="lib/helper.ts" autocomplete="off" required maxlength="240" /><p id="file-error" role="alert"></p><p class="dialog-hint">Use .ts for code or .d.ts for editor declarations. Folders use /.</p><div class="dialog-actions"><button type="button" id="cancel-file">Cancel</button><button class="primary" id="save-file">Add file</button></div></form></dialog>
+        <dialog id="file-dialog"><form id="file-form"><h2 id="file-dialog-title">Add a file</h2><label for="filename">Filename</label><input id="filename" placeholder="lib/helper.ts" autocomplete="off" required maxlength="240" /><p id="file-error" role="alert"></p><p class="dialog-hint">Use .ts for TypeScript, .js for JavaScript with JSDoc, or .d.ts for editor declarations. Folders use /.</p><div class="dialog-actions"><button type="button" id="cancel-file">Cancel</button><button class="primary" id="save-file">Add file</button></div></form></dialog>
         <dialog id="confirm-dialog"><form method="dialog"><h2 id="confirm-title"></h2><p id="confirm-description"></p><div class="dialog-actions"><button value="cancel">Cancel</button><button value="confirm" class="primary">Continue</button></div></form></dialog>
         <div id="toast" role="alert" hidden></div>
     </div>

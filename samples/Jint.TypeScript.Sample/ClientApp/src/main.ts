@@ -1,6 +1,8 @@
 import * as monaco from './monaco';
 import * as typescript from 'monaco-editor/languages/features/typescript/register.js';
 import 'monaco-editor/languages/definitions/typescript/register.js';
+import 'monaco-editor/languages/definitions/javascript/register.js';
+import { convertJsDoc } from './conversion';
 import EditorWorker from 'monaco-editor/editor/editor.worker.js?worker';
 import TypeScriptWorker from 'monaco-editor/language/typescript/ts.worker.js?worker';
 import './style.css';
@@ -26,23 +28,30 @@ let runController: AbortController | undefined;
 let renameFrom: string | undefined;
 let workerAccessor: Awaited<ReturnType<typeof typescript.getTypeScriptWorker>> | undefined;
 let diagnosticsTimer: ReturnType<typeof setTimeout>;
+let converting = false;
+let conversionUndo: SavedWorkspace | undefined;
+const languageFor = (name: string) => name.endsWith('.js') ? 'javascript' : 'typescript';
+const languageDefaults = [typescript.typescriptDefaults, typescript.javascriptDefaults];
 
 self.MonacoEnvironment = {
     getWorker: (_id, label) => label === 'typescript' || label === 'javascript' ? new TypeScriptWorker() : new EditorWorker()
 };
-typescript.typescriptDefaults.setCompilerOptions({
-    target: typescript.ScriptTarget.ESNext,
-    module: typescript.ModuleKind.ESNext,
-    moduleResolution: typescript.ModuleResolutionKind.NodeJs,
-    lib: ['es2023'], types: [], strict: true, noUncheckedIndexedAccess: true,
-    allowNonTsExtensions: true, allowImportingTsExtensions: true, verbatimModuleSyntax: true,
-    erasableSyntaxOnly: true, noEmit: true
-});
-typescript.typescriptDefaults.setEagerModelSync(true);
-typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: false, noSyntaxValidation: false, noSuggestionDiagnostics: false });
-// Refresh the whole small workspace when an imported file changes, rather than leaving
-// diagnostics on its consumers stale until each consumer is edited.
-typescript.typescriptDefaults.setModeConfiguration({ ...typescript.typescriptDefaults.modeConfiguration, diagnostics: false });
+for (const defaults of languageDefaults) {
+    defaults.setCompilerOptions({
+        target: typescript.ScriptTarget.ESNext,
+        module: typescript.ModuleKind.ESNext,
+        moduleResolution: typescript.ModuleResolutionKind.NodeJs,
+        lib: ['es2023'], types: [], strict: true, noUncheckedIndexedAccess: true,
+        allowJs: true, checkJs: true,
+        allowNonTsExtensions: true, allowImportingTsExtensions: true, verbatimModuleSyntax: true,
+        erasableSyntaxOnly: true, noEmit: true
+    });
+    defaults.setEagerModelSync(true);
+    defaults.setDiagnosticsOptions({ noSemanticValidation: false, noSyntaxValidation: false, noSuggestionDiagnostics: false });
+    // Refresh the whole small workspace when an imported file changes, rather than leaving
+    // diagnostics on its consumers stale until each consumer is edited.
+    defaults.setModeConfiguration({ ...defaults.modeConfiguration, diagnostics: false });
+}
 monaco.editor.defineTheme('playground', {
     base: 'vs-dark', inherit: true, rules: [], colors: {
         'editor.background': '#1e2026', 'editorLineNumber.foreground': '#626a79',
@@ -59,6 +68,8 @@ const editor = monaco.editor.create($('editor'), {
 });
 editor.onDidChangeCursorPosition(({ position }) => $('cursor').textContent = `Ln ${position.lineNumber}, Col ${position.column}`);
 editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => void run());
+const canUndoConversion = editor.createContextKey<boolean>('canUndoConversion', false);
+editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyZ, undoConversion, 'canUndoConversion');
 monaco.editor.registerEditorOpener({
     openCodeEditor: (_source, resource, selection) => {
         const name = nameFor(resource);
@@ -75,6 +86,7 @@ function files() { return Object.fromEntries([...models].map(([name, model]) => 
 function changed() {
     if (loading) return;
     revision++;
+    clearConversionUndo();
     if (!$('result').hidden || !$('runtime-error').hidden) {
         $('run-status').textContent = 'Edited — run again'; $('run-status').className = '';
     }
@@ -93,7 +105,7 @@ function save() {
     catch { $('save-state').textContent = 'Local save unavailable'; }
 }
 function addModel(name: string, source: string) {
-    const model = monaco.editor.createModel(source, 'typescript', uriFor(name));
+    const model = monaco.editor.createModel(source, languageFor(name), uriFor(name));
     models.set(name, model);
     model.onDidChangeContent(changed);
 }
@@ -104,6 +116,8 @@ function activate(name: string) {
     const view = views.get(name);
     if (view) editor.restoreViewState(view);
     $('active-file').textContent = name;
+    editor.updateOptions({ ariaLabel: languageFor(name) === 'javascript' ? 'JavaScript code' : 'TypeScript code' });
+    updateConversionControls();
     renderTabs();
     if (!loading) save();
     editor.focus();
@@ -116,7 +130,7 @@ function renderTabs() {
         button.className = 'file-tab'; button.role = 'tab'; button.dataset.file = name;
         button.setAttribute('aria-selected', String(name === active));
         button.setAttribute('aria-label', name);
-        const icon = document.createElement('span'); icon.className = 'file-icon'; icon.textContent = name.endsWith('.d.ts') ? 'D' : 'TS';
+        const icon = document.createElement('span'); icon.className = 'file-icon'; icon.textContent = name.endsWith('.d.ts') ? 'D' : name.endsWith('.js') ? 'JS' : 'TS';
         button.append(icon, document.createTextNode(name));
         if (current?.files[name] !== model.getValue()) {
             const mark = document.createElement('span'); mark.className = 'dirty'; mark.textContent = '•'; button.append(mark);
@@ -131,6 +145,8 @@ function renderTabs() {
     $<HTMLButtonElement>('delete-file').disabled = models.size <= 1;
 }
 function load(example: Example, saved?: SavedWorkspace) {
+    clearConversionUndo();
+    $('conversion-status').hidden = true;
     runController?.abort();
     loading = true;
     editor.setModel(null);
@@ -188,7 +204,7 @@ function scheduleDiagnostics() {
 function refreshLanguageService() {
     // Replacing a model can reuse its URI and version 1. Restart the language service so
     // TypeScript cannot reuse an AST cached for the previous file at that same version.
-    typescript.typescriptDefaults.setCompilerOptions(typescript.typescriptDefaults.getCompilerOptions());
+    for (const defaults of languageDefaults) defaults.setCompilerOptions(defaults.getCompilerOptions());
     $('language-status').textContent = 'Starting TypeScript…';
     scheduleDiagnostics();
 }
@@ -200,7 +216,12 @@ async function validateDocuments() {
     const checkedRevision = revision;
     const snapshot = [...models.values()];
     try {
-        const worker = await workerAccessor(...snapshot.map(model => model.uri));
+        const resources = snapshot.map(model => model.uri);
+        const worker = await workerAccessor(...resources);
+        // Completion providers have separate workers. Sync both languages so JavaScript
+        // callers see converted TypeScript dependencies (and their host declarations).
+        if (snapshot.some(model => model.getLanguageId() === 'javascript'))
+            await (await typescript.getJavaScriptWorker())(...resources);
         await Promise.all(snapshot.map(async model => {
             const name = model.uri.toString();
             const diagnostics = (await Promise.all([worker.getSyntacticDiagnostics(name), worker.getSemanticDiagnostics(name)])).flat();
@@ -290,13 +311,13 @@ $('cancel-file').onclick = () => $<HTMLDialogElement>('file-dialog').close();
 $('file-form').onsubmit = event => {
     event.preventDefault();
     const name = $<HTMLInputElement>('filename').value.trim();
-    if (!name.endsWith('.ts') || /[\\:\x00-\x1f]/.test(name) || name.split('/').some(part => !part || part === '.' || part === '..')) {
-        $('file-error').textContent = 'Use a relative .ts filename, such as lib/helper.ts.'; return;
+    if (!/\.(ts|js)$/.test(name) || /[\\:\x00-\x1f]/.test(name) || name.split('/').some(part => !part || part === '.' || part === '..')) {
+        $('file-error').textContent = 'Use a relative .ts or .js filename, such as lib/helper.ts.'; return;
     }
     if (models.has(name) && name !== renameFrom) { $('file-error').textContent = 'A file with this name already exists.'; return; }
     if (name !== renameFrom) {
         const text = renameFrom ? models.get(renameFrom)!.getValue() : name.endsWith('.d.ts')
-            ? 'interface Example {\n    value: number;\n}\n' : 'export function helper(value: number): number {\n    return value * 2;\n}\n';
+            ? 'interface Example {\n    value: number;\n}\n' : name.endsWith('.js') ? '/** @param {number} value */\nexport function helper(value) {\n    return value * 2;\n}\n' : 'export function helper(value: number): number {\n    return value * 2;\n}\n';
         addModel(name, text);
         if (renameFrom) {
             const old = models.get(renameFrom)!; models.delete(renameFrom); old.dispose();
@@ -313,6 +334,48 @@ $('delete-file').onclick = async () => {
     const model = models.get(name)!; models.delete(name); model.dispose();
     activate(models.keys().next().value!); changed(); refreshLanguageService();
 };
+
+function workspaceSnapshot(): SavedWorkspace {
+    return { version: 1, example: current.id, entry: $<HTMLSelectElement>('entry').value,
+        active, files: files(), input: $<HTMLTextAreaElement>('input').value };
+}
+function updateConversionControls() {
+    $('file-language').textContent = active.endsWith('.js') ? 'JavaScript · JSDoc' : 'TypeScript';
+    $('convert-file').hidden = !active.endsWith('.js');
+    $<HTMLButtonElement>('convert-file').disabled = converting;
+    $('convert-file').textContent = converting ? 'Converting…' : 'Convert to TypeScript';
+    $('undo-conversion').hidden = !conversionUndo;
+    canUndoConversion.set(!!conversionUndo);
+}
+function clearConversionUndo() { conversionUndo = undefined; updateConversionControls(); }
+function undoConversion() {
+    if (!conversionUndo) return;
+    const before = conversionUndo;
+    load(current, before);
+    toast('Conversion undone. JavaScript and JSDoc restored.');
+}
+$('undo-conversion').onclick = undoConversion;
+$('convert-file').onclick = async () => {
+    if (converting || !active.endsWith('.js')) return;
+    converting = true; updateConversionControls();
+    $('conversion-status').hidden = true;
+    const before = workspaceSnapshot(), startedRevision = revision;
+    try {
+        const result = await convertJsDoc(before.files, before.active);
+        if (startedRevision !== revision || active !== before.active) {
+            toast('The workspace changed during conversion. Your edits were kept; try again.'); return;
+        }
+        if (!result.success) {
+            $('conversion-status').replaceChildren(...result.issues.map(issue => problemButton(issue.message, issue.line ? before.active : undefined, issue.line, issue.column)));
+            $('conversion-status').hidden = false; return;
+        }
+        load(current, { ...before, files: result.files, active: result.file,
+            entry: before.entry === before.active ? result.file : before.entry });
+        conversionUndo = before;
+        toast('Converted to TypeScript. Imports updated. Undo is available until your next edit.');
+    } finally { converting = false; updateConversionControls(); }
+};
+
 $('format-file').onclick = () => void editor.getAction('editor.action.formatDocument')?.run();
 $('run').onclick = () => void run();
 $('entry').onchange = changed;
@@ -341,7 +404,7 @@ try {
         const value = JSON.parse(localStorage.getItem(storageKey) ?? 'null') as SavedWorkspace | null;
         if (value?.version === 1 && typeof value.input === 'string' && value.files && Object.keys(value.files).length <= 32
             && Object.keys(value.files).length > 0 && Object.entries(value.files).every(([name, text]) =>
-                name.endsWith('.ts') && name.length <= 240 && !/[\\:\x00-\x1f]/.test(name)
+                /\.(ts|js)$/.test(name) && name.length <= 240 && !/[\\:\x00-\x1f]/.test(name)
                 && name.split('/').every(part => part && part !== '.' && part !== '..') && typeof text === 'string' && text.length <= 100_000)
             && Object.values(value.files).reduce((sum, text) => sum + text.length, 0) <= 200_000 && value.files[value.entry]) saved = value;
     } catch { /* A stale or unavailable local workspace does not prevent loading the examples. */ }

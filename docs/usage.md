@@ -47,6 +47,14 @@ The loader copies virtual sources at construction. Directory sources are read an
 
 For manual prepared-module registration, use the loader's resolved key as `sourceFile`. Runtime strings passed to `eval`, `Function`, or ordinary Jint source APIs remain JavaScript. Those source-string paths are not intercepted. Dynamic imports through a configured `TypeScriptModuleLoader` use that loader normally.
 
+## Existing JavaScript and JSDoc
+
+The native parser accepts ordinary JavaScript, including JSDoc comments, without requiring type annotations. Existing scripts can use it before types are added. Validate your scripts when changing parsers: TypeScript's interpretation of ambiguous expressions can differ from JavaScript (see explicit type arguments below).
+
+Editor typing is separate from execution. In Monaco's TypeScript mode, JSDoc type tags such as `@param`, `@type` and `@typedef` do not supply types. Allowing implicit `any` only suppresses missing-annotation errors; it does not preserve JSDoc IntelliSense. See the [TypeScript JSDoc reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html).
+
+Applications that depend on JSDoc typings should keep existing scripts in JavaScript editor mode and offer TypeScript mode when users are ready to replace those typings with annotations. Both can execute through the native parser. The playground's [JSDoc conversion example](../samples/Jint.TypeScript.Sample/README.md#convert-existing-jsdoc-scripts) demonstrates a single action that converts supported annotations and imports, then switches a file to TypeScript mode. Unsupported conversions preserve the original source.
+
 ## Supported syntax
 
 | Position/form | Examples |
@@ -116,6 +124,35 @@ Type arguments follow TypeScript's expression disambiguation. For example, `f<nu
 Use `(f<T>)` when combining a bare instantiation with comparisons or shifts. Ungrouped consecutive forms such as `f<T><U>(x)` remain deliberately unsupported; the reference parsers disagree on some of these boundaries. Generic calls such as `f<T>(x) < g<U>(y)` are supported.
 
 The scope still excludes angle-bracket assertions; ambient classes/namespaces; erased private declarations; escaped type names; JSX/TSX; decorators; enums, namespaces and constructor parameter properties. Object-type accessors/computed keys, destructured function-type parameters and attributes on whole type-only imports or import types remain unsupported. Non-abstract bodyless getter/setter signatures are rejected because TypeScript emits runtime accessors for them. A type query supports a value name or `this`, dotted properties and type arguments. Keep type arguments on the same line as the queried name; parenthesize a generic function type argument, as in `typeof f<(<T>() => T)>`. `asserts` and its parameter must also stay on the same line. Runtime transforms remain a later phase. This is a bounded syntax/erasure implementation, not a type checker or a full validator for every TypeScript production.
+
+## Unsupported syntax and enum alternatives
+
+Recognized unsupported declaration forms produce actionable `TypeScriptParseException` diagnostics. `Code` identifies the failure, `Description` contains the message without a location, and `Index`/`Position` refer to the original TypeScript source. The playground displays the same diagnostics, including failures in imported files.
+
+| Code | Guidance |
+| --- | --- |
+| `UnsupportedEnum` | Regular, `const`, and ambient enum declarations are unsupported. Use an `as const` object and a union type. |
+| `UnsupportedNamespace` | Replace namespaces or ambient module blocks with separate files and ES module imports/exports. |
+| `UnsupportedParameterProperty` | Declare the field separately and assign it explicitly in the constructor. |
+| `UnsupportedAmbientClass` | Describe a host value using an interface and `declare const`, or keep the ambient class in an editor-only `.d.ts` file. |
+| `ModuleSyntaxInScript` | Pass import/export declarations to `ParseModule` or `PrepareModule`. |
+
+For a set of named constants, this supported pattern provides TypeScript completion and a value type:
+
+```typescript
+const Status = { Ready: "ready", Done: "done" } as const;
+type Status = typeof Status[keyof typeof Status];
+
+function isDone(status: Status): boolean {
+    return status === Status.Done;
+}
+
+isDone(Status.Done); // true
+```
+
+The object exists at runtime; its type declaration and assertions erase. This pattern is also described in the [TypeScript enum handbook](https://www.typescriptlang.org/docs/handbook/enums.html#objects-vs-enums). It does not provide numeric enums' automatic numbering or reverse mappings. Assign numeric values explicitly if needed. `as const` supplies editor checks; it does not freeze the object at runtime.
+
+These diagnostics recognize specific grammar contexts rather than scanning for keywords. Malformed or ambiguous neighboring syntax may still produce an ordinary syntax error. Unsupported declarations must be in a supported declaration position; an enum in an invalid single-statement `if` body, for example, can retain its ordinary syntax error. Monaco's `erasableSyntaxOnly` checks complement these messages but do not guarantee compatibility with every supported parser form.
 
 ## Locations, limits and semantics
 

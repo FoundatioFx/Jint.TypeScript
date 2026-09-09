@@ -1,9 +1,14 @@
 name: Build
 on:
   push:
+    branches: ['**']
   pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   upstream-maintenance:
     runs-on: ubuntu-latest
@@ -34,9 +39,11 @@ jobs:
       - run: git diff --exit-code -- tests/Jint.TypeScript.Tests/Fixtures
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0 # MinVer needs the version tags and commit history.
       - uses: actions/setup-node@v7.0.0
         with:
           node-version: '22.23.2'
@@ -48,7 +55,7 @@ jobs:
       - run: dotnet restore Jint.TypeScript.slnx --locked-mode
       - run: npm ci --ignore-scripts --prefix samples/Jint.TypeScript.Sample/ClientApp
       - run: npm run build --prefix samples/Jint.TypeScript.Sample/ClientApp
-      - run: dotnet test tests/Jint.TypeScript.Tests -c Release --no-restore -p:SkipPlaygroundBuild=true
+      - run: dotnet test tests/Jint.TypeScript.Tests -c Release --no-restore -p:SkipPlaygroundBuild=true --logger trx --results-directory artifacts/test-results
       - run: npm exec --prefix samples/Jint.TypeScript.Sample/ClientApp -- playwright install --with-deps chromium
       - run: npm test --prefix samples/Jint.TypeScript.Sample/ClientApp
       - run: dotnet publish samples/Jint.TypeScript.Sample -c Release -f net8.0 --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net8
@@ -58,4 +65,71 @@ jobs:
       - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-restore
       - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net10.0 --no-restore
       - run: dotnet pack src/Jint.TypeScript -c Release --no-restore -o artifacts/packages
-      - run: node eng/check-package.mjs artifacts/packages/Jint.TypeScript.0.1.0-preview.1.nupkg
+      - name: Verify packed consumer on .NET 8 and .NET 10
+        run: node eng/check-package.mjs artifacts/packages
+      - name: Upload verified package
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: nuget-packages
+          path: artifacts/packages/*.nupkg
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: test-results
+          path: |
+            artifacts/test-results
+            samples/Jint.TypeScript.Sample/ClientApp/test-results
+          if-no-files-found: ignore
+          retention-days: 7
+  publish:
+    name: Publish CI packages
+    needs: [upstream-maintenance, reference-fixtures, test]
+    if: >-
+      github.repository == 'FoundatioFx/Jint.TypeScript' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+      github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      packages: write
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/setup-dotnet@v6.0.0
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/download-artifact@v8.0.1
+        with:
+          name: nuget-packages
+          path: artifacts/packages
+      - name: Select preview package
+        id: package
+        run: |
+          $packages = @(Get-ChildItem artifacts/packages -Filter '*.nupkg' -File)
+          if ($packages.Count -ne 1 -or $packages[0].Name -notmatch '^Jint\.TypeScript\.(\d+\.\d+\.\d+-preview\.[0-9.]+)\.nupkg$') {
+            throw 'Expected exactly one Jint.TypeScript preview package. Stable releases are not enabled.'
+          }
+          "path=$($packages[0].FullName)" >> $env:GITHUB_OUTPUT
+          "### CI package: Jint.TypeScript $($Matches[1])" >> $env:GITHUB_STEP_SUMMARY
+      - name: Publish to GitHub Packages
+        env:
+          PACKAGE_PATH: ${{ steps.package.outputs.path }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: dotnet nuget push $env:PACKAGE_PATH --source https://nuget.pkg.github.com/foundatiofx/index.json --api-key $env:GITHUB_TOKEN --skip-duplicate
+      - name: Publish to Foundatio Feedz
+        env:
+          PACKAGE_PATH: ${{ steps.package.outputs.path }}
+          FEEDZ_KEY: ${{ secrets.FEEDZ_KEY }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:FEEDZ_KEY)) {
+            Write-Output '::warning::FEEDZ_KEY is unavailable. Enable the Foundatio organization secret for this repository to publish anonymous CI packages.'
+            'Feedz publication skipped: configure `FEEDZ_KEY`. The package is available from GitHub Packages and the workflow artifact.' >> $env:GITHUB_STEP_SUMMARY
+            exit 0
+          }
+          dotnet nuget push $env:PACKAGE_PATH --source https://f.feedz.io/foundatio/foundatio/nuget --api-key $env:FEEDZ_KEY --skip-duplicate

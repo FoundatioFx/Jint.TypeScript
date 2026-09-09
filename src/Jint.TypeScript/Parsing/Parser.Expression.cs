@@ -1848,7 +1848,7 @@ internal partial class Parser
     }
 
     // Parse object or class method.
-    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false, PropertyKind? abstractKind = null)
+    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false, PropertyKind? abstractKind = null, bool isConstructor = false)
     {
         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseMethod = function`
 
@@ -1868,7 +1868,7 @@ internal partial class Parser
         ParseRuntimeTypeParameters();
         Expect(TokenType.ParenLeft);
 
-        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowOptionalParameters: !isSetter, allowThisParameter: allowThisParameter)!;
+        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowOptionalParameters: !isSetter, allowThisParameter: allowThisParameter, constructorParameters: isConstructor)!;
         CheckYieldAwaitInDefaultParams();
         ParseTypeAnnotation(returnType: true);
         if (TryParseSignatureWithoutBody(parameters, allowOverload, abstractKind))

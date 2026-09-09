@@ -7,7 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Jint.TypeScript/Jint.TypeScript.csproj" />
-    <None Update="Scripts/**/*.ts;Inputs/*.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <None Update="Scripts/**/*.ts;Scripts/**/*.js;Inputs/*.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
   <Target Name="BuildPlayground" BeforeTargets="PrepareForBuild" Condition="'$(DesignTimeBuild)' != 'true' and '$(SkipPlaygroundBuild)' != 'true'">
     <MSBuild Projects="ClientApp/Client.proj" Targets="Build" RemoveProperties="TargetFramework;TargetFrameworks;RuntimeIdentifier;SelfContained" />

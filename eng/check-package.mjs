@@ -1,10 +1,9 @@
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { basename, dirname, resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { findPackage } from './package-file.mjs';
 
-const packageFile = resolve(process.argv[2] ?? 'artifacts/packages/Jint.TypeScript.0.1.0-preview.1.nupkg');
-const version = /^Jint\.TypeScript\.(.+)\.nupkg$/.exec(basename(packageFile))?.[1];
-if (!version) throw new Error('Pass a Jint.TypeScript .nupkg filename.');
+const { path: packageFile, version } = findPackage(process.argv[2]);
 const directory = mkdtempSync(resolve(dirname(packageFile), 'consumer-'));
 const xml = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 writeFileSync(resolve(directory, 'Consumer.csproj'), `<Project Sdk="Microsoft.NET.Sdk">
@@ -32,6 +31,25 @@ var loader = new TypeScriptModuleLoader(new Dictionary<string, string>
 if (new Engine(options => options.UseModules(loader)).Modules.Import("./main.ts").Get("answer").AsNumber() != 42)
     throw new Exception("Module failed.");
 using var package = ZipFile.OpenRead(args[0]);
+using (var stream = package.GetEntry("Jint.TypeScript.nuspec")!.Open())
+{
+    var manifest = XDocument.Load(stream);
+    var ns = manifest.Root!.Name.Namespace;
+    var metadata = manifest.Root.Element(ns + "metadata")!;
+    if (metadata.Element(ns + "version")!.Value != "${version}") throw new Exception("Package version differs from its filename.");
+    var repository = metadata.Element(ns + "repository");
+    if ((string?) repository?.Attribute("url") != "https://github.com/FoundatioFx/Jint.TypeScript"
+        || string.IsNullOrWhiteSpace((string?) repository?.Attribute("commit")))
+        throw new Exception("Missing source repository or commit metadata.");
+    foreach (var group in metadata.Descendants(ns + "group"))
+    {
+        var dependencies = group.Elements(ns + "dependency").Select(d => (string?) d.Attribute("id")).Order().ToArray();
+        if (!dependencies.SequenceEqual(new[] { "Acornima", "Jint" }))
+            throw new Exception("The package must expose only Acornima and Jint as runtime dependencies.");
+    }
+}
+foreach (var file in new[] { "README.md", "LICENSE.txt", "THIRD-PARTY-NOTICES.txt" })
+    if (package.GetEntry(file) is null) throw new Exception($"Missing package documentation: {file}.");
 foreach (var framework in new[] { "net8.0", "net10.0" })
 {
     using var stream = package.GetEntry($"lib/{framework}/Jint.TypeScript.xml")!.Open();

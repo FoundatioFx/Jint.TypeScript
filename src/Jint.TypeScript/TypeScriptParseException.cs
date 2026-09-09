@@ -14,7 +14,7 @@ public sealed class TypeScriptParseException : Exception
         SourceFile = sourceFile;
     }
 
-    /// <summary>Parser diagnostic or resource-limit code, such as <c>UnsupportedType</c> or <c>SourceLimit</c>.</summary>
+    /// <summary>Parser diagnostic or resource-limit code, such as <c>UnsupportedEnum</c>, <c>UnsupportedType</c> or <c>SourceLimit</c>.</summary>
     public string Code { get; }
     /// <summary>The diagnostic text without a source location, for hosts that format structured diagnostics.</summary>
     public string Description { get; }

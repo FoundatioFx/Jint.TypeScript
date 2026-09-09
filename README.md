@@ -12,11 +12,19 @@ Try the [Monaco playground](samples/Jint.TypeScript.Sample/README.md): edit Type
 dotnet run --project samples/Jint.TypeScript.Sample -f net10.0
 ```
 
-Open [localhost:5178](http://localhost:5178). The web playground replaces the console sample.
+Open [localhost:5178](http://localhost:5178).
 
 ## Get started
 
-No package has been published yet. Reference [Jint.TypeScript.csproj](src/Jint.TypeScript/Jint.TypeScript.csproj) from your application and add the Jint preview feed from [NuGet.Config](NuGet.Config) to your NuGet sources.
+CI packages use the Foundatio preview feed. Add both feeds to your application's NuGet sources, then install the latest preview:
+
+```powershell
+dotnet nuget add source https://f.feedz.io/foundatio/foundatio/nuget/index.json --name Foundatio
+dotnet nuget add source https://f.feedz.io/sebastienros/jint/nuget/index.json --name Jint-preview
+dotnet add package Jint.TypeScript --prerelease
+```
+
+Jint 5 is currently a preview dependency. See [CI packages](docs/ci-packages.md) for build artifacts and feed details.
 
 ```csharp
 using Jint;
@@ -47,6 +55,8 @@ Supported features include:
 Types are erased without type checking or runtime validation. Use your editor or `tsc` for type checking.
 
 Enums, namespaces, constructor parameter properties, JSX/TSX, and decorators are not supported. Strings passed to Jint's ordinary execution APIs, `eval`, or `Function` must still be JavaScript.
+
+For enum-like constants, use an [`as const` object and union type](docs/usage.md#unsupported-syntax-and-enum-alternatives).
 
 See the [Acornima comparison](docs/acornima-comparison.md), [usage and syntax reference](docs/usage.md), and [performance measurements](docs/performance.md).
 

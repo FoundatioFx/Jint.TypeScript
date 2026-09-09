@@ -125,7 +125,7 @@
       "jint.typescript.sample": {
         "type": "Project",
         "dependencies": {
-          "Jint.TypeScript": "[0.1.0-preview.1, )"
+          "Jint.TypeScript": "[1.0.0, )"
         }
       }
     },
@@ -253,7 +253,7 @@
       "jint.typescript.sample": {
         "type": "Project",
         "dependencies": {
-          "Jint.TypeScript": "[0.1.0-preview.1, )"
+          "Jint.TypeScript": "[1.0.0, )"
         }
       }
     }
