@@ -2,134 +2,129 @@ name: Build
 on:
   push:
     branches: ['**']
+    tags: ['v*']
   pull_request:
   workflow_dispatch:
+
 permissions:
   contents: read
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Follows Foundatio/.github/workflows/build-workflow.yml, with this project's
+# parser, reference-fixture, browser and package-consumer checks before publishing.
 jobs:
-  upstream-maintenance:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v7.0.1
-      - uses: actions/setup-node@v7.0.0
-        with:
-          node-version: '22.23.2'
-      - uses: actions/setup-dotnet@v6.0.0
-        with:
-          dotnet-version: '10.0.x'
-      - run: node --test eng/tests/*.test.mjs
-      - run: node eng/upstream.mjs check
-      - run: node eng/upstream.mjs verify-origin --work-dir artifacts/upstream-origin
-      - run: node eng/validate-update-skill.mjs
-  reference-fixtures:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v7.0.1
-      - uses: actions/setup-node@v7.0.0
-        with:
-          node-version: '22.23.2'
-      - run: npm ci --ignore-scripts --prefix eng/reference-checks
-      - run: node eng/reference-checks/node_modules/typescript/bin/tsc --project samples/Jint.TypeScript.Sample/tsconfig.json
-      - run: node eng/reference-checks/generate.mjs
-      - run: git diff --exit-code -- tests/Jint.TypeScript.Tests/Fixtures
-  test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v7.0.1
-        with:
-          fetch-depth: 0 # MinVer needs the version tags and commit history.
-      - uses: actions/setup-node@v7.0.0
-        with:
-          node-version: '22.23.2'
-      - uses: actions/setup-dotnet@v6.0.0
-        with:
-          dotnet-version: |
-            8.0.x
-            10.0.x
-      - run: dotnet restore Jint.TypeScript.slnx --locked-mode
-      - run: npm ci --ignore-scripts --prefix samples/Jint.TypeScript.Sample/ClientApp
-      - run: npm run build --prefix samples/Jint.TypeScript.Sample/ClientApp
-      - run: dotnet test tests/Jint.TypeScript.Tests -c Release --no-restore -p:SkipPlaygroundBuild=true --logger trx --results-directory artifacts/test-results
-      - run: npm exec --prefix samples/Jint.TypeScript.Sample/ClientApp -- playwright install --with-deps chromium
-      - run: npm test --prefix samples/Jint.TypeScript.Sample/ClientApp
-      - run: dotnet publish samples/Jint.TypeScript.Sample -c Release -f net8.0 --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net8
-      - run: node eng/check-playground.mjs artifacts/playground-net8
-      - run: dotnet publish samples/Jint.TypeScript.Sample -c Release -f net10.0 --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net10
-      - run: node eng/check-playground.mjs artifacts/playground-net10
-      - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-restore
-      - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net10.0 --no-restore
-      - run: dotnet pack src/Jint.TypeScript -c Release --no-restore -o artifacts/packages
-      - name: Verify packed consumer on .NET 8 and .NET 10
-        run: node eng/check-package.mjs artifacts/packages
-      - name: Upload verified package
-        uses: actions/upload-artifact@v7.0.1
-        with:
-          name: nuget-packages
-          path: artifacts/packages/*.nupkg
-          if-no-files-found: error
-          retention-days: 14
-      - name: Upload test results
-        if: always()
-        uses: actions/upload-artifact@v7.0.1
-        with:
-          name: test-results
-          path: |
-            artifacts/test-results
-            samples/Jint.TypeScript.Sample/ClientApp/test-results
-          if-no-files-found: ignore
-          retention-days: 7
-  publish:
-    name: Publish CI packages
-    needs: [upstream-maintenance, reference-fixtures, test]
-    if: >-
-      github.repository == 'FoundatioFx/Jint.TypeScript' &&
-      github.ref == 'refs/heads/main' &&
-      (github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
-      github.actor != 'dependabot[bot]'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     permissions:
       contents: read
       packages: write
-    defaults:
-      run:
-        shell: pwsh
+
     steps:
-      - uses: actions/setup-dotnet@v6.0.0
-        with:
-          dotnet-version: '10.0.x'
-      - uses: actions/download-artifact@v8.0.1
-        with:
-          name: nuget-packages
-          path: artifacts/packages
-      - name: Select preview package
-        id: package
-        run: |
-          $packages = @(Get-ChildItem artifacts/packages -Filter '*.nupkg' -File)
-          if ($packages.Count -ne 1 -or $packages[0].Name -notmatch '^Jint\.TypeScript\.(\d+\.\d+\.\d+-preview\.[0-9.]+)\.nupkg$') {
-            throw 'Expected exactly one Jint.TypeScript preview package. Stable releases are not enabled.'
-          }
-          "path=$($packages[0].FullName)" >> $env:GITHUB_OUTPUT
-          "### CI package: Jint.TypeScript $($Matches[1])" >> $env:GITHUB_STEP_SUMMARY
-      - name: Publish to GitHub Packages
-        env:
-          PACKAGE_PATH: ${{ steps.package.outputs.path }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: dotnet nuget push $env:PACKAGE_PATH --source https://nuget.pkg.github.com/foundatiofx/index.json --api-key $env:GITHUB_TOKEN --skip-duplicate
-      - name: Publish to Foundatio Feedz
-        env:
-          PACKAGE_PATH: ${{ steps.package.outputs.path }}
-          FEEDZ_KEY: ${{ secrets.FEEDZ_KEY }}
-        run: |
-          if ([string]::IsNullOrWhiteSpace($env:FEEDZ_KEY)) {
-            Write-Output '::warning::FEEDZ_KEY is unavailable. Enable the Foundatio organization secret for this repository to publish anonymous CI packages.'
-            'Feedz publication skipped: configure `FEEDZ_KEY`. The package is available from GitHub Packages and the workflow artifact.' >> $env:GITHUB_STEP_SUMMARY
-            exit 0
-          }
-          dotnet nuget push $env:PACKAGE_PATH --source https://f.feedz.io/foundatio/foundatio/nuget --api-key $env:FEEDZ_KEY --skip-duplicate
+    - name: Checkout
+      uses: actions/checkout@v7.0.1
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.sha || github.sha }}
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v6.0.0
+      with:
+        dotnet-version: |
+          8.0.x
+          10.0.x
+    - name: Setup Node
+      uses: actions/setup-node@v7.0.0
+      with:
+        node-version: '22.23.2'
+    - name: Build Reason
+      run: node eng/build-version.mjs reason
+    - name: Build Version
+      run: |
+        dotnet tool install --global minver-cli --version 7.0.0
+        node eng/build-version.mjs version
+    - name: Restore
+      run: dotnet restore Jint.TypeScript.slnx --locked-mode
+    - name: Build Playground
+      run: |
+        npm ci --ignore-scripts --prefix samples/Jint.TypeScript.Sample/ClientApp
+        npm run build --prefix samples/Jint.TypeScript.Sample/ClientApp
+    - name: Build
+      run: dotnet build Jint.TypeScript.slnx --configuration Release --no-restore -p:SkipPlaygroundBuild=true
+    - name: Run Tests
+      run: dotnet test tests/Jint.TypeScript.Tests --configuration Release --no-build --no-restore --logger trx --results-directory artifacts/test-results
+    - name: Check Upstream Parser
+      run: |
+        node --test eng/tests/*.test.mjs
+        node eng/upstream.mjs check
+        node eng/upstream.mjs verify-origin --work-dir artifacts/upstream-origin
+        node eng/validate-update-skill.mjs
+    - name: Check Reference Fixtures
+      run: |
+        npm ci --ignore-scripts --prefix eng/reference-checks
+        node eng/reference-checks/node_modules/typescript/bin/tsc --project samples/Jint.TypeScript.Sample/tsconfig.json
+        node eng/reference-checks/generate.mjs
+        git diff --exit-code -- tests/Jint.TypeScript.Tests/Fixtures
+    - name: Run Browser Tests
+      run: |
+        npm exec --prefix samples/Jint.TypeScript.Sample/ClientApp -- playwright install --with-deps chromium
+        npm test --prefix samples/Jint.TypeScript.Sample/ClientApp
+    - name: Check Published Playground
+      run: |
+        dotnet publish samples/Jint.TypeScript.Sample -c Release -f net8.0 --no-build --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net8
+        node eng/check-playground.mjs artifacts/playground-net8
+        dotnet publish samples/Jint.TypeScript.Sample -c Release -f net10.0 --no-build --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net10
+        node eng/check-playground.mjs artifacts/playground-net10
+    - name: Run Stress Tests
+      run: |
+        dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-build --no-restore
+        dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net10.0 --no-build --no-restore
+    - name: Package
+      run: dotnet pack src/Jint.TypeScript --configuration Release --no-build --no-restore -o artifacts/packages
+    - name: Check Package
+      run: node eng/check-package.mjs artifacts/packages
+    - name: Upload Packages
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: nuget-packages
+        path: artifacts/packages/*.nupkg
+        if-no-files-found: error
+        retention-days: 14
+    - name: Publish CI Packages
+      if: github.repository == 'FoundatioFx/Jint.TypeScript' && github.event_name != 'pull_request' && github.actor != 'dependabot[bot]'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        FEEDZ_KEY: ${{ secrets.FEEDZ_KEY }}
+      run: |
+        for package in artifacts/packages/*.nupkg; do
+          dotnet nuget push "$package" --source https://nuget.pkg.github.com/foundatiofx/index.json --api-key "$GITHUB_TOKEN" --skip-duplicate
+          if [ -n "$FEEDZ_KEY" ]; then
+            dotnet nuget push "$package" --source https://f.feedz.io/foundatio/foundatio/nuget --api-key "$FEEDZ_KEY" --skip-duplicate
+          else
+            echo "::warning::FEEDZ_KEY is unavailable. Feedz publishing was skipped."
+          fi
+        done
+    - name: Publish Release Packages
+      if: github.repository == 'FoundatioFx/Jint.TypeScript' && github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/v') && github.actor != 'dependabot[bot]'
+      env:
+        NUGET_KEY: ${{ secrets.NUGET_KEY }}
+      run: |
+        if [ -z "$NUGET_KEY" ]; then
+          echo "::error::NUGET_KEY is required to publish a version tag to NuGet.org."
+          exit 1
+        fi
+        for package in artifacts/packages/*.nupkg; do
+          dotnet nuget push "$package" --source https://api.nuget.org/v3/index.json --api-key "$NUGET_KEY" --skip-duplicate
+        done
+    - name: Upload Test Results
+      if: always()
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: test-results
+        path: |
+          artifacts/test-results
+          samples/Jint.TypeScript.Sample/ClientApp/test-results
+        if-no-files-found: ignore
+        retention-days: 7

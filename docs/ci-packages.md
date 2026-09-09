@@ -1,23 +1,26 @@
 # CI packages
 
-The [Build workflow](../.github/workflows/build.yml) follows Foundatio's MinVer versioning and GitHub Packages/Feedz publishing conventions. It retains a dedicated workflow because this repository also requires upstream reconstruction, reference fixtures, browser tests, isolated stress tests and published-sample checks.
+The [Build workflow](../.github/workflows/build.yml) follows [Foundatio's shared workflow](https://github.com/FoundatioFx/Foundatio/blob/main/.github/workflows/build-workflow.yml): one `build` job with Checkout, Build Reason, Build Version, Build, Run Tests, Package, Publish CI Packages and Publish Release Packages steps. Additional steps validate our parser, fixtures, browser, published sample and packed consumer before publishing.
 
 ## Builds and publishing
 
-- Branch pushes, pull requests and manual runs execute the validation jobs.
+- Branch pushes, `v*` tag pushes, pull requests and manual runs execute the build.
 - The package is built once, installed into an isolated consumer and executed on native .NET 8 and .NET 10. The consumer also verifies dependencies, source metadata, XML documentation and license notices.
 - The `nuget-packages` artifact contains that verified package. It is retained for 14 days; test results are retained for 7 days.
-- Successful pushes to `main`, and manual runs on `main`, publish that same artifact after **all** validation jobs pass. Pull requests, other branches, forks and Dependabot runs do not publish.
-- GitHub Packages uses the workflow's `GITHUB_TOKEN`, with `packages: write` limited to the publishing job. Feedz uses `FEEDZ_KEY`.
-- Only preview versions publish. Tag pushes do not trigger this workflow, and NuGet.org publication is not configured.
+- Successful branch and tag builds publish the checked package to GitHub Packages and Foundatio Feedz. Pull requests, forks and Dependabot runs do not publish. Manual runs follow the selected branch or tag.
+- Version tags additionally publish to NuGet.org using `NUGET_KEY`. Both prerelease tags, such as `v0.1.0-preview.1`, and stable tags, such as `v0.1.0`, use the exact tagged version.
+- All validation steps must pass before either publish step runs. Publication reuses the checked package; reruns skip packages already published.
+- GitHub Packages uses `GITHUB_TOKEN` with `packages: write` on the build job. Feedz uses `FEEDZ_KEY`; secrets are passed only to their publishing steps.
 
-MinVer 7 uses the complete Git history, `v` tags, a `0.1` minimum version and the `preview.0` prefix. Before the first version tag, versions look like `0.1.0-preview.0.42`, where the last number is the commit height. Rerunning the same commit keeps the same version; package pushes skip duplicates. Repository metadata records the source commit, and the library embeds its debugging information.
+MinVer 7 uses the complete Git history, `v` tags, a `0.1` minimum version and the `preview.0` prefix. Main, master and version-maintenance branches such as `1.x` or `1.2` use the standard version; feature branches include a sanitized branch name, such as `0.1.0-preview.feature-imports.0.42`. The [version helper](../eng/build-version.mjs) handles branch names and ensures a tag build uses the triggering tag even if the commit has multiple version tags. `MINVERVERSIONOVERRIDE` keeps build and package versions consistent, and the version appears in the workflow summary. Repository metadata records the source commit, and the library embeds its debugging information.
 
 ## One-time repository setup
 
 Make the Foundatio organization Actions secret named `FEEDZ_KEY` available to `FoundatioFx/Jint.TypeScript`, or configure a repository secret with that name. No new Feedz feed is required; this uses the same `foundatio/foundatio` feed as the other Foundatio libraries.
 
-If the secret is unavailable, the workflow reports a warning and explicitly records that Feedz publishing was skipped. GitHub Packages and the downloadable artifact remain available. Inspect the first publishing run to confirm the secret is inherited and Feedz succeeds.
+Make the existing `NUGET_KEY` secret available as well, with permission to publish `Jint.TypeScript` on NuGet.org. Missing release credentials fail the release publish step with a clear error.
+
+If the Feedz secret is unavailable, the workflow reports that Feedz publishing was skipped. GitHub Packages and the downloadable artifact remain available.
 
 GitHub Packages uses the built-in token and the repository URL in the package metadata. If a package with this name already exists under the organization, grant this repository Actions access to it before publishing.
 
@@ -47,4 +50,13 @@ node eng/check-package.mjs artifacts/package-check
 
 Both .NET runtimes must be installed. You can also pass an explicit `.nupkg` path when a directory contains multiple versions. The checker uses an isolated package cache so a previously installed package cannot mask a packaging failure.
 
-Stable releases can be added once the Jint dependency and this library are ready; they require a separate decision about version tags and NuGet.org publication.
+## Publish a release
+
+Tag the commit to release and push that tag:
+
+```powershell
+git tag v0.1.0-preview.1 <commit>
+git push origin v0.1.0-preview.1
+```
+
+Choose an unused version. A successful tagged build publishes the same package to GitHub Packages, Feedz and NuGet.org. The current Jint dependency is a preview, so use prerelease tags until the dependency and library are ready for a stable release. Consumers still need Jint's preview feed while that dependency is unavailable from NuGet.org.

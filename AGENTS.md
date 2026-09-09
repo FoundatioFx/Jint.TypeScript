@@ -52,7 +52,7 @@ dotnet pack src/Jint.TypeScript -c Release --no-restore -o artifacts/packages
 
 [Build CI](.github/workflows/build.yml) is the executable source of truth for required hosted checks, including fixture regeneration and upstream origin verification. Report a missing runtime/feed/tool as a validation limitation; do not silently substitute another runtime or change dependency pins to get a local check passing.
 
-[CI packages](docs/ci-packages.md) documents MinVer versioning, preview feeds and publishing gates. Use a full Git checkout when packing; do not hard-code the package version. Only successful `main` builds publish verified preview artifacts. Keep publishing dependent on every validation job and keep package-write permissions confined to that job. NuGet.org releases are not enabled.
+[CI packages](docs/ci-packages.md) documents the Foundatio build conventions, MinVer versioning and publishing gates. Use a full Git checkout when packing; do not hard-code the package version. Successful branch and version-tag builds publish checked packages to GitHub Packages and Feedz; `v*` tags additionally publish the exact tagged version to NuGet.org using `NUGET_KEY`. Keep all validation steps before publishing and pass publishing secrets only to their respective steps. Pull requests, forks and Dependabot runs do not publish.
 
 ## Parser ownership and upstream updates
 

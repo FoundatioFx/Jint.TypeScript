@@ -16,10 +16,14 @@ writeFileSync(resolve(directory, 'NuGet.Config'), `<configuration>
   <packageSourceMapping><clear/><packageSource key="local"><package pattern="Jint.TypeScript"/></packageSource><packageSource key="Jint-preview"><package pattern="Jint"/></packageSource><packageSource key="nuget.org"><package pattern="*"/></packageSource></packageSourceMapping>
 </configuration>`);
 writeFileSync(resolve(directory, 'Program.cs'), `using System.IO.Compression;
+using System.Reflection;
 using System.Xml.Linq;
 using Jint;
 using Jint.TypeScript;
 
+var assemblyVersion = typeof(TypeScriptCompiler).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+if (assemblyVersion != "${version}" && assemblyVersion?.StartsWith("${version}+") != true)
+    throw new Exception("The package version does not match the built library version.");
 var compiler = new TypeScriptCompiler();
 var prepared = compiler.PrepareScript("const answer: number = 42; answer;", "example.ts");
 if (new Engine().Evaluate(prepared).AsNumber() != 42) throw new Exception("Script failed.");
