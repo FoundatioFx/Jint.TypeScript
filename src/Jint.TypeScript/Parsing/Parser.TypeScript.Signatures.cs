@@ -11,8 +11,9 @@ internal sealed partial class Parser
         return statement!;
     }
 
-    private bool TryParseSignatureWithoutBody(in NodeList<Node> parameters, bool allowed)
+    private bool TryParseSignatureWithoutBody(in NodeList<Node> parameters, bool allowed, PropertyKind? abstractKind = null)
     {
+        if (abstractKind is { } kind) CheckAbstractSignature(parameters, kind);
         if (!allowed || _tokenizer._type == TokenType.BraceLeft) return false;
         // Parse real binding grammar once, including destructuring and rest. The
         // temporary parameter nodes are discarded; no function/body node is built.

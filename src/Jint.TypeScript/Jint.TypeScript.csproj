@@ -8,7 +8,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Jint" Version="5.0.0-preview-2041" />
+    <PackageReference Include="Jint" Version="5.0.0-preview-2069" />
     <PackageReference Include="Acornima" Version="1.8.0" />
   </ItemGroup>
   <ItemGroup>

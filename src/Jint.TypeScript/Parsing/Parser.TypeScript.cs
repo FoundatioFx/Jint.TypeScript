@@ -174,9 +174,10 @@ internal sealed partial class Parser
                 ParseTypeSignature(TokenType.Arrow, requireReturnType: true, allowConditional);
                 shape = TypeShape.Other;
             }
-            else if (_tokenizer._type == TokenType.New)
+            else if (_tokenizer._type == TokenType.New || IsAbstractConstructorType())
             {
-                Next();
+                if (IsContextual("abstract")) Next();
+                Expect(TokenType.New);
                 ParseTypeSignature(TokenType.Arrow, requireReturnType: true, allowConditional);
                 shape = TypeShape.Other;
             }

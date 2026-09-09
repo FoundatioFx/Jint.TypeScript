@@ -1,5 +1,5 @@
 diff --git a/Parser.Expression.cs b/Parser.Expression.cs
-index 099f7cd..d0dcdb2 100644
+index 099f7cd..f319ab1 100644
 --- a/Parser.Expression.cs
 +++ b/Parser.Expression.cs
 @@ -207,7 +207,7 @@ internal partial class Parser
@@ -236,7 +236,7 @@ index 099f7cd..d0dcdb2 100644
  
      // Parse object or class method.
 -    private FunctionExpression ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super)
-+    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false)
++    private FunctionExpression? ParseMethod(bool isGenerator, bool isAsync = false, ScopeFlags superFlags = ScopeFlags.Super, bool isSetter = false, bool allowThisParameter = true, bool allowOverload = false, PropertyKind? abstractKind = null)
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/expression.js > `pp.parseMethod = function`
  
@@ -251,7 +251,7 @@ index 099f7cd..d0dcdb2 100644
 +        NodeList<Node> parameters = ParseBindingList(close: TokenType.ParenRight, allowEmptyElement: false, allowTrailingComma: _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8, allowOptionalParameters: !isSetter, allowThisParameter: allowThisParameter)!;
          CheckYieldAwaitInDefaultParams();
 +        ParseTypeAnnotation(returnType: true);
-+        if (TryParseSignatureWithoutBody(parameters, allowOverload))
++        if (TryParseSignatureWithoutBody(parameters, allowOverload, abstractKind))
 +        {
 +            _yieldPosition = oldYieldPos;
 +            _awaitPosition = oldAwaitPos;
@@ -405,7 +405,7 @@ index 927972a..0a339dc 100644
          {
              case NodeType.Identifier:
 diff --git a/Parser.Statement.cs b/Parser.Statement.cs
-index cdb7431..0ce8421 100644
+index cdb7431..e6e70df 100644
 --- a/Parser.Statement.cs
 +++ b/Parser.Statement.cs
 @@ -25,11 +25,12 @@ internal partial class Parser
@@ -441,7 +441,20 @@ index cdb7431..0ce8421 100644
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseStatement = function`
  
-@@ -743,7 +745,7 @@ internal partial class Parser
+@@ -220,6 +222,12 @@ internal partial class Parser
+         TokenType startType;
+         VariableDeclarationKind kind;
+ 
++        if (IsAbstractClassStart())
++        {
++            if (context != StatementContext.Default) Unexpected();
++            return ExitRecursion(ParseAbstractClass(startMarker));
++        }
++
+         if (IsLet(context))
+         {
+             startType = TokenType.Var;
+@@ -743,7 +751,7 @@ internal partial class Parser
          return null;
      }
  
@@ -450,7 +463,7 @@ index cdb7431..0ce8421 100644
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseFunctionStatement = function`
  
-@@ -751,7 +753,7 @@ internal partial class Parser
+@@ -751,7 +759,7 @@ internal partial class Parser
          var flags = declarationPosition
              ? FunctionOrClassFlags.Statement
              : FunctionOrClassFlags.Statement | FunctionOrClassFlags.HangingStatement;
@@ -459,7 +472,7 @@ index cdb7431..0ce8421 100644
      }
  
      private ClassDeclaration ParseClassStatement(in Marker startMarker)
-@@ -854,7 +856,9 @@ internal partial class Parser
+@@ -854,7 +862,9 @@ internal partial class Parser
              var consequent = new ArrayList<Statement>();
              while (_tokenizer._type != TokenType.BraceRight && _tokenizer._type != TokenType.Case && _tokenizer._type != TokenType.Default)
              {
@@ -470,7 +483,7 @@ index cdb7431..0ce8421 100644
              }
  
              var current = FinishNode(caseStartMarker, new SwitchCase(test, ParserNodeList.From(ref consequent)) { Range = NodeRange(caseStartMarker), Location = NodeLocation(caseStartMarker) });
-@@ -1100,8 +1104,9 @@ internal partial class Parser
+@@ -1100,8 +1110,9 @@ internal partial class Parser
  
          while (_tokenizer._type != TokenType.BraceRight)
          {
@@ -482,7 +495,7 @@ index cdb7431..0ce8421 100644
          }
  
          // NOTE: Strict mode must be exited before the closing brace is consumed because consuming it also reads the token
-@@ -1177,7 +1182,7 @@ internal partial class Parser
+@@ -1177,7 +1188,7 @@ internal partial class Parser
      }
  
      // Parse a list of variable declarations.
@@ -491,7 +504,7 @@ index cdb7431..0ce8421 100644
      {
          // https://github.com/acornjs/acorn/blob/8.15.0/acorn/src/statement.js > `pp.parseVar = function`
  
-@@ -1224,7 +1229,7 @@ internal partial class Parser
+@@ -1224,7 +1235,7 @@ internal partial class Parser
          }
          while (Eat(TokenType.Comma));
  
@@ -500,7 +513,7 @@ index cdb7431..0ce8421 100644
      }
  
      private Node ParseVarId(VariableDeclarationKind kind)
-@@ -1235,14 +1240,15 @@ internal partial class Parser
+@@ -1235,14 +1246,15 @@ internal partial class Parser
              ? ParseIdentifier()
              : ParseBindingAtom();
  
@@ -518,7 +531,7 @@ index cdb7431..0ce8421 100644
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseFunction = function`
  
-@@ -1269,15 +1275,6 @@ internal partial class Parser
+@@ -1269,15 +1281,6 @@ internal partial class Parser
          if (isStatement && ((flags & FunctionOrClassFlags.NullableId) == 0 || _tokenizer._type == TokenType.Name))
          {
              id = ParseIdentifier();
@@ -534,7 +547,7 @@ index cdb7431..0ce8421 100644
          }
          else
          {
-@@ -1297,12 +1294,29 @@ internal partial class Parser
+@@ -1297,12 +1300,29 @@ internal partial class Parser
          }
  
          var parameters = ParseFunctionParams();
@@ -564,7 +577,7 @@ index cdb7431..0ce8421 100644
          return FinishNode<StatementOrExpression>(startMarker, isStatement
              ? new FunctionDeclaration(id, parameters, (FunctionBody)body, generator, isAsync) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) }
              : new FunctionExpression(id, parameters, (FunctionBody)body, generator, isAsync) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) },
-@@ -1313,8 +1327,9 @@ internal partial class Parser
+@@ -1313,15 +1333,16 @@ internal partial class Parser
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseFunctionParams = function`
  
@@ -575,7 +588,15 @@ index cdb7431..0ce8421 100644
          CheckYieldAwaitInDefaultParams();
          return parameters!;
      }
-@@ -1331,12 +1346,14 @@ internal partial class Parser
+ 
+     // Parse a class declaration or literal (depending on the
+     // `FunctionOrClassFlags.Statement` flag).
+-    private StatementOrExpression ParseClass(in Marker startMarker, FunctionOrClassFlags flags)
++    private StatementOrExpression ParseClass(in Marker startMarker, FunctionOrClassFlags flags, bool isAbstract = false)
+     {
+         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClass = function`
+ 
+@@ -1331,12 +1352,14 @@ internal partial class Parser
          _strict = true;
  
          var id = ParseClassId(flags);
@@ -590,24 +611,26 @@ index cdb7431..0ce8421 100644
  
          var privateNameStatusIndex = EnterClassBody();
          var classBodyStartMarker = StartNode();
-@@ -1355,6 +1372,7 @@ internal partial class Parser
+@@ -1354,7 +1377,8 @@ internal partial class Parser
+                 continue;
              }
  
-             var element = ParseClassElement(hasSuperClass);
+-            var element = ParseClassElement(hasSuperClass);
++            var element = ParseClassElement(hasSuperClass, isAbstract);
 +            if (element is null) continue;
  
              body.Add(element);
              if (element is MethodDefinition { Kind: PropertyKind.Constructor })
-@@ -1393,7 +1411,7 @@ internal partial class Parser
+@@ -1393,7 +1417,7 @@ internal partial class Parser
              scope);
      }
  
 -    private Node ParseClassElement(bool constructorAllowsSuper)
-+    private Node? ParseClassElement(bool constructorAllowsSuper)
++    private Node? ParseClassElement(bool constructorAllowsSuper, bool isAbstractClass)
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassElement = function`
  
-@@ -1406,6 +1424,7 @@ internal partial class Parser
+@@ -1406,6 +1430,7 @@ internal partial class Parser
          string? keyName = null;
          string keyword;
          var kind = PropertyKind.Unknown;
@@ -615,7 +638,7 @@ index cdb7431..0ce8421 100644
  
          isStatic = EatContextual(keyword = "static");
          if (isStatic)
-@@ -1413,6 +1432,7 @@ internal partial class Parser
+@@ -1413,6 +1438,7 @@ internal partial class Parser
              // Parse static init block
              if (_tokenizerOptions._ecmaVersion >= EcmaVersion.ES13 && Eat(TokenType.BraceLeft))
              {
@@ -623,7 +646,7 @@ index cdb7431..0ce8421 100644
                  if (hasDecorators)
                  {
                      Raise(startMarker.Index, DecoratorAppliedToStaticBlock);
-@@ -1427,8 +1447,11 @@ internal partial class Parser
+@@ -1427,8 +1453,11 @@ internal partial class Parser
                  keyName = keyword;
                  goto ParseElementName;
              }
@@ -635,52 +658,66 @@ index cdb7431..0ce8421 100644
          isAsync = _tokenizerOptions._ecmaVersion >= EcmaVersion.ES8 && EatContextual(keyword = "async");
          if (isAsync)
          {
-@@ -1502,9 +1525,14 @@ internal partial class Parser
+@@ -1491,6 +1520,8 @@ internal partial class Parser
+         bool computed;
+         if (keyName is null)
+         {
++            if ((modifiers & (ClassModifierAbstract | ClassModifierDeclare)) != 0 && kind == PropertyKind.Unknown && !isAsync && !isGenerator && !isAccessor
++                && TryParseErasedClassField(modifiers, isStatic, constructorAllowsSuper, isAbstractClass)) return null;
+             key = ParseClassElementName(out computed);
+         }
+         else
+@@ -1502,17 +1533,23 @@ internal partial class Parser
              key = FinishNode(keyStartMarker, new Identifier(keyName) { Range = NodeRange(keyStartMarker), Location = NodeLocation(keyStartMarker) });
          }
  
 +        var optional = Eat(TokenType.Question);
-+        if (optional || modifiers != 0) CheckTypeScriptClassMember(key, computed, kind, optional, modifiers, isStatic, constructorAllowsSuper);
++        if (optional || modifiers != 0) CheckTypeScriptClassMember(key, computed, kind, optional, modifiers, isStatic, constructorAllowsSuper, isAbstractClass);
 +
          // Parse element value
 -        if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES13 || _tokenizer._type == TokenType.ParenLeft || kind != PropertyKind.Unknown || isGenerator || isAsync)
 +        if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES13 || _tokenizer._type == TokenType.ParenLeft || IsTypeOperator("<") || kind != PropertyKind.Unknown || isGenerator || isAsync)
          {
-+            if ((modifiers & ClassModifierReadonly) != 0)
-+                TypeScriptError("InvalidReadonlyMethod", "A method cannot be readonly");
++            if (modifiers != 0) CheckTypeScriptClassMethodModifiers(modifiers);
              if (kind == PropertyKind.Unknown)
              {
                  kind = PropertyKind.Method;
-@@ -1513,6 +1541,7 @@ internal partial class Parser
+             }
+-            return ParseClassMethod(startMarker, kind, key, computed, isStatic, isAsync, isGenerator, constructorAllowsSuper, ref decorators);
++            return ParseClassMethod(startMarker, kind, key, computed, isStatic, isAsync, isGenerator, constructorAllowsSuper, ref decorators, abstractSignature: (modifiers & ClassModifierAbstract) != 0);
          }
          else
          {
 +            ParseClassFieldAnnotation(optional);
++            if (TryFinishErasedClassField(modifiers, key, computed, isStatic)) return null;
              return ParseClassField(startMarker, key, computed, isStatic, isAccessor, ref decorators);
          }
      }
-@@ -1548,7 +1577,7 @@ internal partial class Parser
+@@ -1548,8 +1585,8 @@ internal partial class Parser
          }
      }
  
 -    private MethodDefinition ParseClassMethod(in Marker startMarker, PropertyKind kind, Expression key,
+-        bool computed, bool isStatic, bool isAsync, bool isGenerator, bool constructorAllowsSuper, ref ArrayList<Decorator> decorators)
 +    private MethodDefinition? ParseClassMethod(in Marker startMarker, PropertyKind kind, Expression key,
-         bool computed, bool isStatic, bool isAsync, bool isGenerator, bool constructorAllowsSuper, ref ArrayList<Decorator> decorators)
++        bool computed, bool isStatic, bool isAsync, bool isGenerator, bool constructorAllowsSuper, ref ArrayList<Decorator> decorators, bool abstractSignature = false)
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassMethod = function`
-@@ -1590,7 +1619,10 @@ internal partial class Parser
+ 
+@@ -1590,7 +1627,11 @@ internal partial class Parser
          }
  
          // Parse value
 -        var value = ParseMethod(isGenerator, isAsync, superFlags);
 +        if (kind != PropertyKind.Method && IsTypeOperator("<"))
 +            TypeScriptError("InvalidMethodTypeParameters", "Constructors and accessors cannot have type parameters");
-+        var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method, allowOverload: kind is PropertyKind.Method or PropertyKind.Constructor);
++        var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method,
++            allowOverload: abstractSignature || kind is PropertyKind.Method or PropertyKind.Constructor, abstractKind: abstractSignature ? kind : null);
 +        if (value is null) return null;
  
          // Check value
          if (kind == PropertyKind.Get)
-@@ -1677,8 +1709,9 @@ internal partial class Parser
+@@ -1677,8 +1718,9 @@ internal partial class Parser
  
          while (!Eat(TokenType.BraceRight))
          {
@@ -692,7 +729,7 @@ index cdb7431..0ce8421 100644
          }
  
          var scope = ExitScope();
-@@ -1716,7 +1749,11 @@ internal partial class Parser
+@@ -1716,7 +1758,11 @@ internal partial class Parser
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassSuper = function`
  
@@ -705,7 +742,7 @@ index cdb7431..0ce8421 100644
      }
  
      private int EnterClassBody()
-@@ -1821,10 +1858,11 @@ internal partial class Parser
+@@ -1821,10 +1867,11 @@ internal partial class Parser
  
      // Parses module export declaration.
  
@@ -718,7 +755,7 @@ index cdb7431..0ce8421 100644
          Next();
  
          if (Eat(TokenType.Star))
-@@ -1842,7 +1880,7 @@ internal partial class Parser
+@@ -1842,7 +1889,7 @@ internal partial class Parser
          return ParseExportDeclaration(startMarker, exports);
      }
  
@@ -727,7 +764,7 @@ index cdb7431..0ce8421 100644
      {
          // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseExportDeclaration = function`
  
-@@ -1855,7 +1893,8 @@ internal partial class Parser
+@@ -1855,7 +1902,8 @@ internal partial class Parser
          {
              // export var|const|let|function|class ...
  
@@ -737,7 +774,7 @@ index cdb7431..0ce8421 100644
              if (declaration is FunctionDeclaration functionDeclaration)
              {
                  CheckExport(exports, functionDeclaration.Id!, functionDeclaration.Id!.Start);
-@@ -1892,6 +1931,7 @@ internal partial class Parser
+@@ -1892,6 +1940,7 @@ internal partial class Parser
              }
              else
              {
@@ -745,7 +782,7 @@ index cdb7431..0ce8421 100644
                  for (var i = 0; i < specifiers.Count; i++)
                  {
                      var spec = specifiers[i];
-@@ -1924,13 +1964,13 @@ internal partial class Parser
+@@ -1924,13 +1973,13 @@ internal partial class Parser
          return FinishNode(startMarker, new ExportNamedDeclaration(declaration, specifiers, source, ParserNodeList.From(ref attributes)) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) });
      }
  
@@ -762,7 +799,18 @@ index cdb7431..0ce8421 100644
          Marker declarationStartMarker;
          var isAsync = false;
  
-@@ -1961,6 +2001,8 @@ internal partial class Parser
+@@ -1944,6 +1993,10 @@ internal partial class Parser
+             }
+             declaration = ParseFunction(declarationStartMarker, FunctionOrClassFlags.Statement | FunctionOrClassFlags.NullableId, isAsync);
+         }
++        else if (IsAbstractClassStart())
++        {
++            declaration = ParseAbstractClass(StartNode(), FunctionOrClassFlags.Statement | FunctionOrClassFlags.NullableId);
++        }
+         else if (_tokenizer._type == TokenType.Class)
+         {
+             declarationStartMarker = StartNode();
+@@ -1961,6 +2014,8 @@ internal partial class Parser
              Semicolon();
          }
  
@@ -771,7 +819,17 @@ index cdb7431..0ce8421 100644
          return FinishNode(startMarker, new ExportDefaultDeclaration(declaration) { Range = NodeRange(startMarker), Location = NodeLocation(startMarker) });
      }
  
-@@ -2125,6 +2167,7 @@ internal partial class Parser
+@@ -2082,7 +2137,8 @@ internal partial class Parser
+ 
+         return _tokenizer._type.Keyword is Keyword.Var or Keyword.Const or Keyword.Class or Keyword.Function
+             || IsLet()
+-            || IsAsyncFunction();
++            || IsAsyncFunction()
++            || IsAbstractClassStart();
+     }
+ 
+     // Parses a comma-separated list of module exports.
+@@ -2125,6 +2181,7 @@ internal partial class Parser
                  first = false;
              }
  
@@ -779,7 +837,7 @@ index cdb7431..0ce8421 100644
              nodes.Add(ParseExportSpecifier(exports));
          }
  
-@@ -2328,6 +2371,7 @@ internal partial class Parser
+@@ -2328,6 +2385,7 @@ internal partial class Parser
                  first = false;
              }
  
@@ -787,7 +845,7 @@ index cdb7431..0ce8421 100644
              nodes.Add(ParseImportSpecifier());
          }
  
-@@ -2352,7 +2396,7 @@ internal partial class Parser
+@@ -2352,7 +2410,7 @@ internal partial class Parser
          return ParseIdentifier(liberal: true);
      }
  
@@ -796,7 +854,7 @@ index cdb7431..0ce8421 100644
      {
          if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES5)
          {
-@@ -2366,8 +2410,20 @@ internal partial class Parser
+@@ -2366,8 +2424,20 @@ internal partial class Parser
  
          var body = new ArrayList<Statement>();
          var sawStrict = false;
@@ -818,7 +876,7 @@ index cdb7431..0ce8421 100644
              if (firstRestrictedPos < 0)
              {
                  firstRestrictedPos = _tokenizer.GetCurrentLegacyOctal(out firstRestrictedKind);
-@@ -2506,7 +2562,7 @@ internal partial class Parser
+@@ -2506,7 +2576,7 @@ internal partial class Parser
  
          var valueStartMarker = StartNode();
          var raw = Tokenizer.DeduplicateString(_tokenizer._input.SliceBetween(_tokenizer._start, _tokenizer._end), ref _tokenizer._stringPool, Tokenizer.NonIdentifierDeduplicationThreshold);

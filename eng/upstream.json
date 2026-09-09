@@ -1,5 +1,5 @@
 {
-  "reviewedOn": "2026-09-08",
+  "reviewedOn": "2026-09-09",
   "acornima": {
     "repository": "https://github.com/adams85/acornima",
     "commit": "b4508e06c520493d798064dc172ad472e44968ce",
@@ -14,10 +14,10 @@
   },
   "jint": {
     "repository": "https://github.com/sebastienros/jint",
-    "reviewedHead": "3f6099c634cbe78b2da632f70567a9358ef74b3a",
-    "package": "5.0.0-preview-2041",
+    "reviewedHead": "eadd36bc7b2bb9f62205ce452a72344fb4b9e5a8",
+    "package": "5.0.0-preview-2069",
     "feed": "https://f.feedz.io/sebastienros/jint/nuget/index.json",
-    "packageCommit": "08d97a40a0310a937fe9a63528f5c860108ff58f"
+    "packageCommit": "dd9b59102890863d1683d7c43fb068ebbf777fe0"
   },
   "references": {
     "typescript": "7.0.2",

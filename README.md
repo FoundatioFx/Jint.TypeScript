@@ -31,7 +31,7 @@ Supported features include:
 
 - Type annotations, aliases, interfaces, unions, tuples, mapped and conditional types.
 - Generic functions, arrows, calls, and classes.
-- Typed class members, overload signatures, and selected `declare` declarations.
+- Typed and abstract classes, overload signatures, and selected `declare` declarations.
 - `as`, `satisfies`, non-null assertions, and explicit type-only imports and exports.
 
 Types are erased without type checking or runtime validation. Use your editor or `tsc` for type checking.

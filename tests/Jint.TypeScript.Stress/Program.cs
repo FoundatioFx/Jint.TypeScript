@@ -13,7 +13,9 @@ string[] cases = ["deep-types", "raised-type-limit", "deep-syntax", "raised-synt
     "deep-type-arguments", "wide-type-arguments", "deep-generic-arrows", "many-generic-calls", "comparisons-before-generic",
     "deep-readonly", "deep-predicates", "deep-queries", "deep-this", "many-overloads", "many-method-overloads", "many-ambient",
     "deep-conditionals", "deep-conditional-false", "deep-infer-constraints", "deep-import-types", "deep-const-constraints",
-    "many-conditional-types", "many-variant-parameters", "wide-import-type-arguments"];
+    "many-conditional-types", "many-variant-parameters", "wide-import-type-arguments",
+    "deep-abstract-classes", "deep-abstract-constructors", "many-declare-fields", "many-abstract-fields",
+    "many-abstract-methods", "many-abstract-accessors", "many-erased-computed-fields"];
 if (args.Length == 1)
 {
     Run(args[0]);
@@ -48,6 +50,27 @@ static void Run(string name)
     var compiler = new TypeScriptCompiler();
     switch (name)
     {
+        case "deep-abstract-classes":
+            Expect("SyntaxDepthLimit", () => compiler.ParseScript(string.Concat(Enumerable.Repeat("abstract class C { f() {",10000))+"42;"));
+            break;
+        case "deep-abstract-constructors":
+            Expect("TypeDepthLimit", () => new TypeScriptCompiler(new(){MaxTypeDepth=4096}).ParseScript(
+                "type T="+string.Concat(Enumerable.Repeat("abstract new()=>",30000))+"number;"));
+            break;
+        case "many-declare-fields":
+        case "many-abstract-fields":
+            new TypeScriptCompiler(new(){MaxNodeCount=4}).ParseScript("abstract class C {"+
+                string.Concat(Enumerable.Repeat(name=="many-declare-fields"?"declare value:number;":"abstract value:number;",20000))+"}");
+            break;
+        case "many-abstract-methods":
+            compiler.ParseScript("abstract class C {"+string.Concat(Enumerable.Repeat("abstract f(x:number):number;",15000))+"}");
+            break;
+        case "many-abstract-accessors":
+            compiler.ParseScript("abstract class C {"+string.Concat(Enumerable.Repeat("abstract get x():number; abstract set x(v:number);",10000))+"}");
+            break;
+        case "many-erased-computed-fields":
+            compiler.ParseScript("class C {"+string.Concat(Enumerable.Repeat("declare [key()]:number;",10000))+"}");
+            break;
         case "deep-types":
         case "raised-type-limit":
             if (name == "raised-type-limit") compiler = new(new() { MaxTypeDepth = 100000 });

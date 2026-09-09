@@ -176,6 +176,22 @@ Measure("Official JS rule prepare", 1, ruleJs.Length, 1000, () => Engine.Prepare
 Measure("Owned TS rule parse", 1, ruleSource.Length, 1000, () => compiler.ParseScript(ruleSource));
 Measure("Owned TS rule prepare", 1, ruleSource.Length, 1000, () => compiler.PrepareScript(ruleSource));
 Measure("Cached TS rule execute", 1, ruleSource.Length, 1000, () => ruleEngine.Evaluate(rulePrepared));
+foreach (var count in new[] {100,1000,10000})
+{
+    var fields="class C {"+string.Concat(Enumerable.Repeat("declare value:number;",count))+"}";
+    var abstractFields="abstract class C {"+string.Concat(Enumerable.Repeat("abstract value:number;",count))+"}";
+    var methods="abstract class C {"+string.Concat(Enumerable.Repeat("abstract f(x:number):number;",count))+"}";
+    var computed="class C {"+string.Concat(Enumerable.Repeat("declare [key()]:number;",count))+"}";
+    Measure("Owned TS declare fields",count,fields.Length,20,()=>compiler.ParseScript(fields));
+    Measure("Owned TS abstract fields",count,abstractFields.Length,20,()=>compiler.ParseScript(abstractFields));
+    Measure("Owned TS abstract methods",count,methods.Length,20,()=>compiler.ParseScript(methods));
+    Measure("Owned TS erased computed fields",count,computed.Length,20,()=>compiler.ParseScript(computed));
+}
+foreach (var count in new[] {1,100,1000})
+{
+    var source=string.Join('\n',Enumerable.Range(0,count).Select(i=>$"abstract class C{i}<T> {{abstract f(x:T):T; declare host:Host; value=42; g(x:number):number {{return x+this.value;}}}}"));
+    Measure("Owned TS mixed abstract classes",count,source.Length,Math.Max(10,3000/count),()=>compiler.ParseScript(source));
+}
 var report = new { utc = DateTimeOffset.UtcNow, runtime = RuntimeInformation.FrameworkDescription,
     jint = typeof(Engine).Assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion,
     acornima = typeof(Acornima.Parser).Assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion,

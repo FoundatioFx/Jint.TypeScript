@@ -35,7 +35,7 @@
     "Parser.TypeScript.cs",
     "Tokenizer.TypeScript.cs"
   ],
-  "addedLines": 185,
-  "removedLines": 77,
-  "patchLines": 842
+  "addedLines": 204,
+  "removedLines": 82,
+  "patchLines": 900
 }

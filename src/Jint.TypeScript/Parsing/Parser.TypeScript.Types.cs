@@ -2,6 +2,19 @@ namespace Jint.TypeScript.Parsing;
 
 internal sealed partial class Parser
 {
+    private bool IsAbstractConstructorType()
+    {
+        if (!IsContextual("abstract")) return false;
+        var probe = StartLookahead();
+        try
+        {
+            probe.Next();
+            probe.Next();
+            return probe._tokenizer._type == TokenType.New;
+        }
+        finally { _tokenCount = probe._tokenCount; }
+    }
+
     // These routines consume types without creating nodes or entering JS scopes.
     // Reference: acorn-typescript's type member/signature and tuple productions.
     // Modern mixed labeled/unlabeled tuples follow the current compiler oracle.

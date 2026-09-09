@@ -1,0 +1,534 @@
+{
+  "purpose": "Focused before/after repetition to investigate timing variation in the first full sweep; order before, after, after, before; each value is a nine-batch median. Same workload/measurement code as the first loop of the main benchmark.",
+  "baseline": "4fc707c parser with Jint preview 2069 and matching lockfiles",
+  "runs": [
+    {
+      "name": "before-1",
+      "utc": "2026-09-09T18:12:20.0878711+00:00",
+      "runtime": ".NET 10.0.12",
+      "jint": "5.0.0-preview-2069+dd9b59102890863d1683d7c43fb068ebbf777fe0",
+      "acornima": "1.8.0+b4508e06c520493d798064dc172ad472e44968ce",
+      "os": "Ubuntu 26.04.1 LTS",
+      "architecture": "X64",
+      "processorCount": 24,
+      "results": [
+        {
+          "operation": "Official JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 1.629,
+          "allocatedBytes": 3352
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 2.185,
+          "allocatedBytes": 3728
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 2.574,
+          "allocatedBytes": 3768
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 3.431,
+          "allocatedBytes": 6208
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 4.719,
+          "allocatedBytes": 6424
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 138.976,
+          "allocatedBytes": 219552
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 187.27,
+          "allocatedBytes": 241312
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 226.662,
+          "allocatedBytes": 241352
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 292.148,
+          "allocatedBytes": 387096
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 401.654,
+          "allocatedBytes": 408696
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1468.83,
+          "allocatedBytes": 2141648
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1908.29,
+          "allocatedBytes": 2357808
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 2310.72,
+          "allocatedBytes": 2357848
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 3157.11,
+          "allocatedBytes": 3805224
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 4225.08,
+          "allocatedBytes": 4021224
+        }
+      ]
+    },
+    {
+      "name": "after-1",
+      "utc": "2026-09-09T18:12:24.3563952+00:00",
+      "runtime": ".NET 10.0.12",
+      "jint": "5.0.0-preview-2069+dd9b59102890863d1683d7c43fb068ebbf777fe0",
+      "acornima": "1.8.0+b4508e06c520493d798064dc172ad472e44968ce",
+      "os": "Ubuntu 26.04.1 LTS",
+      "architecture": "X64",
+      "processorCount": 24,
+      "results": [
+        {
+          "operation": "Official JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 1.566,
+          "allocatedBytes": 3352
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 2.13,
+          "allocatedBytes": 3728
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 2.544,
+          "allocatedBytes": 3768
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 3.327,
+          "allocatedBytes": 6208
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 4.706,
+          "allocatedBytes": 6424
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 135.848,
+          "allocatedBytes": 219552
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 189.83,
+          "allocatedBytes": 241312
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 229.756,
+          "allocatedBytes": 241352
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 292.14,
+          "allocatedBytes": 387096
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 414.574,
+          "allocatedBytes": 408696
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1472.24,
+          "allocatedBytes": 2141648
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1933.55,
+          "allocatedBytes": 2357808
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 2345.46,
+          "allocatedBytes": 2357848
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 3120.91,
+          "allocatedBytes": 3805224
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 4300.56,
+          "allocatedBytes": 4021224
+        }
+      ]
+    },
+    {
+      "name": "after-2",
+      "utc": "2026-09-09T18:12:28.5668488+00:00",
+      "runtime": ".NET 10.0.12",
+      "jint": "5.0.0-preview-2069+dd9b59102890863d1683d7c43fb068ebbf777fe0",
+      "acornima": "1.8.0+b4508e06c520493d798064dc172ad472e44968ce",
+      "os": "Ubuntu 26.04.1 LTS",
+      "architecture": "X64",
+      "processorCount": 24,
+      "results": [
+        {
+          "operation": "Official JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 1.545,
+          "allocatedBytes": 3352
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 2.114,
+          "allocatedBytes": 3728
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 2.48,
+          "allocatedBytes": 3768
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 3.328,
+          "allocatedBytes": 6208
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 4.631,
+          "allocatedBytes": 6424
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 134.636,
+          "allocatedBytes": 219552
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 184.652,
+          "allocatedBytes": 241312
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 224.684,
+          "allocatedBytes": 241352
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 287.016,
+          "allocatedBytes": 387096
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 405.46,
+          "allocatedBytes": 408696
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1450.34,
+          "allocatedBytes": 2141648
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1911.27,
+          "allocatedBytes": 2357808
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 2299.74,
+          "allocatedBytes": 2357848
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 3099.59,
+          "allocatedBytes": 3805224
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 4215.29,
+          "allocatedBytes": 4021224
+        }
+      ]
+    },
+    {
+      "name": "before-2",
+      "utc": "2026-09-09T18:12:32.8247742+00:00",
+      "runtime": ".NET 10.0.12",
+      "jint": "5.0.0-preview-2069+dd9b59102890863d1683d7c43fb068ebbf777fe0",
+      "acornima": "1.8.0+b4508e06c520493d798064dc172ad472e44968ce",
+      "os": "Ubuntu 26.04.1 LTS",
+      "architecture": "X64",
+      "processorCount": 24,
+      "results": [
+        {
+          "operation": "Official JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 1.586,
+          "allocatedBytes": 3352
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 2.146,
+          "allocatedBytes": 3728
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 2.558,
+          "allocatedBytes": 3768
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1,
+          "characters": 64,
+          "iterations": 5000,
+          "medianMicroseconds": 3.331,
+          "allocatedBytes": 6208
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1,
+          "characters": 96,
+          "iterations": 5000,
+          "medianMicroseconds": 4.66,
+          "allocatedBytes": 6424
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 134.944,
+          "allocatedBytes": 219552
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 188.462,
+          "allocatedBytes": 241312
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 228.99,
+          "allocatedBytes": 241352
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 100,
+          "characters": 6589,
+          "iterations": 50,
+          "medianMicroseconds": 291.886,
+          "allocatedBytes": 387096
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 100,
+          "characters": 9789,
+          "iterations": 50,
+          "medianMicroseconds": 405.568,
+          "allocatedBytes": 408696
+        },
+        {
+          "operation": "Official JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1478.53,
+          "allocatedBytes": 2141648
+        },
+        {
+          "operation": "Owned JS parse",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 1912.02,
+          "allocatedBytes": 2357808
+        },
+        {
+          "operation": "Owned TS parse",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 2302.49,
+          "allocatedBytes": 2357848
+        },
+        {
+          "operation": "Official JS prepare",
+          "units": 1000,
+          "characters": 66889,
+          "iterations": 10,
+          "medianMicroseconds": 3092.6,
+          "allocatedBytes": 3805224
+        },
+        {
+          "operation": "Owned TS prepare",
+          "units": 1000,
+          "characters": 98889,
+          "iterations": 10,
+          "medianMicroseconds": 4263.98,
+          "allocatedBytes": 4021224
+        }
+      ]
+    }
+  ]
+}

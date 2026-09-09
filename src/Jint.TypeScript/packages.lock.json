@@ -10,9 +10,9 @@
       },
       "Jint": {
         "type": "Direct",
-        "requested": "[5.0.0-preview-2041, )",
-        "resolved": "5.0.0-preview-2041",
-        "contentHash": "D/qm7TiMfyDFFnDxm+6JKO1NP0/M4JvcyZMZKAURHkK91RoPKv6Mk93MA6iRkw1RtilWtuQ54P0QwEbZkhIoGg==",
+        "requested": "[5.0.0-preview-2069, )",
+        "resolved": "5.0.0-preview-2069",
+        "contentHash": "8DaslCRpB93z3DqsjHYed2SzqvwnwTQGcwg50QT55HCoCzjx72EDsfKlHJPV6GvtcrLxcUC4mv10C7USvXutYw==",
         "dependencies": {
           "Acornima": "1.8.0"
         }
@@ -27,9 +27,9 @@
       },
       "Jint": {
         "type": "Direct",
-        "requested": "[5.0.0-preview-2041, )",
-        "resolved": "5.0.0-preview-2041",
-        "contentHash": "D/qm7TiMfyDFFnDxm+6JKO1NP0/M4JvcyZMZKAURHkK91RoPKv6Mk93MA6iRkw1RtilWtuQ54P0QwEbZkhIoGg==",
+        "requested": "[5.0.0-preview-2069, )",
+        "resolved": "5.0.0-preview-2069",
+        "contentHash": "8DaslCRpB93z3DqsjHYed2SzqvwnwTQGcwg50QT55HCoCzjx72EDsfKlHJPV6GvtcrLxcUC4mv10C7USvXutYw==",
         "dependencies": {
           "Acornima": "1.8.0"
         }

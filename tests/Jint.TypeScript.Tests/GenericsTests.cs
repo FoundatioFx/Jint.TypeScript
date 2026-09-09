@@ -9,6 +9,147 @@ public class GenericsTests
     private static readonly TypeScriptCompiler Compiler = new();
 
     [Theory]
+    [InlineData("class B {value=42;} class C extends B {declare value:number;} new C().value;")]
+    [InlineData("class B {value=42;} abstract class C extends B {abstract value:number;} new C().value;")]
+    [InlineData("class B {static value=42;} class C extends B {declare static value:number;} C.value;")]
+    [InlineData("abstract class C {abstract f(x:number):number;} class D extends C {f(x) {return x;}} new D().f(42);")]
+    [InlineData("abstract class C {abstract get value():number; abstract set value(x:number);} class D extends C {get value() {return 42;}} new D().value;")]
+    [InlineData("abstract class C {abstract f<const T>(this:C,x:T):T; f(x) {return this.value+x;} value=40;} new C().f(2);")]
+    [InlineData("function build() {abstract class C {abstract f():number; value=42;} return C;} new (build())().value;")]
+    [InlineData("let calls=0; function key(){calls++;return 'x';} abstract class C {abstract [key()]():number; declare [key()]:number; abstract get [key()]():number; value=42;} new C().value+calls;")]
+    [InlineData("abstract class C {abstract constructor(x:number); value=42;} new C().value;")]
+    [InlineData("type T=abstract new<const T>(x:T)=>T; const f=x=>x; f<T>(42);")]
+    [InlineData("type T=X extends abstract new()=>infer U ? U:never; 42;")]
+    [InlineData("class C {abstract=40; declare=2;} const c=new C(); c.abstract+c.declare;")]
+    [InlineData("class C {abstract(){return 40;} declare(){return 2;}} const c=new C(); c.abstract()+c.declare();")]
+    [InlineData("const abstract=40; abstract\nclass C {value=2;} abstract+new C().value;")]
+    [InlineData("abstract class C {f(){class C {abstract=42;} return new C().abstract;} abstract x:number;} new C().f();")]
+    public void Class_erasure_preserves_inheritance_and_executable_members(string source)
+    {
+        foreach (var analysis in new[] {true,false})
+            Assert.Equal(42, new Engine().Evaluate(new TypeScriptCompiler(new() {StaticAnalysis=analysis}).PrepareScript(source)).AsNumber());
+    }
+
+    [Theory]
+    [InlineData("class C {abstract x:number;}")]
+    [InlineData("abstract class C {f(){class D {abstract x:number;}}}")]
+    [InlineData("abstract class C {declare x=1;}")]
+    [InlineData("abstract class C {abstract x=1;}")]
+    [InlineData("abstract class C {abstract f() {}}")]
+    [InlineData("abstract class C {abstract get x() {return 1;}}")]
+    [InlineData("abstract class C {abstract set x(v) {}}")]
+    [InlineData("class C {declare f():void;}")]
+    [InlineData("class C {declare get x():number;}")]
+    [InlineData("abstract class C {abstract static x:number;}")]
+    [InlineData("abstract class C {static abstract x:number;}")]
+    [InlineData("class C {declare override x:number;}")]
+    [InlineData("abstract class C extends B {override abstract f():number;}")]
+    [InlineData("abstract class C {abstract readonly f():number;}")]
+    [InlineData("abstract class C {abstract abstract x:number;}")]
+    [InlineData("class C {declare declare x:number;}")]
+    [InlineData("abstract class C {abstract #x:number;}")]
+    [InlineData("class C {declare #x:number;}")]
+    [InlineData("abstract class C {abstract get x(v:number):number;}")]
+    [InlineData("abstract class C {abstract set x();}")]
+    [InlineData("abstract class C {abstract set x(a,b);}")]
+    [InlineData("abstract class C {abstract set x(...args:number[]);}")]
+    [InlineData("abstract class C {abstract set x(v?:number);}")]
+    [InlineData("abstract class C {abstract f(x=1):number;}")]
+    [InlineData("abstract class C {abstract async x:number;}")]
+    [InlineData("abstract class C {abstract *x:number;}")]
+    [InlineData("abstract class C {abstract get x:number;}")]
+    [InlineData("class C {declare constructor:number;}")]
+    [InlineData("class C {declare static prototype:number;}")]
+    [InlineData("abstract class C {abstract constructor:number;}")]
+    [InlineData("if(true) abstract class C {}")]
+    [InlineData("label: abstract class C {}")]
+    [InlineData("while(false) abstract class C {}")]
+    [InlineData("const C=abstract class {};")]
+    [InlineData("abstract class C {} let C;")]
+    [InlineData("type T=abstract ()=>object;")]
+    [InlineData("type T=abstract new()=>;")]
+    [InlineData("type T=number | abstract new()=>object;")]
+    public void Class_erasure_rejects_invalid_or_deliberately_unsupported_neighbors(string source) =>
+        Assert.Throws<TypeScriptParseException>(()=>Compiler.ParseScript(source));
+
+    [Theory]
+    [InlineData("export abstract class C {abstract x:number; value=42;}","C")]
+    [InlineData("export default abstract class {abstract get x():number; value=42;}","default")]
+    [InlineData("export default abstract class C {abstract f():number; value=42;}","default")]
+    public void Abstract_class_exports_keep_runtime_bindings(string source, string exportName)
+    {
+        var engine = new Engine();
+        engine.Modules.Add("classes",b=>b.AddModule(Compiler.PrepareModule(source,"classes")));
+        engine.SetValue("C",engine.Modules.Import("classes").Get(exportName));
+        Assert.Equal(42,engine.Evaluate("new C().value;").AsNumber());
+        Assert.Throws<TypeScriptParseException>(()=>Compiler.ParseModule(source+(exportName=="default"?" export default 42;":" export {C};")));
+    }
+
+    [Fact]
+    public void Erased_fields_have_no_descriptors_and_preserve_original_locations()
+    {
+        const string source="// 😀\r\nabstract class C<const T> {\r\n abstract value:T; declare other:import('missing').Host; normal:number;\r\n abstract f(x:T):T; f(x) {return x.value;}\r\n}\r\nnew C().f(null);";
+        var script=Compiler.ParseScript(source,"classes.ts");
+        HardeningTests.AssertLocations(script,source,"classes.ts");
+        var declaration=Assert.IsType<ClassDeclaration>(script.Body[0]);
+        Assert.Equal(source.IndexOf("abstract class",StringComparison.Ordinal),declaration.Start);
+        Assert.Equal(2,declaration.Body.Body.Count);
+        var error=Assert.Throws<JavaScriptException>(()=>new Engine().Evaluate(Compiler.PrepareScript(source,"classes.ts")));
+        Assert.Equal(4,error.Location.Start.Line);
+        Assert.Equal("classes.ts",error.Location.SourceFile);
+        Assert.Equal("normal",new Engine().Evaluate(Compiler.PrepareScript("abstract class C {abstract x:number; declare y:number; normal:number;} Object.keys(new C()).join(',');")).AsString());
+    }
+
+    [Theory]
+    [InlineData("declare value:number;")]
+    [InlineData("abstract readonly value:T extends U ? X:Y;")]
+    [InlineData("declare value?:import('missing').Shape;")]
+    [InlineData("abstract value!:number;")]
+    public void Ordinary_erased_class_fields_have_constant_allocation_and_linear_token_cost(string member)
+    {
+        var small="abstract class C<T> {"+member+"}";
+        var large="abstract class C<T> {"+string.Concat(Enumerable.Repeat(member,10000))+"}";
+        var bytes=HardeningTests.Allocated(()=>Compiler.ParseScript(large))-HardeningTests.Allocated(()=>Compiler.ParseScript(small));
+        Assert.True(bytes<4096,$"Erased fields allocated {bytes} extra bytes");
+        var compiler=new TypeScriptCompiler(new() {MaxNodeCount=4,MaxTokenCount=400000});
+        Assert.Empty(Assert.IsType<ClassDeclaration>(compiler.ParseScript(large).Body[0]).Body.Body);
+        Assert.Equal("TokenLimit",Assert.Throws<TypeScriptParseException>(()=>new TypeScriptCompiler(new(){MaxTokenCount=32}).ParseScript(large)).Code);
+        using var cancel=new CancellationTokenSource();cancel.Cancel();
+        Assert.Throws<OperationCanceledException>(()=>Compiler.ParseScript(large,cancellationToken:cancel.Token));
+    }
+
+    [Fact]
+    public void Erased_computed_keys_and_signature_parameters_still_count_temporary_nodes()
+    {
+        var compiler=new TypeScriptCompiler(new(){MaxNodeCount=16});
+        Assert.Equal("NodeLimit",Assert.Throws<TypeScriptParseException>(()=>compiler.ParseScript("abstract class C {"+string.Concat(Enumerable.Repeat("abstract [key()]():number;",20))+"}")).Code);
+        Assert.Equal("NodeLimit",Assert.Throws<TypeScriptParseException>(()=>compiler.ParseScript("abstract class C {abstract f("+string.Join(',',Enumerable.Range(0,20).Select(i=>$"x{i}:number"))+"):number;}")).Code);
+        Assert.Equal("TypeDepthLimit",Assert.Throws<TypeScriptParseException>(()=>new TypeScriptCompiler(new(){MaxTypeDepth=8}).ParseScript("type T="+string.Concat(Enumerable.Repeat("abstract new()=>",100))+"number;")).Code);
+    }
+
+    [Theory]
+    [InlineData(19240909)]
+    [InlineData(7212069)]
+    public void Mutated_erased_classes_keep_public_errors_and_valid_locations(int seed)
+    {
+        string[] sources=["abstract class C {abstract f<const T>(x:T):T; declare x:number;}",
+            "abstract class C extends B {abstract override get x():number; abstract set x(v:number);}",
+            "abstract class C {abstract [key()]():number; declare static value:number;}",
+            "class C {declare x?:number; #x=1; f(){return this.#x;}}", "type T=abstract new<const T>(x:T)=>T;"];
+        string[] fragments=["abstract","declare","readonly","static","override","class","get","set","new","#x","<",">","[",
+            "]","{","}","(",")",":",";","!","?","=","=>","\n","\0","\\","'","/*","`","${"];
+        var random=new Random(seed);
+        for(var i=0;i<10000;i++)
+        {
+            var source=sources[random.Next(sources.Length)];var at=random.Next(source.Length);
+            source=i%2==0?source.Insert(at,fragments[random.Next(fragments.Length)]):source.Remove(at,1);
+            try {HardeningTests.AssertLocations(Compiler.ParseScript(source,"classes.ts"),source,"classes.ts");}
+            catch(TypeScriptParseException error){Assert.InRange(error.Index,0,source.Length);Assert.Equal("classes.ts",error.SourceFile);}
+            catch(Exception error){throw new Xunit.Sdk.XunitException($"Seed {seed}, mutation {i}: {System.Text.Json.JsonSerializer.Serialize(source)}\n{error}");}
+        }
+    }
+
+    [Theory]
     [InlineData("f<T>.value")]
     [InlineData("f<T>?.value")]
     [InlineData("f<T><U>")]
@@ -52,8 +193,8 @@ public class GenericsTests
     [InlineData("class C {value?!: number;}")]
     [InlineData("class C {value!;}")]
     [InlineData("class C {constructor(public value: number) {}}")]
-    [InlineData("class C {declare value: number;}")]
-    [InlineData("abstract class C {abstract f<T>(x:T):T;}")]
+    [InlineData("class C {declare value: number = 1;}")]
+    [InlineData("abstract class C {abstract f<T>(x:T):T {return x;}}")]
     public void Rejects_invalid_or_unsupported_neighbors(string source) =>
         Assert.Throws<TypeScriptParseException>(() => Compiler.ParseScript(source, "generics.ts"));
 

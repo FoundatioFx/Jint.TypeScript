@@ -78,7 +78,7 @@ public class SignatureTests
     [InlineData("declare const \\u0069f: number;")]
     [InlineData("declare class C {}")]
     [InlineData("declare namespace N {}")]
-    [InlineData("abstract class C {abstract f(): number;}")]
+    [InlineData("abstract class C {abstract f(): number {return 1;}}")]
     public void Rejects_invalid_and_deliberately_unsupported_neighbors(string source) =>
         Assert.Throws<TypeScriptParseException>(() => Compiler.ParseScript(source, "signatures.ts"));
 

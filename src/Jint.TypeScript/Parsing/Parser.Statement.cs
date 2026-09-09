@@ -222,6 +222,12 @@ internal partial class Parser
         TokenType startType;
         VariableDeclarationKind kind;
 
+        if (IsAbstractClassStart())
+        {
+            if (context != StatementContext.Default) Unexpected();
+            return ExitRecursion(ParseAbstractClass(startMarker));
+        }
+
         if (IsLet(context))
         {
             startType = TokenType.Var;
@@ -1336,7 +1342,7 @@ internal partial class Parser
 
     // Parse a class declaration or literal (depending on the
     // `FunctionOrClassFlags.Statement` flag).
-    private StatementOrExpression ParseClass(in Marker startMarker, FunctionOrClassFlags flags)
+    private StatementOrExpression ParseClass(in Marker startMarker, FunctionOrClassFlags flags, bool isAbstract = false)
     {
         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClass = function`
 
@@ -1371,7 +1377,7 @@ internal partial class Parser
                 continue;
             }
 
-            var element = ParseClassElement(hasSuperClass);
+            var element = ParseClassElement(hasSuperClass, isAbstract);
             if (element is null) continue;
 
             body.Add(element);
@@ -1411,7 +1417,7 @@ internal partial class Parser
             scope);
     }
 
-    private Node? ParseClassElement(bool constructorAllowsSuper)
+    private Node? ParseClassElement(bool constructorAllowsSuper, bool isAbstractClass)
     {
         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassElement = function`
 
@@ -1514,6 +1520,8 @@ internal partial class Parser
         bool computed;
         if (keyName is null)
         {
+            if ((modifiers & (ClassModifierAbstract | ClassModifierDeclare)) != 0 && kind == PropertyKind.Unknown && !isAsync && !isGenerator && !isAccessor
+                && TryParseErasedClassField(modifiers, isStatic, constructorAllowsSuper, isAbstractClass)) return null;
             key = ParseClassElementName(out computed);
         }
         else
@@ -1526,22 +1534,22 @@ internal partial class Parser
         }
 
         var optional = Eat(TokenType.Question);
-        if (optional || modifiers != 0) CheckTypeScriptClassMember(key, computed, kind, optional, modifiers, isStatic, constructorAllowsSuper);
+        if (optional || modifiers != 0) CheckTypeScriptClassMember(key, computed, kind, optional, modifiers, isStatic, constructorAllowsSuper, isAbstractClass);
 
         // Parse element value
         if (_tokenizerOptions._ecmaVersion < EcmaVersion.ES13 || _tokenizer._type == TokenType.ParenLeft || IsTypeOperator("<") || kind != PropertyKind.Unknown || isGenerator || isAsync)
         {
-            if ((modifiers & ClassModifierReadonly) != 0)
-                TypeScriptError("InvalidReadonlyMethod", "A method cannot be readonly");
+            if (modifiers != 0) CheckTypeScriptClassMethodModifiers(modifiers);
             if (kind == PropertyKind.Unknown)
             {
                 kind = PropertyKind.Method;
             }
-            return ParseClassMethod(startMarker, kind, key, computed, isStatic, isAsync, isGenerator, constructorAllowsSuper, ref decorators);
+            return ParseClassMethod(startMarker, kind, key, computed, isStatic, isAsync, isGenerator, constructorAllowsSuper, ref decorators, abstractSignature: (modifiers & ClassModifierAbstract) != 0);
         }
         else
         {
             ParseClassFieldAnnotation(optional);
+            if (TryFinishErasedClassField(modifiers, key, computed, isStatic)) return null;
             return ParseClassField(startMarker, key, computed, isStatic, isAccessor, ref decorators);
         }
     }
@@ -1578,7 +1586,7 @@ internal partial class Parser
     }
 
     private MethodDefinition? ParseClassMethod(in Marker startMarker, PropertyKind kind, Expression key,
-        bool computed, bool isStatic, bool isAsync, bool isGenerator, bool constructorAllowsSuper, ref ArrayList<Decorator> decorators)
+        bool computed, bool isStatic, bool isAsync, bool isGenerator, bool constructorAllowsSuper, ref ArrayList<Decorator> decorators, bool abstractSignature = false)
     {
         // https://github.com/acornjs/acorn/blob/8.11.3/acorn/src/statement.js > `pp.parseClassMethod = function`
 
@@ -1621,7 +1629,8 @@ internal partial class Parser
         // Parse value
         if (kind != PropertyKind.Method && IsTypeOperator("<"))
             TypeScriptError("InvalidMethodTypeParameters", "Constructors and accessors cannot have type parameters");
-        var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method, allowOverload: kind is PropertyKind.Method or PropertyKind.Constructor);
+        var value = ParseMethod(isGenerator, isAsync, superFlags, isSetter: kind == PropertyKind.Set, allowThisParameter: kind == PropertyKind.Method,
+            allowOverload: abstractSignature || kind is PropertyKind.Method or PropertyKind.Constructor, abstractKind: abstractSignature ? kind : null);
         if (value is null) return null;
 
         // Check value
@@ -1984,6 +1993,10 @@ internal partial class Parser
             }
             declaration = ParseFunction(declarationStartMarker, FunctionOrClassFlags.Statement | FunctionOrClassFlags.NullableId, isAsync);
         }
+        else if (IsAbstractClassStart())
+        {
+            declaration = ParseAbstractClass(StartNode(), FunctionOrClassFlags.Statement | FunctionOrClassFlags.NullableId);
+        }
         else if (_tokenizer._type == TokenType.Class)
         {
             declarationStartMarker = StartNode();
@@ -2124,7 +2137,8 @@ internal partial class Parser
 
         return _tokenizer._type.Keyword is Keyword.Var or Keyword.Const or Keyword.Class or Keyword.Function
             || IsLet()
-            || IsAsyncFunction();
+            || IsAsyncFunction()
+            || IsAbstractClassStart();
     }
 
     // Parses a comma-separated list of module exports.

@@ -1,6 +1,6 @@
 # Validation of predicates, signatures and ambient erasure
 
-The latest [type-syntax batch](type-syntax-validation.md) records conditional/infer types, const/variance parameters, import types and current validation. The [customization audit](upstream-customization-audit.md) records the preceding maintenance changes. Results below are the earlier signature batch.
+The latest [class-erasure batch](class-erasure-validation.md) records abstract classes/members, declare fields, abstract constructor types and current validation. The preceding [type-syntax batch](type-syntax-validation.md) covers conditional/infer and import types. Results below are the earlier signature batch; its unsupported-syntax and publication statements describe that snapshot.
 
 This batch adds readonly arrays/tuples, `unique symbol`, value-based `typeof` queries, return predicates/assertion signatures, explicit `this` parameters, function/method/constructor overloads and selected ambient declarations. It uses Jint `5.0.0-preview-2007` and official Acornima `1.8.0`.
 

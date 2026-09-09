@@ -25678,6 +25678,2032 @@
       "name": "type-syntax-composed-399",
       "source": "\"use strict\";\n42 satisfies ((Array<T extends {x: import(\"missing-types\").Shape[\"value\"]} ? T extends new () => infer R ? R : never : import(\"missing-types\").Shape[\"value\"]>) | (T extends U ? number : X extends Y ? string : boolean)) extends (T extends (U extends V ? X : Y) ? number : string) ? (Array<T extends {x: import(\"missing-types\").Shape[\"value\"]} ? T extends new () => infer R ? R : never : import(\"missing-types\").Shape[\"value\"]>) | (T extends U ? number : X extends Y ? string : boolean) : never >> 1;",
       "javascript": "\"use strict\";\n42 >> 1;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-0-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract value: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-1-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract \"value\": number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-2-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract 42: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-3-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [\"value\"]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-0-4-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [key()]: number; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-0-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract value: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-1-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract \"value\": readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-2-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract 42: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-3-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [\"value\"]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-1-4-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [key()]: readonly number[]; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-0-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract value: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-1-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract \"value\": T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-2-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract 42: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-3-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [\"value\"]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-2-4-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [key()]: T extends infer U ? U : never; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-0-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract value: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-1-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract \"value\": import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-2-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract 42: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-3-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [\"value\"]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-3-4-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [key()]: import(\"missing\").Shape; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-0-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract value: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-1-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract \"value\": typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-2-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract 42: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-3-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [\"value\"]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-4-4-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [key()]: typeof import(\"missing\"); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-0-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract value: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-1-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract \"value\": abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-2-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract 42: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-3-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [\"value\"]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract readonly [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract public [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-4",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-5",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public declare readonly [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-6",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare protected [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-7",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare static [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-8",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {static declare [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-field-5-4-9",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {declare abstract [key()]: abstract new<const T>(x:T) => T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-0-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f(x:T):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-0-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f(x:T):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-0-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f(x:T):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-0-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f(x:T):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-1-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f<const U extends T>(this:C<T>, x:U):U; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-1-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f<const U extends T>(this:C<T>, x:U):U;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-1-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f<const U extends T>(this:C<T>, x:U):U; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-1-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f<const U extends T>(this:C<T>, x:U):U; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-2-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {public abstract f(x?:T):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-2-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {public abstract f(x?:T):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-2-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {public abstract f(x?:T):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-2-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {public abstract f(x?:T):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-3-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {protected abstract f(...xs:T[]):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-3-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {protected abstract f(...xs:T[]):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-3-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {protected abstract f(...xs:T[]):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-3-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {protected abstract f(...xs:T[]):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-4-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f({value}: {value:T}):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-4-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f({value}: {value:T}):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-4-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f({value}: {value:T}):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-4-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f({value}: {value:T}):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-5-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f([value]:[T]):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-5-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f([value]:[T]):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-5-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f([value]:[T]):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-5-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f([value]:[T]):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-6-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f(x:unknown):x is T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-6-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f(x:unknown):x is T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-6-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f(x:unknown):x is T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-6-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f(x:unknown):x is T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-7-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f(x:unknown):asserts x is T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-7-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f(x:unknown):asserts x is T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-7-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f(x:unknown):asserts x is T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-7-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f(x:unknown):asserts x is T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-8-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract get value():T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-8-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract get value():T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-8-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract get value():T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-8-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract get value():T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-9-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract set value(x:T); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-9-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract set value(x:T);} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-9-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract set value(x:T); present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-9-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract set value(x:T); present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-10-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract [key()](x:T):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-10-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract [key()](x:T):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-10-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract [key()](x:T):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-10-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract [key()](x:T):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-11-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract \"f\"(x:T):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-11-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract \"f\"(x:T):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-11-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract \"f\"(x:T):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-11-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract \"f\"(x:T):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-12-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract *f(x:T):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-12-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract *f(x:T):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-12-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract *f(x:T):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-12-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract *f(x:T):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-13-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract async f(x:T):Promise<T>; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-13-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract async f(x:T):Promise<T>;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-13-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract async f(x:T):Promise<T>; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-13-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract async f(x:T):Promise<T>; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-14-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract constructor(x:T); present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-14-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract constructor(x:T);} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-14-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract constructor(x:T); present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-14-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract constructor(x:T); present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-15-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f?():T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-15-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f?():T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-15-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f?():T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-15-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f?():T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-16-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract f():T; abstract f(x:T):T; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-16-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract f():T; abstract f(x:T):T;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-16-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract f():T; abstract f(x:T):T; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-16-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract f():T; abstract f(x:T):T; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-method-17-0",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} abstract class C<T> {abstract get value(); abstract set value(x:T):void; present=42;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass C {\n    present = 42;\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-17-1",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} class B {present=42;} abstract class C<T> extends B {abstract get value(); abstract set value(x:T):void;} new C().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nclass B {\n    present = 42;\n}\nclass C extends B {\n}\nnew C().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-17-2",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} function build() {abstract class C<T> {abstract get value(); abstract set value(x:T):void; present=42;} return C;} new (build())().present + calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\nfunction build() { class C {\n    present = 42;\n} return C; }\nnew (build())().present + calls;\n"
+    },
+    {
+      "name": "class-erasure-method-17-3",
+      "source": "\"use strict\";\nlet calls=0; function key() {calls++; return 'value';} {abstract class C<T> {abstract get value(); abstract set value(x:T):void; present=42;} new C().present + calls;}",
+      "javascript": "\"use strict\";\nlet calls = 0;\nfunction key() { calls++; return 'value'; }\n{\n    class C {\n        present = 42;\n    }\n    new C().present + calls;\n}\n"
+    },
+    {
+      "name": "class-erasure-behavior-0",
+      "source": "\"use strict\";\nclass B {value=42;} class C extends B {declare value:number;} new C().value;",
+      "javascript": "\"use strict\";\nclass B {\n    value = 42;\n}\nclass C extends B {\n}\nnew C().value;\n"
+    },
+    {
+      "name": "class-erasure-behavior-1",
+      "source": "\"use strict\";\nclass B {value=42;} abstract class C extends B {abstract value:number;} new C().value;",
+      "javascript": "\"use strict\";\nclass B {\n    value = 42;\n}\nclass C extends B {\n}\nnew C().value;\n"
+    },
+    {
+      "name": "class-erasure-behavior-2",
+      "source": "\"use strict\";\nclass B {static value=42;} class C extends B {declare static value:number;} C.value;",
+      "javascript": "\"use strict\";\nclass B {\n    static value = 42;\n}\nclass C extends B {\n}\nC.value;\n"
+    },
+    {
+      "name": "class-erasure-behavior-3",
+      "source": "\"use strict\";\nabstract class B {abstract value:number; answer=42;} class C extends B {value=2;} new C().answer;",
+      "javascript": "\"use strict\";\nclass B {\n    answer = 42;\n}\nclass C extends B {\n    value = 2;\n}\nnew C().answer;\n"
+    },
+    {
+      "name": "class-erasure-behavior-4",
+      "source": "\"use strict\";\nabstract class C {abstract value:number; normal:number; declare other:number;} const c=new C(); !Object.hasOwn(c,\"value\") && Object.hasOwn(c,\"normal\") && !Object.hasOwn(c,\"other\");",
+      "javascript": "\"use strict\";\nclass C {\n    normal;\n}\nconst c = new C();\n!Object.hasOwn(c, \"value\") && Object.hasOwn(c, \"normal\") && !Object.hasOwn(c, \"other\");\n"
+    },
+    {
+      "name": "class-erasure-behavior-5",
+      "source": "\"use strict\";\nlet calls=0; abstract class B {abstract [++calls]:number; abstract [++calls]():number; declare [++calls]:number;} new B(); calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nclass B {\n}\nnew B();\ncalls;\n"
+    },
+    {
+      "name": "class-erasure-behavior-6",
+      "source": "\"use strict\";\nlet calls=0; abstract class B {static {calls++;} constructor() {calls++;} abstract f():number;} new B(); calls;",
+      "javascript": "\"use strict\";\nlet calls = 0;\nclass B {\n    static { calls++; }\n    constructor() { calls++; }\n}\nnew B();\ncalls;\n"
+    },
+    {
+      "name": "class-erasure-behavior-7",
+      "source": "\"use strict\";\nabstract class C<T> {abstract get value():T; abstract set value(v:T);} class D extends C<number> {get value() {return 42;}} new D().value;",
+      "javascript": "\"use strict\";\nclass C {\n}\nclass D extends C {\n    get value() { return 42; }\n}\nnew D().value;\n"
+    },
+    {
+      "name": "class-erasure-behavior-8",
+      "source": "\"use strict\";\nclass C {abstract=40; declare=2;} const c=new C(); c.abstract+c.declare;",
+      "javascript": "\"use strict\";\nclass C {\n    abstract = 40;\n    declare = 2;\n}\nconst c = new C();\nc.abstract + c.declare;\n"
+    },
+    {
+      "name": "class-erasure-behavior-9",
+      "source": "\"use strict\";\nclass C {abstract() {return 40;} declare() {return 2;}} const c=new C(); c.abstract()+c.declare();",
+      "javascript": "\"use strict\";\nclass C {\n    abstract() { return 40; }\n    declare() { return 2; }\n}\nconst c = new C();\nc.abstract() + c.declare();\n"
+    },
+    {
+      "name": "class-erasure-behavior-10",
+      "source": "\"use strict\";\nclass C {abstract:number=40; declare:number=2;} const c=new C(); c.abstract+c.declare;",
+      "javascript": "\"use strict\";\nclass C {\n    abstract = 40;\n    declare = 2;\n}\nconst c = new C();\nc.abstract + c.declare;\n"
+    },
+    {
+      "name": "class-erasure-behavior-11",
+      "source": "\"use strict\";\nclass C {abstract\nvalue:number; declare\nother:number;} Object.keys(new C()).join(\",\");",
+      "javascript": "\"use strict\";\nclass C {\n    abstract;\n    value;\n    declare;\n    other;\n}\nObject.keys(new C()).join(\",\");\n"
+    },
+    {
+      "name": "class-erasure-behavior-12",
+      "source": "\"use strict\";\nconst abstract=40; abstract\nclass C {value=2;} abstract+new C().value;",
+      "javascript": "\"use strict\";\nconst abstract = 40;\nabstract;\nclass C {\n    value = 2;\n}\nabstract + new C().value;\n"
+    },
+    {
+      "name": "class-erasure-behavior-13",
+      "source": "\"use strict\";\nabstract class C {} class D {f() {class C {abstract=42;} return new C().abstract;}} new D().f();",
+      "javascript": "\"use strict\";\nclass C {\n}\nclass D {\n    f() { class C {\n        abstract = 42;\n    } return new C().abstract; }\n}\nnew D().f();\n"
+    },
+    {
+      "name": "class-erasure-behavior-14",
+      "source": "\"use strict\";\nabstract class B {abstract overrideName():number;} abstract class C extends B {abstract override overrideName():number;}",
+      "javascript": "\"use strict\";\nclass B {\n}\nclass C extends B {\n}\n"
+    },
+    {
+      "name": "class-erasure-behavior-15",
+      "source": "\"use strict\";\nabstract class C {abstract x!:number; declare y!:number; declare z?; abstract a;} Object.keys(new C()).length;",
+      "javascript": "\"use strict\";\nclass C {\n}\nObject.keys(new C()).length;\n"
+    },
+    {
+      "name": "class-erasure-behavior-16",
+      "source": "\"use strict\";\nabstract class C {abstract f(x:number):number; f(x) {return x;}} new C().f(42);",
+      "javascript": "\"use strict\";\nclass C {\n    f(x) { return x; }\n}\nnew C().f(42);\n"
+    },
+    {
+      "name": "class-erasure-behavior-17",
+      "source": "\"use strict\";\nabstract class C {abstract f():number; g() {abstract class D {abstract x:number; value=42;} return new D().value;}} new C().g();",
+      "javascript": "\"use strict\";\nclass C {\n    g() { class D {\n        value = 42;\n    } return new D().value; }\n}\nnew C().g();\n"
+    },
+    {
+      "name": "class-erasure-behavior-18",
+      "source": "\"use strict\";\nabstract class C {abstract get value():number; value2=42;} Object.getOwnPropertyDescriptor(C.prototype,\"value\") === undefined;",
+      "javascript": "\"use strict\";\nclass C {\n    value2 = 42;\n}\nObject.getOwnPropertyDescriptor(C.prototype, \"value\") === undefined;\n"
+    },
+    {
+      "name": "class-erasure-behavior-19",
+      "source": "\"use strict\";\ntype Factory=abstract new<const T>(x:T)=>T; const id=x=>x; id<Factory>(42);",
+      "javascript": "\"use strict\";\nconst id = x => x;\nid(42);\n"
+    },
+    {
+      "name": "class-erasure-behavior-20",
+      "source": "\"use strict\";\ntype Factory=abstract\nnew()=>object; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "class-erasure-behavior-21",
+      "source": "\"use strict\";\ntype Factory=abstract new()=>T extends infer U ? U:never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "class-erasure-behavior-22",
+      "source": "\"use strict\";\ntype T=X extends abstract new()=>infer U ? U:never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "class-erasure-behavior-23",
+      "source": "\"use strict\";\nfunction f(x:abstract new()=>object) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "class-erasure-behavior-24",
+      "source": "\"use strict\";\nconst f=(x):abstract new()=>object=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "class-erasure-behavior-25",
+      "source": "\"use strict\";\ntype T=(abstract new()=>object) | (new()=>object); 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "class-erasure-modules-0",
+      "source": "export abstract class C<T> {abstract value:T; declare host:import(\"missing\").Host; answer=42;}",
+      "module": true,
+      "javascript": "export class C {\n    answer = 42;\n}\n"
+    },
+    {
+      "name": "class-erasure-modules-1",
+      "source": "export default abstract class {abstract f():number; answer=42;}",
+      "module": true,
+      "javascript": "export default class {\n    answer = 42;\n}\n"
+    },
+    {
+      "name": "class-erasure-modules-2",
+      "source": "export default abstract class C {abstract get value():number; abstract set value(v:number); answer=42;}",
+      "module": true,
+      "javascript": "export default class C {\n    answer = 42;\n}\n"
+    },
+    {
+      "name": "class-erasure-modules-3",
+      "source": "abstract class C {abstract f():number;} export {C};",
+      "module": true,
+      "javascript": "class C {\n}\nexport { C };\n"
+    },
+    {
+      "name": "class-erasure-modules-4",
+      "source": "export default abstract class extends Object {declare value:number; answer=42;}",
+      "module": true,
+      "javascript": "export default class extends Object {\n    answer = 42;\n}\n"
+    },
+    {
+      "name": "class-erasure-modules-5",
+      "source": "export default class C {declare value:number; answer=42;}",
+      "module": true,
+      "javascript": "export default class C {\n    answer = 42;\n}\n"
     }
   ]
 }
