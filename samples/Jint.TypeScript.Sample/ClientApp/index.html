@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <title>Jint.TypeScript Playground</title>
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <a class="brand" href="/" aria-label="Jint TypeScript playground"><span class="brand-mark">TS</span><strong>Jint<span>.TypeScript</span></strong><span class="badge">PLAYGROUND</span></a>
+            <a class="source-link" href="https://github.com/FoundatioFx/Jint.TypeScript" target="_blank" rel="noreferrer">GitHub ↗</a>
+        </header>
+        <section class="toolbar" aria-label="Playground controls">
+            <label class="select-label">Example <select id="examples" aria-label="Example"></select></label>
+            <button id="reset" title="Reset this example">Reset</button>
+            <span id="description"></span>
+            <button id="run" class="primary" disabled>▶ Run <kbd>Ctrl ↵</kbd></button>
+        </section>
+        <main class="workspace">
+            <section class="code-pane" aria-label="TypeScript files">
+                <div class="file-bar"><div id="file-tabs" role="tablist" aria-label="Files"></div><button id="add-file" class="icon-button" aria-label="Add file" title="Add file">＋</button></div>
+                <div class="editor-tools"><span id="active-file"></span><span class="spacer"></span><button id="rename-file">Rename</button><button id="delete-file">Delete</button><button id="format-file">Format</button></div>
+                <div id="editor" aria-label="TypeScript editor"></div>
+                <footer class="editor-status"><span id="cursor">Ln 1, Col 1</span><span id="save-state">Saved locally</span><span class="spacer"></span><span id="language-status">Starting TypeScript…</span></footer>
+            </section>
+            <aside class="output-pane" aria-label="Execution">
+                <div class="output-heading"><strong>Execution</strong><span id="run-status" role="status">Ready</span></div>
+                <div class="entry-row"><label for="entry">Entry file</label><select id="entry"></select></div>
+                <p class="entry-hint">Exports <code>run(input)</code>. Relative imports resolve from your files.</p>
+                <div class="output-tabs" role="tablist" aria-label="Execution panels">
+                    <button id="result-tab" role="tab" aria-selected="true" aria-controls="result-panel">Result</button>
+                    <button id="input-tab" role="tab" aria-selected="false" aria-controls="input-panel">Input</button>
+                    <button id="problems-tab" role="tab" aria-selected="false" aria-controls="problems-panel">Problems <span id="problem-count">0</span></button>
+                </div>
+                <section id="result-panel" class="panel" role="tabpanel" aria-labelledby="result-tab">
+                    <div id="empty-result"><span class="empty-symbol">{ }</span><h2>Give your TypeScript a run.</h2><p>Edit a file, try an import, or change the input.<br />Your result will appear here.</p></div>
+                    <pre id="result" hidden></pre><div id="runtime-error" hidden></div>
+                    <div id="logs-panel" hidden><h3>HOST LOGS</h3><pre id="logs"></pre></div>
+                </section>
+                <section id="input-panel" class="panel" role="tabpanel" aria-labelledby="input-tab" hidden><label for="input">JSON passed to run(input)</label><textarea id="input" spellcheck="false" aria-label="JSON input"></textarea><p>Types help you edit. Validate external data in your script when needed.</p></section>
+                <section id="problems-panel" class="panel" role="tabpanel" aria-labelledby="problems-tab" hidden><div id="problems"></div></section>
+                <div class="output-footer">TypeScript types are erased at execution.<br />Enums, parameter properties, JSX and decorators are unsupported.</div>
+            </aside>
+        </main>
+        <dialog id="file-dialog"><form id="file-form"><h2 id="file-dialog-title">Add a file</h2><label for="filename">Filename</label><input id="filename" placeholder="lib/helper.ts" autocomplete="off" required maxlength="240" /><p id="file-error" role="alert"></p><p class="dialog-hint">Use .ts for code or .d.ts for editor declarations. Folders use /.</p><div class="dialog-actions"><button type="button" id="cancel-file">Cancel</button><button class="primary" id="save-file">Add file</button></div></form></dialog>
+        <dialog id="confirm-dialog"><form method="dialog"><h2 id="confirm-title"></h2><p id="confirm-description"></p><div class="dialog-actions"><button value="cancel">Cancel</button><button value="confirm" class="primary">Continue</button></div></form></dialog>
+        <div id="toast" role="alert" hidden></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

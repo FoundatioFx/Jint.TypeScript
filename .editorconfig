@@ -13,3 +13,8 @@ indent_size = 2
 [*.cs]
 csharp_new_line_before_open_brace = all
 dotnet_sort_system_directives_first = true
+
+# Imported internal token documentation refers to an upstream-only member.
+# Keep the vendored source unchanged while checking XML references on our public API.
+[src/Jint.TypeScript/Parsing/Token.cs]
+dotnet_diagnostic.CS1574.severity = none

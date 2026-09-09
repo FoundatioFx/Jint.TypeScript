@@ -21,5 +21,3 @@ interface OrderInput {
 }
 
 declare const host: HostServices;
-declare const order: OrderInput;
-declare const incomingWebhook: unknown;

@@ -37,15 +37,25 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '22.23.2'
       - uses: actions/setup-dotnet@v6.0.0
         with:
           dotnet-version: |
             8.0.x
             10.0.x
       - run: dotnet restore Jint.TypeScript.slnx --locked-mode
-      - run: dotnet test tests/Jint.TypeScript.Tests -c Release --no-restore
-      - run: dotnet run --project samples/Jint.TypeScript.Sample -c Release -f net8.0 --no-build --no-restore
-      - run: dotnet run --project samples/Jint.TypeScript.Sample -c Release -f net10.0 --no-build --no-restore
+      - run: npm ci --ignore-scripts --prefix samples/Jint.TypeScript.Sample/ClientApp
+      - run: npm run build --prefix samples/Jint.TypeScript.Sample/ClientApp
+      - run: dotnet test tests/Jint.TypeScript.Tests -c Release --no-restore -p:SkipPlaygroundBuild=true
+      - run: npm exec --prefix samples/Jint.TypeScript.Sample/ClientApp -- playwright install --with-deps chromium
+      - run: npm test --prefix samples/Jint.TypeScript.Sample/ClientApp
+      - run: dotnet publish samples/Jint.TypeScript.Sample -c Release -f net8.0 --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net8
+      - run: node eng/check-playground.mjs artifacts/playground-net8
+      - run: dotnet publish samples/Jint.TypeScript.Sample -c Release -f net10.0 --no-restore -p:SkipPlaygroundBuild=true -o artifacts/playground-net10
+      - run: node eng/check-playground.mjs artifacts/playground-net10
       - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-restore
       - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net10.0 --no-restore
       - run: dotnet pack src/Jint.TypeScript -c Release --no-restore -o artifacts/packages
+      - run: node eng/check-package.mjs artifacts/packages/Jint.TypeScript.0.1.0-preview.1.nupkg

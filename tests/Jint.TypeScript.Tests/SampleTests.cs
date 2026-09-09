@@ -198,7 +198,7 @@ public class SampleTests
             var host = new ScriptHost(directory);
             Assert.Equal(10625, Json(host.QuoteOrder(Input("order-gold.json"), Services)).GetProperty("totalCents").GetDouble());
 
-            File.WriteAllText(Path.Combine(directory, "validate-order.ts"), "42;");
+            File.WriteAllText(Path.Combine(directory, "validate-order.ts"), "export function run() { return 42; }");
             Assert.True(Json(host.ValidateOrder(Input("order-gold.json"), Services)).GetProperty("valid").GetBoolean());
             Assert.Equal(42d, new ScriptHost(directory).ValidateOrder(Input("order-gold.json"), Services));
         });
@@ -210,12 +210,12 @@ public class SampleTests
         WithScriptCopy(directory =>
         {
             File.WriteAllText(Path.Combine(directory, "validate-order.ts"),
-                "globalThis.runs = (globalThis.runs ?? 0) + 1; globalThis.runs;");
+                "export function run() { globalThis.runs = (globalThis.runs ?? 0) + 1; return globalThis.runs; }");
             var host = new ScriptHost(directory);
             Assert.Equal(1d, host.ValidateOrder("{}", Services));
             Assert.Equal(1d, host.ValidateOrder("{}", Services));
 
-            File.WriteAllText(Path.Combine(directory, "validate-order.ts"), "while (true) {}");
+            File.WriteAllText(Path.Combine(directory, "validate-order.ts"), "export function run() { while (true) {} }");
             host = new ScriptHost(directory);
             Assert.Throws<StatementsCountOverflowException>(() => host.ValidateOrder("{}", Services));
         });

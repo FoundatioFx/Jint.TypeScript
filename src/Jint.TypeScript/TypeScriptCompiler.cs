@@ -16,6 +16,11 @@ public sealed class TypeScriptCompiler
     private readonly Parsing.ParserOptions _scriptGrammarOptions;
     private readonly Parsing.ParserOptions _moduleGrammarOptions;
 
+    internal int MaxSourceLength => _options.MaxSourceLength;
+
+    /// <summary>Creates a reusable compiler for the supported TypeScript syntax.</summary>
+    /// <param name="options">Immutable parsing limits and preparation settings, or <see langword="null"/> for defaults.</param>
+    /// <exception cref="ArgumentOutOfRangeException">A parsing limit is outside its supported range.</exception>
     public TypeScriptCompiler(TypeScriptOptions? options = null)
     {
         _options = options ?? new();
@@ -53,12 +58,38 @@ public sealed class TypeScriptCompiler
         _moduleGrammarOptions = CreateGrammarOptions(_moduleParserOptions, module: true);
     }
 
+    /// <summary>Parses a script and erases supported types into an official Acornima JavaScript AST.</summary>
+    /// <param name="source">TypeScript source text, not a filename. Types are not checked or validated at runtime.</param>
+    /// <param name="sourceFile">Optional source name recorded in original source locations and diagnostics.</param>
+    /// <param name="cancellationToken">Cooperative parsing cancellation; does not configure subsequent Jint execution.</param>
+    /// <returns>A script AST. Use <see cref="ParseModule"/> for import/export declarations.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+    /// <exception cref="TypeScriptParseException">Syntax is invalid, unsupported, or exceeds a parsing limit.</exception>
+    /// <exception cref="OperationCanceledException">Cancellation was requested.</exception>
     public Script ParseScript(string source, string? sourceFile = null, CancellationToken cancellationToken = default) =>
         (Script) Parse(source, sourceFile, module: false, cancellationToken);
 
+    /// <summary>Parses a strict-mode module and erases supported types without resolving or loading its imports.</summary>
+    /// <param name="source">TypeScript source text, not a filename. Use explicit type-only imports for erased dependencies.</param>
+    /// <param name="sourceFile">Optional source identity. For relative imports, use the module loader's canonical resolved identity.</param>
+    /// <param name="cancellationToken">Cooperative parsing cancellation; does not configure subsequent Jint execution.</param>
+    /// <returns>An official Acornima JavaScript module AST with original UTF-16 source locations.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+    /// <exception cref="TypeScriptParseException">Syntax is invalid, unsupported, or exceeds a parsing limit.</exception>
+    /// <exception cref="OperationCanceledException">Cancellation was requested.</exception>
     public Module ParseModule(string source, string? sourceFile = null, CancellationToken cancellationToken = default) =>
         (Module) Parse(source, sourceFile, module: true, cancellationToken);
 
+    /// <summary>Parses TypeScript, checks AST depth, and prepares its JavaScript AST for repeated Jint execution.</summary>
+    /// <param name="source">TypeScript source text, not a filename. Preparation performs no type checking.</param>
+    /// <param name="sourceFile">Optional source name used in original source locations and diagnostics.</param>
+    /// <param name="cancellationToken">Cooperative cancellation during parsing/depth checks and before Jint preparation.</param>
+    /// <returns>Prepared code that can be cached and shared across independent engines.</returns>
+    /// <remarks>Configure execution limits and cancellation on each Jint engine separately. Repeated evaluation on one
+    /// engine retains JavaScript globals and declaration rules. The compiler does not cache source or prepared results.</remarks>
+    /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+    /// <exception cref="TypeScriptParseException">Syntax or a parsing/preparation depth limit prevents preparation.</exception>
+    /// <exception cref="OperationCanceledException">Cancellation was requested before Jint's preparation pass.</exception>
     public Prepared<Script> PrepareScript(string source, string? sourceFile = null, CancellationToken cancellationToken = default)
     {
         var script = ParseScript(source, sourceFile, cancellationToken);
@@ -67,6 +98,16 @@ public sealed class TypeScriptCompiler
         return Engine.PrepareScript(script, _scriptPreparation);
     }
 
+    /// <summary>Prepares a TypeScript module for registration with Jint, without loading its dependencies.</summary>
+    /// <param name="source">TypeScript source text, not a filename.</param>
+    /// <param name="sourceFile">Optional module identity. Match the loader's resolved key when using relative imports.</param>
+    /// <param name="cancellationToken">Cooperative cancellation during parsing/depth checks and before Jint preparation.</param>
+    /// <returns>Prepared module code reusable across engines; each engine owns its runtime module instances.</returns>
+    /// <remarks>Register the result with Jint's module builder or return it through a custom module loader.
+    /// Ordinary Jint source-string loading still expects JavaScript. Configure execution limits separately.</remarks>
+    /// <exception cref="ArgumentNullException"><paramref name="source"/> is null.</exception>
+    /// <exception cref="TypeScriptParseException">Syntax or a parsing/preparation depth limit prevents preparation.</exception>
+    /// <exception cref="OperationCanceledException">Cancellation was requested before Jint's preparation pass.</exception>
     public Prepared<Module> PrepareModule(string source, string? sourceFile = null, CancellationToken cancellationToken = default)
     {
         var module = ParseModule(source, sourceFile, cancellationToken);

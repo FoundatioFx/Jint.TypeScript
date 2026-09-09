@@ -12,7 +12,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 // External payloads are unknown until runtime checks establish their shape.
-function normalizeTicket(payload: unknown): NormalizedTicket {
+export function run(payload: unknown): NormalizedTicket {
     if (!isRecord(payload) || payload.type !== "ticket.created" || typeof payload.id !== "string") {
         throw new Error("Expected a ticket.created webhook with a string ID.");
     }
@@ -41,5 +41,3 @@ function normalizeTicket(payload: unknown): NormalizedTicket {
         requestId: host.RequestId
     } satisfies NormalizedTicket;
 }
-
-normalizeTicket(incomingWebhook);

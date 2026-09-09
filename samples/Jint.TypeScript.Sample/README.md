@@ -1,66 +1,57 @@
-# TypeScript hosting sample
+# TypeScript playground
 
-A console app that reads real `.ts` and JSON files from disk and executes them with Jint. The TypeScript is parsed in C#; running the app requires no Node.js, TypeScript compiler or generated JavaScript.
+A local web app with Monaco file tabs, TypeScript IntelliSense, editable JSON input, and execution through Jint's native C# TypeScript parser. It replaces the console sample. There is no HTML/component preview: output is returned JSON, host logs and diagnostics.
 
-From the repository root:
+Install the .NET 10 SDK and Node 22.12+ (or a compatible newer Node release), then run from the repository root:
 
 ```powershell
 dotnet run --project samples/Jint.TypeScript.Sample -f net10.0
 ```
 
-The repository selects the .NET 10 SDK. Use `-f net8.0` to run with an installed .NET 8 runtime. The root NuGet configuration supplies the required Jint preview feed.
+Open [http://localhost:5178](http://localhost:5178). The first build installs pinned frontend dependencies and bundles Monaco and its workers locally; no CDN is required. Subsequent unchanged builds reuse those assets. Use `-f net8.0` with the ASP.NET Core 8 runtime installed to run on .NET 8. The library itself does not require Node.
 
-## Examples
+## Editing and running
 
-| Example | TypeScript | Behavior |
-| --- | --- | --- |
-| Order validation | [validate-order.ts](Scripts/validate-order.ts) | Checks business rules and returns all field errors; calls a C# logging method. |
-| Webhook normalization | [normalize-webhook.ts](Scripts/normalize-webhook.ts) | Narrows an unknown payload with runtime checks, normalizes priority and copies only selected metadata. |
-| Pricing policies | [quote.ts](Scripts/pricing/quote.ts), [discounts.ts](Scripts/pricing/discounts.ts), [money.ts](Scripts/pricing/money.ts) | Uses relative module imports, abstract classes and type-only imports to select a discount and calculate shipping. |
-| Original error locations | [quote.ts](Scripts/pricing/quote.ts) | Rejects an unsupported destination and reports the original `.ts` filename, line and column. This expected error is handled; the example exits successfully. |
+- Choose order pricing, order validation, webhook normalization, or the small import example.
+- Add `.ts` files using **+**, including names such as `lib/helper.ts`. Import them with explicit relative filenames: `import { helper } from './lib/helper.ts'`.
+- Select an entry file that exports `run(input)`. Both synchronous and asynchronous functions work. **Run** or **Ctrl/Cmd+Enter** executes the current files; **Stop** cancels a pending request.
+- Edit the JSON in **Input**. **Result** displays returned data and `host.Log` messages. Click a diagnostic to navigate to its file and position.
+- Monaco provides completion, signatures, hover information, formatting, symbol rename and navigation across open files. Type errors refresh across the workspace when a dependency changes. Editable `host.d.ts` describes the host and shared input shapes.
+- Files and input are saved in this browser's local storage. **Reset** restores the selected example. Renaming a file changes its filename; update imports referencing its old name. Symbol rename inside code uses Monaco's language service.
 
-The default run validates a good order and an invalid one, normalizes a webhook, quotes two orders, and demonstrates the error. Run one example or supply your own JSON:
+The examples retain real business rules: pricing uses integer cents and chooses the largest discount without stacking; validation returns field issues; webhook normalization checks unknown input and copies selected public metadata. The order examples expect the documented order shape. Types do not validate external input at runtime.
+
+Monaco's bundled TypeScript service performs editor checks, including `erasableSyntaxOnly` and `verbatimModuleSyntax`. That JavaScript worker is for editing only. The server parses user TypeScript in C# and never runs Monaco's emitted JavaScript. Editor checks do not guarantee every construct is supported by the bounded native parser; see [supported syntax](../../docs/usage.md).
+
+## Host integration
+
+[PlaygroundRunner.cs](PlaygroundRunner.cs) creates a bounded source snapshot with the library's `TypeScriptModuleLoader`, configures a fresh Jint engine, imports the entry module and invokes `run(input)`. It exposes a small host object with a logging callback, request ID and timestamp. All imported runtime files come from the submitted editor snapshot; declaration files need not be loaded or registered at runtime.
+
+The sample allows 32 files, 100,000 UTF-16 units per file and 200,000 per snapshot, with statement, memory, recursion and time limits. Two runs may execute concurrently. Logs and returned JSON are bounded. Each run has fresh globals and module instances; editing one browser workspace cannot change another request's files. This is a local developer playground, not a deployment template for executing arbitrary public submissions.
+
+Build/publish copies the frontend, examples and inputs beside the executable, so published output works independently of the current directory:
 
 ```powershell
-dotnet run --project samples/Jint.TypeScript.Sample -f net10.0 -- validation
-dotnet run --project samples/Jint.TypeScript.Sample -f net10.0 -- webhook
-dotnet run --project samples/Jint.TypeScript.Sample -f net10.0 -- pricing
-dotnet run --project samples/Jint.TypeScript.Sample -f net10.0 -- errors
-dotnet run --project samples/Jint.TypeScript.Sample -f net10.0 -- pricing ./my-order.json
+dotnet publish samples/Jint.TypeScript.Sample -c Release -f net10.0 -o artifacts/playground
+dotnet artifacts/playground/Jint.TypeScript.Sample.dll --urls http://localhost:5178
 ```
 
-See [Inputs](Inputs) for the JSON shapes. The order examples expect that shape and demonstrate business validation; the webhook example explicitly validates an unknown external payload. The sample's pricing rules use integer cents, reject unsafe amounts and quantities, choose the largest discount without stacking, and apply the US free-shipping threshold **after** the discount. They do not calculate taxes or currency conversion.
+## Frontend development and checks
 
-Expected results with the included inputs:
-
-- `ORD-1001` passes validation. Its 12,500-cent subtotal receives the 1,875-cent coupon discount and free shipping: **10,625 cents** total.
-- `ORD-1003` reports three issues: email, quantity and price.
-- `ORD-1002` receives no discount: 6,400 cents plus 595 cents shipping, **6,995 cents** total.
-- `evt-2048` becomes a high-severity ticket with the environment/service/region tags. The demo token and customer email are omitted from the output.
-
-## C# integration
-
-[Program.cs](Program.cs) reads input files, runs the examples and prints their returned objects. [ScriptHost.cs](ScriptHost.cs) contains the integration to copy into a host application:
-
-1. Read each TypeScript source and call `PrepareScript` or `PrepareModule` once at startup.
-2. Reuse those prepared values for subsequent inputs. Create a fresh engine for each execution so globals and module instances stay isolated.
-3. Expose [HostServices](HostServices.cs) with `SetValue`. It provides a request ID, timestamp and logging method. Parse JSON data into JavaScript objects with Jint's public `JsonParser`.
-4. Register every runtime TypeScript module using `AddModule(prepared)`. Use the same absolute file URI during preparation and registration so relative imports resolve correctly. The ordinary file loader does not compile additional TypeScript dependencies for you.
-5. Evaluate the prepared script, or import the prepared module and invoke an exported function. Convert the result to a .NET object with `ToObject()`.
-
-The host sets parser limits and Jint statement, allocation, recursion and execution-time limits. Host methods still run as ordinary C# and should have their own appropriate bounds. This is a small hosting example, not an isolation boundary for arbitrary CLR services.
-
-The default paths are relative to the executable, not the current directory. Build and publish copy `Scripts` and `Inputs` beside it. Edit the source `.ts` files here and run again to rebuild/copy them. A `ScriptHost` keeps its prepared snapshot; recreate it to load source changes. There is no global source cache, filesystem watcher or shared engine.
-
-## Editor support and verification
-
-[host.d.ts](Scripts/host.d.ts) describes the C# host and input shapes for autocomplete and type checking. Its property casing matches the C# object. [contracts.ts](Scripts/pricing/contracts.ts) supplies module types through `import type`. Neither file is loaded by `ScriptHost` at runtime.
-
-Optional type checking uses the repository's pinned development tools and emits no JavaScript:
+Run the .NET host above, then use Vite's development server in a second terminal:
 
 ```powershell
+npm run dev --prefix samples/Jint.TypeScript.Sample/ClientApp
+```
+
+Vite proxies `/api` to the .NET host at port 5178. To validate the sample:
+
+```powershell
+dotnet test tests/Jint.TypeScript.Tests -c Release --filter "FullyQualifiedName~SampleTests|FullyQualifiedName~PlaygroundTests|FullyQualifiedName~ModuleLoaderTests"
 npm ci --ignore-scripts --prefix eng/reference-checks
 node eng/reference-checks/node_modules/typescript/bin/tsc --project samples/Jint.TypeScript.Sample/tsconfig.json
+npm exec --prefix samples/Jint.TypeScript.Sample/ClientApp -- playwright install chromium
+npm test --prefix samples/Jint.TypeScript.Sample/ClientApp
 ```
 
-[SampleTests](../../tests/Jint.TypeScript.Tests/SampleTests.cs) execute these actual files and verify rule boundaries, malformed payloads, selected metadata, relative imports, original error locations, cached-code isolation and execution limits. CI runs those tests and the console app on .NET 8 and .NET 10, and separately type-checks the TypeScript.
+The browser suite starts an already-built Release .NET 10 host when necessary. CI runs it against the built web app. C# tests cover actual business rules, virtual/directory imports, source snapshots, isolation, cancellation, limits and original error locations. `SkipPlaygroundBuild=true` skips the frontend build when CI or a developer has already built it explicitly.

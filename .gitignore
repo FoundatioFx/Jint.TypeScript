@@ -4,3 +4,6 @@ artifacts/
 TestResults/
 BenchmarkDotNet.Artifacts/
 **/node_modules/
+samples/Jint.TypeScript.Sample/wwwroot/
+**/playwright-report/
+**/test-results/

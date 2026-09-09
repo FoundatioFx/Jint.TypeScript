@@ -4,11 +4,15 @@ Run TypeScript scripts in .NET with Jint. The C# parser is based on [Acornima](h
 
 **Experimental:** supports a growing subset of TypeScript on .NET 8 and .NET 10, using Jint 5 preview packages.
 
-Try the [sample app](samples/Jint.TypeScript.Sample/README.md): order validation, webhook normalization and pricing modules loaded from real TypeScript files.
+Try the [Monaco playground](samples/Jint.TypeScript.Sample/README.md): edit TypeScript files with IntelliSense, import helpers, and run order validation, webhook and pricing examples. Requires Node 22.12+ to build the editor.
+
+![TypeScript IntelliSense for the imported Quote interface, with execution results and host logs in the playground](docs/images/playground-intellisense.png)
 
 ```powershell
 dotnet run --project samples/Jint.TypeScript.Sample -f net10.0
 ```
+
+Open [localhost:5178](http://localhost:5178). The web playground replaces the console sample.
 
 ## Get started
 
@@ -29,7 +33,7 @@ var prepared = compiler.PrepareScript("""
 var result = new Engine().SetValue("input", 40).Evaluate(prepared); // 42
 ```
 
-Cache prepared scripts for repeated execution. The compiler can be shared between threads; Jint engines retain their usual concurrency restrictions. Use `PrepareModule` to register TypeScript modules with Jint.
+Cache prepared scripts for repeated execution. The compiler can be shared between threads; Jint engines retain their usual concurrency restrictions. `TypeScriptModuleLoader` loads imports from a directory or virtual files and caches prepared modules.
 
 ## TypeScript support
 

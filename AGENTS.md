@@ -8,17 +8,18 @@ Jint.TypeScript parses a supported subset of TypeScript in C#, erases types, and
 | --- | --- |
 | `src/Jint.TypeScript/TypeScriptCompiler.cs` | Public parsing/preparation API, Jint integration, and preparation depth checks. |
 | `src/Jint.TypeScript/TypeScriptOptions.cs` | Public limits and preparation settings. |
+| `src/Jint.TypeScript/TypeScriptModuleLoader*.cs` | Bounded directory/virtual module loading and prepared-code caching. |
 | `src/Jint.TypeScript/Parsing/` | Imported parser plus our TypeScript and public-AST partials. |
 | `tests/Jint.TypeScript.Tests/` | xUnit feature, integration, compatibility, location, resource, and allocation tests. |
 | `tests/Jint.TypeScript.Stress/` | Adversarial parser inputs isolated in child processes. |
 | `benchmarks/Jint.TypeScript.Benchmarks/` | Release timing and allocation measurements. |
-| `samples/Jint.TypeScript.Sample/` | Runnable hosting app, TypeScript scripts/modules, JSON inputs and editor typings. |
+| `samples/Jint.TypeScript.Sample/` | ASP.NET web playground, Monaco frontend in `ClientApp`, examples, JSON inputs and editor typings. |
 | `eng/` | Upstream import/merge tooling, normalized baseline, patch, and reference-fixture generators. |
 | `docs/` | Detailed usage, maintenance procedures, audits, and measured validation/performance evidence. |
 
 ## Setup and routine checks
 
-Run commands from the repository root. Use the .NET SDK selected by [global.json](global.json) and install both .NET 8 and .NET 10 runtimes for testing. The library targets both frameworks. [NuGet.Config](NuGet.Config) supplies Jint's required preview feed; use the checked-in package locks. Node 22+ and Git are needed for engineering tools, not product execution or ordinary .NET tests.
+Run commands from the repository root. Use the .NET SDK selected by [global.json](global.json) and install both .NET 8 and .NET 10 runtimes for testing. The library targets both frameworks. [NuGet.Config](NuGet.Config) supplies Jint's required preview feed; use the checked-in package locks. Node 22.12+ and Git are needed for engineering tools and building the web sample; library execution requires only .NET.
 
 ```powershell
 dotnet restore Jint.TypeScript.slnx --locked-mode
@@ -38,7 +39,7 @@ Select additional validation according to the change:
 - **Engineering tools or skill:** run the Node tests, upstream reconstruction check, and skill validator below.
 - **Package/API/dependency changes:** also pack the library and verify a consumer using the built package when the public integration or packaging changed.
 - **Documentation only:** verify paths, links, and commands against the repository; a full parser test run is unnecessary.
-- **Sample changes:** run `SampleTests` and the console app on both frameworks; type-check its `tsconfig.json` with the pinned TypeScript tool under `eng/reference-checks`. Sample inputs/scripts must also copy into published output and work independently of the current directory.
+- **Sample changes:** run `SampleTests`, `PlaygroundTests` and `ModuleLoaderTests` on both frameworks; type-check the sample `tsconfig.json` with the pinned tool under `eng/reference-checks`. Build `ClientApp` with `npm ci --ignore-scripts` and `npm run build`, then run its Playwright suite. Publish each framework and run `node eng/check-playground.mjs <publish-directory>` to verify assets, examples and APIs independently of the working directory. The sample requires Node 22.12+ to build and the matching ASP.NET Core runtime to execute. Use `-p:SkipPlaygroundBuild=true` when frontend assets have already been built, especially during multi-target CI builds.
 
 ```powershell
 dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-build --no-restore

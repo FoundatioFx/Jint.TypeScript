@@ -1,0 +1,10 @@
+<Project>
+  <ItemGroup>
+    <ClientSource Include="src/**/*;index.html;package.json;package-lock.json;tsconfig.json;vite.config.ts;Client.proj" />
+  </ItemGroup>
+  <!-- A shared MSBuild project prevents simultaneous net8/net10 builds from running npm in the same directory. -->
+  <Target Name="Build" Inputs="@(ClientSource)" Outputs="../wwwroot/index.html">
+    <Exec WorkingDirectory="$(MSBuildThisFileDirectory)" Command="npm ci --ignore-scripts" />
+    <Exec WorkingDirectory="$(MSBuildThisFileDirectory)" Command="npm run build" />
+  </Target>
+</Project>

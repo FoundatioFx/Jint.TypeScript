@@ -12,7 +12,7 @@ interface ValidationResult {
 
 // The host supplies the OrderInput shape. These are business validation rules,
 // such as those a tenant might customize before accepting an order.
-function validateOrder(input: OrderInput): ValidationResult {
+export function run(input: OrderInput): ValidationResult {
     const issues: ValidationIssue[] = [];
     if (!input.id.trim()) {
         issues.push({ field: "id", code: "required", message: "An order ID is required." });
@@ -36,6 +36,3 @@ function validateOrder(input: OrderInput): ValidationResult {
     host.Log(`Validated order ${input.id}: ${issues.length} issue(s).`);
     return { orderId: input.id, valid: issues.length === 0, issues } satisfies ValidationResult;
 }
-
-// The final expression becomes the value returned by Engine.Evaluate.
-validateOrder(order);

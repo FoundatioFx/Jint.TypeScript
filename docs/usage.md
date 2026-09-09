@@ -16,7 +16,36 @@ engine.Modules.Add("values", builder => builder.AddModule(
 var answer = engine.Modules.Import("values").Get("answer");
 ```
 
-Register prepared modules through the host. For relative imports, use the loader's resolved module key as `sourceFile`. Runtime strings passed to `eval`, `Function`, or ordinary Jint source APIs remain JavaScript. This library does not intercept those paths.
+For automatic TypeScript file imports, configure the reusable loader:
+
+```csharp
+var loader = new TypeScriptModuleLoader(Path.GetFullPath("Scripts"), compiler);
+var engine = new Engine(options => options.UseModules(loader));
+var exports = engine.Modules.Import("./main.ts");
+// main.ts and its relative dependencies are prepared automatically.
+```
+
+For editor documents, embedded resources or other sources already in memory, pass a source dictionary instead of a directory:
+
+```csharp
+var loader = new TypeScriptModuleLoader(new Dictionary<string, string>
+{
+    ["main.ts"] = "import { n } from './value.ts'; export const answer: number = n + 2;",
+    ["value.ts"] = "export const n: number = 40;"
+}, compiler);
+var engine = new Engine(options => options.UseModules(loader));
+var answer = engine.Modules.Import("./main.ts").Get("answer"); // 42
+```
+
+File imports require explicit `.ts`, `.mts`, `.js` or `.mjs` extensions. Bare names can reference host modules registered through `engine.Modules.Add`. Package resolution, CommonJS, JSON modules and import attributes are not provided. Declaration files are editor-only; use whole `import type` declarations to remove their runtime dependency. Inline type specifiers retain their containing module's side effects.
+
+Virtual filenames are case-sensitive relative paths using forward slashes, without empty, `.` or `..` segments. Relative imports may traverse parent folders within the virtual root. Virtual loaders never read the filesystem. Directory loaders restrict resolved URLs to their base directory; that restriction is not a filesystem sandbox against symbolic links.
+
+The loader copies virtual sources at construction. Directory sources are read and prepared on first import. Prepared modules are cached per loader instance, including across independent engines; engine-specific module records are never shared. Recreate the loader to observe edits. Cold preparations are serialized within the loader so concurrent engines prepare each dependency once. There is no global cache or file watcher.
+
+`TypeScriptModuleLoaderOptions` defaults to 128 files and 2,000,000 UTF-16 source units. Virtual limits apply to the entire copied snapshot, including unused declaration files. Directory limits apply to the cumulative prepared cache; reads are bounded before allocating the whole source. The compiler's per-file source limit also applies. Exceeding these limits throws Jint's `ModuleGraphLimitException`. This source budget is independent of Jint's module source-byte budget, which does not account for supplied prepared modules. Set Jint execution/module graph limits separately. A cancellation token supplied to the loader applies to that loader's lifetime, including source reads and preparation; recreate it for an independent cancellation lifetime.
+
+For manual prepared-module registration, use the loader's resolved key as `sourceFile`. Runtime strings passed to `eval`, `Function`, or ordinary Jint source APIs remain JavaScript. Those source-string paths are not intercepted. Dynamic imports through a configured `TypeScriptModuleLoader` use that loader normally.
 
 ## Supported syntax
 
