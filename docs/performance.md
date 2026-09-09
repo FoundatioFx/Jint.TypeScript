@@ -1,6 +1,6 @@
 # Performance with predicates, overloads and ambient declarations
 
-The later [customization audit](upstream-customization-audit.md) records the current reduction, 18,903 tests per runtime, and its own fresh performance comparison. Results below are the preceding batch.
+The latest [type-syntax batch](type-syntax-validation.md) records conditional/infer types, const/variance parameters, import types and a comparison on Jint preview 2041. The [customization audit](upstream-customization-audit.md) records the preceding maintenance changes. Results below are the earlier signature batch.
 
 Measured locally September 8, 2026 using .NET 10.0.11, x64 Linux, Release builds, Jint `5.0.0-preview-2007` and Acornima `1.8.0`. [Raw measurements](benchmarks.json) record environment and dependency versions. These are synthetic workloads on a shared development machine.
 

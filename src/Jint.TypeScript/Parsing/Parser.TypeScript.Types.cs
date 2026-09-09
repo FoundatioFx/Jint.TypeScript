@@ -26,7 +26,7 @@ internal sealed partial class Parser
         finally { _tokenCount = probe._tokenCount; }
     }
 
-    private void ParseTypeSignature(TokenType returnDelimiter, bool requireReturnType)
+    private void ParseTypeSignature(TokenType returnDelimiter, bool requireReturnType, bool allowConditional = true)
     {
         ParseTypeParameters();
         Expect(TokenType.ParenLeft);
@@ -50,7 +50,7 @@ internal sealed partial class Parser
             Expect(TokenType.Comma);
             first = false;
         }
-        if (Eat(returnDelimiter)) ParseReturnType();
+        if (Eat(returnDelimiter)) ParseReturnType(allowConditional);
         else if (requireReturnType) TypeScriptError("ExpectedReturnType", "Expected a function return type");
     }
 
@@ -63,16 +63,34 @@ internal sealed partial class Parser
         return name;
     }
 
-    private bool ParseTypeParameters()
+    private void ReadTypeParameterName()
+    {
+        if (_tokenizer._type == TokenType.Name && _isReservedWord(((string)_tokenizer._value.Value!).AsSpan(), _strict))
+            TypeScriptError("ReservedTypeName", "A reserved word cannot be a type parameter name");
+        ReadTypeIdentifier();
+    }
+
+    private bool ParseTypeParameters(bool allowVariance = false, bool allowConst = true)
     {
         if (!IsTypeOperator("<")) return false;
         var hasConstraintOrDefault = false;
         Next();
         do
         {
-            if (_tokenizer._type == TokenType.Name && _isReservedWord(((string)_tokenizer._value.Value!).AsSpan(), _strict))
-                TypeScriptError("ReservedTypeName", "A reserved word cannot be a type parameter name");
-            ReadTypeIdentifier();
+            var modifiers = 0;
+            while ((_tokenizer._type == TokenType.Const || _tokenizer._type == TokenType.In || IsContextual("out")) && TypeModifierFollows())
+            {
+                var modifier = _tokenizer._type == TokenType.Const ? 1 : _tokenizer._type == TokenType.In ? 2 : 4;
+                if (modifier == 1 ? !allowConst : !allowVariance)
+                    TypeScriptError("InvalidTypeParameterModifier", "This type parameter modifier is not allowed here");
+                if ((modifiers & modifier) != 0 || (modifier == 2 && (modifiers & 4) != 0))
+                    TypeScriptError("InvalidTypeParameterModifier", "Duplicate or incorrectly ordered type parameter modifiers");
+                modifiers |= modifier;
+                Next();
+            }
+            // A modifier makes async<const T>(x) unambiguously an arrow head.
+            hasConstraintOrDefault |= modifiers != 0;
+            ReadTypeParameterName();
             if (Eat(TokenType.Extends)) { hasConstraintOrDefault = true; ParseType(); }
             if (Eat(TokenType.Eq)) { hasConstraintOrDefault = true; ParseType(); }
             if (!Eat(TokenType.Comma)) break;

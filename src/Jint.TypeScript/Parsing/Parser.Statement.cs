@@ -1346,7 +1346,7 @@ internal partial class Parser
         _strict = true;
 
         var id = ParseClassId(flags);
-        ParseRuntimeTypeParameters();
+        ParseRuntimeTypeParameters(allowVariance: true);
 
         // Original acornjs implementation doesn't create a scope for classes, however, as Jint.TypeScript.Parsing exposes scope information,
         // it's necessary to create one so consumers can store and look up the class name, which is visible in the scope of the class.

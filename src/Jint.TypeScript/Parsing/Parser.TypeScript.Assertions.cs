@@ -63,12 +63,12 @@ internal sealed partial class Parser
                 node.Start, node.Location.Start, _tokenizer._sourceFile);
     }
 
-    private bool ParseRuntimeTypeParameters()
+    private bool ParseRuntimeTypeParameters(bool allowVariance = false)
     {
         if (!IsTypeOperator("<")) return false;
         var wasInType = _tokenizer.InType;
         _tokenizer.InType = true;
-        try { return ParseTypeParameters(); }
+        try { return ParseTypeParameters(allowVariance); }
         finally { _tokenizer.InType = wasInType; }
     }
 }

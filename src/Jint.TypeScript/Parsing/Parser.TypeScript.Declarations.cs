@@ -91,7 +91,7 @@ internal sealed partial class Parser
         {
             Next();
             ReadTypeIdentifier();
-            ParseTypeParameters();
+            ParseTypeParameters(allowVariance: true, allowConst: isInterface);
             if (isInterface)
             {
                 if (Eat(TokenType.Extends))

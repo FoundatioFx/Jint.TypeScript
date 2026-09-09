@@ -158,7 +158,7 @@ internal sealed partial class Parser
 
     private enum TypeShape { Other, Array, Tuple }
 
-    private TypeShape ParseType()
+    private TypeShape ParseType(bool allowConditional = true)
     {
         if (++_typeDepth > Limits.MaxTypeDepth) TypeScriptError("TypeDepthLimit", "Type nesting limit exceeded");
         try
@@ -168,41 +168,59 @@ internal sealed partial class Parser
             catch (InsufficientExecutionStackException) { TypeScriptError("TypeDepthLimit", "Insufficient stack for type nesting"); }
             // Function types bind less tightly than unions/intersections. A function
             // used as a constituent must be parenthesized, just as in TypeScript.
+            TypeShape shape;
             if (IsFunctionTypeStart())
             {
-                ParseTypeSignature(TokenType.Arrow, requireReturnType: true);
-                return TypeShape.Other;
-            }
-            if (_tokenizer._type == TokenType.New)
-            {
-                Next();
-                ParseTypeSignature(TokenType.Arrow, requireReturnType: true);
-                return TypeShape.Other;
-            }
-            var leadingUnion = Eat(TokenType.BitwiseOr);
-            var shape = ParseIntersectionType();
-            if (leadingUnion) shape = TypeShape.Other;
-            while (_tokenizer._type == TokenType.BitwiseOr)
-            {
-                Next();
-                ParseIntersectionType();
+                ParseTypeSignature(TokenType.Arrow, requireReturnType: true, allowConditional);
                 shape = TypeShape.Other;
+            }
+            else if (_tokenizer._type == TokenType.New)
+            {
+                Next();
+                ParseTypeSignature(TokenType.Arrow, requireReturnType: true, allowConditional);
+                shape = TypeShape.Other;
+            }
+            else
+            {
+                var leadingUnion = Eat(TokenType.BitwiseOr);
+                shape = ParseIntersectionType(allowConditional);
+                if (leadingUnion) shape = TypeShape.Other;
+                while (Eat(TokenType.BitwiseOr))
+                {
+                    ParseIntersectionType(allowConditional);
+                    shape = TypeShape.Other;
+                }
+            }
+            if (allowConditional && _tokenizer._type == TokenType.Extends && !CanInsertSemicolon())
+            {
+                Next();
+                ParseType(allowConditional: false);
+                ParseConditionalTypeBranches();
+                return TypeShape.Other;
             }
             return shape;
         }
         finally { _typeDepth--; }
     }
 
-    private TypeShape ParseIntersectionType()
+    private void ParseConditionalTypeBranches()
+    {
+        Expect(TokenType.Question);
+        ParseType();
+        Expect(TokenType.Colon);
+        ParseType();
+    }
+
+    private TypeShape ParseIntersectionType(bool allowConditional)
     {
         var leadingIntersection = Eat(TokenType.BitwiseAnd);
-        var shape = ParseArrayType();
+        var shape = ParseArrayType(allowConditional);
         if (leadingIntersection) shape = TypeShape.Other;
-        while (Eat(TokenType.BitwiseAnd)) { ParseArrayType(); shape = TypeShape.Other; }
+        while (Eat(TokenType.BitwiseAnd)) { ParseArrayType(allowConditional); shape = TypeShape.Other; }
         return shape;
     }
 
-    private TypeShape ParseArrayType()
+    private TypeShape ParseArrayType(bool allowConditional)
     {
         var shape = TypeShape.Other;
         if (IsContextual("keyof") || IsContextual("readonly") || IsContextual("unique"))
@@ -221,12 +239,31 @@ internal sealed partial class Parser
                 }
                 else
                 {
-                    var operand = ParseArrayType();
+                    var operand = ParseArrayType(allowConditional);
                     if (readOnly && operand is not (TypeShape.Array or TypeShape.Tuple))
                         TypeScriptError("InvalidReadonlyType", "Readonly requires an array or tuple type");
                 }
             }
             finally { _typeDepth--; }
+            return TypeShape.Other;
+        }
+        if (IsContextual("infer"))
+        {
+            Next();
+            ReadTypeParameterName();
+            var lineBreak = CanInsertSemicolon();
+            if (Eat(TokenType.Extends))
+            {
+                ParseType(allowConditional: false);
+                // With a type AST, `infer U extends X ? Y : Z` needs rollback to
+                // distinguish an infer constraint from a conditional check. Erasure
+                // can consume the shared prefix once, avoiding nested reparsing.
+                if (allowConditional && _tokenizer._type == TokenType.Question)
+                {
+                    if (lineBreak) TypeScriptError("ConditionalTypeLineBreak", "A conditional type cannot break before 'extends'");
+                    ParseConditionalTypeBranches();
+                }
+            }
             return TypeShape.Other;
         }
         if (_tokenizer._type == TokenType.ParenLeft)
@@ -238,6 +275,7 @@ internal sealed partial class Parser
         else if (_tokenizer._type == TokenType.BraceLeft) ParseObjectType();
         else if (_tokenizer._type == TokenType.BracketLeft) { ParseTupleType(); shape = TypeShape.Tuple; }
         else if (_tokenizer._type == TokenType.TypeOf) ParseTypeQuery();
+        else if (_tokenizer._type == TokenType.Import) ParseImportType();
         else if (_tokenizer._type == TokenType.BackQuote) ParseTemplateType();
         else if (_tokenizer._type == TokenType.PlusMinus && Equals(_tokenizer._value.Value, "-"))
         {
@@ -252,7 +290,7 @@ internal sealed partial class Parser
             {
                 var name = (string)_tokenizer._value.Value!;
                 if (_isReservedWord(name.AsSpan(), _strict)) TypeScriptError("ReservedTypeName", "A reserved word cannot be a type name");
-                if (_tokenizer._containsEscape || name is "keyof" or "typeof" or "infer" or "readonly" or "unique" or "abstract")
+                if (_tokenizer._containsEscape || name is "keyof" or "typeof" or "readonly" or "unique" or "abstract")
                     TypeScriptError("UnsupportedType", "This type form is not supported");
                 Next();
                 var primitive = name is "any" or "unknown" or "number" or "object" or "boolean" or "bigint" or "string" or "symbol" or "undefined" or "never" or "intrinsic";

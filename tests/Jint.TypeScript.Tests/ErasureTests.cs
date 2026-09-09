@@ -9,6 +9,158 @@ public class ErasureTests
     private static readonly TypeScriptCompiler Compiler = new();
 
     [Theory]
+    [InlineData("type T = X extends Y ? number : string; 42;")]
+    [InlineData("type T = X extends infer U extends string ? U : never; 42;")]
+    [InlineData("const f = <const T>(x:T) => x; f<import('missing').Shape>(42);")]
+    [InlineData("const f = async<const T>(x:T) => x; f(42);")]
+    [InlineData("class C<const in out T> {value: T = 42;} new C().value;")]
+    [InlineData("type T<in out X> = {value:X}; interface I<out X> {} 42;")]
+    [InlineData("const o = {value:42, f<const T>(x:T) {return this.value;}}; o.f<unknown>(0);")]
+    [InlineData("function f<const T>(this: Host, x: T): T {return x;} f(42);")]
+    [InlineData("declare const host: typeof import('missing'); 42;")]
+    [InlineData("const x = 41; (x as X extends Y ? number : string) + 1;")]
+    [InlineData("const x = 84; x satisfies T extends infer U ? U : never >> 1;")]
+    [InlineData("function f<const T>(x:T) {return x;} f<() => T extends U ? X:Y>(42);")]
+    [InlineData("const out = 42; type T<out> = out; out;")]
+    [InlineData("function f<const T>(x:T):T; function f<const T>(x:T) {return x;} f(42);")]
+    public void Advanced_type_syntax_erases_without_changing_execution(string source)
+    {
+        foreach (var analysis in new[] {true, false})
+        {
+            var compiler = new TypeScriptCompiler(new() {StaticAnalysis = analysis});
+            Assert.Equal(42, new Engine().Evaluate(compiler.PrepareScript(source)).UnwrapIfPromise().AsNumber());
+        }
+    }
+
+    [Theory]
+    [InlineData("type T = X extends U ? Y;")]
+    [InlineData("type T = X extends U : Y;")]
+    [InlineData("type T = X\nextends U ? Y : Z;")]
+    [InlineData("type T = infer U\nextends X ? Y : Z;")]
+    [InlineData("type T = X extends infer ? Y : Z;")]
+    [InlineData("type T = X extends infer U extends ? Y : Z;")]
+    [InlineData("type T = infer const;")]
+    [InlineData("type T = infer U[];")]
+    [InlineData("type T = X extends U extends V ? Y : Z;")]
+    [InlineData("type T = X extends () => U extends V ? Y : Z;")]
+    [InlineData("type T<const X> = X;")]
+    [InlineData("function f<in T>() {}")]
+    [InlineData("const f = <out T>(x:T) => x;")]
+    [InlineData("type T = <in X>() => X;")]
+    [InlineData("class C<out in T> {}")]
+    [InlineData("class C<const const T> {}")]
+    [InlineData("type T<in in X> = X;")]
+    [InlineData("interface I<out out T> {}")]
+    [InlineData("function f<const>() {}")]
+    [InlineData("function f<const\nT>() {}")]
+    [InlineData("const f = async<const T>(x);")]
+    [InlineData("async<const T>(42);")]
+    [InlineData("type T = import(value).Shape;")]
+    [InlineData("type T = import(`missing`).Shape;")]
+    [InlineData("type T = import('missing',).Shape;")]
+    [InlineData("type T = import('missing', {with:{}}).Shape;")]
+    [InlineData("type T = typeof import('missing', {with:{}});")]
+    [InlineData("type T = import('missing').;")]
+    [InlineData("type T = import('missing').Shape<>;")]
+    [InlineData("type T = import('missing').Shape<X>.Other;")]
+    [InlineData("type T = typeof import('missing')();")]
+    public void Rejects_malformed_advanced_types_and_unsupported_import_attributes(string source) =>
+        Assert.Throws<TypeScriptParseException>(() => Compiler.ParseScript(source));
+
+    [Fact]
+    public void Import_types_do_not_add_dependencies_or_hide_runtime_imports()
+    {
+        const string source = "export type Shape = import('absent').Shape; export const value: typeof import('absent') = 42;";
+        var module = Compiler.ParseModule(source, "types.ts");
+        Assert.IsType<ExportNamedDeclaration>(Assert.Single(module.Body));
+        var engine = new Engine();
+        engine.Modules.Add("main", builder => builder.AddModule(Compiler.PrepareModule(source, "main")));
+        Assert.Equal(42, engine.Modules.Import("main").Get("value").AsNumber());
+        var script = Compiler.ParseScript("const load = () => import('runtime');");
+        var variable = Assert.IsType<VariableDeclaration>(Assert.Single(script.Body));
+        var arrow = Assert.IsType<ArrowFunctionExpression>(variable.Declarations[0].Init);
+        Assert.IsType<ImportExpression>(arrow.Body);
+    }
+
+    [Fact]
+    public void Advanced_type_erasure_keeps_original_locations_and_runtime_fields()
+    {
+        const string source = "// 😀\r\ntype T = X extends infer U ? U : import('missing').Value;\r\nclass C<const out X> {value: T;}\r\nfunction f<const T>(x: T): typeof import('missing') {return x.value;}\r\nf(null);";
+        var script = Compiler.ParseScript(source, "types.ts");
+        HardeningTests.AssertLocations(script, source, "types.ts");
+        var error = Assert.Throws<JavaScriptException>(() => new Engine().Evaluate(Compiler.PrepareScript(source, "types.ts")));
+        Assert.Equal(4, error.Location.Start.Line);
+        Assert.Equal("types.ts", error.Location.SourceFile);
+        Assert.True(new Engine().Evaluate(Compiler.PrepareScript(
+            "class C<const T> {value: T extends U ? X:Y;} Object.hasOwn(new C(), 'value');")).AsBoolean());
+    }
+
+    [Theory]
+    [InlineData("T extends U ? ", " : never")]
+    [InlineData("T extends U ? never : ", "")]
+    [InlineData("infer T extends ", "")]
+    [InlineData("import('m').T<", ">")]
+    [InlineData("typeof import('m').T<", ">")]
+    [InlineData("<const T extends ", ">() => T")]
+    public void Advanced_type_recursion_is_bounded(string prefix, string suffix)
+    {
+        var source = "type T = " + string.Concat(Enumerable.Repeat(prefix, 100)) + "number" + string.Concat(Enumerable.Repeat(suffix, 100)) + ";";
+        var error = Assert.Throws<TypeScriptParseException>(() => new TypeScriptCompiler(new() {MaxTypeDepth = 8}).ParseScript(source));
+        Assert.Equal("TypeDepthLimit", error.Code);
+    }
+
+    [Theory]
+    [InlineData("type T = X extends infer U extends string ? U : import('missing').Value;")]
+    [InlineData("interface I<in out T> {value: T extends U ? X:Y}")]
+    [InlineData("type T = typeof import('missing').factory<Array<number>>;")]
+    [InlineData("type T = <const X>(x: X) => X extends infer U ? U : never;")]
+    public void Advanced_erased_types_have_linear_token_cost_and_constant_repeated_name_allocations(string declaration)
+    {
+        var source = string.Concat(Enumerable.Repeat(declaration, 10000));
+        var compiler = new TypeScriptCompiler(new() {MaxNodeCount = 1, MaxTokenCount = 400032});
+        Assert.Empty(compiler.ParseScript(source).Body);
+        var small = HardeningTests.Allocated(() => Compiler.ParseScript(declaration));
+        var large = HardeningTests.Allocated(() => Compiler.ParseScript(source));
+        Assert.True(large - small < 4096, $"Type erasure allocated {large-small} extra bytes");
+        var error = Assert.Throws<TypeScriptParseException>(() => new TypeScriptCompiler(new() {MaxTokenCount = 32}).ParseScript(source));
+        Assert.Equal("TokenLimit", error.Code);
+        using var cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+        Assert.Throws<OperationCanceledException>(() => Compiler.ParseScript(source, cancellationToken: cancellation.Token));
+    }
+
+    [Theory]
+    [InlineData(1902124)]
+    [InlineData(7202041)]
+    public void Advanced_type_mutations_return_public_errors_or_valid_original_locations(int seed)
+    {
+        string[] sources = ["type T = X extends infer U extends string ? U : import('missing').Shape;",
+            "const f = async<const T extends X ? Y:Z>(x:T) => x;", "class C<const in out T> {value:T;}",
+            "type T = X extends [infer U, ...infer V] ? import('m').Shape<U> : never;",
+            "type T = X extends () => infer U ? U : typeof import('m').f<T>;",
+            "type T = X extends (infer U extends X ? Y:Z) ? () => U : never;"];
+        string[] fragments = ["extends", "infer", "const", "in", "out", "typeof", "import", "<", ">", "?", ":", "=>",
+            "(", ")", "[", "]", "{", "}", ";", "=", "\n", "\0", "/*", "`", "${", "\\", "'", ","];
+        var random = new Random(seed);
+        for (var i = 0; i < 10000; i++)
+        {
+            var source = sources[random.Next(sources.Length)];
+            var at = random.Next(source.Length);
+            source = i % 2 == 0 ? source.Insert(at, fragments[random.Next(fragments.Length)]) : source.Remove(at, 1);
+            try { HardeningTests.AssertLocations(Compiler.ParseScript(source, "types.ts"), source, "types.ts"); }
+            catch (TypeScriptParseException error)
+            {
+                Assert.InRange(error.Index, 0, source.Length);
+                Assert.Equal("types.ts", error.SourceFile);
+            }
+            catch (Exception error)
+            {
+                throw new Xunit.Sdk.XunitException($"Seed {seed}, mutation {i}: {System.Text.Json.JsonSerializer.Serialize(source)}\n{error}");
+            }
+        }
+    }
+
+    [Theory]
     [InlineData("import type Shape from 'missing';")]
     [InlineData("import type * as Types from 'missing';")]
     [InlineData("import type { Shape as Other } from 'missing';")]
@@ -126,7 +278,7 @@ public class ErasureTests
 
     [Theory]
     [InlineData("type T = readonly number;")]
-    [InlineData("type T = T extends U ? X : Y;")]
+    [InlineData("type T = T extends U ? X :;")]
     [InlineData("type T = (x: unknown) => x is;")]
     [InlineData("declare interface Shape {=}")]
     public void Unsupported_neighboring_grammar_still_fails_explicitly(string source) =>

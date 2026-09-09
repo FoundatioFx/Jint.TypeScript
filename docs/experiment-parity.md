@@ -32,7 +32,7 @@ Assertions preserve optional chaining, method receivers, direct `eval`, evaluati
 
 ## Remaining product scope
 
-- Angle-bracket assertions, conditional/infer types, const/variance type parameters, import types and other advanced forms listed in the README.
+- Angle-bracket assertions, import attributes, abstract construct signatures and other forms listed in the [syntax reference](usage.md). Conditional/infer types, const/variance type parameters and import types were added after the parity snapshot above; see the [type-syntax batch validation](type-syntax-validation.md).
 - Ambient classes/namespaces, abstract/declare class members, bodyless accessors, JSX/TSX and decorators.
 - Runtime transforms for enums, namespaces and constructor parameter properties.
 - The experiment's broader parser API, including expression-only/source-slice parsing, `IParser`, tokenizer exposure and inherited parser options.

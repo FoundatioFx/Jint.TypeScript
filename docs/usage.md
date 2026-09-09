@@ -45,6 +45,9 @@ Register prepared modules through the host. For relative imports, use the loader
 | Type aliases and interfaces | `type Id = number`, `interface Shape extends Base { value: Id }` |
 | Generics within erased declarations/signatures | `type Box<T = number> = { value: T }`, `interface Box<T> { value: T }` |
 | Generic function declarations/expressions | `function identity<T>(x: T): T { return x; }`, `function<T>(x: T) { return x; }` |
+| Const and variance type parameters | `function f<const T>(x: T) {}`, `type Reader<out T> = () => T`, `interface Cell<in out T> { value: T }` |
+| Conditional types and inference syntax | `T extends U ? X : Y`, `T extends Array<infer U> ? U : never`, `T extends infer U extends string ? U : never` |
+| Import types and module value queries | `import("types").Shape<T>`, `typeof import("types")`, `typeof import("types").factory<T>` |
 | Assertions | `value as number`, `value as const`, `value satisfies Shape`, `value!.member` |
 | Mapped types, key remapping and indexed access | `{ readonly [P in keyof T as P]?: T[P] }`, `T["value"]` |
 | Template literal types | `` `prefix-${number}-${string}` `` |
@@ -64,13 +67,19 @@ Assertions erase while preserving expression precedence, optional chaining, assi
 
 Generic functions, arrows, methods and classes support constraints/defaults, including async and generator forms where JavaScript permits them. Explicit type arguments work on calls, optional calls, constructors, tagged templates and instantiation expressions. They are erased without creating runtime type bindings. Mapped types support readonly/optional modifiers, key remapping and nested types in aliases and annotations.
 
+Const type parameters are supported on functions, arrows, methods, classes and type signatures. Variance modifiers (`in`, `out`, `in out`) are accepted on aliases, interfaces and classes; they are rejected on function/method type parameters. Duplicate modifiers and reversed `out in` ordering are rejected. Contextual `out` remains usable as an unmodified parameter name. Modifier applicability and variance correctness that require TypeScript semantic checks remain the responsibility of `tsc`.
+
+Conditional types support nested branches, function/constructor types and `infer` constraints, including inference syntax inside tuples, templates and mapped types. The parser consumes their syntax without resolving types or enforcing inference scope. A conditional type cannot contain a line break before its `extends`. Nested type work remains bounded by `MaxTypeDepth` and `MaxTokenCount`.
+
+Import types consume a string literal module name, an optional dotted qualifier and type arguments. They erase without loading a module, reading declarations, creating runtime dependencies or changing script/module identity. Runtime `import(...)` expressions keep their JavaScript behavior. Import attributes/options inside these type expressions remain unsupported. As with other supported type references, keep type arguments on the same line as their preceding name or import expression.
+
 Class fields retain native JavaScript define semantics: an uninitialized typed field still creates a property. Accessibility, readonly and override modifiers are erased; they do not enforce access or immutability at runtime. JavaScript private fields retain their normal semantics. Modifier words also work as property or method names. Abstract/declare members and constructor parameter properties remain unsupported.
 
 Type arguments follow TypeScript's expression disambiguation. For example, `f<number>(42)` executes a call, while ordinary comparisons and shifts keep their JavaScript meaning. Write `(a < b) > (c)` when that comparison is intended. Recognized type-argument forms with unsupported type contents raise a parse error instead of executing a JavaScript fallback.
 
 Use `(f<T>)` when combining a bare instantiation with comparisons or shifts. Ungrouped consecutive forms such as `f<T><U>(x)` remain deliberately unsupported; the reference parsers disagree on some of these boundaries. Generic calls such as `f<T>(x) < g<U>(y)` are supported.
 
-The scope still excludes angle-bracket assertions; ambient classes/namespaces and abstract/declare class members; conditional/infer types; import types and `typeof import(...)` queries; escaped type names; JSX/TSX; decorators; enums, namespaces and constructor parameter properties. Object-type accessors/computed keys, destructured function-type parameters, variance/const type parameters and attributes on whole type-only imports remain unsupported. Bodyless getter/setter signatures are rejected because TypeScript emits runtime accessors for them. A type query supports a value name or `this`, dotted properties and type arguments. Keep type arguments on the same line as the queried name; parenthesize a generic function type argument, as in `typeof f<(<T>() => T)>`. `asserts` and its parameter must also stay on the same line. Runtime transforms remain a later phase. This is a bounded syntax/erasure implementation, not a type checker or a full validator for every TypeScript production.
+The scope still excludes angle-bracket assertions; ambient classes/namespaces and abstract/declare class members; escaped type names; JSX/TSX; decorators; enums, namespaces and constructor parameter properties. Object-type accessors/computed keys, destructured function-type parameters, abstract construct signatures and attributes on whole type-only imports or import types remain unsupported. Bodyless getter/setter signatures are rejected because TypeScript emits runtime accessors for them. A type query supports a value name or `this`, dotted properties and type arguments. Keep type arguments on the same line as the queried name; parenthesize a generic function type argument, as in `typeof f<(<T>() => T)>`. `asserts` and its parameter must also stay on the same line. Runtime transforms remain a later phase. This is a bounded syntax/erasure implementation, not a type checker or a full validator for every TypeScript production.
 
 ## Locations, limits and semantics
 

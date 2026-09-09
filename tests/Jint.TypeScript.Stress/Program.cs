@@ -11,7 +11,9 @@ string[] cases = ["deep-types", "raised-type-limit", "deep-syntax", "raised-synt
     "deep-objects", "deep-tuples", "deep-functions", "deep-constraints", "wide-interface", "many-type-imports",
     "deep-keyof", "deep-mapped", "deep-template-types", "long-assertions", "long-non-null", "wide-template-type",
     "deep-type-arguments", "wide-type-arguments", "deep-generic-arrows", "many-generic-calls", "comparisons-before-generic",
-    "deep-readonly", "deep-predicates", "deep-queries", "deep-this", "many-overloads", "many-method-overloads", "many-ambient"];
+    "deep-readonly", "deep-predicates", "deep-queries", "deep-this", "many-overloads", "many-method-overloads", "many-ambient",
+    "deep-conditionals", "deep-conditional-false", "deep-infer-constraints", "deep-import-types", "deep-const-constraints",
+    "many-conditional-types", "many-variant-parameters", "wide-import-type-arguments"];
 if (args.Length == 1)
 {
     Run(args[0]);
@@ -50,6 +52,29 @@ static void Run(string name)
         case "raised-type-limit":
             if (name == "raised-type-limit") compiler = new(new() { MaxTypeDepth = 100000 });
             Expect("TypeDepthLimit", () => compiler.ParseScript("let value: " + string.Concat(Enumerable.Repeat("T<", 50000)) + "number;"));
+            break;
+        case "deep-conditionals":
+        case "deep-conditional-false":
+        case "deep-infer-constraints":
+        case "deep-import-types":
+        case "deep-const-constraints":
+            var advancedTypePrefix = name switch
+            {
+                "deep-conditionals" => "T extends U ? ", "deep-conditional-false" => "T extends U ? X : ",
+                "deep-infer-constraints" => "infer T extends ", "deep-import-types" => "import('m').T<",
+                _ => "<const T extends "
+            };
+            Expect("TypeDepthLimit", () => new TypeScriptCompiler(new() {MaxTypeDepth = 4096}).ParseScript(
+                "type T = " + string.Concat(Enumerable.Repeat(advancedTypePrefix, 30000)) + "number;"));
+            break;
+        case "many-conditional-types":
+            compiler.ParseScript(string.Concat(Enumerable.Repeat("type T=X extends infer U?U:import('m').T;", 20000)));
+            break;
+        case "many-variant-parameters":
+            compiler.ParseScript("interface I<" + string.Join(',', Enumerable.Repeat("in out T", 30000)) + "> {}");
+            break;
+        case "wide-import-type-arguments":
+            compiler.ParseScript("type T=import('m').T<" + string.Join(',', Enumerable.Repeat("X", 100000)) + ">;");
             break;
         case "deep-readonly":
         case "deep-predicates":

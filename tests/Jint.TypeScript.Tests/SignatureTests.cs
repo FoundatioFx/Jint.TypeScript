@@ -22,7 +22,7 @@ public class SignatureTests
     [InlineData("type T = typeof obj.#x;")]
     [InlineData("type T = typeof f<>;")]
     [InlineData("type T = typeof f<<T>()=>T>;")]
-    [InlineData("type T = typeof import('m').Value;")]
+    [InlineData("type T = typeof import('m').;")]
     [InlineData("let x: x is number;")]
     [InlineData("type T = x is number;")]
     [InlineData("function f(x: asserts x is number) {}")]

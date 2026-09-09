@@ -25,7 +25,7 @@ internal sealed partial class Parser
         return true;
     }
 
-    private void ParseReturnType()
+    private void ParseReturnType(bool allowConditional = true)
     {
         // Only return positions admit predicates. The cheap character check keeps
         // ordinary return annotations off the tokenizer lookahead path.
@@ -50,18 +50,23 @@ internal sealed partial class Parser
                 {
                     if (asserts) Next();
                     if (!Eat(TokenType.This)) ReadTypeIdentifier();
-                    if (!CanInsertSemicolon() && EatContextual("is")) ParseType();
+                    if (!CanInsertSemicolon() && EatContextual("is")) ParseType(allowConditional);
                     else if (!asserts) TypeScriptError("ExpectedPredicateType", "Expected a predicate type");
                     return;
                 }
             }
         }
-        ParseType();
+        ParseType(allowConditional);
     }
 
     private void ParseTypeQuery()
     {
         Expect(TokenType.TypeOf);
+        if (_tokenizer._type == TokenType.Import)
+        {
+            ParseImportType();
+            return;
+        }
         if (!Eat(TokenType.This)) ReadTypeIdentifier();
         while (Eat(TokenType.Dot))
         {
@@ -81,6 +86,34 @@ internal sealed partial class Parser
                 ParseType();
             }
             if (!IsTypeOperator(">")) TypeScriptError("ExpectedTypeClose", "Expected '>' after type query arguments");
+            Next();
+        }
+    }
+
+    private void ParseImportType()
+    {
+        Expect(TokenType.Import);
+        Expect(TokenType.ParenLeft);
+        Expect(TokenType.String);
+        // Import attributes have their own grammar and remain outside this slice.
+        // The erased string never becomes a module dependency or runtime import.
+        Expect(TokenType.ParenRight);
+        while (Eat(TokenType.Dot))
+        {
+            if (_tokenizer._containsEscape || (_tokenizer._type != TokenType.Name && _tokenizer._type.Keyword is null))
+                TypeScriptError("ExpectedImportTypeName", "Expected a qualified import type name");
+            Next(ignoreEscapeSequenceInKeyword: true);
+        }
+        if (IsTypeOperator("<") && !CanInsertSemicolon())
+        {
+            Next();
+            ParseType();
+            while (Eat(TokenType.Comma))
+            {
+                if (IsTypeOperator(">")) break;
+                ParseType();
+            }
+            if (!IsTypeOperator(">")) TypeScriptError("ExpectedTypeClose", "Expected '>' after import type arguments");
             Next();
         }
     }

@@ -1,6 +1,6 @@
 # Validation of predicates, signatures and ambient erasure
 
-The later [customization audit](upstream-customization-audit.md) records the current reduction, 18,903 tests per runtime, and its own fresh performance comparison. Results below are the preceding batch.
+The latest [type-syntax batch](type-syntax-validation.md) records conditional/infer types, const/variance parameters, import types and current validation. The [customization audit](upstream-customization-audit.md) records the preceding maintenance changes. Results below are the earlier signature batch.
 
 This batch adds readonly arrays/tuples, `unique symbol`, value-based `typeof` queries, return predicates/assertion signatures, explicit `this` parameters, function/method/constructor overloads and selected ambient declarations. It uses Jint `5.0.0-preview-2007` and official Acornima `1.8.0`.
 

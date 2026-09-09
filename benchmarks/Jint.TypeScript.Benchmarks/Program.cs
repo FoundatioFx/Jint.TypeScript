@@ -127,6 +127,55 @@ foreach (var count in new[] {100, 1000, 10000})
     Measure("Owned TS wide type arguments", count, source.Length, 20, () => compiler.ParseScript(source));
 }
 Measure("Cached TS execute (new Engine)", 1, 0, 1000, () => new Engine().Evaluate(prepared));
+foreach (var count in new[] {100, 1000, 10000})
+{
+    var conditional = string.Concat(Enumerable.Repeat("type T=X extends infer U extends string?U:never;", count));
+    var imports = string.Concat(Enumerable.Repeat("type T=typeof import('missing').factory<Array<number>>;", count));
+    var variance = "interface I<" + string.Join(',', Enumerable.Repeat("in out T", count)) + "> {}";
+    Measure("Owned TS conditional/infer types", count, conditional.Length, 20, () => compiler.ParseScript(conditional));
+    Measure("Owned TS import types", count, imports.Length, 20, () => compiler.ParseScript(imports));
+    Measure("Owned TS variance parameters", count, variance.Length, 20, () => compiler.ParseScript(variance));
+}
+foreach (var count in new[] {1, 100, 1000})
+{
+    var source = string.Join('\n', Enumerable.Range(0, count).Select(i =>
+        $"function f{i}<const T extends Shape>(x: T): T extends infer U ? U : never {{return x;}}"));
+    Measure("Owned TS const/conditional functions", count, source.Length, Math.Max(10, 5000/count), () => compiler.ParseScript(source));
+}
+foreach (var count in new[] {4, 16, 48})
+{
+    var source = "type T=" + string.Concat(Enumerable.Repeat("infer T extends ", count)) + "number;";
+    Measure("Owned TS nested infer constraints", count, source.Length, 100, () => compiler.ParseScript(source));
+}
+// A representative hosting workload: typed rule evaluation over host input,
+// with a cached prepared script. It does not claim to be a production trace.
+const string ruleTypes = """
+    type Field<T> = T extends {amount: infer A extends number} ? A : never;
+    type Host = import('host-types').Order;
+    interface Rule<in T, out R> {evaluate(value: T): R}
+    """;
+const string ruleBody = """
+    function discount<const T extends Host>(order: T): number {
+        const amount: Field<T> = order.amount;
+        return order.vip && amount >= 100 ? amount * 0.1 : 0;
+    }
+    discount(input);
+    """;
+const string ruleJs = """
+    function discount(order) {
+        const amount = order.amount;
+        return order.vip && amount >= 100 ? amount * 0.1 : 0;
+    }
+    discount(input);
+    """;
+var ruleSource = ruleTypes + ruleBody;
+var rulePrepared = compiler.PrepareScript(ruleSource, "discount.ts");
+var ruleEngine = new Engine().SetValue("input", new {amount = 200, vip = true});
+if (ruleEngine.Evaluate(rulePrepared).AsNumber() != 20) throw new Exception("Rule benchmark produced an incorrect discount");
+Measure("Official JS rule prepare", 1, ruleJs.Length, 1000, () => Engine.PrepareScript(ruleJs));
+Measure("Owned TS rule parse", 1, ruleSource.Length, 1000, () => compiler.ParseScript(ruleSource));
+Measure("Owned TS rule prepare", 1, ruleSource.Length, 1000, () => compiler.PrepareScript(ruleSource));
+Measure("Cached TS rule execute", 1, ruleSource.Length, 1000, () => ruleEngine.Evaluate(rulePrepared));
 var report = new { utc = DateTimeOffset.UtcNow, runtime = RuntimeInformation.FrameworkDescription,
     jint = typeof(Engine).Assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion,
     acornima = typeof(Acornima.Parser).Assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion,

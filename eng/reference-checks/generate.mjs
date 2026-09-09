@@ -9,6 +9,7 @@ import { milestoneCases } from './milestone-cases.mjs';
 import { parityCases } from './parity-cases.mjs';
 import { genericsCases } from './generics-cases.mjs';
 import { signatureCases } from './signature-cases.mjs';
+import { typeSyntaxCases } from './type-syntax-cases.mjs';
 
 // Development only. Babel checks the selected syntax; current tsc supplies an
 // independent JS emission oracle. Committed fixtures run without Node/npm/tsc.
@@ -58,6 +59,9 @@ hardening.invalid.push(...generics.invalid);
 const signatures = signatureCases(parse);
 cases.push(...signatures.cases);
 hardening.invalid.push(...signatures.invalid);
+const typeSyntax = typeSyntaxCases(parse);
+cases.push(...typeSyntax.cases);
+hardening.invalid.push(...typeSyntax.invalid);
 try {
   mkdirSync(join(temporary, 'input'));
   for (const test of cases) {

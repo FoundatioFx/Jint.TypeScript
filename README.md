@@ -29,14 +29,14 @@ Cache prepared scripts for repeated execution. The compiler can be shared betwee
 
 Supported features include:
 
-- Type annotations, aliases, interfaces, unions, tuples, and mapped types.
+- Type annotations, aliases, interfaces, unions, tuples, mapped and conditional types.
 - Generic functions, arrows, calls, and classes.
 - Typed class members, overload signatures, and selected `declare` declarations.
 - `as`, `satisfies`, non-null assertions, and explicit type-only imports and exports.
 
 Types are erased without type checking or runtime validation. Use your editor or `tsc` for type checking.
 
-Enums, namespaces, constructor parameter properties, JSX/TSX, and decorators are not supported. Some type syntax, including conditional and `infer` types, is also unsupported. Strings passed to Jint's ordinary execution APIs, `eval`, or `Function` must still be JavaScript.
+Enums, namespaces, constructor parameter properties, JSX/TSX, and decorators are not supported. Strings passed to Jint's ordinary execution APIs, `eval`, or `Function` must still be JavaScript.
 
 See the [Acornima comparison](docs/acornima-comparison.md), [usage and syntax reference](docs/usage.md), and [performance measurements](docs/performance.md).
 

@@ -14,10 +14,10 @@
   },
   "jint": {
     "repository": "https://github.com/sebastienros/jint",
-    "reviewedHead": "3037bc4c97f99bd9859fb74e5f7d00ccd24d48d6",
-    "package": "5.0.0-preview-2007",
+    "reviewedHead": "3f6099c634cbe78b2da632f70567a9358ef74b3a",
+    "package": "5.0.0-preview-2041",
     "feed": "https://f.feedz.io/sebastienros/jint/nuget/index.json",
-    "packageCommit": "63b86ec8fa4a79731770f54bd57cba44f362eba9"
+    "packageCommit": "08d97a40a0310a937fe9a63528f5c860108ff58f"
   },
   "references": {
     "typescript": "7.0.2",
