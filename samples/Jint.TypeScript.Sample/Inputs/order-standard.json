@@ -1,0 +1,8 @@
+{
+  "id": "ORD-1002",
+  "customer": { "email": "sam@example.com", "tier": "standard" },
+  "destination": "US",
+  "lines": [
+    { "sku": "MOUSE", "quantity": 2, "unitPriceCents": 3200 }
+  ]
+}

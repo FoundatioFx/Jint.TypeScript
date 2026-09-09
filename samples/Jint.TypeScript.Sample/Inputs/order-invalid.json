@@ -1,0 +1,8 @@
+{
+  "id": "ORD-1003",
+  "customer": { "email": "not-an-email", "tier": "standard" },
+  "destination": "US",
+  "lines": [
+    { "sku": "HEADPHONES", "quantity": 0, "unitPriceCents": -100 }
+  ]
+}

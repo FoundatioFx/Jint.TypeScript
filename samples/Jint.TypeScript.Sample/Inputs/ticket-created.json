@@ -1,0 +1,16 @@
+{
+  "id": "evt-2048",
+  "type": "ticket.created",
+  "data": {
+    "subject": "  Checkout unavailable  ",
+    "priority": "urgent",
+    "customer": { "email": "alex@example.com" }
+  },
+  "metadata": {
+    "environment": "production",
+    "service": "checkout",
+    "region": "us-east",
+    "accessToken": "demo-value-that-must-not-be-forwarded",
+    "customerEmail": "alex@example.com"
+  }
+}

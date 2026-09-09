@@ -1,6 +1,6 @@
 # Usage and syntax reference
 
-See the [README](../README.md) for setup and a script example.
+See the [README](../README.md) for setup and the [runnable sample](../samples/Jint.TypeScript.Sample/README.md) for file loading, host services, prepared-code reuse, modules and editor typings.
 
 ## Reuse and modules
 

@@ -121,6 +121,12 @@
           "Acornima": "[1.8.0, )",
           "Jint": "[5.0.0-preview-2069, )"
         }
+      },
+      "jint.typescript.sample": {
+        "type": "Project",
+        "dependencies": {
+          "Jint.TypeScript": "[0.1.0-preview.1, )"
+        }
       }
     },
     "net8.0": {
@@ -242,6 +248,12 @@
         "dependencies": {
           "Acornima": "[1.8.0, )",
           "Jint": "[5.0.0-preview-2069, )"
+        }
+      },
+      "jint.typescript.sample": {
+        "type": "Project",
+        "dependencies": {
+          "Jint.TypeScript": "[0.1.0-preview.1, )"
         }
       }
     }

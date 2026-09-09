@@ -2,6 +2,7 @@
   <PropertyGroup><TargetFrameworks>net8.0;net10.0</TargetFrameworks><IsTestProject>true</IsTestProject><IsPackable>false</IsPackable></PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../../src/Jint.TypeScript/Jint.TypeScript.csproj" />
+    <ProjectReference Include="../../samples/Jint.TypeScript.Sample/Jint.TypeScript.Sample.csproj" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" PrivateAssets="all" />

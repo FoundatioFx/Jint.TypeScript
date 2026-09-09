@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "Acornima": {
+        "type": "Transitive",
+        "resolved": "1.8.0",
+        "contentHash": "ZtcK7lu5LZZH5qDWfeUdBn/WXChWQjGdpB9sSFOJPyqnODGSMS1wqBoONP7GXzQRPHKoV8byWZT4EeBPI69ODQ=="
+      },
+      "Jint": {
+        "type": "Transitive",
+        "resolved": "5.0.0-preview-2069",
+        "contentHash": "8DaslCRpB93z3DqsjHYed2SzqvwnwTQGcwg50QT55HCoCzjx72EDsfKlHJPV6GvtcrLxcUC4mv10C7USvXutYw==",
+        "dependencies": {
+          "Acornima": "1.8.0"
+        }
+      },
+      "jint.typescript": {
+        "type": "Project",
+        "dependencies": {
+          "Acornima": "[1.8.0, )",
+          "Jint": "[5.0.0-preview-2069, )"
+        }
+      }
+    },
+    "net8.0": {
+      "Acornima": {
+        "type": "Transitive",
+        "resolved": "1.8.0",
+        "contentHash": "ZtcK7lu5LZZH5qDWfeUdBn/WXChWQjGdpB9sSFOJPyqnODGSMS1wqBoONP7GXzQRPHKoV8byWZT4EeBPI69ODQ=="
+      },
+      "Jint": {
+        "type": "Transitive",
+        "resolved": "5.0.0-preview-2069",
+        "contentHash": "8DaslCRpB93z3DqsjHYed2SzqvwnwTQGcwg50QT55HCoCzjx72EDsfKlHJPV6GvtcrLxcUC4mv10C7USvXutYw==",
+        "dependencies": {
+          "Acornima": "1.8.0"
+        }
+      },
+      "jint.typescript": {
+        "type": "Project",
+        "dependencies": {
+          "Acornima": "[1.8.0, )",
+          "Jint": "[5.0.0-preview-2069, )"
+        }
+      }
+    }
+  }
+}

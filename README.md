@@ -4,6 +4,12 @@ Run TypeScript scripts in .NET with Jint. The C# parser is based on [Acornima](h
 
 **Experimental:** supports a growing subset of TypeScript on .NET 8 and .NET 10, using Jint 5 preview packages.
 
+Try the [sample app](samples/Jint.TypeScript.Sample/README.md): order validation, webhook normalization and pricing modules loaded from real TypeScript files.
+
+```powershell
+dotnet run --project samples/Jint.TypeScript.Sample -f net10.0
+```
+
 ## Get started
 
 No package has been published yet. Reference [Jint.TypeScript.csproj](src/Jint.TypeScript/Jint.TypeScript.csproj) from your application and add the Jint preview feed from [NuGet.Config](NuGet.Config) to your NuGet sources.

@@ -12,6 +12,7 @@ Jint.TypeScript parses a supported subset of TypeScript in C#, erases types, and
 | `tests/Jint.TypeScript.Tests/` | xUnit feature, integration, compatibility, location, resource, and allocation tests. |
 | `tests/Jint.TypeScript.Stress/` | Adversarial parser inputs isolated in child processes. |
 | `benchmarks/Jint.TypeScript.Benchmarks/` | Release timing and allocation measurements. |
+| `samples/Jint.TypeScript.Sample/` | Runnable hosting app, TypeScript scripts/modules, JSON inputs and editor typings. |
 | `eng/` | Upstream import/merge tooling, normalized baseline, patch, and reference-fixture generators. |
 | `docs/` | Detailed usage, maintenance procedures, audits, and measured validation/performance evidence. |
 
@@ -37,6 +38,7 @@ Select additional validation according to the change:
 - **Engineering tools or skill:** run the Node tests, upstream reconstruction check, and skill validator below.
 - **Package/API/dependency changes:** also pack the library and verify a consumer using the built package when the public integration or packaging changed.
 - **Documentation only:** verify paths, links, and commands against the repository; a full parser test run is unnecessary.
+- **Sample changes:** run `SampleTests` and the console app on both frameworks; type-check its `tsconfig.json` with the pinned TypeScript tool under `eng/reference-checks`. Sample inputs/scripts must also copy into published output and work independently of the current directory.
 
 ```powershell
 dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-build --no-restore

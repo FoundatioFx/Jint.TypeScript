@@ -1,0 +1,10 @@
+{
+  "id": "ORD-1001",
+  "customer": { "email": "alex@example.com", "tier": "gold" },
+  "destination": "US",
+  "coupon": "SAVE15",
+  "lines": [
+    { "sku": "HEADPHONES", "quantity": 2, "unitPriceCents": 4500 },
+    { "sku": "KEYBOARD", "quantity": 1, "unitPriceCents": 3500 }
+  ]
+}

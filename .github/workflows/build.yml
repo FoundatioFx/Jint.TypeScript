@@ -29,6 +29,7 @@ jobs:
         with:
           node-version: '22.23.2'
       - run: npm ci --ignore-scripts --prefix eng/reference-checks
+      - run: node eng/reference-checks/node_modules/typescript/bin/tsc --project samples/Jint.TypeScript.Sample/tsconfig.json
       - run: node eng/reference-checks/generate.mjs
       - run: git diff --exit-code -- tests/Jint.TypeScript.Tests/Fixtures
   test:
@@ -43,6 +44,8 @@ jobs:
             10.0.x
       - run: dotnet restore Jint.TypeScript.slnx --locked-mode
       - run: dotnet test tests/Jint.TypeScript.Tests -c Release --no-restore
+      - run: dotnet run --project samples/Jint.TypeScript.Sample -c Release -f net8.0 --no-build --no-restore
+      - run: dotnet run --project samples/Jint.TypeScript.Sample -c Release -f net10.0 --no-build --no-restore
       - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net8.0 --no-restore
       - run: dotnet run --project tests/Jint.TypeScript.Stress -c Release -f net10.0 --no-restore
       - run: dotnet pack src/Jint.TypeScript -c Release --no-restore -o artifacts/packages
