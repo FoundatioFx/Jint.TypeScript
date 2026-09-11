@@ -192,6 +192,17 @@ foreach (var count in new[] {1,100,1000})
     var source=string.Join('\n',Enumerable.Range(0,count).Select(i=>$"abstract class C{i}<T> {{abstract f(x:T):T; declare host:Host; value=42; g(x:number):number {{return x+this.value;}}}}"));
     Measure("Owned TS mixed abstract classes",count,source.Length,Math.Max(10,3000/count),()=>compiler.ParseScript(source));
 }
+foreach (var count in new[] {100, 1000, 10000})
+{
+    var accessors = "interface I {" + string.Concat(Enumerable.Repeat("get value():number;set value(v:number);", count)) + "}";
+    var computed = "interface I {" + string.Concat(Enumerable.Repeat("[Symbol.iterator]():Iterator<number>;[key]:number;", count)) + "}";
+    var bindings = "interface I {" + string.Concat(Enumerable.Repeat("f({value:[first,,...rest],...other}:Input):number;", count)) + "}";
+    var functions = "type F=(" + string.Join(',', Enumerable.Repeat("{value}:Input", count)) + ")=>number;";
+    Measure("Owned TS type accessors", count, accessors.Length, 20, () => compiler.ParseScript(accessors));
+    Measure("Owned TS computed type members", count, computed.Length, 20, () => compiler.ParseScript(computed));
+    Measure("Owned TS destructured type members", count, bindings.Length, 20, () => compiler.ParseScript(bindings));
+    Measure("Owned TS destructured function types", count, functions.Length, 20, () => compiler.ParseScript(functions));
+}
 var report = new { utc = DateTimeOffset.UtcNow, runtime = RuntimeInformation.FrameworkDescription,
     jint = typeof(Engine).Assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion,
     acornima = typeof(Acornima.Parser).Assembly.GetCustomAttribute<System.Reflection.AssemblyInformationalVersionAttribute>()?.InformationalVersion,

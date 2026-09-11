@@ -19,7 +19,7 @@ For optional use from outside the repository, `node eng/install-update-skill.mjs
 | `eng/upstream/customizations.json` | Generated inventory of customized upstream files and patch size. |
 | `eng/upstream.json` | Source/package pins. Updating parser source does not automatically change public Acornima or Jint packages. |
 
-The current normalized snapshot has 74 files. Only five retain handwritten changes, totaling 204 added and 82 removed lines (900 patch lines with context). Eleven owned partials contain the public-AST bridge and TypeScript implementation. The previous combined patch had 3,212 lines across 18 files, including whole owned helpers. The reduction measures review/merge surface, not deleted functionality.
+The current normalized snapshot has 74 files. Only five retain handwritten changes, totaling 204 added and 82 removed lines (900 patch lines with context). Twelve owned partials contain the public-AST bridge and TypeScript implementation. The previous combined patch had 3,212 lines across 18 files, including whole owned helpers. The reduction measures review/merge surface, not deleted functionality.
 
 | Remaining upstream file | Why it has handwritten changes |
 | --- | --- |

@@ -79,7 +79,10 @@ Applications that depend on JSDoc typings should keep existing scripts in JavaSc
 | Abstract constructor types | `abstract new (...args: Args) => Instance` |
 | Generic type references | `Promise<Result>`, `Map<string, Array<number>>`, `Result<T,>` |
 | Object types and index signatures | `{ readonly value?: number; [key: string]: number }` |
+| Accessor signatures in interfaces and object types | `{ get value(): number; set value(value: number); }` |
+| Computed type members with named or literal keys | `{ [Symbol.iterator](): Iterator<number>; readonly [key]?: string }` |
 | Function, method, call and construct types | `(x?: number) => string`, `{ f(x: number): string }`, `new () => Result` |
+| Destructured parameters in type signatures | `({value}: Input) => number`, `([first, ...rest]: number[]) => number` |
 | Tuples and intersections | `[first: number, second?: string]`, `[...number[]]`, `A & B` |
 | Optional identifier parameters | `function f(x?: number) {}`, `(x?) => x` |
 | Type aliases and interfaces | `type Id = number`, `interface Shape extends Base { value: Id }` |
@@ -95,7 +98,13 @@ Applications that depend on JSDoc typings should keep existing scripts in JavaSc
 
 Types are erased as grammar is consumed. No type checking, symbol resolution, declaration-file loading, runtime validation, or downlevel JavaScript emission occurs. A named type can come from an editor's external `.d.ts` file; this parser does not need that declaration to execute the script.
 
-Type aliases, interfaces, ambient declarations and bodyless function overloads disappear from statement lists without creating runtime bindings or placeholder statements. Runtime names are registered only for implementations. Class method and constructor signatures likewise disappear, including any computed key evaluation. Implementation matching and overload type consistency are left to the editor or `tsc`. They can occur inside ordinary blocks and functions. Type namespace consistency, redeclaration checks and interface merging are left to the editor or `tsc`. Optional parameters are ordinary identifier bindings; optional rest/destructuring/setter parameters and optional parameters with defaults are rejected.
+Interface/object-type getters and setters describe properties without creating runtime accessors. Getters take no parameters; setters take exactly one, without optional/rest/`this` modifiers or a return annotation. Accessors cannot have type parameters, `readonly`, optional markers or bodies. Ordinary members named `get` or `set` remain valid.
+
+Computed type members support named symbols, qualified names (`Symbol.iterator`), literal keys, and element access such as `Keys["value"]`. They never look up or evaluate their keys. General expressions such as `[makeKey()]`, `[a + b]` and optional chains remain unsupported; assign a key to a named value and reference that name. This applies to properties, methods, accessors and computed keys inside destructured type parameters. Index signatures retain their separate `[name: Type]` grammar.
+
+Function, method, call, construct and setter type signatures support nested object/array parameter patterns, renaming, array holes and rest bindings. These patterns declare no runtime names and create no binding AST nodes. Initializers inside type signatures or their binding patterns are rejected. Runtime function implementations retain their existing destructuring/default-value behavior. Grouped object and tuple types remain distinct from destructured function types.
+
+Type aliases, interfaces, ambient declarations and bodyless function overloads disappear from statement lists without creating runtime bindings or placeholder statements. Runtime names are registered only for implementations. Class method and constructor signatures likewise disappear, including any computed key evaluation. Implementation matching and overload type consistency are left to the editor or `tsc`. They can occur inside ordinary blocks and functions. Type namespace consistency, redeclaration checks and interface merging are left to the editor or `tsc`. In runtime function declarations and implementations, optional parameters are ordinary identifier bindings; optional rest/destructuring/setter parameters and optional parameters with defaults are rejected. Pure function-type signatures also allow optional object/array patterns.
 
 An explicit `this` parameter must be first, typed, and free of optional/rest/default modifiers. It disappears from the runtime parameter list, preserving the receiver, function length, arguments and strict-mode parameter rules. It is supported on functions and ordinary methods; arrows, constructors and accessors remain excluded. Predicates consume types only in return positions and do not check values at runtime.
 
@@ -123,7 +132,7 @@ Type arguments follow TypeScript's expression disambiguation. For example, `f<nu
 
 Use `(f<T>)` when combining a bare instantiation with comparisons or shifts. Ungrouped consecutive forms such as `f<T><U>(x)` remain deliberately unsupported; the reference parsers disagree on some of these boundaries. Generic calls such as `f<T>(x) < g<U>(y)` are supported.
 
-The scope still excludes angle-bracket assertions; ambient classes/namespaces; erased private declarations; escaped type names; JSX/TSX; decorators; enums, namespaces and constructor parameter properties. Object-type accessors/computed keys, destructured function-type parameters and attributes on whole type-only imports or import types remain unsupported. Non-abstract bodyless getter/setter signatures are rejected because TypeScript emits runtime accessors for them. A type query supports a value name or `this`, dotted properties and type arguments. Keep type arguments on the same line as the queried name; parenthesize a generic function type argument, as in `typeof f<(<T>() => T)>`. `asserts` and its parameter must also stay on the same line. Runtime transforms remain a later phase. This is a bounded syntax/erasure implementation, not a type checker or a full validator for every TypeScript production.
+The scope still excludes angle-bracket assertions; ambient classes/namespaces; erased private declarations; escaped type names; JSX/TSX; decorators; enums, namespaces and constructor parameter properties. General expressions in computed type keys, initializers in type-signature patterns, and attributes on whole type-only imports or import types remain unsupported. Non-abstract bodyless class getter/setter signatures are rejected because TypeScript emits runtime accessors for them. A type query supports a value name or `this`, dotted properties and type arguments. Keep type arguments on the same line as the queried name; parenthesize a generic function type argument, as in `typeof f<(<T>() => T)>`. `asserts` and its parameter must also stay on the same line. Runtime transforms remain outside the current scope. This is a bounded syntax/erasure implementation, not a type checker or a full validator for every TypeScript production.
 
 ## Unsupported syntax and enum alternatives
 
@@ -135,6 +144,7 @@ Recognized unsupported declaration forms produce actionable `TypeScriptParseExce
 | `UnsupportedNamespace` | Replace namespaces or ambient module blocks with separate files and ES module imports/exports. |
 | `UnsupportedParameterProperty` | Declare the field separately and assign it explicitly in the constructor. |
 | `UnsupportedAmbientClass` | Describe a host value using an interface and `declare const`, or keep the ambient class in an editor-only `.d.ts` file. |
+| `UnsupportedComputedTypeKey` | Use a named symbol, qualified name or literal key instead of an expression in a type member. |
 | `ModuleSyntaxInScript` | Pass import/export declarations to `ParseModule` or `PrepareModule`. |
 
 For a set of named constants, this supported pattern provides TypeScript completion and a value type:

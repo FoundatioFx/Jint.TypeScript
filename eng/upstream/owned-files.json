@@ -7,6 +7,7 @@
   "Parser.TypeScript.Diagnostics.cs",
   "Parser.TypeScript.Generics.cs",
   "Parser.TypeScript.Signatures.cs",
+  "Parser.TypeScript.TypeMembers.cs",
   "Parser.TypeScript.Types.cs",
   "Parser.TypeScript.cs",
   "Tokenizer.TypeScript.cs"

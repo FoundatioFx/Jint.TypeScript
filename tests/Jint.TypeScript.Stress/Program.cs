@@ -15,7 +15,10 @@ string[] cases = ["deep-types", "raised-type-limit", "deep-syntax", "raised-synt
     "deep-conditionals", "deep-conditional-false", "deep-infer-constraints", "deep-import-types", "deep-const-constraints",
     "many-conditional-types", "many-variant-parameters", "wide-import-type-arguments",
     "deep-abstract-classes", "deep-abstract-constructors", "many-declare-fields", "many-abstract-fields",
-    "many-abstract-methods", "many-abstract-accessors", "many-erased-computed-fields"];
+    "many-abstract-methods", "many-abstract-accessors", "many-erased-computed-fields",
+    "deep-type-binding-arrays", "deep-type-binding-objects", "deep-computed-type-keys", "deep-type-accessors",
+    "raised-type-binding-depth", "raised-computed-type-depth", "many-type-accessors", "many-computed-type-members", "many-type-binding-members",
+    "wide-type-binding", "long-computed-type-key", "deep-type-binding-lookahead"];
 if (args.Length == 1)
 {
     Run(args[0]);
@@ -50,6 +53,49 @@ static void Run(string name)
     var compiler = new TypeScriptCompiler();
     switch (name)
     {
+        case "deep-type-binding-lookahead":
+            Expect("TypeDepthLimit", () => new TypeScriptCompiler(new() {MaxTypeDepth=4096}).ParseScript(
+                "type F=("+new string('[',30000)+"value"));
+            break;
+        case "deep-type-binding-arrays":
+        case "deep-type-binding-objects":
+        case "raised-type-binding-depth":
+            var bindingPrefix = name == "deep-type-binding-objects" ? "{value:" : "[";
+            var bindingCompiler = name == "raised-type-binding-depth" ? new TypeScriptCompiler(new() {MaxTypeDepth=100000}) : compiler;
+            // The method form enters the actual binding parser without arrow lookahead.
+            Expect("TypeDepthLimit", () => bindingCompiler.ParseScript("interface I {f("+
+                string.Concat(Enumerable.Repeat(bindingPrefix,name == "raised-type-binding-depth" ? 110000 : 30000))+"value"));
+            break;
+        case "deep-computed-type-keys":
+        case "raised-computed-type-depth":
+            var computedCompiler = name == "raised-computed-type-depth" ? new TypeScriptCompiler(new() {MaxTypeDepth=100000}) : compiler;
+            Expect("TypeDepthLimit", () => computedCompiler.ParseScript(
+                "interface I {[key"+string.Concat(Enumerable.Repeat("[key",name == "raised-computed-type-depth" ? 110000 : 30000))+"]:number;}"));
+            break;
+        case "deep-type-accessors":
+            Expect("TypeDepthLimit", () => compiler.ParseScript("type T="+
+                string.Concat(Enumerable.Repeat("{get value():",30000))+"number;"));
+            break;
+        case "many-type-accessors":
+        case "many-computed-type-members":
+        case "many-type-binding-members":
+            var member = name switch
+            {
+                "many-type-accessors" => "get value():number;set value(v:number);",
+                "many-computed-type-members" => "[Symbol.iterator]():Iterator<number>;[key]:number;",
+                _ => "f({value:[first,,...rest],...other}:Input):number;"
+            };
+            new TypeScriptCompiler(new() {MaxNodeCount=1}).ParseScript("interface I {"+
+                string.Concat(Enumerable.Repeat(member,12000))+"}");
+            break;
+        case "wide-type-binding":
+            new TypeScriptCompiler(new() {MaxNodeCount=1}).ParseScript("type F=({"+
+                string.Join(',',Enumerable.Repeat("value",30000))+"}:Input)=>number;");
+            break;
+        case "long-computed-type-key":
+            new TypeScriptCompiler(new() {MaxNodeCount=1}).ParseScript("interface I {[key"+
+                string.Concat(Enumerable.Repeat(".value",30000))+"]:number;}");
+            break;
         case "deep-abstract-classes":
             Expect("SyntaxDepthLimit", () => compiler.ParseScript(string.Concat(Enumerable.Repeat("abstract class C { f() {",10000))+"42;"));
             break;

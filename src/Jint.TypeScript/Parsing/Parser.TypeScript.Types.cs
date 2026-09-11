@@ -28,8 +28,15 @@ internal sealed partial class Parser
             probe.Next();
             probe.Next();
             if (probe._tokenizer._type == TokenType.ParenRight || probe._tokenizer._type == TokenType.Ellipsis) return true;
-            if (probe._tokenizer._type != TokenType.Name && probe._tokenizer._type != TokenType.This) return false;
-            probe.Next();
+            if (probe._tokenizer._type == TokenType.BraceLeft || probe._tokenizer._type == TokenType.BracketLeft)
+            {
+                if (!probe.SkipTypeBindingLookahead()) return false;
+            }
+            else
+            {
+                if (probe._tokenizer._type != TokenType.Name && probe._tokenizer._type != TokenType.This) return false;
+                probe.Next();
+            }
             if (probe._tokenizer._type == TokenType.Colon || probe._tokenizer._type == TokenType.Question
                 || probe._tokenizer._type == TokenType.Comma) return true;
             if (probe._tokenizer._type != TokenType.ParenRight) return false;
@@ -39,29 +46,47 @@ internal sealed partial class Parser
         finally { _tokenCount = probe._tokenCount; }
     }
 
-    private void ParseTypeSignature(TokenType returnDelimiter, bool requireReturnType, bool allowConditional = true)
+    private void ParseTypeSignature(TokenType returnDelimiter, bool requireReturnType, bool allowConditional = true,
+        TypeAccessorKind accessor = TypeAccessorKind.None)
     {
+        if (accessor != TypeAccessorKind.None && IsTypeOperator("<"))
+            TypeScriptError("InvalidTypeAccessor", "An accessor cannot have type parameters");
         ParseTypeParameters();
         Expect(TokenType.ParenLeft);
         var first = true;
+        var parameterCount = 0;
         while (!Eat(TokenType.ParenRight))
         {
+            parameterCount++;
+            if (accessor == TypeAccessorKind.Get || (accessor == TypeAccessorKind.Set && parameterCount > 1))
+                TypeScriptError("InvalidTypeAccessor", "A getter requires no parameters and a setter requires exactly one");
             var rest = Eat(TokenType.Ellipsis);
             var isThis = _tokenizer._type == TokenType.This;
+            if (accessor != TypeAccessorKind.None && (rest || isThis))
+                TypeScriptError("InvalidTypeAccessor", "An accessor cannot declare a rest or 'this' parameter");
             if (isThis)
             {
                 if (!first || rest) TypeScriptError("InvalidThisParameter", "A 'this' parameter must be first");
                 Next();
             }
-            else ReadTypeIdentifier();
+            else ParseTypeBinding();
             var optional = Eat(TokenType.Question);
-            if (optional && (rest || isThis)) TypeScriptError("InvalidOptionalParameter", "This parameter cannot be optional");
+            if (optional && (rest || isThis || accessor == TypeAccessorKind.Set))
+                TypeScriptError("InvalidOptionalParameter", "This parameter cannot be optional");
             if (Eat(TokenType.Colon)) ParseType();
             else if (isThis) TypeScriptError("ExpectedTypeAnnotation", "A 'this' parameter requires a type");
+            if (_tokenizer._type == TokenType.Eq)
+                TypeScriptError("SignatureInitializer", "A type signature parameter cannot have an initializer");
             if (Eat(TokenType.ParenRight)) break;
             if (rest) TypeScriptError("ParameterAfterRest", "A rest parameter must be last and cannot have a trailing comma");
             Expect(TokenType.Comma);
             first = false;
+        }
+        if (accessor == TypeAccessorKind.Set)
+        {
+            if (parameterCount != 1 || _tokenizer._type == returnDelimiter)
+                TypeScriptError("InvalidTypeAccessor", "A setter requires exactly one parameter and cannot have a return type");
+            return;
         }
         if (Eat(returnDelimiter)) ParseReturnType(allowConditional);
         else if (requireReturnType) TypeScriptError("ExpectedReturnType", "Expected a function return type");
@@ -132,29 +157,32 @@ internal sealed partial class Parser
                 if (readOnly) TypeScriptError("InvalidReadonly", "A call signature cannot be readonly");
                 ParseTypeSignature(TokenType.Colon, requireReturnType: false);
             }
-            else if (Eat(TokenType.BracketLeft))
-            {
-                ReadTypeIdentifier();
-                // Computed runtime keys are not index signatures.
-                Expect(TokenType.Colon);
-                ParseType();
-                Expect(TokenType.BracketRight);
-                Expect(TokenType.Colon);
-                ParseType();
-            }
             else
             {
-                if (_tokenizer._containsEscape || (_tokenizer._type != TokenType.Name && _tokenizer._type.Keyword is null
-                    && _tokenizer._type != TokenType.String && _tokenizer._type != TokenType.Number))
-                    TypeScriptError("UnsupportedTypeMember", "Expected a property, method or index signature");
-                Next(ignoreEscapeSequenceInKeyword: true);
-                Eat(TokenType.Question);
-                if (_tokenizer._type == TokenType.ParenLeft || IsTypeOperator("<"))
+                var accessor = TypeAccessorKind.None;
+                if (IsTypeAccessorStart())
                 {
-                    if (readOnly) TypeScriptError("InvalidReadonly", "A method or construct signature cannot be readonly");
-                    ParseTypeSignature(TokenType.Colon, requireReturnType: false);
+                    accessor = IsContextual("get") ? TypeAccessorKind.Get : TypeAccessorKind.Set;
+                    if (readOnly) TypeScriptError("InvalidReadonly", "An accessor cannot be readonly");
+                    Next();
                 }
-                else if (Eat(TokenType.Colon)) ParseType();
+                var indexSignature = false;
+                if (_tokenizer._type == TokenType.BracketLeft)
+                    indexSignature = ParseTypeComputedName(allowIndexSignature: accessor == TypeAccessorKind.None);
+                else ParseTypeMemberName();
+                if (!indexSignature)
+                {
+                    if (Eat(TokenType.Question) && accessor != TypeAccessorKind.None)
+                        TypeScriptError("InvalidTypeAccessor", "An accessor cannot be optional");
+                    if (_tokenizer._type == TokenType.ParenLeft || IsTypeOperator("<"))
+                    {
+                        if (readOnly) TypeScriptError("InvalidReadonly", "A method or construct signature cannot be readonly");
+                        ParseTypeSignature(TokenType.Colon, requireReturnType: false, accessor: accessor);
+                    }
+                    else if (accessor != TypeAccessorKind.None)
+                        TypeScriptError("InvalidTypeAccessor", "Expected an accessor signature");
+                    else if (Eat(TokenType.Colon)) ParseType();
+                }
                 // `new: T` is a property; `new(...): T` is a construct signature.
                 // Both are erased, so no separate runtime representation is needed.
             }

@@ -1,0 +1,81 @@
+{
+  "utc": "2026-09-11T00:02:28.0703003+00:00",
+  "runtime": ".NET 10.0.12",
+  "iterations": 100,
+  "batches": 17,
+  "baseline": "05da10bc50617be917b00a09ea281926c35b3361",
+  "results": [
+    {
+      "name": "readonly interface",
+      "units": 1000,
+      "beforeUs": 276.652,
+      "afterUs": 276.855,
+      "percent": 0.07,
+      "beforeBytes": 2240,
+      "afterBytes": 2240
+    },
+    {
+      "name": "method signatures",
+      "units": 1000,
+      "beforeUs": 287.438,
+      "afterUs": 294.831,
+      "percent": 2.57,
+      "beforeBytes": 2144,
+      "afterBytes": 2144
+    },
+    {
+      "name": "tuple control",
+      "units": 1000,
+      "beforeUs": 149.255,
+      "afterUs": 148.553,
+      "percent": -0.47,
+      "beforeBytes": 2184,
+      "afterBytes": 2184
+    },
+    {
+      "name": "index signatures",
+      "units": 1000,
+      "beforeUs": 236.11,
+      "afterUs": 238.839,
+      "percent": 1.16,
+      "beforeBytes": 2200,
+      "afterBytes": 2200
+    },
+    {
+      "name": "grouped object types",
+      "units": 1000,
+      "beforeUs": 311.674,
+      "afterUs": 469.346,
+      "percent": 50.59,
+      "beforeBytes": 2144,
+      "afterBytes": 2184
+    },
+    {
+      "name": "ordinary JS",
+      "units": 1000,
+      "beforeUs": 830.478,
+      "afterUs": 848.553,
+      "percent": 2.18,
+      "beforeBytes": 1077752,
+      "afterBytes": 1077752
+    },
+    {
+      "name": "typed functions",
+      "units": 1000,
+      "beforeUs": 1024.001,
+      "afterUs": 1050.763,
+      "percent": 2.61,
+      "beforeBytes": 1077792,
+      "afterBytes": 1077792
+    },
+    {
+      "name": "erased computed fields control",
+      "units": 1000,
+      "beforeUs": 477.607,
+      "afterUs": 480.84,
+      "percent": 0.68,
+      "beforeBytes": 170720,
+      "afterBytes": 170720
+    }
+  ]
+}

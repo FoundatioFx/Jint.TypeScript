@@ -11,6 +11,7 @@ import { genericsCases } from './generics-cases.mjs';
 import { signatureCases } from './signature-cases.mjs';
 import { typeSyntaxCases } from './type-syntax-cases.mjs';
 import { classErasureCases } from './class-erasure-cases.mjs';
+import { typeMemberCases } from './type-member-cases.mjs';
 
 // Development only. Babel checks the selected syntax; current tsc supplies an
 // independent JS emission oracle. Committed fixtures run without Node/npm/tsc.
@@ -66,6 +67,9 @@ hardening.invalid.push(...typeSyntax.invalid);
 const classErasure = classErasureCases(parse);
 cases.push(...classErasure.cases);
 hardening.invalid.push(...classErasure.invalid);
+const typeMembers = typeMemberCases(parse);
+cases.push(...typeMembers.cases);
+hardening.invalid.push(...typeMembers.invalid);
 try {
   mkdirSync(join(temporary, 'input'));
   for (const test of cases) {

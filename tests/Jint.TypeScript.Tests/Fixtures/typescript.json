@@ -27704,6 +27704,1721 @@
       "source": "export default class C {declare value:number; answer=42;}",
       "module": true,
       "javascript": "export default class C {\n    answer = 42;\n}\n"
+    },
+    {
+      "name": "type-member-accessor-0-0",
+      "source": "\"use strict\";\ninterface I<T> {get value(): number; set value(value: number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-0-0",
+      "source": "\"use strict\";\nconst f=(x): {get value(): number; set value(value: number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-0-1",
+      "source": "\"use strict\";\ninterface I<T> {get value(): readonly T[]; set value(value: readonly T[]);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-0-1",
+      "source": "\"use strict\";\nconst f=(x): {get value(): readonly T[]; set value(value: readonly T[]);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-0-2",
+      "source": "\"use strict\";\ninterface I<T> {get value(): T extends infer U ? U : never; set value(value: T extends infer U ? U : never);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-0-2",
+      "source": "\"use strict\";\nconst f=(x): {get value(): T extends infer U ? U : never; set value(value: T extends infer U ? U : never);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-0-3",
+      "source": "\"use strict\";\ninterface I<T> {get value(): import(\"missing\").Shape<T>; set value(value: import(\"missing\").Shape<T>);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-0-3",
+      "source": "\"use strict\";\nconst f=(x): {get value(): import(\"missing\").Shape<T>; set value(value: import(\"missing\").Shape<T>);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-0-4",
+      "source": "\"use strict\";\ninterface I<T> {get value(): ({value}: Input) => number; set value(value: ({value}: Input) => number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-0-4",
+      "source": "\"use strict\";\nconst f=(x): {get value(): ({value}: Input) => number; set value(value: ({value}: Input) => number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-0-5",
+      "source": "\"use strict\";\ninterface I<T> {get value(): {[Symbol.iterator](): Iterator<T>}; set value(value: {[Symbol.iterator](): Iterator<T>});} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-0-5",
+      "source": "\"use strict\";\nconst f=(x): {get value(): {[Symbol.iterator](): Iterator<T>}; set value(value: {[Symbol.iterator](): Iterator<T>});} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-1-0",
+      "source": "\"use strict\";\ninterface I<T> {get \"value\"(): number; set \"value\"(value: number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-1-0",
+      "source": "\"use strict\";\nconst f=(x): {get \"value\"(): number; set \"value\"(value: number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-1-1",
+      "source": "\"use strict\";\ninterface I<T> {get \"value\"(): readonly T[]; set \"value\"(value: readonly T[]);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-1-1",
+      "source": "\"use strict\";\nconst f=(x): {get \"value\"(): readonly T[]; set \"value\"(value: readonly T[]);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-1-2",
+      "source": "\"use strict\";\ninterface I<T> {get \"value\"(): T extends infer U ? U : never; set \"value\"(value: T extends infer U ? U : never);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-1-2",
+      "source": "\"use strict\";\nconst f=(x): {get \"value\"(): T extends infer U ? U : never; set \"value\"(value: T extends infer U ? U : never);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-1-3",
+      "source": "\"use strict\";\ninterface I<T> {get \"value\"(): import(\"missing\").Shape<T>; set \"value\"(value: import(\"missing\").Shape<T>);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-1-3",
+      "source": "\"use strict\";\nconst f=(x): {get \"value\"(): import(\"missing\").Shape<T>; set \"value\"(value: import(\"missing\").Shape<T>);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-1-4",
+      "source": "\"use strict\";\ninterface I<T> {get \"value\"(): ({value}: Input) => number; set \"value\"(value: ({value}: Input) => number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-1-4",
+      "source": "\"use strict\";\nconst f=(x): {get \"value\"(): ({value}: Input) => number; set \"value\"(value: ({value}: Input) => number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-1-5",
+      "source": "\"use strict\";\ninterface I<T> {get \"value\"(): {[Symbol.iterator](): Iterator<T>}; set \"value\"(value: {[Symbol.iterator](): Iterator<T>});} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-1-5",
+      "source": "\"use strict\";\nconst f=(x): {get \"value\"(): {[Symbol.iterator](): Iterator<T>}; set \"value\"(value: {[Symbol.iterator](): Iterator<T>});} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-2-0",
+      "source": "\"use strict\";\ninterface I<T> {get 42(): number; set 42(value: number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-2-0",
+      "source": "\"use strict\";\nconst f=(x): {get 42(): number; set 42(value: number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-2-1",
+      "source": "\"use strict\";\ninterface I<T> {get 42(): readonly T[]; set 42(value: readonly T[]);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-2-1",
+      "source": "\"use strict\";\nconst f=(x): {get 42(): readonly T[]; set 42(value: readonly T[]);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-2-2",
+      "source": "\"use strict\";\ninterface I<T> {get 42(): T extends infer U ? U : never; set 42(value: T extends infer U ? U : never);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-2-2",
+      "source": "\"use strict\";\nconst f=(x): {get 42(): T extends infer U ? U : never; set 42(value: T extends infer U ? U : never);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-2-3",
+      "source": "\"use strict\";\ninterface I<T> {get 42(): import(\"missing\").Shape<T>; set 42(value: import(\"missing\").Shape<T>);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-2-3",
+      "source": "\"use strict\";\nconst f=(x): {get 42(): import(\"missing\").Shape<T>; set 42(value: import(\"missing\").Shape<T>);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-2-4",
+      "source": "\"use strict\";\ninterface I<T> {get 42(): ({value}: Input) => number; set 42(value: ({value}: Input) => number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-2-4",
+      "source": "\"use strict\";\nconst f=(x): {get 42(): ({value}: Input) => number; set 42(value: ({value}: Input) => number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-2-5",
+      "source": "\"use strict\";\ninterface I<T> {get 42(): {[Symbol.iterator](): Iterator<T>}; set 42(value: {[Symbol.iterator](): Iterator<T>});} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-2-5",
+      "source": "\"use strict\";\nconst f=(x): {get 42(): {[Symbol.iterator](): Iterator<T>}; set 42(value: {[Symbol.iterator](): Iterator<T>});} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-3-0",
+      "source": "\"use strict\";\ninterface I<T> {get [key](): number; set [key](value: number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-3-0",
+      "source": "\"use strict\";\nconst f=(x): {get [key](): number; set [key](value: number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-3-1",
+      "source": "\"use strict\";\ninterface I<T> {get [key](): readonly T[]; set [key](value: readonly T[]);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-3-1",
+      "source": "\"use strict\";\nconst f=(x): {get [key](): readonly T[]; set [key](value: readonly T[]);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-3-2",
+      "source": "\"use strict\";\ninterface I<T> {get [key](): T extends infer U ? U : never; set [key](value: T extends infer U ? U : never);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-3-2",
+      "source": "\"use strict\";\nconst f=(x): {get [key](): T extends infer U ? U : never; set [key](value: T extends infer U ? U : never);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-3-3",
+      "source": "\"use strict\";\ninterface I<T> {get [key](): import(\"missing\").Shape<T>; set [key](value: import(\"missing\").Shape<T>);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-3-3",
+      "source": "\"use strict\";\nconst f=(x): {get [key](): import(\"missing\").Shape<T>; set [key](value: import(\"missing\").Shape<T>);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-3-4",
+      "source": "\"use strict\";\ninterface I<T> {get [key](): ({value}: Input) => number; set [key](value: ({value}: Input) => number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-3-4",
+      "source": "\"use strict\";\nconst f=(x): {get [key](): ({value}: Input) => number; set [key](value: ({value}: Input) => number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-3-5",
+      "source": "\"use strict\";\ninterface I<T> {get [key](): {[Symbol.iterator](): Iterator<T>}; set [key](value: {[Symbol.iterator](): Iterator<T>});} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-3-5",
+      "source": "\"use strict\";\nconst f=(x): {get [key](): {[Symbol.iterator](): Iterator<T>}; set [key](value: {[Symbol.iterator](): Iterator<T>});} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-4-0",
+      "source": "\"use strict\";\ninterface I<T> {get [Symbol.iterator](): number; set [Symbol.iterator](value: number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-4-0",
+      "source": "\"use strict\";\nconst f=(x): {get [Symbol.iterator](): number; set [Symbol.iterator](value: number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-4-1",
+      "source": "\"use strict\";\ninterface I<T> {get [Symbol.iterator](): readonly T[]; set [Symbol.iterator](value: readonly T[]);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-4-1",
+      "source": "\"use strict\";\nconst f=(x): {get [Symbol.iterator](): readonly T[]; set [Symbol.iterator](value: readonly T[]);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-4-2",
+      "source": "\"use strict\";\ninterface I<T> {get [Symbol.iterator](): T extends infer U ? U : never; set [Symbol.iterator](value: T extends infer U ? U : never);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-4-2",
+      "source": "\"use strict\";\nconst f=(x): {get [Symbol.iterator](): T extends infer U ? U : never; set [Symbol.iterator](value: T extends infer U ? U : never);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-4-3",
+      "source": "\"use strict\";\ninterface I<T> {get [Symbol.iterator](): import(\"missing\").Shape<T>; set [Symbol.iterator](value: import(\"missing\").Shape<T>);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-4-3",
+      "source": "\"use strict\";\nconst f=(x): {get [Symbol.iterator](): import(\"missing\").Shape<T>; set [Symbol.iterator](value: import(\"missing\").Shape<T>);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-4-4",
+      "source": "\"use strict\";\ninterface I<T> {get [Symbol.iterator](): ({value}: Input) => number; set [Symbol.iterator](value: ({value}: Input) => number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-4-4",
+      "source": "\"use strict\";\nconst f=(x): {get [Symbol.iterator](): ({value}: Input) => number; set [Symbol.iterator](value: ({value}: Input) => number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-4-5",
+      "source": "\"use strict\";\ninterface I<T> {get [Symbol.iterator](): {[Symbol.iterator](): Iterator<T>}; set [Symbol.iterator](value: {[Symbol.iterator](): Iterator<T>});} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-4-5",
+      "source": "\"use strict\";\nconst f=(x): {get [Symbol.iterator](): {[Symbol.iterator](): Iterator<T>}; set [Symbol.iterator](value: {[Symbol.iterator](): Iterator<T>});} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-5-0",
+      "source": "\"use strict\";\ninterface I<T> {get [Keys[\"value\"]](): number; set [Keys[\"value\"]](value: number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-5-0",
+      "source": "\"use strict\";\nconst f=(x): {get [Keys[\"value\"]](): number; set [Keys[\"value\"]](value: number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-5-1",
+      "source": "\"use strict\";\ninterface I<T> {get [Keys[\"value\"]](): readonly T[]; set [Keys[\"value\"]](value: readonly T[]);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-5-1",
+      "source": "\"use strict\";\nconst f=(x): {get [Keys[\"value\"]](): readonly T[]; set [Keys[\"value\"]](value: readonly T[]);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-5-2",
+      "source": "\"use strict\";\ninterface I<T> {get [Keys[\"value\"]](): T extends infer U ? U : never; set [Keys[\"value\"]](value: T extends infer U ? U : never);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-5-2",
+      "source": "\"use strict\";\nconst f=(x): {get [Keys[\"value\"]](): T extends infer U ? U : never; set [Keys[\"value\"]](value: T extends infer U ? U : never);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-5-3",
+      "source": "\"use strict\";\ninterface I<T> {get [Keys[\"value\"]](): import(\"missing\").Shape<T>; set [Keys[\"value\"]](value: import(\"missing\").Shape<T>);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-5-3",
+      "source": "\"use strict\";\nconst f=(x): {get [Keys[\"value\"]](): import(\"missing\").Shape<T>; set [Keys[\"value\"]](value: import(\"missing\").Shape<T>);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-5-4",
+      "source": "\"use strict\";\ninterface I<T> {get [Keys[\"value\"]](): ({value}: Input) => number; set [Keys[\"value\"]](value: ({value}: Input) => number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-5-4",
+      "source": "\"use strict\";\nconst f=(x): {get [Keys[\"value\"]](): ({value}: Input) => number; set [Keys[\"value\"]](value: ({value}: Input) => number);} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-accessor-5-5",
+      "source": "\"use strict\";\ninterface I<T> {get [Keys[\"value\"]](): {[Symbol.iterator](): Iterator<T>}; set [Keys[\"value\"]](value: {[Symbol.iterator](): Iterator<T>});} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-object-5-5",
+      "source": "\"use strict\";\nconst f=(x): {get [Keys[\"value\"]](): {[Symbol.iterator](): Iterator<T>}; set [Keys[\"value\"]](value: {[Symbol.iterator](): Iterator<T>});} => x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-computed-0-0",
+      "source": "\"use strict\";\ninterface I {[key]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-0-1",
+      "source": "\"use strict\";\ninterface I {readonly [key]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-0-2",
+      "source": "\"use strict\";\ninterface I {[key]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-0-3",
+      "source": "\"use strict\";\ninterface I {[key]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-1-0",
+      "source": "\"use strict\";\ninterface I {[Symbol.iterator]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-1-1",
+      "source": "\"use strict\";\ninterface I {readonly [Symbol.iterator]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-1-2",
+      "source": "\"use strict\";\ninterface I {[Symbol.iterator]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-1-3",
+      "source": "\"use strict\";\ninterface I {[Symbol.iterator]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-2-0",
+      "source": "\"use strict\";\ninterface I {[Keys.default]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-2-1",
+      "source": "\"use strict\";\ninterface I {readonly [Keys.default]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-2-2",
+      "source": "\"use strict\";\ninterface I {[Keys.default]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-2-3",
+      "source": "\"use strict\";\ninterface I {[Keys.default]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-3-0",
+      "source": "\"use strict\";\ninterface I {[Keys[other.key]]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-3-1",
+      "source": "\"use strict\";\ninterface I {readonly [Keys[other.key]]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-3-2",
+      "source": "\"use strict\";\ninterface I {[Keys[other.key]]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-3-3",
+      "source": "\"use strict\";\ninterface I {[Keys[other.key]]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-4-0",
+      "source": "\"use strict\";\ninterface I {[this.key]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-4-1",
+      "source": "\"use strict\";\ninterface I {readonly [this.key]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-4-2",
+      "source": "\"use strict\";\ninterface I {[this.key]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-4-3",
+      "source": "\"use strict\";\ninterface I {[this.key]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-5-0",
+      "source": "\"use strict\";\ninterface I {[\"value\"]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-5-1",
+      "source": "\"use strict\";\ninterface I {readonly [\"value\"]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-5-2",
+      "source": "\"use strict\";\ninterface I {[\"value\"]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-5-3",
+      "source": "\"use strict\";\ninterface I {[\"value\"]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-6-0",
+      "source": "\"use strict\";\ninterface I {[42]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-6-1",
+      "source": "\"use strict\";\ninterface I {readonly [42]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-6-2",
+      "source": "\"use strict\";\ninterface I {[42]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-6-3",
+      "source": "\"use strict\";\ninterface I {[42]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-7-0",
+      "source": "\"use strict\";\ninterface I {[-1]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-7-1",
+      "source": "\"use strict\";\ninterface I {readonly [-1]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-7-2",
+      "source": "\"use strict\";\ninterface I {[-1]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-7-3",
+      "source": "\"use strict\";\ninterface I {[-1]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-8-0",
+      "source": "\"use strict\";\ninterface I {[1n]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-8-1",
+      "source": "\"use strict\";\ninterface I {readonly [1n]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-8-2",
+      "source": "\"use strict\";\ninterface I {[1n]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-8-3",
+      "source": "\"use strict\";\ninterface I {[1n]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-9-0",
+      "source": "\"use strict\";\ninterface I {[-1n]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-9-1",
+      "source": "\"use strict\";\ninterface I {readonly [-1n]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-9-2",
+      "source": "\"use strict\";\ninterface I {[-1n]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-9-3",
+      "source": "\"use strict\";\ninterface I {[-1n]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-10-0",
+      "source": "\"use strict\";\ninterface I {[true]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-10-1",
+      "source": "\"use strict\";\ninterface I {readonly [true]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-10-2",
+      "source": "\"use strict\";\ninterface I {[true]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-10-3",
+      "source": "\"use strict\";\ninterface I {[true]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-11-0",
+      "source": "\"use strict\";\ninterface I {[null]: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-11-1",
+      "source": "\"use strict\";\ninterface I {readonly [null]?: number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-11-2",
+      "source": "\"use strict\";\ninterface I {[null]<T>({value}: {value:T}): T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-computed-11-3",
+      "source": "\"use strict\";\ninterface I {[null]?([value]: [number]): number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-0",
+      "source": "\"use strict\";\ntype F=({value}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {value}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-2",
+      "source": "\"use strict\";\ntype F=new ({value}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-3",
+      "source": "\"use strict\";\ntype F=abstract new ({value}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-4",
+      "source": "\"use strict\";\ninterface I {f({value}:Input):number; ({value}:Input):number; new ({value}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-5",
+      "source": "\"use strict\";\ntype T={set value({value}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-6",
+      "source": "\"use strict\";\nconst f=(x):({value}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-0-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({value}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-0-8",
+      "source": "\"use strict\";\ntype T=X extends ({value}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-9",
+      "source": "\"use strict\";\ntype T=({value}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-0-10",
+      "source": "\"use strict\";\ntype T=(...{value}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-0",
+      "source": "\"use strict\";\ntype F=([value]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, [value]:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-2",
+      "source": "\"use strict\";\ntype F=new ([value]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-3",
+      "source": "\"use strict\";\ntype F=abstract new ([value]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-4",
+      "source": "\"use strict\";\ninterface I {f([value]:Input):number; ([value]:Input):number; new ([value]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-5",
+      "source": "\"use strict\";\ntype T={set value([value]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-6",
+      "source": "\"use strict\";\nconst f=(x):([value]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-1-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([value]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-1-8",
+      "source": "\"use strict\";\ntype T=X extends ([value]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-9",
+      "source": "\"use strict\";\ntype T=([value]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-1-10",
+      "source": "\"use strict\";\ntype T=(...[value]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-0",
+      "source": "\"use strict\";\ntype F=({}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-2",
+      "source": "\"use strict\";\ntype F=new ({}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-3",
+      "source": "\"use strict\";\ntype F=abstract new ({}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-4",
+      "source": "\"use strict\";\ninterface I {f({}:Input):number; ({}:Input):number; new ({}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-5",
+      "source": "\"use strict\";\ntype T={set value({}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-6",
+      "source": "\"use strict\";\nconst f=(x):({}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-2-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-2-8",
+      "source": "\"use strict\";\ntype T=X extends ({}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-9",
+      "source": "\"use strict\";\ntype T=({}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-2-10",
+      "source": "\"use strict\";\ntype T=(...{}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-0",
+      "source": "\"use strict\";\ntype F=([]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, []:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-2",
+      "source": "\"use strict\";\ntype F=new ([]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-3",
+      "source": "\"use strict\";\ntype F=abstract new ([]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-4",
+      "source": "\"use strict\";\ninterface I {f([]:Input):number; ([]:Input):number; new ([]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-5",
+      "source": "\"use strict\";\ntype T={set value([]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-6",
+      "source": "\"use strict\";\nconst f=(x):([]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-3-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-3-8",
+      "source": "\"use strict\";\ntype T=X extends ([]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-9",
+      "source": "\"use strict\";\ntype T=([]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-3-10",
+      "source": "\"use strict\";\ntype T=(...[]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-0",
+      "source": "\"use strict\";\ntype F=({value: renamed}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {value: renamed}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-2",
+      "source": "\"use strict\";\ntype F=new ({value: renamed}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-3",
+      "source": "\"use strict\";\ntype F=abstract new ({value: renamed}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-4",
+      "source": "\"use strict\";\ninterface I {f({value: renamed}:Input):number; ({value: renamed}:Input):number; new ({value: renamed}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-5",
+      "source": "\"use strict\";\ntype T={set value({value: renamed}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-6",
+      "source": "\"use strict\";\nconst f=(x):({value: renamed}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-4-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({value: renamed}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-4-8",
+      "source": "\"use strict\";\ntype T=X extends ({value: renamed}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-9",
+      "source": "\"use strict\";\ntype T=({value: renamed}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-4-10",
+      "source": "\"use strict\";\ntype T=(...{value: renamed}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-0",
+      "source": "\"use strict\";\ntype F=({default: renamed, if: other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {default: renamed, if: other}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-2",
+      "source": "\"use strict\";\ntype F=new ({default: renamed, if: other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-3",
+      "source": "\"use strict\";\ntype F=abstract new ({default: renamed, if: other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-4",
+      "source": "\"use strict\";\ninterface I {f({default: renamed, if: other}:Input):number; ({default: renamed, if: other}:Input):number; new ({default: renamed, if: other}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-5",
+      "source": "\"use strict\";\ntype T={set value({default: renamed, if: other}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-6",
+      "source": "\"use strict\";\nconst f=(x):({default: renamed, if: other}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-5-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({default: renamed, if: other}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-5-8",
+      "source": "\"use strict\";\ntype T=X extends ({default: renamed, if: other}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-9",
+      "source": "\"use strict\";\ntype T=({default: renamed, if: other}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-5-10",
+      "source": "\"use strict\";\ntype T=(...{default: renamed, if: other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-0",
+      "source": "\"use strict\";\ntype F=({\"value\": renamed, 42: other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {\"value\": renamed, 42: other}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-2",
+      "source": "\"use strict\";\ntype F=new ({\"value\": renamed, 42: other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-3",
+      "source": "\"use strict\";\ntype F=abstract new ({\"value\": renamed, 42: other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-4",
+      "source": "\"use strict\";\ninterface I {f({\"value\": renamed, 42: other}:Input):number; ({\"value\": renamed, 42: other}:Input):number; new ({\"value\": renamed, 42: other}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-5",
+      "source": "\"use strict\";\ntype T={set value({\"value\": renamed, 42: other}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-6",
+      "source": "\"use strict\";\nconst f=(x):({\"value\": renamed, 42: other}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-6-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({\"value\": renamed, 42: other}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-6-8",
+      "source": "\"use strict\";\ntype T=X extends ({\"value\": renamed, 42: other}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-9",
+      "source": "\"use strict\";\ntype T=({\"value\": renamed, 42: other}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-6-10",
+      "source": "\"use strict\";\ntype T=(...{\"value\": renamed, 42: other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-0",
+      "source": "\"use strict\";\ntype F=({[key]: value, [Keys.value]: other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {[key]: value, [Keys.value]: other}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-2",
+      "source": "\"use strict\";\ntype F=new ({[key]: value, [Keys.value]: other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-3",
+      "source": "\"use strict\";\ntype F=abstract new ({[key]: value, [Keys.value]: other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-4",
+      "source": "\"use strict\";\ninterface I {f({[key]: value, [Keys.value]: other}:Input):number; ({[key]: value, [Keys.value]: other}:Input):number; new ({[key]: value, [Keys.value]: other}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-5",
+      "source": "\"use strict\";\ntype T={set value({[key]: value, [Keys.value]: other}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-6",
+      "source": "\"use strict\";\nconst f=(x):({[key]: value, [Keys.value]: other}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-7-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({[key]: value, [Keys.value]: other}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-7-8",
+      "source": "\"use strict\";\ntype T=X extends ({[key]: value, [Keys.value]: other}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-9",
+      "source": "\"use strict\";\ntype T=({[key]: value, [Keys.value]: other}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-7-10",
+      "source": "\"use strict\";\ntype T=(...{[key]: value, [Keys.value]: other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-0",
+      "source": "\"use strict\";\ntype F=({value: {nested: [first,,...rest]}, ...other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {value: {nested: [first,,...rest]}, ...other}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-2",
+      "source": "\"use strict\";\ntype F=new ({value: {nested: [first,,...rest]}, ...other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-3",
+      "source": "\"use strict\";\ntype F=abstract new ({value: {nested: [first,,...rest]}, ...other}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-4",
+      "source": "\"use strict\";\ninterface I {f({value: {nested: [first,,...rest]}, ...other}:Input):number; ({value: {nested: [first,,...rest]}, ...other}:Input):number; new ({value: {nested: [first,,...rest]}, ...other}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-5",
+      "source": "\"use strict\";\ntype T={set value({value: {nested: [first,,...rest]}, ...other}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-6",
+      "source": "\"use strict\";\nconst f=(x):({value: {nested: [first,,...rest]}, ...other}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-8-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({value: {nested: [first,,...rest]}, ...other}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-8-8",
+      "source": "\"use strict\";\ntype T=X extends ({value: {nested: [first,,...rest]}, ...other}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-9",
+      "source": "\"use strict\";\ntype T=({value: {nested: [first,,...rest]}, ...other}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-8-10",
+      "source": "\"use strict\";\ntype T=(...{value: {nested: [first,,...rest]}, ...other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-0",
+      "source": "\"use strict\";\ntype F=([first,,...rest]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, [first,,...rest]:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-2",
+      "source": "\"use strict\";\ntype F=new ([first,,...rest]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-3",
+      "source": "\"use strict\";\ntype F=abstract new ([first,,...rest]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-4",
+      "source": "\"use strict\";\ninterface I {f([first,,...rest]:Input):number; ([first,,...rest]:Input):number; new ([first,,...rest]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-5",
+      "source": "\"use strict\";\ntype T={set value([first,,...rest]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-6",
+      "source": "\"use strict\";\nconst f=(x):([first,,...rest]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-9-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([first,,...rest]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-9-8",
+      "source": "\"use strict\";\ntype T=X extends ([first,,...rest]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-9",
+      "source": "\"use strict\";\ntype T=([first,,...rest]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-9-10",
+      "source": "\"use strict\";\ntype T=(...[first,,...rest]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-0",
+      "source": "\"use strict\";\ntype F=([...[first,...rest]]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, [...[first,...rest]]:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-2",
+      "source": "\"use strict\";\ntype F=new ([...[first,...rest]]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-3",
+      "source": "\"use strict\";\ntype F=abstract new ([...[first,...rest]]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-4",
+      "source": "\"use strict\";\ninterface I {f([...[first,...rest]]:Input):number; ([...[first,...rest]]:Input):number; new ([...[first,...rest]]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-5",
+      "source": "\"use strict\";\ntype T={set value([...[first,...rest]]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-6",
+      "source": "\"use strict\";\nconst f=(x):([...[first,...rest]]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-10-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([...[first,...rest]]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-10-8",
+      "source": "\"use strict\";\ntype T=X extends ([...[first,...rest]]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-9",
+      "source": "\"use strict\";\ntype T=([...[first,...rest]]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-10-10",
+      "source": "\"use strict\";\ntype T=(...[...[first,...rest]]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-0",
+      "source": "\"use strict\";\ntype F=([...{length}]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, [...{length}]:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-2",
+      "source": "\"use strict\";\ntype F=new ([...{length}]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-3",
+      "source": "\"use strict\";\ntype F=abstract new ([...{length}]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-4",
+      "source": "\"use strict\";\ninterface I {f([...{length}]:Input):number; ([...{length}]:Input):number; new ([...{length}]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-5",
+      "source": "\"use strict\";\ntype T={set value([...{length}]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-6",
+      "source": "\"use strict\";\nconst f=(x):([...{length}]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-11-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([...{length}]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-11-8",
+      "source": "\"use strict\";\ntype T=X extends ([...{length}]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-9",
+      "source": "\"use strict\";\ntype T=([...{length}]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-11-10",
+      "source": "\"use strict\";\ntype T=(...[...{length}]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-0",
+      "source": "\"use strict\";\ntype F=({value,}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {value,}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-2",
+      "source": "\"use strict\";\ntype F=new ({value,}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-3",
+      "source": "\"use strict\";\ntype F=abstract new ({value,}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-4",
+      "source": "\"use strict\";\ninterface I {f({value,}:Input):number; ({value,}:Input):number; new ({value,}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-5",
+      "source": "\"use strict\";\ntype T={set value({value,}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-6",
+      "source": "\"use strict\";\nconst f=(x):({value,}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-12-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({value,}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-12-8",
+      "source": "\"use strict\";\ntype T=X extends ({value,}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-9",
+      "source": "\"use strict\";\ntype T=({value,}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-12-10",
+      "source": "\"use strict\";\ntype T=(...{value,}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-0",
+      "source": "\"use strict\";\ntype F=([value,]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, [value,]:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-2",
+      "source": "\"use strict\";\ntype F=new ([value,]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-3",
+      "source": "\"use strict\";\ntype F=abstract new ([value,]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-4",
+      "source": "\"use strict\";\ninterface I {f([value,]:Input):number; ([value,]:Input):number; new ([value,]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-5",
+      "source": "\"use strict\";\ntype T={set value([value,]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-6",
+      "source": "\"use strict\";\nconst f=(x):([value,]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-13-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([value,]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-13-8",
+      "source": "\"use strict\";\ntype T=X extends ([value,]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-9",
+      "source": "\"use strict\";\ntype T=([value,]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-13-10",
+      "source": "\"use strict\";\ntype T=(...[value,]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-0",
+      "source": "\"use strict\";\ntype F=([,]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, [,]:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-2",
+      "source": "\"use strict\";\ntype F=new ([,]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-3",
+      "source": "\"use strict\";\ntype F=abstract new ([,]:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-4",
+      "source": "\"use strict\";\ninterface I {f([,]:Input):number; ([,]:Input):number; new ([,]:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-5",
+      "source": "\"use strict\";\ntype T={set value([,]:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-6",
+      "source": "\"use strict\";\nconst f=(x):([,]:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-14-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<([,]:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-14-8",
+      "source": "\"use strict\";\ntype T=X extends ([,]:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-9",
+      "source": "\"use strict\";\ntype T=([,]?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-14-10",
+      "source": "\"use strict\";\ntype T=(...[,]:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-0",
+      "source": "\"use strict\";\ntype F=({value: [[{nested}]]}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-1",
+      "source": "\"use strict\";\ntype F=<T>(this:Host, {value: [[{nested}]]}:Input<T>)=>T; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-2",
+      "source": "\"use strict\";\ntype F=new ({value: [[{nested}]]}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-3",
+      "source": "\"use strict\";\ntype F=abstract new ({value: [[{nested}]]}:Input)=>Host; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-4",
+      "source": "\"use strict\";\ninterface I {f({value: [[{nested}]]}:Input):number; ({value: [[{nested}]]}:Input):number; new ({value: [[{nested}]]}:Input):Host;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-5",
+      "source": "\"use strict\";\ntype T={set value({value: [[{nested}]]}:Input);}; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-6",
+      "source": "\"use strict\";\nconst f=(x):({value: [[{nested}]]}:Input)=>number=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-15-7",
+      "source": "\"use strict\";\nfunction f<T>(x:T) {return x;} f<({value: [[{nested}]]}:Input)=>number>(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-binding-15-8",
+      "source": "\"use strict\";\ntype T=X extends ({value: [[{nested}]]}:Input)=>infer R ? R : never; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-9",
+      "source": "\"use strict\";\ntype T=({value: [[{nested}]]}?:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-binding-15-10",
+      "source": "\"use strict\";\ntype T=(...{value: [[{nested}]]}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-grouped-0",
+      "source": "\"use strict\";\nfunction f(x:({value:number})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-0",
+      "source": "\"use strict\";\nfunction f(x):({value:number}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-1",
+      "source": "\"use strict\";\nfunction f(x:([number,string])) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-1",
+      "source": "\"use strict\";\nfunction f(x):([number,string]) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-2",
+      "source": "\"use strict\";\nfunction f(x:({nested:{value:[number,string]}})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-2",
+      "source": "\"use strict\";\nfunction f(x):({nested:{value:[number,string]}}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-3",
+      "source": "\"use strict\";\nfunction f(x:({value:`item-${number}`})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-3",
+      "source": "\"use strict\";\nfunction f(x):({value:`item-${number}`}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-4",
+      "source": "\"use strict\";\nfunction f(x:({value:Array<Array<number>>})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-4",
+      "source": "\"use strict\";\nfunction f(x):({value:Array<Array<number>>}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-5",
+      "source": "\"use strict\";\nfunction f(x:({[P in keyof T]:T[P]})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-5",
+      "source": "\"use strict\";\nfunction f(x):({[P in keyof T]:T[P]}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-6",
+      "source": "\"use strict\";\nfunction f(x:({get value():number;set value(v:number)})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-6",
+      "source": "\"use strict\";\nfunction f(x):({get value():number;set value(v:number)}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-7",
+      "source": "\"use strict\";\nfunction f(x:({[Symbol.iterator]():Iterator<number>})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-7",
+      "source": "\"use strict\";\nfunction f(x):({[Symbol.iterator]():Iterator<number>}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-8",
+      "source": "\"use strict\";\nfunction f(x:(({value}:Input)=>number)) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-8",
+      "source": "\"use strict\";\nfunction f(x):(({value}:Input)=>number) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-9",
+      "source": "\"use strict\";\nfunction f(x:(([value]:[number])=>number)) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-9",
+      "source": "\"use strict\";\nfunction f(x):(([value]:[number])=>number) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-grouped-10",
+      "source": "\"use strict\";\nfunction f(x:({value:(x:number)=>{[Symbol.iterator]():Iterator<number>}})) {return 42;} f(null);",
+      "javascript": "\"use strict\";\nfunction f(x) { return 42; }\nf(null);\n"
+    },
+    {
+      "name": "type-member-return-10",
+      "source": "\"use strict\";\nfunction f(x):({value:(x:number)=>{[Symbol.iterator]():Iterator<number>}}) {return x;} f(42);",
+      "javascript": "\"use strict\";\nfunction f(x) { return x; }\nf(42);\n"
+    },
+    {
+      "name": "type-member-behavior-0",
+      "source": "\"use strict\";\ninterface I {get: number;set():number;readonly:number;readonly get:number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-1",
+      "source": "\"use strict\";\ninterface I {get get():number;set set(value:number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-2",
+      "source": "\"use strict\";\ninterface I {get\nvalue():number;set /*comment*/ value(value:number);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-3",
+      "source": "\"use strict\";\ninterface I {get value();set value(value);} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-4",
+      "source": "\"use strict\";\ninterface I {get value(): value is number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-5",
+      "source": "\"use strict\";\ninterface I {get value(): asserts this is T;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-6",
+      "source": "\"use strict\";\ninterface I {[name:string]:number;[Symbol.iterator]():Iterator<number>;[name:number]:number;} 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-7",
+      "source": "\"use strict\";\nlet reads=0; const keys={get key(){reads++;throw 1;}}; interface I {[keys.key]:number;get [missing.key]():number;} reads;",
+      "javascript": "\"use strict\";\nlet reads = 0;\nconst keys = { get key() { reads++; throw 1; } };\nreads;\n"
+    },
+    {
+      "name": "type-member-behavior-8",
+      "source": "\"use strict\";\nconst value=40, other=2; type F=({value}:Input,[other]:[number])=>number; value+other;",
+      "javascript": "\"use strict\";\nconst value = 40, other = 2;\nvalue + other;\n"
+    },
+    {
+      "name": "type-member-behavior-9",
+      "source": "\"use strict\";\nfunction f(x:{get value():number}):number {return x.value;} f({get value(){return 42;}});",
+      "javascript": "\"use strict\";\nfunction f(x) { return x.value; }\nf({ get value() { return 42; } });\n"
+    },
+    {
+      "name": "type-member-behavior-10",
+      "source": "\"use strict\";\ntype T={get x():number;}; /ok/.test(\"ok\");",
+      "javascript": "\"use strict\";\n/ok/.test(\"ok\");\n"
+    },
+    {
+      "name": "type-member-behavior-11",
+      "source": "\"use strict\";\nconst f=(x):{[Symbol.iterator]():Iterator<T>}=>x; f(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-behavior-12",
+      "source": "\"use strict\";\nconst f=<T extends {get value():number}>(x:T)=>x; f<number>(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-behavior-13",
+      "source": "\"use strict\";\nconst f=<T extends {[Symbol.iterator]():Iterator<T>}>(x:T)=>x; f<number>(42);",
+      "javascript": "\"use strict\";\nconst f = (x) => x;\nf(42);\n"
+    },
+    {
+      "name": "type-member-behavior-14",
+      "source": "\"use strict\";\ntype F=({value},[other],)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-15",
+      "source": "\"use strict\";\ntype F=({value}:Input,{value}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-16",
+      "source": "\"use strict\";\ntype F=({eval}:Input,{arguments}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-17",
+      "source": "\"use strict\";\ntype F=({value}:Input)=>T extends U ? X:Y; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-behavior-18",
+      "source": "\"use strict\";\ntype F=({value}:Input)=>({other}:Input)=>number; 42;",
+      "javascript": "\"use strict\";\n42;\n"
+    },
+    {
+      "name": "type-member-module-0",
+      "source": "export interface I {get value():number;set value(v:number);[Symbol.iterator]():Iterator<number>;}",
+      "module": true,
+      "javascript": "export {};\n"
+    },
+    {
+      "name": "type-member-module-1",
+      "source": "export type F=({value}:Input)=>number;",
+      "module": true,
+      "javascript": "export {};\n"
+    },
+    {
+      "name": "type-member-module-2",
+      "source": "export interface I {get [missing.key]():number;} export const answer:number=42;",
+      "module": true,
+      "javascript": "export const answer = 42;\n"
+    },
+    {
+      "name": "type-member-module-3",
+      "source": "import type {Input} from \"missing\";export type F=({value}:Input)=>number;export const answer=42;",
+      "module": true,
+      "javascript": "export const answer = 42;\n"
+    },
+    {
+      "name": "type-member-module-4",
+      "source": "declare interface I {get value():number;} export const answer=42;",
+      "module": true,
+      "javascript": "export const answer = 42;\n"
     }
   ]
 }

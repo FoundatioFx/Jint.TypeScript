@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Jint.TypeScript.Tests;
 
-public class SignatureTests
+public partial class SignatureTests
 {
     private static readonly TypeScriptCompiler Compiler = new();
 

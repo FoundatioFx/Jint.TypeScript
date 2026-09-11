@@ -1,5 +1,7 @@
 # Performance with predicates, overloads and ambient declarations
 
+The latest [type-member batch](type-member-validation.md#performance) covers interface/object accessors, named/literal computed keys and destructured type parameters, including the cost of distinguishing grouped object types from function-type bindings.
+
 The latest [diagnostics batch](diagnostics-validation.md#performance) compares actionable unsupported-syntax errors against the playground baseline: all 136 existing workload/size combinations retain identical allocations.
 
 The latest [class-erasure batch](class-erasure-validation.md) records abstract classes/members, declare fields, abstract constructor types and a comparison on Jint preview 2069. The preceding [type-syntax batch](type-syntax-validation.md) covers conditional/infer and import types. Results below are the earlier signature batch.
